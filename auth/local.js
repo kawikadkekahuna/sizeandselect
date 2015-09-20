@@ -1,0 +1,1 @@
+// Will module exports the local strategy to use in the server and routes files
