@@ -1,3 +1,9 @@
 # sizeandselect
 
-Size and Select
+To install dependencies:
+
+```npm install```
+
+To run program:
+
+```gulp -w```
