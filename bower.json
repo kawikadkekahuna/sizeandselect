@@ -1,0 +1,19 @@
+{
+  "name": "sizeandselect",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Rastalamm/sizeandselect",
+  "authors": [
+    "kawika <kawikakekahuna@gmail.com> judah <judah.lamm@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.2"
+  }
+}

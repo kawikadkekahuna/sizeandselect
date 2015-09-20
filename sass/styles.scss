@@ -1,0 +1,8 @@
+@import "partials/settings";
+@import "partials/foundation";
+
+$dark-color : #333333;
+
+body {
+  background: $dark-color;
+}

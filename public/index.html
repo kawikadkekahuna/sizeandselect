@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <title>Size and Select</title>
+</head>
+<body ng-app="app">
+<div class="header">Header</div>
+<div ui-view></div>
+
+<!-- Dependencies -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+<script src="/bower_components/foundation/js/vendor/modernizr.js"></script>
+<script src="/bower_components/foundation/js/foundation.min.js"></script>
+<script>
+  Foundation.global.namespace = '';
+  $(document).foundation();
+</script>  
+ 
+<!-- Custom Angular Files -->
+<script src="./app/app.js"></script>
+<script src="./app/registration/controllers/RegistrationController.js"></script>
+<script src="./app/login/controllers/LoginController.js"></script>
+
+</body>
+</html>
