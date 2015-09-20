@@ -2,8 +2,8 @@
 
 To install dependencies:
 
-```npm install
+##npm install
 
 To run program:
 
-```gulp -w
+##gulp -w
