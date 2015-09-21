@@ -1,4 +1,5 @@
-SERVER = 'http://localhost:3000';
+PORT = 3000;
+SERVER = 'http://localhost:' + PORT;
 
 angular.module('app', ['ui.router'])
 
