@@ -7,10 +7,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     name : DataTypes.STRING,
     created_at : DataTypes.DATE,
-    updated_at : DataTypes.DATE
+    updated_at : DataTypes.DATE,
   },{
     underscored: true,
-    tableName: 'Users'
+    //Lowercase tablenames and plural
+    tableName: 'users'
     //Need to add in class methods
   });
   return User;
