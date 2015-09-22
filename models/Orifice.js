@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
 
-  var ProjectStatus = sequelize.define("ProjectStatus", {
+  var Orifice = sequelize.define("Orifice", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -10,14 +10,16 @@ module.exports = function (sequelize, DataTypes) {
 
   }, {
     underscored: true,
-    tableName: "project_statuses",
+    tableName: "orifices",
     classMethods: {
       /**
        * [associate]
        * @description {
        * Associate function used to create inner joins between tables.
-       * Inner join linked between 'projects'.
-       * Relationship association: belongsTo('projects')
+       * Inner join linked between 'valve_selections'.
+       * Inner join linked between 'orifices_sizes'
+       * Relationship association: belongsTo('valve_selections')
+       * Relationship association: hasOne('orifices_size')
        * }
        */
       // associate: function(models) {
@@ -26,5 +28,5 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  return ProjectStatus;
+  return Orifice;
 };

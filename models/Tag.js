@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
 
-  var ProjectStatus = sequelize.define("ProjectStatus", {
+  var Tag = sequelize.define("Tag", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -10,14 +10,18 @@ module.exports = function (sequelize, DataTypes) {
 
   }, {
     underscored: true,
-    tableName: "project_statuses",
+    tableName: "tags",
     classMethods: {
       /**
        * [associate]
        * @description {
        * Associate function used to create inner joins between tables.
        * Inner join linked between 'projects'.
+       * Inner join linked between 'user_accesses'
+       * Inner join linked between 'tag_calculations'
        * Relationship association: belongsTo('projects')
+       * Relationship association: belongsTo('user_accesses')
+       * Relationship association: hasOne('tag_calculations')
        * }
        */
       // associate: function(models) {
@@ -26,5 +30,5 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  return ProjectStatus;
+  return Tag;
 };

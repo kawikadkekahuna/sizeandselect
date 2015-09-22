@@ -1,23 +1,22 @@
 module.exports = function (sequelize, DataTypes) {
 
-  var ProjectStatus = sequelize.define("ProjectStatus", {
+  var ConnectionSize = sequelize.define("ConnectionSize", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    text: DataTypes.STRING
-
+    size: DataTypes.STRING
   }, {
     underscored: true,
-    tableName: "project_statuses",
+    tableName: "connection_sizes",
     classMethods: {
       /**
        * [associate]
        * @description {
        * Associate function used to create inner joins between tables.
-       * Inner join linked between 'projects'.
-       * Relationship association: belongsTo('projects')
+       * Inner join linked between 'valve_selections'.
+       * Relationship association: belongsTo('valve_selections')
        * }
        */
       // associate: function(models) {
@@ -26,5 +25,5 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  return ProjectStatus;
+  return ConnectionSize;
 };
