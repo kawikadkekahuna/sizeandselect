@@ -17,9 +17,9 @@ module.exports = function (sequelize, DataTypes) {
     country: DataTypes.STRING,
     company: DataTypes.STRING,
     job_title: DataTypes.STRING,
-    phone_number: DataTypes.INTEGER,
+    phone_number: DataTypes.STRING,
     user_picture: DataTypes.STRING,
-    private: DataTypes.BOOLEAN
+    hidden: DataTypes.BOOLEAN
 
   }, {
     underscored: true,

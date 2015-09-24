@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
     quantity: DataTypes.INTEGER,
     pid: DataTypes.STRING,
     service: DataTypes.STRING,
