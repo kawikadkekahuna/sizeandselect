@@ -5,4 +5,6 @@ angular.module('app')
 
   $scope.testMessage = 'Registration Controller Linked';
 
+
+
 });
