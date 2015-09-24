@@ -6,7 +6,20 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    text: DataTypes.STRING
+    username: DataTypes.STRING,
+    first_name: DataTypes.STRING,
+    last_name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    city: DataTypes.STRING,
+    state: DataTypes.STRING,
+    zipcode: DataTypes.STRING,
+    country: DataTypes.STRING,
+    company: DataTypes.STRING,
+    job_title: DataTypes.STRING,
+    phone_number: DataTypes.INTEGER,
+    user_picture: DataTypes.STRING,
+    private: DataTypes.BOOLEAN
 
   }, {
     underscored: true,

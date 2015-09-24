@@ -6,8 +6,9 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    text: DataTypes.STRING
-
+    project_name: DataTypes.STRING,
+    company_name: DataTypes.STRING,
+    status: DataTypes.STRING,
   }, {
     underscored: true,
     tableName: "projects",
