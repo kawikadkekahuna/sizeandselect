@@ -6,6 +6,4 @@ angular.module('app')
     console.log(user);
   };
 
-  
-
 });
