@@ -5,16 +5,12 @@
      <input ng-model="newUser.password" type="password" placeholder="Password"><br /> 
      <input ng-model="newUser.password" type="password" placeholder="Password(confirmation)"><br /> 
      <input ng-model="newUser.email" type="text" placeholder="Email"><br /> 
-     <select>
-       <option value="Engineer">Engineer</option>
-       <option value="Representative">Representative</option>
-       <option value="Manufacture">Manufacture</option>
-     </select><br />  
+    <dropdown-select items="accountTypes" ng-model="newUser.account_type"></dropdown-select>
     </div>
     <div>
      <input ng-model="newUser.address" type="text" placeholder="Address"><br />
      <input ng-model="newUser.city" type="text" placeholder="City"><br />
-     <dropdown-select ng-click="attachToModel()" ng-model="newUser.selectedState"></dropdown-select><br /> 
+     <dropdown-select items="states" ng-model="newUser.selectedState"></dropdown-select><br /> 
      <input ng-model="newUser.zipcode" type="text" placeholder="Zipcode"><br /> 
      <input ng-model="newUser.company" type="text" placeholder="Company"><br />
      <input ng-model="newUser.job_title" type="text" placeholder="Job Title"><br />

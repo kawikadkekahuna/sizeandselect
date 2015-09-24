@@ -49,3 +49,6 @@ INSERT INTO states VALUES (DEFAULT,'Washington','WA');
 INSERT INTO states VALUES (DEFAULT,'West Virginia','WV');
 INSERT INTO states VALUES (DEFAULT,'Wisconsin','WI');
 INSERT INTO states VALUES (DEFAULT,'Wyoming','WY');
+INSERT INTO account_types VALUES (DEFAULT,'Engineer');
+INSERT INTO account_types VALUES (DEFAULT,'Representative');
+INSERT INTO account_types VALUES (DEFAULT,'Manufacture');
