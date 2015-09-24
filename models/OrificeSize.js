@@ -6,8 +6,8 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    text: DataTypes.STRING
-
+    orifice_type: DataTypes.STRING,
+    size: DataTypes.DOUBLE
   }, {
     underscored: true,
     tableName: "orifice_sizes",

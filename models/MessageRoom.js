@@ -5,9 +5,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
-    },
-    text: DataTypes.STRING
-
+    }
   }, {
     underscored: true,
     tableName: "message_rooms",
