@@ -4,7 +4,7 @@
      <input ng-model="newUser.username" type="text" placeholder="Username"><br />
      <input ng-model="newUser.password" type="password" placeholder="Password"><br /> 
      <input ng-model="newUser.password" type="password" placeholder="Password(confirmation)"><br /> 
-     <input ng-model="newUser.email." type="text" placeholder="Email"><br /> 
+     <input ng-model="newUser.email" type="text" placeholder="Email"><br /> 
      <select>
        <option value="Engineer">Engineer</option>
        <option value="Representative">Representative</option>
@@ -13,11 +13,13 @@
     </div>
     <div>
      <input ng-model="newUser.address" type="text" placeholder="Address"><br />
-     <input ng-model="newUser.city" type="text" placeholder="City"><br /> 
+     <input ng-model="newUser.city" type="text" placeholder="City"><br />
+     <us-state-select></us-state-select> 
      <input ng-model="newUser.zipcode" type="text" placeholder="Zipcode"><br /> 
      <input ng-model="newUser.company" type="text" placeholder="Company"><br />
      <input ng-model="newUser.job_title" type="text" placeholder="Job Title"><br />
      <input ng-model="newUser.phone_number" type="text" placeholder="Phone Number"><br />
     </div>
+    <button ng-click="createUser(newUser)">Create User!</button>
   </form>
 </div>
