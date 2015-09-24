@@ -4,7 +4,9 @@ angular.module('app')
   console.log('Linked Registration Controller');  
 
   $scope.createUser = function (user) {
-    console.log('user',user);
+    console.log('in reg controller');
+    console.log(user);
+
   };
 
 });
