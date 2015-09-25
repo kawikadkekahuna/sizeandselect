@@ -12,7 +12,7 @@ angular.module('app')
     },
     controller: 'RegistrationController as dropdownSelect',
     templateUrl: 'partials/dropdown-select.tpl.html',
-    link: function(scope, element, attrs, ngModel) {
+    link: function(scope, element, attributes, ngModel) {
 
       /**
        * [attachToModel]

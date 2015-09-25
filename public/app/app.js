@@ -1,7 +1,7 @@
 PORT = '3000';
 SERVER = 'http://localhost:3000' ;
 
-angular.module('app', ['ui.router'])
+angular.module('app', ['ui.router','ngMessages'])
 
 .config(function ($stateProvider, $urlRouterProvider) {
 

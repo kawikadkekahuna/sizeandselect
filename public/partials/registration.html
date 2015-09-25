@@ -1,10 +1,19 @@
 <div>
-  <form>
+  <form ng-submit="createUser(newUser)" name="registration">
     <div>
      <input ng-model="newUser.username" type="text" placeholder="Username"><br />
-     <input ng-model="newUser.password" type="password" placeholder="Password"><br /> 
-     <input ng-model="newUser.password" type="password" placeholder="Password(confirmation)"><br /> 
-     <input ng-model="newUser.email" type="text" placeholder="Email"><br /> 
+     <input ng-model="newUser.password" 
+            type="password"
+            required 
+            name="initialPassword"
+            placeholder="Password"><br /> 
+     <input name="confirmPassword" required compare-to="newUser.password" ng-model="newUser.confirmation" type="password" placeholder="Password(confirmation)"><br />
+        <div ng-messages="registration.confirmPassword.$error" style="color:maroon">
+            <div ng-message="required">pw not entered</div>
+            <div ng-message="compareTo">wrong password</div>
+        </div>
+        <pre>registration.confirmPassword.$error = {{ registration.confirmPassword.$error | json }}</pre>
+    <input ng-model="newUser.email" type="text" placeholder="Email"><br /> 
     <dropdown-select items="accountTypes" ng-model="newUser.account_type"></dropdown-select>
     </div>
     <div>
@@ -16,7 +25,7 @@
      <input ng-model="newUser.job_title" type="text" placeholder="Job Title"><br />
      <input ng-model="newUser.phone_number" type="text" placeholder="Phone Number"><br />
     </div>
-    <button ng-click="createUser(newUser)">Create User!</button>
+    <button type="submit">Create User!</button>
   </form>
     {{selected}}
     <tt>{{newUser.state}}</tt>
