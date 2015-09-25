@@ -1,3 +1,8 @@
-<select ng-click="attachToModel()" ng-model="itemState" name="itemState">
-  <option ng-repeat="item in items">{{ item.name }}</option>
+<select 
+  ng-click="attachToModel()"
+  ng-model="itemState"
+  name="itemState"
+  ng-options="item.name for item in items track by item.id"
+  >
+  <option>{{ item.name }} </option>
 </select>

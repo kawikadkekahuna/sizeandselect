@@ -13,7 +13,6 @@ angular.module('app')
     controller: 'RegistrationController as dropdownSelect',
     templateUrl: 'partials/dropdown-select.tpl.html',
     link: function(scope, element, attributes, ngModel) {
-
       /**
        * [attachToModel]
        * [Attaches value of item to ng-model]

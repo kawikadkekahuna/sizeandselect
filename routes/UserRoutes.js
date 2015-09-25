@@ -20,20 +20,6 @@ router.get('/states', function (req, res) {
 });
 
 router.post('/create_user' , function (req,res){
-    // username: DataTypes.STRING,
-    // first_name: DataTypes.STRING,
-    // last_name: DataTypes.STRING,
-    // email: DataTypes.STRING,
-    // password: DataTypes.STRING,
-    // city: DataTypes.STRING,
-    // state: DataTypes.STRING,
-    // zipcode: DataTypes.STRING,
-    // country: DataTypes.STRING,
-    // company: DataTypes.STRING,
-    // job_title: DataTypes.STRING,
-    // phone_number: DataTypes.INTEGER,
-    // user_picture: DataTypes.STRING,
-    // hidden: DataTypes.BOOLEAN
   User.create({
     username: req.body.newUser.username,
     first_name: req.body.newUser.first_name,
@@ -50,7 +36,7 @@ router.post('/create_user' , function (req,res){
     user_picture: req.body.newUser.user_picture,
     hidden: true
   }).then(function(){
-    res.json({success:true});
+    res.status(200).jsonp({success:true});
   })
   
 });

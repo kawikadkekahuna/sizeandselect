@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8">
   <title>Size and Select</title>
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body ng-app="app">
 <div class="header">Header</div>
@@ -14,20 +15,16 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-messages.min.js"></script>
-<script src="/bower_components/foundation/js/vendor/modernizr.js"></script>
-<script src="/bower_components/foundation/js/foundation.min.js"></script>
-<script>
-  Foundation.global.namespace = '';
-  $(document).foundation();
-</script>  
  
 <!-- Custom Angular Files -->
 <script src="./app/app.js"></script>
 <!-- Angular Services -->
-<script src="./app/common/services/dropdown-services.js"></script>
+<script src="./app/common/services/DropdownService.js"></script>
+<script src="./app/common/services/RegexService.js"></script>
 <script src="./app/registration/services/RegistrationService.js"></script>
 <!-- Angular Directives -->
 <script src="./app/common/directives/compare-to.js"></script>
+<script src="./app/common/directives/select-default-options-directive.js"></script>
 <script src="./app/common/directives/dropdown-select.js"></script>
 <!-- Angular Controllers -->
 <script src="./app/about-us/controllers/AboutUsController.js"></script>

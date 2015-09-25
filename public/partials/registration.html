@@ -1,31 +1,78 @@
 <div>
-  <form ng-submit="createUser(newUser)" name="registration">
-    <div>
-     <input ng-model="newUser.username" type="text" placeholder="Username"><br />
-     <input ng-model="newUser.password" 
-            type="password"
-            required 
-            name="initialPassword"
-            placeholder="Password"><br /> 
-     <input name="confirmPassword" required compare-to="newUser.password" ng-model="newUser.confirmation" type="password" placeholder="Password(confirmation)"><br />
-        <div ng-messages="registration.confirmPassword.$error" style="color:maroon">
-            <div ng-messages-include src="partials/error-messages.html"></div>
-        </div>
-        <pre>registration.confirmPassword.$error = {{ registration.confirmPassword.$error | json }}</pre>
-    <input ng-model="newUser.email" type="text" placeholder="Email"><br /> 
-    <dropdown-select items="accountTypes" ng-model="newUser.account_type"></dropdown-select>
+<form ng-submit="createUser(newUser)" name="registration">
+  <div>
+
+    <input name="username" 
+          ng-model="newUser.username" 
+          type="text" 
+          required 
+          placeholder="Username"><br />
+    <div ng-messages="registration.username.$error">
+      <div ng-messages-include src="partials/error-messages.tpl.html"></div>
     </div>
-    <div>
-     <input ng-model="newUser.address" type="text" placeholder="Address"><br />
-     <input ng-model="newUser.city" type="text" placeholder="City"><br />
-     <dropdown-select items="states" ng-model="newUser.selectedState"></dropdown-select><br /> 
-     <input ng-model="newUser.zipcode" type="text" placeholder="Zipcode"><br /> 
-     <input ng-model="newUser.company" type="text" placeholder="Company"><br />
-     <input ng-model="newUser.job_title" type="text" placeholder="Job Title"><br />
-     <input ng-model="newUser.phone_number" type="text" placeholder="Phone Number"><br />
+
+    <input ng-model="newUser.password" 
+      type="password"
+      required 
+      name="password"
+      placeholder="Password"><br /> 
+    <div ng-messages="registration.password.$error">
+      <div ng-messages-include src="partials/error-messages.tpl.html"></div>
     </div>
-    <button type="submit">Create User!</button>
-  </form>
-    {{selected}}
-    <tt>{{newUser.state}}</tt>
+
+    <input name="confirmation" 
+      required 
+      compare-to="newUser.password" 
+      ng-model="newUser.confirmation" 
+      type="password" 
+      placeholder="Password(confirmation)"><br />
+    <div ng-messages="registration.confirmation.$error">
+      <div ng-messages-include src="partials/error-messages.tpl.html"></div>
+    </div>
+
+    <input name="email" ng-pattern="validations.email" required ng-model="newUser.email" 
+      type="text" 
+      placeholder="Email"><br />
+    <div ng-messages="registration.email.$error">
+      <div ng-messages-include src="partials/error-messages.tpl.html"></div>
+    </div>
+
+    <dropdown-select items="accountTypes" ng-model="newUser.account_type"></dropdown-select><br />
+
+    <input name="address" required ng-model="newUser.address" type="text" placeholder="Address"><br />
+    <div ng-messages="registration.address.$error">
+      <div ng-messages-include src="partials/error-messages.tpl.html"></div>
+    </div>
+
+
+    <input required name="city" ng-model="newUser.city" type="text" placeholder="City"><br />
+    <div ng-messages="registration.city.$error">
+      <div ng-messages-include src="partials/error-messages.tpl.html"></div>
+    </div>
+
+    <dropdown-select items="states" ng-model="newUser.selectedState"></dropdown-select><br />
+
+    <input required ng-pattern="validations.zipcode" name="zipcode" ng-model="newUser.zipcode" type="text" placeholder="Zipcode"><br /> 
+    <div ng-messages="registration.zipcode.$error">
+      <div ng-messages-include src="partials/error-messages.tpl.html"></div>
+    </div>
+
+    <input required name="company" ng-model="newUser.company" type="text" placeholder="Company"><br />
+    <div ng-messages="registration.company.$error">
+      <div ng-messages-include src="partials/error-messages.tpl.html"></div>
+    </div>
+
+    <input required name="job_title" ng-model="newUser.job_title" type="text" placeholder="Job Title"><br />
+    <div ng-messages="registration.job_title.$error">
+      <div ng-messages-include src="partials/error-messages.tpl.html"></div>
+    </div>
+
+    <input required ng-pattern="validations.phoneNumber" name="phone_number" ng-model="newUser.phone_number" type="text" placeholder="Phone Number"><br />
+    <div ng-messages="registration.phone_number.$error">
+      <div ng-messages-include src="partials/error-messages.tpl.html"></div>
+    </div>
+
+  </div>
+  <button type="submit">Create User!</button>
+</form>
 </div>
