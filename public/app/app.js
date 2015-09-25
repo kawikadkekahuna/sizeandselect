@@ -19,6 +19,11 @@ $stateProvider
     controller: 'ContactUsController'
   })
 
+  .state('error-messages', {
+    url: '/error-messages',
+    templateUrl: 'partials/error-messages.html'
+  })
+
   .state('dashboard', {
     url: '/dashboard',
     templateUrl: 'partials/dashboard.html',

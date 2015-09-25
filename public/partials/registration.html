@@ -9,8 +9,7 @@
             placeholder="Password"><br /> 
      <input name="confirmPassword" required compare-to="newUser.password" ng-model="newUser.confirmation" type="password" placeholder="Password(confirmation)"><br />
         <div ng-messages="registration.confirmPassword.$error" style="color:maroon">
-            <div ng-message="required">pw not entered</div>
-            <div ng-message="compareTo">wrong password</div>
+            <div ng-messages-include src="partials/error-messages.html"></div>
         </div>
         <pre>registration.confirmPassword.$error = {{ registration.confirmPassword.$error | json }}</pre>
     <input ng-model="newUser.email" type="text" placeholder="Email"><br /> 
