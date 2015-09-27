@@ -6,12 +6,31 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    text: DataTypes.STRING
-
+    username : DataTypes.STRING,
+    first_name : DataTypes.STRING,
+    last_name : DataTypes.STRING,
+    email : DataTypes.STRING,
+    password : DataTypes.STRING,
+    resetPasswordToken : DataTypes.STRING,
+    resetPasswordExpires : DataTypes.DATE,
+    city : DataTypes.STRING,
+    state : DataTypes.STRING,
+    zip_code : DataTypes.INTEGER,
+    country : DataTypes.STRING,
+    company : DataTypes.STRING,
+    job_title : DataTypes.STRING,
+    phone_number : DataTypes.INTEGER,
+    user_picture : DataTypes.STRING,
+    private_account : DataTypes.BOOLEAN,
+    created_at : DataTypes.DATE,
+    updated_at : DataTypes.DATE
   }, {
     underscored: true,
     tableName: "users",
     classMethods: {
+      associate : function(models){
+        User.hasOne(models.AccountType, {foreignKey: 'account_type_id'});
+      }
       /**
        * [associate]
        * @description {
