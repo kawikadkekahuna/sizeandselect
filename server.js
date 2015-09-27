@@ -7,6 +7,8 @@ var User = db.User;
 var bodyParser = require('body-parser');
 var routes = require('./routes');
 
+//judah start
+
 var session = require('express-session')
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -41,7 +43,7 @@ app.use(csurf());
 
 
 
-
+//NOT JUDAH
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -83,7 +85,7 @@ function localStrategy (email, password, done) {
 
 passport.use(new LocalStrategy(localStrategy));
 
-
+//judah end
 
 app.use('/api', routes);
 
