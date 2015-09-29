@@ -14,7 +14,6 @@ module.exports = function (sequelize, DataTypes) {
     city: DataTypes.STRING,
     state: DataTypes.STRING,
     zipcode: DataTypes.STRING,
-    country: DataTypes.STRING,
     company: DataTypes.STRING,
     job_title: DataTypes.STRING,
     phone_number: DataTypes.STRING,

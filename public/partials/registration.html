@@ -1,6 +1,23 @@
 <div>
 <form ng-submit="createUser(newUser)" name="registration">
   <div>
+    <input name="first_name" 
+          ng-model="newUser.first_name" 
+          type="text" 
+          required 
+          placeholder="First Name"><br />
+    <div ng-messages="registration.first_name.$error">
+      <div ng-messages-include src="partials/error-messages.tpl.html"></div>
+    </div>
+
+    <input name="last_name" 
+          ng-model="newUser.last_name" 
+          type="text" 
+          required 
+          placeholder="Last Name"><br />
+    <div ng-messages="registration.last_name.$error">
+      <div ng-messages-include src="partials/error-messages.tpl.html"></div>
+    </div>
 
     <input name="username" 
           ng-model="newUser.username" 
@@ -25,14 +42,14 @@
       compare-to="newUser.password" 
       ng-model="newUser.confirmation" 
       type="password" 
-      placeholder="Password(confirmation)"><br />
+      placeholder="Confirm Password"><br />
     <div ng-messages="registration.confirmation.$error">
       <div ng-messages-include src="partials/error-messages.tpl.html"></div>
     </div>
 
     <input name="email" ng-pattern="validations.email" required ng-model="newUser.email" 
       type="text" 
-      placeholder="Email"><br />
+      placeholder="xxx@xxxx.xxx"><br />
     <div ng-messages="registration.email.$error">
       <div ng-messages-include src="partials/error-messages.tpl.html"></div>
     </div>
@@ -67,7 +84,7 @@
       <div ng-messages-include src="partials/error-messages.tpl.html"></div>
     </div>
 
-    <input required ng-pattern="validations.phoneNumber" name="phone_number" ng-model="newUser.phone_number" type="text" placeholder="Phone Number"><br />
+    <input required ng-pattern="validations.phoneNumber" name="phone_number" ng-model="newUser.phone_number" type="text" placeholder="(xxx)xxx-xxxx"><br />
     <div ng-messages="registration.phone_number.$error">
       <div ng-messages-include src="partials/error-messages.tpl.html"></div>
     </div>
