@@ -13,31 +13,29 @@ var csurf = require('csurf');
 var async = require('async');
 var crypto = require('crypto');
 
-var MailDev = require('maildev');
-
 var db = require('../models');
 var User = db.User;
 
 db.sequelize.sync();
 
 
-function ensureAuthenticated(req, res, next) {
+function ensureAuthenticated (req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
   res.redirect('/login')
 }
 
-function generateHash(password){
+function generateHash(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(11))
 }
 
 
-function createUser (email, password){
+function createUser (email, password) {
   User.create({
     email : email,
     password : generateHash(password)
-  })
+  });
 }
 
 function validatePassword (password){
@@ -53,8 +51,7 @@ router.get('/', ensureAuthenticated,
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/login',
-  failureFlash : true
+  failureRedirect: '/login'
 }));
 
 
