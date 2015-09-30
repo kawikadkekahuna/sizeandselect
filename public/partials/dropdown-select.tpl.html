@@ -1,5 +1,5 @@
 <select 
-  ng-click="attachToModel()"
+  ng-change="attachToModel()"
   ng-model="itemState"
   name="itemState"
   ng-options="item.name for item in items track by item.id"

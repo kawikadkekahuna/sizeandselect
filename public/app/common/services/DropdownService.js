@@ -4,10 +4,10 @@ angular.module('app')
 function DropdownService ($http) {
 
   this.getAccountTypes = function() {
-    return $http.get(SERVER+ '/api/user_routes/account_types');
+    return $http.get(SERVER+ '/api/defaults/_account_types');
   };
 
   this.getStates = function()  {
-    return $http.get(SERVER + '/api/user_routes/states');
+    return $http.get(SERVER + '/api/defaults/_states');
   };
 }

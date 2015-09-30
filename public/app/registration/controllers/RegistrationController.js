@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('RegistrationController', function($scope, DropdownService, RegexService, RegistrationService) {
+.controller('RegistrationController', function($scope, $state, DropdownService, RegexService, RegistrationService) {
 
   DropdownService.getAccountTypes().then(function(accountTypes) {
     $scope.accountTypes = accountTypes.data;
@@ -17,11 +17,11 @@ angular.module('app')
   }
 
   $scope.createUser = function(user) {
-    user.hidden = RegistrationService.getUserDefault().hidden;
-
     RegistrationService.createUser(user).then(function(res){
-      console.log('res',res)
+      alert('user created');
+      $state.go('login');
     });
   };
+
 
 });

@@ -6,20 +6,9 @@ var State = require('../models').State;
 var AccountType = require('../models').AccountType;
 var User = require('../models').User;
 var bodyParser = require('body-parser');
+var DEFAULT_HIDDEN = true;
 
-router.get('/account_types', function (req, res) {
-  AccountType.findAll().then(function (accountTypes){
-    res.json(accountTypes);
-  })
-});
-
-router.get('/states', function (req, res) {
-  State.findAll().then(function (states){
-    res.json(states);
-  })
-});
-
-router.post('/create_user' , function (req,res){
+router.post('/register' , function (req,res){1
   User.create({
     username: req.body.newUser.username,
     first_name: req.body.newUser.first_name,
@@ -33,9 +22,9 @@ router.post('/create_user' , function (req,res){
     job_title: req.body.newUser.job_title,
     phone_number: req.body.newUser.phone_number,
     user_picture: req.body.newUser.user_picture,
-    hidden: true
-  }).then(function(){
-    res.status(200).jsonp({success:true});
+    hidden: DEFAULT_HIDDEN
+  }).then(function(user){
+    res.status(200).jsonp(user);
   })
   
 });
