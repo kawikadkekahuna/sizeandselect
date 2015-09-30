@@ -1,7 +1,7 @@
-PORT = 3000;
-SERVER = 'http://localhost:' + PORT;
+PORT = '3000';
+SERVER = 'http://localhost:3000' ;
 
-angular.module('app', ['ui.router'])
+angular.module('app', ['ui.router','ngMessages'])
 
 .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -17,6 +17,11 @@ $stateProvider
     url: '/contact-us',
     templateUrl: 'partials/contact-us.html',
     controller: 'ContactUsController'
+  })
+
+  .state('error-messages', {
+    url: '/error-messages',
+    templateUrl: 'partials/error-messages.html'
   })
 
   .state('dashboard', {

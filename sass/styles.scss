@@ -1,8 +1,6 @@
-@import "partials/settings";
-@import "partials/foundation";
-
 $dark-color : #333333;
 
-body {
-  background: $dark-color;
+.error-messages .ng-scope{
+  color:red;
+  font-size:11px;
 }
