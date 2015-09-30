@@ -25,7 +25,7 @@ router.post('/register' , function (req,res){1
     hidden: DEFAULT_HIDDEN
   }).then(function(user){
     res.status(200).jsonp(user);
-  })
+  });
   
 });
 

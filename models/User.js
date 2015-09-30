@@ -18,13 +18,14 @@ module.exports = function (sequelize, DataTypes) {
     job_title: DataTypes.STRING,
     phone_number: DataTypes.STRING,
     user_picture: DataTypes.STRING,
-    hidden: DataTypes.BOOLEAN
+    hidden: DataTypes.BOOLEAN,
+    fk_account_type: DataTypes.STRING,
   }, {
     underscored: true,
     tableName: "users",
     classMethods: {
       associate : function(models){
-        User.hasOne(models.AccountType, {foreignKey: 'account_type_id'});
+        User.hasOne(models.AccountType,{foreignKey:'fk_account_type'});
       }
       /**
        * [associate]
