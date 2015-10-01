@@ -5,11 +5,14 @@ var router = express.Router();
 var User = require('../models').User;
 var bodyParser = require('body-parser');
 var DEFAULT_HIDDEN = true;
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
 
 /**
  * [POST]
  * [If user successfully logins]
- * send status 200 eg: 
+ * send status 200 eg:
  * res.status(200).send(..{}..)
  * Add Bearer token to Headers.
  *

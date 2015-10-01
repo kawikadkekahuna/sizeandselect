@@ -36,11 +36,22 @@ function createUser(newUser){
 
 router.post('/register' , function (req,res){
   User.find({
-    where: {email : req.body.newUser.email}
+    $or: [
+          {
+            where:
+              {username : req.body.newUser.username}
+          },{
+            where:
+              {email : req.body.newUser.email}
+          }]
+
   }).then(function (user){
     if (user) {
+      //discuss breaking up above logic into two requests
+      //display the specific error vs speed
       //user exists display error
       //send status code 422
+      res.status(422);
 
 
 
@@ -49,8 +60,10 @@ router.post('/register' , function (req,res){
       createUser(newUser);
 
       //at this point the user has been created successfully
+      //Need to render the post login page (Passport auto logs in user)
 
-      res.status(200).jsonp(user);
+
+      res.status(200).json(newUser);
     }
   })
 

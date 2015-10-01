@@ -3,8 +3,10 @@
 var express = require('express');
 var app = express();
 var db = require('./models');
-var bodyParser = require('body-parser');
 var routes = require('./routes');
+var bodyParser = require('body-parser');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -18,6 +20,19 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
   next();
 });
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
 
 app.use('/api', routes);
 
