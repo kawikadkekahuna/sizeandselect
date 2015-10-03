@@ -29,7 +29,7 @@ function createUser(newUser){
     job_title: req.body.newUser.job_title,
     phone_number: req.body.newUser.phone_number,
     user_picture: req.body.newUser.user_picture,
-    hidden: DEFAULT_HIDDEN
+    account_hidden: DEFAULT_HIDDEN
   })
 }
 
@@ -51,19 +51,20 @@ router.post('/register' , function (req,res){
       //display the specific error vs speed
       //user exists display error
       //send status code 422
-      res.status(422);
+      res.status(422).send('Invalid input fields.  Data already exists in the database');
 
 
 
 
     } else {
-      createUser(newUser);
+
+      createUser(req);
 
       //at this point the user has been created successfully
       //Need to render the post login page (Passport auto logs in user)
 
 
-      res.status(200).json(newUser);
+      res.status(200).jsonp(newUser);
     }
   })
 
