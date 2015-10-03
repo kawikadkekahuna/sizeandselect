@@ -35,32 +35,31 @@ function createUser(req){
 
 
 router.post('/register' , function (req,res){
+  console.log('username', req.body.newUser.username);
+  console.log('email', req.body.newUser.email);
   User.find({
-    $or: [
-          {
-            where:
-              {username : req.body.newUser.username}
-          },{
-            where:
-              {email : req.body.newUser.email}
-          }]
+      where : {
+        username : req.body.newUser.username,
+        email : req.body.newUser.email
+      }
+    // $or: [
+    //       {
+    //         where:
+    //           {username : req.body.newUser.username}
+    //       },{
+    //         where:
+    //           {email : req.body.newUser.email}
+    //       }]
 
   }).then(function (user){
+    console.log('user', user);
     if (user) {
-      //discuss breaking up above logic into two requests
-      //display the specific error vs speed
-      //user exists display error
-      //send status code 422
+      //username or email exists already choose unique
       res.status(422).send('Invalid input fields.  Data already exists in the database');
-
-
-
-
     } else {
       createUser(req);
       //at this point the user has been created successfully
       //Need to render the post login page (Passport auto logs in user)
-
 
       res.status(200).jsonp(req.body.newUser);
     }
