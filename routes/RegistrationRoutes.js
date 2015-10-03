@@ -13,7 +13,7 @@ function generateHash(password){
   return bcrypt.hashSync(password, bcrypt.genSaltSync(10))
 }
 
-function createUser(newUser){
+function createUser(req){
   var password = req.body.newUser.password;
 
   User.create({
@@ -57,14 +57,12 @@ router.post('/register' , function (req,res){
 
 
     } else {
-
       createUser(req);
-
       //at this point the user has been created successfully
       //Need to render the post login page (Passport auto logs in user)
 
 
-      res.status(200).jsonp(newUser);
+      res.status(200).jsonp(req.body.newUser);
     }
   })
 
