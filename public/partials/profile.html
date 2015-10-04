@@ -1,4 +1,9 @@
-<form name="userProfileDetails" action="">
+<form name="userProfileDetails">
+
+  <div class="user_picture" ngModel="user.user_picture">
+    <img src="../assets/profile_picture_placeholder.png">
+  </div>
+
   <input type="text" ngModel="user.email" placeholder="email"> <br />
   <input type="text" ngModel="user.phone" placeholder="phone"> <br />
   <input type="text" ngModel="user.company" placeholder="company"> <br />
@@ -25,4 +30,6 @@
   <div ng-messages="registration.confirmation.$error">
     <div ng-messages-include src="partials/error-messages.tpl.html"></div>
   </div>
+
+  <button ng-click="editUser(user)">Edit Profile</form>
 </form>

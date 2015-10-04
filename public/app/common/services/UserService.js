@@ -6,13 +6,22 @@ function UserService (UserService, $http){
 
   this.getCurrentUser = function (){
     /**
-     * 'return $http post to /api/user/current_user'
+     * 'return $http GET to /api/user/current_user'
      *   - pass ids
      *   - expect status 200
-     *   - server sends back user data.
+     *   - ???.
      */
+  }
 
-
+  this.editUser = function (user){
+    /**
+     * 'return $http PUT to /api/user/update_user'
+     * -pass user data
+     * -expect 200
+     * -expect success message
+     */
+    console.log('click');
+    console.log('user',user);
   }
 
 }
