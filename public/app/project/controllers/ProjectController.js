@@ -24,7 +24,7 @@ angular.module('app')
        *   -Update array of projects.
        *      
        */
-      
+      console.log(res);
 
     });
   }
