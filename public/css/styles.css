@@ -3,10 +3,24 @@
   font-size: 11px; }
 
 .user_picture {
-  height: 250px;
+  height: 150px;
   width: 250px;
   border: 1px solid black; }
-  .user_picture i {
-    height: 250px;
-    width: 250px;
+
+.layout {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black; }
+  .layout .column {
+    width: 32%;
+    height: 500px;
+    border: 1px solid blue;
+    display: inline-block; }
+  .layout .user_picture {
+    height: 150px;
+    width: 150px;
+    border: 1px solid black; }
+  .layout .dropdown {
+    height: 325px;
+    width: 150px;
     border: 1px solid black; }

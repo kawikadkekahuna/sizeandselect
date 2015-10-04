@@ -66,6 +66,6 @@ $stateProvider
     controller: 'ResourcesController'
   });
 
-$urlRouterProvider.otherwise('/profile');
+$urlRouterProvider.otherwise('/project');
 
 });
