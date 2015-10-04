@@ -23,9 +23,9 @@ module.exports = function (sequelize, DataTypes) {
        * Relationship association: hasMany('tag')
        * }
        */
-      // associate: function(models) {
-
-      // }
+      associate: function(models) {
+        Project.belongsTo(models.User,{foreignKey: 'fk_user'});
+      }
     }
   });
 
