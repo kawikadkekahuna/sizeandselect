@@ -10,8 +10,6 @@ var login = require('./LoginRoutes');
 router.use('/defaults', defaults);
 router.use('/login',login);
 router.use('/registration',registration);
-router.use('/settings',registration);
-
 
 
 module.exports = router;

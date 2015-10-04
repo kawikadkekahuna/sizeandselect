@@ -1,54 +1,54 @@
 <div>
 <form ng-submit="createUser(newUser)" name="registration">
   <div>
-    <input name="first_name" 
-          ng-model="newUser.first_name" 
-          type="text" 
-          required 
+    <input name="first_name"
+          ng-model="newUser.first_name"
+          type="text"
+          required
           placeholder="First Name"><br />
     <div ng-messages="registration.first_name.$error">
       <div ng-messages-include src="partials/error-messages.tpl.html"></div>
     </div>
 
-    <input name="last_name" 
-          ng-model="newUser.last_name" 
-          type="text" 
-          required 
+    <input name="last_name"
+          ng-model="newUser.last_name"
+          type="text"
+          required
           placeholder="Last Name"><br />
     <div ng-messages="registration.last_name.$error">
       <div ng-messages-include src="partials/error-messages.tpl.html"></div>
     </div>
 
-    <input name="username" 
-          ng-model="newUser.username" 
-          type="text" 
-          required 
+    <input name="username"
+          ng-model="newUser.username"
+          type="text"
+          required
           placeholder="Username"><br />
     <div ng-messages="registration.username.$error">
       <div ng-messages-include src="partials/error-messages.tpl.html"></div>
     </div>
 
-    <input ng-model="newUser.password" 
+    <input ng-model="newUser.password"
       type="password"
-      required 
+      required
       name="password"
-      placeholder="Password"><br /> 
+      placeholder="Password"><br />
     <div ng-messages="registration.password.$error">
       <div ng-messages-include src="partials/error-messages.tpl.html"></div>
     </div>
 
-    <input name="confirmation" 
-      required 
-      compare-to="newUser.password" 
-      ng-model="newUser.confirmation" 
-      type="password" 
+    <input name="confirmation"
+      required
+      compare-to="newUser.password"
+      ng-model="newUser.confirmation"
+      type="password"
       placeholder="Confirm Password"><br />
     <div ng-messages="registration.confirmation.$error">
       <div ng-messages-include src="partials/error-messages.tpl.html"></div>
     </div>
 
-    <input name="email" ng-pattern="validations.email" required ng-model="newUser.email" 
-      type="text" 
+    <input name="email" ng-pattern="validations.email" required ng-model="newUser.email"
+      type="text"
       placeholder="xxx@xxxx.xxx"><br />
     <div ng-messages="registration.email.$error">
       <div ng-messages-include src="partials/error-messages.tpl.html"></div>
@@ -68,7 +68,7 @@
 
     <dropdown-select items="states" ng-model="newUser.selectedState"></dropdown-select><br />
 
-    <input required ng-pattern="validations.zipcode" name="zipcode" ng-model="newUser.zipcode" type="text" placeholder="Zipcode"><br /> 
+    <input required ng-pattern="validations.zipcode" name="zipcode" ng-model="newUser.zipcode" type="text" placeholder="Zipcode"><br />
     <div ng-messages="registration.zipcode.$error">
       <div ng-messages-include src="partials/error-messages.tpl.html"></div>
     </div>

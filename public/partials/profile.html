@@ -1,1 +1,28 @@
-<div>{{testMessage}}</div>
+<form name="userProfileDetails" action="">
+  <input type="text" ngModel="user.email" placeholder="email"> <br />
+  <input type="text" ngModel="user.phone" placeholder="phone"> <br />
+  <input type="text" ngModel="user.company" placeholder="company"> <br />
+  <input type="text" ngModel="user.primary_address" placeholder="primary_address"> <br />
+  <input type="text" ngModel="user.secondary_address" placeholder="secondary_address"> <br />
+  <input type="text" ngModel="user.city" placeholder="city"> <br />
+  <input type="text" ngModel="user.zipcode" placeholder="zipcode"> <br />
+  <input type="text" ngModel="user.country" placeholder="country"> <br />
+  <input ng-model="user.password"
+    type="password"
+    required
+    name="password"
+    placeholder="Password"><br />
+  <div ng-messages="registration.password.$error">
+    <div ng-messages-include src="partials/error-messages.tpl.html"></div>
+  </div>
+
+  <input name="confirmation"
+    required
+    compare-to="user.password"
+    ng-model="user.confirmation"
+    type="password"
+    placeholder="Confirm Password"><br />
+  <div ng-messages="registration.confirmation.$error">
+    <div ng-messages-include src="partials/error-messages.tpl.html"></div>
+  </div>
+</form>

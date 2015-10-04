@@ -1,9 +1,11 @@
 angular.module('app')
 
-.controller('ProfileController', function ($scope) {
+.controller('ProfileController', function ($scope, UserService) {
   console.log('profile controller');  
 
-  $scope.testMessage = 'Profile Controller Linked';
+  $scope.CURRENT_USER = UserService.getCurrentUser() || 1; 
+
+
 
 
 });
