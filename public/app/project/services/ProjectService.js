@@ -9,7 +9,7 @@ function ProjectService ($http) {
   }
 
   this.create = function (project) {
-    return $http.post(SERVER + '/api/projects/create');
+    return $http.post(SERVER + '/api/projects/create',project);
   }
 
 }

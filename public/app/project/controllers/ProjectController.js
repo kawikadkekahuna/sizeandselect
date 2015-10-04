@@ -19,15 +19,13 @@ angular.module('app')
   $scope.create = function (project) {
     ProjectService.create(project).then(function (res){
       /**
-       * -Get User by ID
-       *   -Add project to User
-       *   -Send 200
-       * 
        * If Res Status == 200
        *   -Render Successful create project message on view
        *   -Update array of projects.
        *      
        */
+      
+
     });
   }
 
