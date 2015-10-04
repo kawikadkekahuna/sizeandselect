@@ -54,6 +54,12 @@ $stateProvider
     controller: 'ProjectController'
   })
 
+  .state('project-temp', {
+    url: '/temp',
+    templateUrl: 'partials/project-create.html',
+    controller: 'ProjectController'
+  })
+
   .state('registration', {
     url: '/registration',
     templateUrl: 'partials/registration.html',

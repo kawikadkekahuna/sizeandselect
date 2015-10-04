@@ -3,13 +3,21 @@
   <div class="column left">
   left
     <div class="user_picture">
+      <p>picutre</p>
     </div>
-    <div class="dropdown"></div>
+    <div class="dropdown">
+      <div ng-click="route(item)" ng-repeat="item in valves">
+        <div>{{item.type}}</div>
+      </div>
+    </div>
   </div>
 
-  <div class="column middle">Open Projects</div>
+  <div class="column middle">Open Projects
+    <button ng-click="createProject()">Add Project</button>
+  </div>
 
   <div class="column right">
     Right Bar
   </div>
+
 </div>

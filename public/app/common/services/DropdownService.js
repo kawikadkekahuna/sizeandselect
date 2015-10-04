@@ -10,4 +10,5 @@ function DropdownService ($http) {
   this.getStates = function()  {
     return $http.get(SERVER + '/api/defaults/_states');
   };
+  
 }

@@ -52,3 +52,12 @@ INSERT INTO states VALUES (DEFAULT,'Wyoming','WY');
 INSERT INTO account_types VALUES (DEFAULT,'Engineer');
 INSERT INTO account_types VALUES (DEFAULT,'Representative');
 INSERT INTO account_types VALUES (DEFAULT,'Manufacture');
+INSERT INTO valve_types VALUES (DEFAULT,'Relief Valves');
+INSERT INTO valve_types VALUES (DEFAULT,'Tank Vents');
+INSERT INTO valve_types VALUES (DEFAULT,'Regulators');
+INSERT INTO valve_types VALUES (DEFAULT,'Flame Arrestors');
+INSERT INTO valve_types VALUES (DEFAULT,'Control Valves');
+INSERT INTO valve_types VALUES (DEFAULT,'Liquid Level');
+INSERT INTO valve_types VALUES (DEFAULT,'Pressure Transmitters');
+INSERT INTO valve_types VALUES (DEFAULT,'Instrumentation Valves');
+
