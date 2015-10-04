@@ -17,6 +17,7 @@ angular.module('app')
   }
 
   $scope.create = function (project) {
+    console.log('project',project);
     ProjectService.create(project).then(function (res){
       /**
        * If Res Status == 200
@@ -24,7 +25,6 @@ angular.module('app')
        *   -Update array of projects.
        *      
        */
-      console.log(res);
 
     });
   }

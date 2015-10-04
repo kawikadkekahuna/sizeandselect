@@ -18,7 +18,7 @@ router.post('/create', function(req, res) {
       if (keys[i] !== 'company_name') {
         if (keys[i] !== 'status') {
           console.log(keys[i]);
-          res.json({
+          res.status(422).send({
             error: 'Invalid fields',
             status: 422,
             message: 'Fields must be project_name, company_name, status'
