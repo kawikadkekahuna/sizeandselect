@@ -37,21 +37,34 @@ function createUser(req){
 router.post('/register' , function (req,res){
   console.log('username', req.body.newUser.username);
   console.log('email', req.body.newUser.email);
-  User.find({
-      where : {
-        username : req.body.newUser.username,
-        email : req.body.newUser.email
-      }
-    // $or: [
-    //       {
-    //         where:
-    //           {username : req.body.newUser.username}
-    //       },{
-    //         where:
-    //           {email : req.body.newUser.email}
-    //       }]
+  User.find(
+  // {
+  //   $or: [
+  //     {
+  //       username : {
+  //         $eq : req.body.newUser.username
+  //       }
+  //     },
+  //     {
+  //       email : {
+  //         $eq : req.body.newUser.email
+  //       }
+  //     }
+  //   ]
+  // }
 
-  }).then(function (user){
+
+// {
+//   where: Sequelize.and(
+//     { username: req.body.newUser.username },
+//     Sequelize.or(
+//       { email : req.body.newUser.email }
+//     )
+//   )
+// }
+
+
+  ).then(function (user){
     console.log('user', user);
     if (user) {
       //username or email exists already choose unique
