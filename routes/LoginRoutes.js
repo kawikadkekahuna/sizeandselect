@@ -21,6 +21,8 @@ var LocalStrategy = require('passport-local').Strategy;
  * res.status(401).send({error:'Unauthorized',status:'401',message:'Invalid credentials'})
  *
  */
+
+
 router.post('/' , function (req,res){
 
   res.status(401).send({

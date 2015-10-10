@@ -24,9 +24,6 @@ module.exports = function (sequelize, DataTypes) {
     underscored: true,
     tableName: "users",
     classMethods: {
-      // associate : function(models){
-        // User.hasOne(models.AccountType,{foreignKey:'fk_account_type'});
-      // }
       /**
        * [associate]
        * @description {
@@ -43,9 +40,9 @@ module.exports = function (sequelize, DataTypes) {
        * Relationship association: hasMany('message_rooms')
        * }
        */
-      // associate: function(models) {
-
-      // }
+      associate: function(models) {
+        User.hasMany(models.Project)
+      }
     }
   });
 

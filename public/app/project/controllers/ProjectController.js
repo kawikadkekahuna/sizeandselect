@@ -8,6 +8,7 @@ angular.module('app')
   });
 
   $scope.route = function ( url ){
+    console.log('url', url);
 
   }
 
@@ -17,6 +18,7 @@ angular.module('app')
   }
 
   $scope.create = function (project) {
+    project.fk = 'random_fk';
     console.log('project',project);
     ProjectService.create(project).then(function (res){
       /**
