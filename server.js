@@ -8,11 +8,26 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+var session = require('express-session')
+var flash = require('connect-flash');
+var cookieParser = require('cookie-parser');
+
+app.use(express.static('public'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true
+  }
+}))
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -32,6 +47,38 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
+
+
+var parameters = {
+  usernameField: 'email'
+};
+
+function localStrategy (email, password, done) {
+  process.nextTick(function () {
+      User.findOne({
+        where: { email: email }
+      }).then(function(user) {
+      if (!user) {
+        return done(null, false, { message: 'Incorrect email.' });
+      }
+      if (!bcrypt.compareSync(password, user.password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    }).catch(function (err) {
+        return done(err, null);
+        throw err;
+      });
+  });
+}
+
+//THIS IS HOW IM CALLING THE LOCAL STRATEGY
+passport.use(new LocalStrategy(parameters, localStrategy));
+
+
+
+
+
 
 
 app.use('/api', routes);
