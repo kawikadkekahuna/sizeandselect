@@ -18,18 +18,18 @@ function createUser(req){
 
   User.create({
     username: req.body.newUser.username,
-    first_name: req.body.newUser.first_name,
-    last_name: req.body.newUser.last_name,
+    // first_name: req.body.newUser.first_name,
+    // last_name: req.body.newUser.last_name,
     email: req.body.newUser.email,
-    password: generateHash(password),
-    city: req.body.newUser.city,
-    state: req.body.newUser.selectedState.name,
-    zipcode: req.body.newUser.zipcode,
-    company: req.body.newUser.company,
-    job_title: req.body.newUser.job_title,
-    phone_number: req.body.newUser.phone_number,
-    user_picture: req.body.newUser.user_picture,
-    account_hidden: DEFAULT_HIDDEN
+    password: generateHash(password)
+    // city: req.body.newUser.city,
+    // state: req.body.newUser.selectedState.name,
+    // zipcode: req.body.newUser.zipcode,
+    // company: req.body.newUser.company,
+    // job_title: req.body.newUser.job_title,
+    // phone_number: req.body.newUser.phone_number,
+    // user_picture: req.body.newUser.user_picture,
+    // account_hidden: DEFAULT_HIDDEN
   })
 }
 
@@ -38,34 +38,18 @@ router.post('/register' , function (req,res){
   console.log('username', req.body.newUser.username);
   console.log('email', req.body.newUser.email);
   User.find(
-  // {
-  //   $or: [
-  //     {
-  //       username : {
-  //         $eq : req.body.newUser.username
-  //       }
-  //     },
-  //     {
-  //       email : {
-  //         $eq : req.body.newUser.email
-  //       }
-  //     }
-  //   ]
-  // }
-
-
-// {
-//   where: Sequelize.and(
-//     { username: req.body.newUser.username },
-//     Sequelize.or(
-//       { email : req.body.newUser.email }
-//     )
-//   )
-// }
-
-
+    { where : {
+        $or: [
+          {
+            username : req.body.newUser.username
+          },
+          {
+            email : req.body.newUser.email
+          }
+        ]
+      }
+    }
   ).then(function (user){
-    console.log('user', user);
     if (user) {
       //username or email exists already choose unique
       res.status(422).send('Invalid input fields.  Data already exists in the database');
