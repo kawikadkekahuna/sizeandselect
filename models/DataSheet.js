@@ -1,30 +1,27 @@
 module.exports = function (sequelize, DataTypes) {
 
-  var Message = sequelize.define("Message", {
+  var DataSheet = sequelize.define("DataSheet", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    body : DataTypes.STRING
+    file_location : DataTypes.STRING
   }, {
     underscored: true,
 
-    tableName: "messages",
+    tableName: "data_sheets",
     classMethods: {
       /**
        * [associate]
        * @description {
        * Associate function used to create inner joins between tables.
-       * Inner join linked between 'message_rooms'.
-       * Relationship association : belongsTo('message_rooms')
+       * FK to the TAG that generated it
        * }
        */
-      // associate: function(models) {
 
-      // }
     }
   });
 
-  return Message;
+  return DataSheet;
 };

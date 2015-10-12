@@ -1,30 +1,28 @@
 module.exports = function (sequelize, DataTypes) {
 
-  var Message = sequelize.define("Message", {
+  var CapType = sequelize.define("CapType", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    body : DataTypes.STRING
+    letter : DataTypes.STRING,
+    description : DataTypes.STRING
   }, {
     underscored: true,
 
-    tableName: "messages",
+    tableName: "cap_types",
     classMethods: {
       /**
        * [associate]
        * @description {
        * Associate function used to create inner joins between tables.
-       * Inner join linked between 'message_rooms'.
-       * Relationship association : belongsTo('message_rooms')
+
        * }
        */
-      // associate: function(models) {
 
-      // }
     }
   });
 
-  return Message;
+  return CapType;
 };
