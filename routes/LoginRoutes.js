@@ -29,7 +29,6 @@ var LocalStrategy = require('passport-local').Strategy;
  // }));
 
 router.post('/', function (req, res, next) {
-  console.log('fadskjhfjkashdflkjahjsflkjfhsalk');
 
   passport.authenticate('local', function (err, user, info) {
     if (err) {
@@ -38,10 +37,9 @@ router.post('/', function (req, res, next) {
       return next(err);
     }
     if (user === false) {
-      console.log('fasdkjhfkjahsdkjhfakjsd', user);
       res.status(401).send(info.message);
     } else {
-      res.status(200).send(info.message);
+      res.status(200).send({message:'success',status:200});
     }
   })(req, res, next);
 });

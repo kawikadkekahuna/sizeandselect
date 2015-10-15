@@ -7,26 +7,27 @@ var routes = require('./routes');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-
+var User = require('./models').User;
+var bcrypt = require('bcrypt');
 var session = require('express-session')
 var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
 
-// app.use(express.static('public'));
-// app.use(cookieParser());
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({
-//   extended: false
-// }));
+app.use(express.static('public'));
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
-// app.use(session({
-//   secret: 'keyboard cat',
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: {
-//     httpOnly: true
-//   }
-// }))
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true
+  }
+}))
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -46,20 +47,18 @@ app.use(function (req, res, next) {
   next();
 });
 
-var parameters = {
-  usernameField: 'email'
-};
-
-function localStrategy (email, password, done) {
+function localStrategy (username, password, done) {
   console.log('AM I LOCAL Strategy');
   process.nextTick(function () {
       User.findOne({
-        where: { email: email }
+        where: { username: username }
       }).then(function(user) {
       if (!user) {
-        return done(null, false, { message: 'Incorrect email.' });
+        console.log('bad username');
+        return done(null, false, { message: 'Incorrect username.' });
       }
       if (!bcrypt.compareSync(password, user.password)) {
+        console.log('bad password');
         return done(null, false, { message: 'Incorrect password.' });
       }
       return done(null, user);
@@ -70,8 +69,7 @@ function localStrategy (email, password, done) {
   });
 }
 
-passport.use(new LocalStrategy(parameters, localStrategy));
-
+passport.use(new LocalStrategy(localStrategy));
 
 app.use('/api', routes);
 
