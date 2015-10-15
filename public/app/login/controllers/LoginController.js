@@ -1,18 +1,20 @@
 angular.module('app')
 
-.controller('LoginController', function($scope, LoginService, $state) {
+.controller('LoginController', function ($scope, LoginService, $state, $localStorage) {
 
   $scope.login = function(user) {
-      LoginService.login(user).success(function (data, status) {
-        console.log('Successful login.');
-        console.log('data = ' + data);
-        console.log('status = ' + status); 
-        $state.go('about-us');  
+    LoginService.login(user).success(function (data, status) {
+      console.log('data', data);
+      $localStorage.SESSION = {user: data};
+      $state.go('dashboard');  
     })
-      .error(function (data) {
-        console.log('Error: ' + data);
-        $state.go('login'); 
+    .error(function (data) {
+      $state.go('login'); 
     });
+  };
+
+  $scope.logout = function (user){
+    LoginService.logout();
   }
 
 });

@@ -1,6 +1,6 @@
 SERVER = 'http://localhost:3000' ;
 
-angular.module('app', ['ui.router','ngMessages'])
+angular.module('app', ['ui.router','ngMessages','ngStorage'])
 
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
@@ -65,21 +65,17 @@ angular.module('app', ['ui.router','ngMessages'])
 
   $urlRouterProvider.otherwise('/login');
 
-  $httpProvider.interceptors.push(function($q,$location){
-
-    return{
-      response: function (response){
-        return response;
-      },
-      responseError: function(response){
-        if(response.status === 401){
-          $location.url('/login');
-        }
-        return $q.reject(response);
-      }
+})
+.run(function ($rootScope, $location, $state, $localStorage){
+  $rootScope.$on('$stateChangeStart', function (event, next, current){
+    console.log($localStorage.SESSION);
+    if( !$localStorage.SESSION ){
+      console.log('user not logged in. redirect');
+      $location.path('/login');
+      next.templateUrl = '../partials/login.html';
+    }else{
+      console.log('user okay. let em through boys');
+      return;
     }
-
   });
-
-});
-
+})
