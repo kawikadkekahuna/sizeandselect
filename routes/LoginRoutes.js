@@ -32,8 +32,6 @@ router.post('/', function (req, res, next) {
 
   passport.authenticate('local', function (err, user, info) {
     if (err) {
-      console.log('@@@@@@@@@@@@@@err@@@@@@@@@@@@@@');
-      console.log(err);
       return next(err);
     }
     if (user === false) {
