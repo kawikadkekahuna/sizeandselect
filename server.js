@@ -48,17 +48,14 @@ app.use(function (req, res, next) {
 });
 
 function localStrategy (username, password, done) {
-  console.log('AM I LOCAL Strategy');
   process.nextTick(function () {
       User.findOne({
         where: { username: username }
       }).then(function(user) {
       if (!user) {
-        console.log('bad username');
         return done(null, false, { message: 'Incorrect username.' });
       }
       if (!bcrypt.compareSync(password, user.password)) {
-        console.log('bad password');
         return done(null, false, { message: 'Incorrect password.' });
       }
       return done(null, user);

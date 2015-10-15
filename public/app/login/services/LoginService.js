@@ -4,7 +4,6 @@ angular.module('app')
 
 function LoginService ($http) {
   this.login = function (user) { 
-    console.log('user', user);
     return $http.post(SERVER + '/api/login/', user);
   }
 
