@@ -51,6 +51,7 @@ var parameters = {
 };
 
 function localStrategy (email, password, done) {
+  console.log('AM I LOCAL Strategy');
   process.nextTick(function () {
       User.findOne({
         where: { email: email }
