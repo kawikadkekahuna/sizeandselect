@@ -22,19 +22,25 @@ var LocalStrategy = require('passport-local').Strategy;
  *
  */
 
-router.post('/', function(req, res, next) {
-  passport.authenticate('local', function(err, user, info) {
+ router.post('/login', passport.authenticate('local', {
+   successRedirect: '/',
+   failureRedirect: '/login',
+   failureFlash : true
+ }));
+
+router.post('/', function (req, res, next) {
+  passport.authenticate('local', function (err, user, info) {
     if (err) {
       console.log('@@@@@@@@@@@@@@err@@@@@@@@@@@@@@');
       console.log(err);
-      return next(err); 
+      return next(err);
     }
     if (user === false) {
-      res.status(401).send(info.message);  
+      res.status(401).send(info.message);
     } else {
-      res.status(200).send(info.message); 
+      res.status(200).send(info.message);
     }
-  })(req, res, next); 
+  })(req, res, next);
 });
 
 module.exports = router;
