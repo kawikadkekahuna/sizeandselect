@@ -12,22 +12,21 @@ var session = require('express-session')
 var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
 
-app.use(express.static('public'));
-app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+// app.use(express.static('public'));
+// app.use(cookieParser());
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//   extended: false
+// }));
 
-
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    httpOnly: true
-  }
-}))
+// app.use(session({
+//   secret: 'keyboard cat',
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie: {
+//     httpOnly: true
+//   }
+// }))
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -35,19 +34,6 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
   next();
 });
-
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
-});
-
 
 var parameters = {
   usernameField: 'email'
@@ -72,13 +58,7 @@ function localStrategy (email, password, done) {
   });
 }
 
-//THIS IS HOW IM CALLING THE LOCAL STRATEGY
 passport.use(new LocalStrategy(parameters, localStrategy));
-
-
-
-
-
 
 
 app.use('/api', routes);

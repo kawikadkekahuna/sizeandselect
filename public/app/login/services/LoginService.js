@@ -1,6 +1,6 @@
 angular.module('app')
 
-.service('LoginService',['$http',LoginService]);
+.service('LoginService',['$http', LoginService]);
 
 function LoginService ($http) {
 

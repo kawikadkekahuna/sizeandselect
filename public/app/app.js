@@ -1,71 +1,85 @@
-PORT = '3000';
 SERVER = 'http://localhost:3000' ;
 
 angular.module('app', ['ui.router','ngMessages'])
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+  $stateProvider
+    .state('about-us', {
+      url: '/about-us',
+      templateUrl: 'partials/about-us.html',
+      controller: 'AboutUsController'
+    })
 
-$stateProvider
+    .state('contact-us', {
+      url: '/contact-us',
+      templateUrl: 'partials/contact-us.html',
+      controller: 'ContactUsController'
+    })
 
-  .state('about-us', {
-    url: '/about-us',
-    templateUrl: 'partials/about-us.html',
-    controller: 'AboutUsController'
-  })
+    .state('error-messages', {
+      url: '/error-messages',
+      templateUrl: 'partials/error-messages.html'
+    })
 
-  .state('contact-us', {
-    url: '/contact-us',
-    templateUrl: 'partials/contact-us.html',
-    controller: 'ContactUsController'
-  })
+    .state('dashboard', {
+      url: '/dashboard',
+      templateUrl: 'partials/dashboard.html',
+      controller: 'DashboardController'
+    })
 
-  .state('error-messages', {
-    url: '/error-messages',
-    templateUrl: 'partials/error-messages.html'
-  })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'partials/login.html',
+      controller: 'LoginController'
+    })
 
-  .state('dashboard', {
-    url: '/dashboard',
-    templateUrl: 'partials/dashboard.html',
-    controller: 'DashboardController'
-  })
+    .state('messages', {
+      url: '/messages',
+      templateUrl: 'partials/messages.html',
+      controller: 'MessagesController'
+    })
 
-  .state('login', {
-    url: '/login',
-    templateUrl: 'partials/login.html',
-    controller: 'LoginController'
-  })
+    .state('profile', {
+      url: '/profile',
+      templateUrl: 'partials/profile.html',
+      controller: 'ProfileController'
+    })
 
-  .state('messages', {
-    url: '/messages',
-    templateUrl: 'partials/messages.html',
-    controller: 'MessagesController'
-  })
+    .state('project', {
+      url: '/project',
+      templateUrl: 'partials/project.html',
+      controller: 'ProjectController'
+    })
 
-  .state('profile', {
-    url: '/profile',
-    templateUrl: 'partials/profile.html',
-    controller: 'ProfileController'
-  })
+    .state('registration', {
+      url: '/registration',
+      templateUrl: 'partials/registration.html',
+      controller: 'RegistrationController'
+    })
 
-  .state('project', {
-    url: '/project',
-    templateUrl: 'partials/project.html',
-    controller: 'ProjectController'
-  })
+    .state('resources', {
+      url: '/resources',
+      templateUrl: 'partials/resources.html',
+      controller: 'ResourcesController'
+    });
 
-  .state('registration', {
-    url: '/registration',
-    templateUrl: 'partials/registration.html',
-    controller: 'RegistrationController'
-  })
+  $urlRouterProvider.otherwise('/login');
 
-  .state('resources', {
-    url: '/resources',
-    templateUrl: 'partials/resources.html',
-    controller: 'ResourcesController'
+  $httpProvider.interceptors.push(function($q,$location){
+
+    return{
+      response: function (response){
+        return response;
+      },
+      responseError: function(response){
+        if(response.status === 401){
+          $location.url('/login');
+        }
+        return $q.reject(response);
+      }
+    }
+
   });
 
-$urlRouterProvider.otherwise('/registration');
-
 });
+
