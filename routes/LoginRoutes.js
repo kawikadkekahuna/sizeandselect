@@ -22,13 +22,15 @@ var LocalStrategy = require('passport-local').Strategy;
  *
  */
 
- router.post('/login', passport.authenticate('local', {
-   successRedirect: '/',
-   failureRedirect: '/login',
-   failureFlash : true
- }));
+ // router.post('/login', passport.authenticate('local', {
+ //   successRedirect: '/',
+ //   failureRedirect: '/login',
+ //   failureFlash : true
+ // }));
 
 router.post('/', function (req, res, next) {
+  console.log('fadskjhfjkashdflkjahjsflkjfhsalk');
+
   passport.authenticate('local', function (err, user, info) {
     if (err) {
       console.log('@@@@@@@@@@@@@@err@@@@@@@@@@@@@@');
@@ -36,6 +38,7 @@ router.post('/', function (req, res, next) {
       return next(err);
     }
     if (user === false) {
+      console.log('fasdkjhfkjahsdkjhfakjsd', user);
       res.status(401).send(info.message);
     } else {
       res.status(200).send(info.message);
