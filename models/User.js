@@ -18,6 +18,8 @@ module.exports = function (sequelize, DataTypes) {
     job_title: DataTypes.STRING,
     phone_number: DataTypes.STRING,
     user_picture: DataTypes.STRING,
+    reset_password_token : DataTypes.STRING,
+    reset_password_expires : DataTypes.BIGINT,
     account_hidden: DataTypes.BOOLEAN
 
   }, {
