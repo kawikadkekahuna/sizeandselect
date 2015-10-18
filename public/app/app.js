@@ -63,6 +63,18 @@ angular.module('app', ['ui.router','ngMessages'])
       controller: 'ResourcesController'
     });
 
+    .state('forgot-password', {
+      url: '/forgot-password'
+      // templateUrl: 'partials/resources.html',
+      // controller: 'ResourcesController'
+    });
+
+    .state('reset-password', {
+      url: '/reset-password'
+      // templateUrl: 'partials/resources.html',
+      // controller: 'ResourcesController'
+    });
+
   $urlRouterProvider.otherwise('/login');
 
   $httpProvider.interceptors.push(function($q,$location){

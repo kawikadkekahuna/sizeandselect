@@ -46,7 +46,7 @@ var mailgun = require('mailgun-js')({apiKey: mailgunApiKey, domain: domain});
 // });
 
 
-router.put('/', function (req, res) {
+router.put('/forgot-password', function (req, res) {
     User.find({
         where: {email : req.body.email}
     }).then(function (user) {
@@ -76,6 +76,7 @@ router.put('/', function (req, res) {
                     //throw error
 
                     console.log("email pw error", error);
+                    res.status({status : 200}).send(false);
 
                 } else {
                     //update user account
