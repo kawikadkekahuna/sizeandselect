@@ -2,11 +2,11 @@
 
 var express = require('express');
 var router = express.Router();
-var User = require('../models').User;
-var bodyParser = require('body-parser');
-var DEFAULT_HIDDEN = true;
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+var DEFAULT_HIDDEN = true;
+var bodyParser = require('body-parser');
+var User = require('../models').User;
+// var LocalStrategy = require('passport-local').Strategy;
 
 
 /**
@@ -28,6 +28,7 @@ var LocalStrategy = require('passport-local').Strategy;
  //   failureFlash : true
  // }));
 
+
 router.post('/', function (req, res, next) {
 
   passport.authenticate('local', function (err, user, info) {
@@ -41,5 +42,8 @@ router.post('/', function (req, res, next) {
     }
   })(req, res, next);
 });
+
+
+
 
 module.exports = router;

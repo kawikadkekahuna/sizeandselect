@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models').User;
 var crypto = require('crypto');
-var apiKeysFile = require('../../config/.apiKeys');
+var apiKeysFile = require('../config/.apiKeys');
 var mailgunApiKey = apiKeysFile.mailgun;
 var domain = 'sandboxeb3a33eecb81490b8b2d70a6cf832d5e.mailgun.org';
 var mailgun = require('mailgun-js')({apiKey: mailgunApiKey, domain: domain});
@@ -25,14 +25,9 @@ var mailgun = require('mailgun-js')({apiKey: mailgunApiKey, domain: domain});
  *
  */
 
- // router.post('/login', passport.authenticate('local', {
- //   successRedirect: '/',
- //   failureRedirect: '/login',
- //   failureFlash : true
- // }));
 
 
-router.put('/forgot-password', function (req, res) {
+router.put('/', function (req, res) {
   User.find({
     where: {email : req.body.email}
   }).then(function (user) {
@@ -42,42 +37,42 @@ router.put('/forgot-password', function (req, res) {
 
       res.status({status : 200}).send(false);
     } else {
-        var pwResetInfo = {
-          reset_password_token : crypto.randomBytes(25).toString('hex'),
-          reset_password_expires : Date.now() + 3600000 // 1 hour
-        },
-          data = {
-            from: 'Size & Select Team <info@' + domain + '>',
-            to: user.email,
-            subject: 'Forgot Password',
-            text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-                      'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-                      'http://' + req.headers.host + '/reset-password/' + pwResetInfo.reset_password_token + '\n\n' +
-                      'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-          };
+    var pwResetInfo = {
+      reset_password_token : crypto.randomBytes(25).toString('hex'),
+      reset_password_expires : Date.now() + 3600000 // 1 hour
+    },
+      data = {
+        from: 'Size & Select Team <info@' + domain + '>',
+        to: user.email,
+        subject: 'Forgot Password',
+        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+                  'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                  'http://' + req.headers.host + '/reset-password/' + pwResetInfo.reset_password_token + '\n\n' +
+                  'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+      };
 
-        mailgun.messages().send(data, function (error, body) {
-          if (error) {
-            //throw error
+      mailgun.messages().send(data, function (error, body) {
+        if (error) {
+          //throw error
 
-            console.log("email pw error", error);
-            res.status({status : 200}).send(false);
+          console.log("email pw error", error);
+          res.status({status : 200}).send(false);
 
-          } else {
-            //update user account
-            user.update({
-                reset_password_token : pwResetInfo.reset_password_token,
-                reset_password_expires : pwResetInfo.reset_password_expires
-            }, {
-                fields : ['reset_password_token', 'reset_password_expires']
-            });
+        } else {
+          //update user account
+          user.update({
+              reset_password_token : pwResetInfo.reset_password_token,
+              reset_password_expires : pwResetInfo.reset_password_expires
+          }, {
+              fields : ['reset_password_token', 'reset_password_expires']
+          });
 
-          //either show the forgot page that says check email
-          //or show a alert/message that says check email
+        //either show the forgot page that says check email
+        //or show a alert/message that says check email
 
-            res.send(200);
-          }
-        });
+          res.send(200);
+        }
+      });
     }
   });
 });

@@ -61,13 +61,13 @@ angular.module('app', ['ui.router','ngMessages'])
       url: '/resources',
       templateUrl: 'partials/resources.html',
       controller: 'ResourcesController'
-    });
+    })
 
     .state('forgot-password', {
       url: '/forgot-password'
       // templateUrl: 'partials/resources.html',
       // controller: 'ResourcesController'
-    });
+    })
 
     .state('reset-password', {
       url: '/reset-password'
