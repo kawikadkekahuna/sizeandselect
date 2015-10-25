@@ -54,5 +54,6 @@ INSERT INTO seat_types VALUES (DEFAULT, '');
 -- name
 INSERT INTO material_variables VALUES (DEFAULT, '');
 
-
+-- name
+INSERT INTO cap_types VALUES (DEFAULT, '');
 

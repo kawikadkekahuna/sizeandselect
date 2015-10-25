@@ -12,16 +12,6 @@ module.exports = function (sequelize, DataTypes) {
     underscored: true,
 
     tableName: "cap_types",
-    classMethods: {
-      /**
-       * [associate]
-       * @description {
-       * Associate function used to create inner joins between tables.
-
-       * }
-       */
-
-    }
   });
 
   return CapType;
