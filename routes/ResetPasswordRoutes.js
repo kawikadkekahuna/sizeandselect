@@ -25,7 +25,7 @@ router.get('/:token', function (req, res) {
         return res.redirect('/forgot-password');
     }
 
-    //NEED TO PASS IN USERID SO WHEN THEY RESET THEIR PW SO WE KNOW WHICH USER
+    // Send the token to the form as hidden input and validate on the PUT request
 
     res.redirect('/reset-password');
 
@@ -34,11 +34,11 @@ router.get('/:token', function (req, res) {
 
 router.put('/', function (req, res) {
 
-        //user id needs to be passed in on the request
+
 
   User.find({
     where : {
-      id : req.body.id
+      reset_password_token : req.body.token
     }
     }).then(function (user) {
     if (!user) {
