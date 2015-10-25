@@ -6,24 +6,10 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    orifice_type: DataTypes.STRING,
-    size: DataTypes.DOUBLE
+    orifice_type: DataTypes.STRING
   }, {
     underscored: true,
     tableName: "orifice_sizes",
-    classMethods: {
-      /**
-       * [associate]
-       * @description {
-       * Associate function used to create inner joins between tables.
-       * Inner join linked between 'orifices'.
-       * Relationship association: belongsTo('orifices')       
-       * }
-       */
-      // associate: function(models) {
-
-      // }
-    }
   });
 
   return OrificeSize;

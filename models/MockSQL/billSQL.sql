@@ -29,3 +29,10 @@ INSERT INTO select_sizing_basis VALUES (DEFAULT, 'Blocked Discharge');
 -- name
 INSERT INTO toggle_api_asme_sizing VALUES (DEFAULT, 'API');
 INSERT INTO toggle_api_asme_sizing VALUES (DEFAULT, 'ASME');
+
+-- name
+INSERT INTO orifice_sizes VALUES (DEFAULT, '');
+INSERT INTO orifice_sizes VALUES (DEFAULT, '');
+INSERT INTO orifice_sizes VALUES (DEFAULT, '');
+INSERT INTO orifice_sizes VALUES (DEFAULT, '');
+
