@@ -24,4 +24,4 @@ INSERT INTO devices VALUES (DEFAULT, 'Instrumentation Valves');
 INSERT INTO liquid_medias VALUES (DEFAULT, 'water', '1', '2');
 
 -- name
-
+INSERT INTO select_sizing_basis VALUES (DEFAULT, 'Blocked Discharge');
