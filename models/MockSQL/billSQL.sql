@@ -32,7 +32,19 @@ INSERT INTO toggle_api_asme_sizing VALUES (DEFAULT, 'ASME');
 
 -- name
 INSERT INTO orifice_sizes VALUES (DEFAULT, '');
-INSERT INTO orifice_sizes VALUES (DEFAULT, '');
-INSERT INTO orifice_sizes VALUES (DEFAULT, '');
-INSERT INTO orifice_sizes VALUES (DEFAULT, '');
+
+-- name
+INSERT INTO connection_sizes VALUES (DEFAULT, '');
+
+-- name
+INSERT INTO inlet_flanges VALUES (DEFAULT, '');
+
+-- name
+INSERT INTO flange_ratings VALUES (DEFAULT, '');
+
+-- name
+INSERT INTO flange_facings VALUES (DEFAULT, '');
+
+-- nmae
+INSERT INTO trim_types VALUES (DEFAULT, '');
 
