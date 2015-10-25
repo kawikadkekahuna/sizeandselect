@@ -45,6 +45,14 @@ INSERT INTO flange_ratings VALUES (DEFAULT, '');
 -- name
 INSERT INTO flange_facings VALUES (DEFAULT, '');
 
--- nmae
+-- name
 INSERT INTO trim_types VALUES (DEFAULT, '');
+
+-- name
+INSERT INTO seat_types VALUES (DEFAULT, '');
+
+-- name
+INSERT INTO material_variables VALUES (DEFAULT, '');
+
+
 

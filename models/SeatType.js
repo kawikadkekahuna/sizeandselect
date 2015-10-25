@@ -11,19 +11,6 @@ module.exports = function (sequelize, DataTypes) {
   }, {
     underscored: true,
     tableName: "seat_types",
-    classMethods: {
-      /**
-       * [associate]
-       * @description {
-       * Associate function used to create inner joins between tables.
-       * Inner join linked between 'valve_selection'.
-       * Relationship association: belongsTo('valve_selections')
-       * }
-       */
-      // associate: function(models) {
-
-      // }
-    }
   });
 
   return SeatType;
