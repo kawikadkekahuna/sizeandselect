@@ -1,7 +1,14 @@
 SERVER = 'http://localhost:3000' ;
 
 angular.module('app', ['ui.router','ngMessages'])
-
+  .constant('AUTH_EVENTS', {
+    loginSuccess: 'auth-login-success',
+    loginFailed: 'auth-login-failed',
+    logoutSuccess: 'auth-logout-success',
+    sessionTimeout: 'auth-session-timeout',
+    notAuthenticated: 'auth-not-authenticated',
+    notAuthorized: 'auth-not-authorized'
+  })
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
     .state('about-us', {
@@ -30,7 +37,7 @@ angular.module('app', ['ui.router','ngMessages'])
     .state('login', {
       url: '/login',
       templateUrl: 'partials/login.html',
-      controller: 'LoginController'
+      controller: 'AuthorizationController'
     })
 
     .state('messages', {

@@ -4,11 +4,11 @@ var express = require('express');
 var router = express.Router();
 var defaults = require('./DefaultRoutes');
 var registration = require('./RegistrationRoutes');
-var login = require('./LoginRoutes');
+var auth = require('./AuthorizationRoutes');
 
 
 router.use('/defaults', defaults);
-router.use('/login', login);
+router.use('/auth', auth);
 router.use('/registration', registration);
 
 
