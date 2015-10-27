@@ -1,11 +1,10 @@
 angular.module('app')
 
-.controller('AuthorizationController', function($scope, $state, AuthorizationService, SessionService) {
+.controller('AuthorizationController', function($scope, $localStorage, $state, AuthorizationService, SessionService) {
 
   $scope.login = function(user) {
       AuthorizationService.login(user).success(function (data, status) {
-        console.log(data);
-        // SessionService.create(data.id, )
+      $localStorage.token = data.sizeselect_access_token;
         // $state.go('about-us');  
     })
       .error(function (data) {

@@ -1,6 +1,6 @@
 SERVER = 'http://localhost:3000' ;
 
-angular.module('app', ['ui.router','ngMessages'])
+angular.module('app', ['ui.router','ngMessages', 'ngStorage'])
   .constant('AUTH_EVENTS', {
     loginSuccess: 'auth-login-success',
     loginFailed: 'auth-login-failed',
@@ -9,6 +9,7 @@ angular.module('app', ['ui.router','ngMessages'])
     notAuthenticated: 'auth-not-authenticated',
     notAuthorized: 'auth-not-authorized'
   })
+
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
     .state('about-us', {
@@ -71,22 +72,8 @@ angular.module('app', ['ui.router','ngMessages'])
     });
 
   $urlRouterProvider.otherwise('/login');
+})
+.run(function ($rootScope, $location, $state, $localStorage, $q, $http){
 
-  $httpProvider.interceptors.push(function($q,$location){
-
-    return{
-      response: function (response){
-        return response;
-      },
-      responseError: function(response){
-        if(response.status === 401){
-          $location.url('/login');
-        }
-        return $q.reject(response);
-      }
-    }
-
-  });
-
-});
+})
 
