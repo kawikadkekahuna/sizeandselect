@@ -1,4 +1,3 @@
--- name
 INSERT INTO pressure_units VALUES (DEFAULT, 'psig');
 INSERT INTO pressure_units VALUES (DEFAULT, 'psia');
 INSERT INTO pressure_units VALUES (DEFAULT, 'atm g');
@@ -7,12 +6,8 @@ INSERT INTO pressure_units VALUES (DEFAULT, 'in wc g');
 INSERT INTO pressure_units VALUES (DEFAULT, 'lb/ft^2 g');
 INSERT INTO pressure_units VALUES (DEFAULT, 'oz/in^2 g');
 INSERT INTO pressure_units VALUES (DEFAULT, 'Torr g');
-
--- name
 INSERT INTO temperature_units VALUES (DEFAULT, 'F');
 INSERT INTO temperature_units VALUES (DEFAULT, 'C');
-
--- name
 INSERT INTO viscosity_units VALUES (DEFAULT, 'cP');
 INSERT INTO viscosity_units VALUES (DEFAULT, 'ft^2/s');
 INSERT INTO viscosity_units VALUES (DEFAULT, 'in^2/s');
@@ -40,7 +35,6 @@ INSERT INTO flow_capacity_units VALUES (DEFAULT, 'GPM-US', liquid);
 INSERT INTO flow_capacity_units VALUES (DEFAULT, 'GPS-Imp', liquid);
 INSERT INTO flow_capacity_units VALUES (DEFAULT, 'GPS-US', liquid);
 
--- name
 INSERT INTO devices VALUES (DEFAULT, 'Relief Valves');
 INSERT INTO devices VALUES (DEFAULT, 'Tank Vents');
 INSERT INTO devices VALUES (DEFAULT, 'Regulators');
@@ -209,12 +203,11 @@ INSERT INTO select_sizing_basis VALUES (DEFAULT, 'Thermal Relief', 10%);
 INSERT INTO select_sizing_basis VALUES (DEFAULT, 'Tube Rupture', 10%);
 INSERT INTO select_sizing_basis VALUES (DEFAULT, 'Valve Capacity', 10%);
 
--- name
 INSERT INTO toggle_api_asme_sizing VALUES (DEFAULT, 'API');
 INSERT INTO toggle_api_asme_sizing VALUES (DEFAULT, 'ASME');
 
 -- name
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Media Type', 'K Factor', 'Orifice', 'Area');
+-- INSERT INTO orifice_sizes VALUES (DEFAULT, 'Media Type', 'K Factor', 'Orifice', 'Area');
 INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'D', '0.110');
 INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'E', '0.196');
 INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'F', '0.307');
@@ -255,9 +248,6 @@ INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'P', '6.380');
 INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'Q', '11.05');
 INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'R', '16.00');
 
-
-
--- name
 INSERT INTO connection_sizes VALUES (DEFAULT, '1/2x3/4');
 INSERT INTO connection_sizes VALUES (DEFAULT, '1/2x1');
 INSERT INTO connection_sizes VALUES (DEFAULT, '3/4x3/4');
@@ -272,8 +262,6 @@ INSERT INTO connection_sizes VALUES (DEFAULT, '4x6');
 INSERT INTO connection_sizes VALUES (DEFAULT, '6x8');
 INSERT INTO connection_sizes VALUES (DEFAULT, '8x10');
 
-
--- name
 INSERT INTO inlet_flanges VALUES (DEFAULT, 'MNPT');
 INSERT INTO inlet_flanges VALUES (DEFAULT, 'FNPT');
 INSERT INTO inlet_flanges VALUES (DEFAULT, '150#');
@@ -282,17 +270,13 @@ INSERT INTO inlet_flanges VALUES (DEFAULT, '600#');
 INSERT INTO inlet_flanges VALUES (DEFAULT, '1500#');
 INSERT INTO inlet_flanges VALUES (DEFAULT, '2500#');
 
-
--- name
 INSERT INTO flange_facings VALUES (DEFAULT, 'RF');
 INSERT INTO flange_facings VALUES (DEFAULT, 'RTJ');
 
--- name
 INSERT INTO trim_types VALUES (DEFAULT, '316SS');
 INSERT INTO trim_types VALUES (DEFAULT, 'Monel');
 INSERT INTO trim_types VALUES (DEFAULT, 'Hastelloy C');
 
--- name
 INSERT INTO seat_types VALUES (DEFAULT, 'Metal');
 INSERT INTO seat_types VALUES (DEFAULT, 'Buna-N');
 INSERT INTO seat_types VALUES (DEFAULT, 'Viton');
@@ -301,21 +285,16 @@ INSERT INTO seat_types VALUES (DEFAULT, 'Kalrez');
 INSERT INTO seat_types VALUES (DEFAULT, 'Silicone');
 INSERT INTO seat_types VALUES (DEFAULT, 'Teflon');
 
-
--- name
 INSERT INTO material_variables VALUES (DEFAULT, 'Carbon Steel');
 INSERT INTO material_variables VALUES (DEFAULT, '316 SS');
 INSERT INTO material_variables VALUES (DEFAULT, 'Monel');
 INSERT INTO material_variables VALUES (DEFAULT, 'Hastelloy C');
 
--- name
 INSERT INTO cap_types VALUES (DEFAULT, 'screwed cap');
 INSERT INTO cap_types VALUES (DEFAULT, 'standard lift lever');
 INSERT INTO cap_types VALUES (DEFAULT, 'packed lift lever');
 INSERT INTO cap_types VALUES (DEFAULT, 'bolted cap');
 
-
--- name
 INSERT INTO project_statuses VALUES (DEFAULT, 'Open');
 INSERT INTO project_statuses VALUES (DEFAULT, 'Closed');
 INSERT INTO project_statuses VALUES (DEFAULT, 'Quote Needed');
@@ -323,14 +302,9 @@ INSERT INTO project_statuses VALUES (DEFAULT, 'Order');
 INSERT INTO project_statuses VALUES (DEFAULT, 'Need Tracking Number');
 INSERT INTO project_statuses VALUES (DEFAULT, 'Completed');
 
--- name
-INSERT INTO user_type VALUES (DEFAULT, 'Engineer');
-INSERT INTO user_type VALUES (DEFAULT, 'Engineering Manager');
-INSERT INTO user_type VALUES (DEFAULT, 'Engineering Firm');
-INSERT INTO user_type VALUES (DEFAULT, 'Factory Engineer');
-INSERT INTO user_type VALUES (DEFAULT, 'Local Representative');
 
-—- name
+
+-- name UNSURE
 INSERT INTO Action VALUES (DEFAULT, 'Technical Support');
 INSERT INTO Action VALUES (DEFAULT, 'Quote');
 INSERT INTO Action VALUES (DEFAULT, 'Status Update Needed');
