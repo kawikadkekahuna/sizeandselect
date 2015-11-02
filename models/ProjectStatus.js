@@ -10,6 +10,11 @@ module.exports = function (sequelize, DataTypes) {
   }, {
     underscored: true,
     tableName: "project_statuses",
+    classMethods: {
+      associate : function (models) {
+        // ProjectStatus.hasMany(models.Project);
+      }
+    }
   });
 
   return ProjectStatus;
