@@ -21,14 +21,10 @@ module.exports = function (sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Tag.belongsTo(models.Project, {foreignKey: 'project_id'});
-        Tag.belongsTo(models.DataSheet, {foreignKey: 'data_sheet_id'});
-        Tag.belongsTo(models.Quote, {foreignKey: 'quote_id'});
-        Tag.belongsTo(models.PurchaseOrder, {foreignKey: 'purchase_order_id'});
         Tag.belongsTo(models.Device, {foreignKey: 'device_id'});
         Tag.belongsTo(models.ProjectStatus, {foreignKey: 'project_status_id'});
       }
     }
   });
-
   return Tag;
 };

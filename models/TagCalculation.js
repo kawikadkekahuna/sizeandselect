@@ -28,7 +28,6 @@ module.exports = function (sequelize, DataTypes) {
     orifice_required: DataTypes.DOUBLE,
     overpressure: DataTypes.DOUBLE,
     calculated_area: DataTypes.DOUBLE
-
   }, {
     underscored: true,
     tableName: "tag_calculations",
@@ -48,6 +47,5 @@ module.exports = function (sequelize, DataTypes) {
       }
     }
   });
-
   return TagCalculation;
 };

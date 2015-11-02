@@ -12,14 +12,9 @@ module.exports = function (sequelize, DataTypes) {
 
     tableName: "quotes",
     classMethods: {
-      /**
-       * [associate]
-       * @description {
-       * Associate function used to create inner joins between tables.
-       * FK to the TAG that generated it
-       * }
-       */
-
+      associate: function(models) {
+        Quote.belongsTo(models.Tag, {foreignKey: 'tag_id'});
+      }
     }
   });
 
