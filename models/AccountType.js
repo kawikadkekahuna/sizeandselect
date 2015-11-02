@@ -11,7 +11,9 @@ module.exports = function (sequelize, DataTypes) {
     underscored: true,
     tableName: "account_types",
     classMethods: {
-      AccountType.hasMany(models.User);
+      associate : function (models) {
+        AccountType.hasMany(models.User);
+      }
     }
   });
 

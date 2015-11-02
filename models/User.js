@@ -26,7 +26,9 @@ module.exports = function (sequelize, DataTypes) {
     underscored: true,
     tableName: "users",
     classMethods: {
-      User.belongsTo(models.AccountType, {foreignKey: 'account_type_id'});
+      associate : function (models) {
+        User.belongsTo(models.AccountType, {foreignKey: 'account_type_id'});
+      }
     }
   });
 

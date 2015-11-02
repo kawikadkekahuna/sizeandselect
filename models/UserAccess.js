@@ -10,8 +10,10 @@ module.exports = function (sequelize, DataTypes) {
     underscored: true,
     tableName: "user_accesses",
     classMethods: {
-      UserAccess.belongsTo(models.User, {foreignKey: 'user_id'});
-      UserAccess.belongsTo(models.Tag, {foreignKey: 'tag_id'});
+      associate : function (models) {
+        UserAccess.belongsTo(models.User, {foreignKey: 'user_id'});
+        UserAccess.belongsTo(models.Tag, {foreignKey: 'tag_id'});
+      }
     }
   });
 
