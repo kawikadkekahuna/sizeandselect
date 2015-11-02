@@ -43,9 +43,9 @@ module.exports = function (sequelize, DataTypes) {
        * Relationship association: belongsTo('valve_selections')
        * }
        */
-      // associate: function(models) {
-
-      // }
+      associate: function(models) {
+        TagCalculation.belongsTo(models.LiquidMedia, {foreignKey: 'liquid_media_id'});
+      }
     }
   });
 
