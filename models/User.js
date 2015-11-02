@@ -21,7 +21,6 @@ module.exports = function (sequelize, DataTypes) {
     reset_password_token : DataTypes.STRING,
     reset_password_expires : DataTypes.BIGINT,
     account_hidden: DataTypes.BOOLEAN
-
   }, {
     underscored: true,
     tableName: "users",

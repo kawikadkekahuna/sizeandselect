@@ -18,17 +18,9 @@ function createUser(req){
 
   User.create({
     username: req.body.newUser.username,
-    // first_name: req.body.newUser.first_name,
-    // last_name: req.body.newUser.last_name,
     email: req.body.newUser.email,
-    password: generateHash(password)
-    // city: req.body.newUser.city,
-    // state: req.body.newUser.selectedState.name,
-    // zipcode: req.body.newUser.zipcode,
-    // company: req.body.newUser.company,
-    // job_title: req.body.newUser.job_title,
-    // phone_number: req.body.newUser.phone_number,
-    // user_picture: req.body.newUser.user_picture,
+    password: generateHash(password),
+
     // account_hidden: DEFAULT_HIDDEN
   })
 }
