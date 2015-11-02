@@ -52,7 +52,7 @@ angular.module('app', ['ui.router','ngMessages'])
     })
 
     .state('registration', {
-      url: '/registration',
+      url: '/register',
       templateUrl: 'partials/registration.html',
       controller: 'RegistrationController'
     })

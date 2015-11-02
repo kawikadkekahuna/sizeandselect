@@ -20,13 +20,12 @@ function createUser(req){
     username: req.body.newUser.username,
     email: req.body.newUser.email,
     password: generateHash(password),
-
-    // account_hidden: DEFAULT_HIDDEN
+    account_type_id : req.body.newUser.account_type.id
   })
 }
 
 
-router.post('/register' , function (req,res){
+router.post('/register' , function (req, res){
   console.log('username', req.body.newUser.username);
   console.log('email', req.body.newUser.email);
   User.find(
