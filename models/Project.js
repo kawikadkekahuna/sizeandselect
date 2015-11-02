@@ -17,15 +17,16 @@ module.exports = function (sequelize, DataTypes) {
        * [associate]
        * @description {
        * Associate function used to create inner joins between tables.
-       * Inner join linked between 'users'. 
+       * Inner join linked between 'users'.
        * Inner join linked between 'tags'.
        * Relationship association: belongsTo('users')
        * Relationship association: hasMany('tag')
        * }
        */
-      // associate: function(models) {
-
-      // }
+      associate: function(models) {
+        Project.belongsTo(models.ProjectStatus, {foreignKey: 'project_status_id'});
+        Project.belongsTo(models.User, {foreignKey: 'user_id'});
+      }
     }
   });
 
