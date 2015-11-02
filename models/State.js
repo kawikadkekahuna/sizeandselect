@@ -10,7 +10,6 @@ module.exports = function (sequelize, DataTypes) {
     abbreviation: DataTypes.STRING
   }, {
     underscored: true,
-    timestamps:false,
     tableName: "states"
   });
 
