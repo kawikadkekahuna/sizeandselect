@@ -10,19 +10,8 @@ module.exports = function (sequelize, DataTypes) {
     underscored: true,
     tableName: "user_accesses",
     classMethods: {
-      /**
-       * [associate]
-       * @description {
-       * Associate function used to create inner joins between tables.
-       * Inner join linked between 'message'.
-       * Inner join linked between 'tags'
-       * Relationship association: hasMany('users')
-       * Relationship association: hasOne('tag')
-       * }
-       */
-      // associate: function(models) {
-
-      // }
+      UserAccess.belongsTo(models.User, {foreignKey: 'user_id'});
+      UserAccess.belongsTo(models.Tag, {foreignKey: 'tag_id'});
     }
   });
 
