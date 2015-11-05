@@ -4,8 +4,14 @@ angular.module('app')
 
   $scope.login = function(user) {
       AuthorizationService.login(user).success(function (data, status) {
-      $localStorage.token = data.sizeselect_access_token;
-        // $state.go('about-us');  
+        if(data.statusCode !== 200){
+          alert('invalid creds');
+          return;
+        }
+        $localStorage.token = data.sizeselect_access_token;
+        alert('token set');
+        $state.go('dashboard');  
+
     })
       .error(function (data) {
         $state.go('login'); 

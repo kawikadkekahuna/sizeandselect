@@ -8,9 +8,9 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('./models').User;
+var expressJwt = require('express-jwt');
 var bcrypt = require('bcrypt');
 var session = require('express-session')
-var flash = require('connect-flash');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -18,8 +18,9 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'sushisecret',
   resave: false,
   saveUninitialized: true,
 }))
@@ -41,6 +42,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
   next();
 });
+app.use('/api', expressJwt({secret: 'sushisecret'}));
 
 function localStrategy (username, password, done) {
   process.nextTick(function () {

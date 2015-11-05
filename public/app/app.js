@@ -1,6 +1,6 @@
-SERVER = 'http://localhost:3000' ;
+SERVER = 'http://localhost:3000';
 
-angular.module('app', ['ui.router','ngMessages', 'ngStorage'])
+angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
   .constant('AUTH_EVENTS', {
     loginSuccess: 'auth-login-success',
     loginFailed: 'auth-login-failed',
@@ -10,13 +10,13 @@ angular.module('app', ['ui.router','ngMessages', 'ngStorage'])
     notAuthorized: 'auth-not-authorized'
   })
 
-.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-  $stateProvider
-    .state('about-us', {
-      url: '/about-us',
-      templateUrl: 'partials/about-us.html',
-      controller: 'AboutUsController'
-    })
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+    $stateProvider
+      .state('about-us', {
+        url: '/about-us',
+        templateUrl: 'partials/about-us.html',
+        controller: 'AboutUsController'
+      })
 
     .state('contact-us', {
       url: '/contact-us',
@@ -31,6 +31,9 @@ angular.module('app', ['ui.router','ngMessages', 'ngStorage'])
 
     .state('dashboard', {
       url: '/dashboard',
+      resolve:{
+        authenticate: isAuthenticated
+      },
       templateUrl: 'partials/dashboard.html',
       controller: 'DashboardController'
     })
@@ -71,9 +74,23 @@ angular.module('app', ['ui.router','ngMessages', 'ngStorage'])
       controller: 'ResourcesController'
     });
 
-  $urlRouterProvider.otherwise('/login');
-})
-.run(function ($rootScope, $location, $state, $localStorage, $q, $http){
+    $urlRouterProvider.otherwise('/login');
 
-})
+    function isAuthenticated($q, $timeout, $http, $location, $rootScope, $localStorage) {
+      console.log('token', $localStorage.token)
+      var deferred = $q.defer();
+      $http.get(SERVER +'/api/auth/isAuthenticated').success(function(user) {
+        // if (user !== '0') deferred.resolve();
+        // else {
+        //   $rootScope.message = 'You need to log in.';
+        //   deferred.reject();
+        //   $location.url('/login');
+        // }
+      });
+      // return deferred.promise;
+    };
 
+  })
+  .run(function($rootScope, $location, $state, $localStorage, $q, $http) {
+
+  })

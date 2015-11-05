@@ -11,6 +11,21 @@ router.get('/logout', function (req, res){
   res.status(200).send({message:'logout success', status:200});
 });
 
+router.get('/isAuthenticated', function (req, res){
+  jwt.verify(req.headers.bearer, 'sushisecret', function (err, decoded){
+    if(decoded){
+      res.json({message:'success'});
+    }else{
+      res.status(401).send({
+        error:'Unauthorized', 
+        status: 401, 
+        message:'Invalid or expired access token.'
+      });
+    };
+  });
+});
+
+
 router.post('/login', function (req, res, next) {
 
   passport.authenticate('local', function (err, user, info) {
@@ -21,7 +36,7 @@ router.post('/login', function (req, res, next) {
       res.jsonp({
         statusCode: 401,
         message: 'Invalid Credentials',
-        error: 'Unauthroized'
+        error: 'Unauthorized'
       });
     } else {
 

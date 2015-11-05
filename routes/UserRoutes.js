@@ -8,6 +8,4 @@ router.get('/dashboard', function (req, res) {
   res.send({headers: req.headers});
 });
 
-
-
 module.exports = router;

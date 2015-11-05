@@ -1,8 +1,8 @@
 angular.module('app')
 
-.service('AuthorizationService',['$http', AuthorizationService]);
+.service('AuthorizationService',['$http', '$localStorage', AuthorizationService]);
 
-function AuthorizationService ($http) {
+function AuthorizationService ($http, $localStorage) {
   this.login = function (user) { 
     return $http.post(SERVER + '/api/auth/login', user);
   }
@@ -12,5 +12,6 @@ function AuthorizationService ($http) {
   }
 
   this.isAuthenticated = function () {
+    return $localStorage.token === data.sizeselect_access_token;
   }
 }
