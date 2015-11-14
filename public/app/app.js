@@ -80,8 +80,12 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
       $http.defaults.headers.common['Bearer'] = $localStorage.token;
       var deferred = $q.defer();
       $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).success(function(user) {
-        if (user !== '0') deferred.resolve();
+        if (user.status === 200){
+          alert('switching states');
+          deferred.resolve();
+        }
         else {
+          alert('DENIED');
           $rootScope.message = 'You need to log in.';
           deferred.reject();
           $location.url('/login');

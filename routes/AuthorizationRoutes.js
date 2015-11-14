@@ -5,7 +5,7 @@ var passport = require('passport');
 var jwt = require('jsonwebtoken')
 
 router.get('/logout', function (req, res){
-  res.header('Bearer ', '');
+  res.header('Bearer', '');
   req.logout();
   res.status(200).send({message:'logout success', status:200});
 });
@@ -14,9 +14,12 @@ router.get('/isAuthenticated', function (req, res){
   var token = req.headers.bearer;
   jwt.verify(token, 'sushisecret', function (err, decoded){
     if(decoded){
-      res.json({message:'success'});
+      res.status(200).send({
+        status: 200,
+        message: 'success'
+      });
     }else{
-      res.status(401).send({
+      res.json({
         error:'Unauthorized', 
         status: 401, 
         message:'Invalid or expired access token.'
@@ -39,11 +42,13 @@ router.post('/login', function (req, res, next) {
         error: 'Unauthorized'
       });
     } else {
+
       var payload =  {
         iss: 'sizeselect.com',
         iat: Date.now()
       };
-      var token = jwt.sign({payload: user.id}, 'sushisecret');
+      
+      var token = jwt.sign({payload: payload}, 'sushisecret');
      
       res.jsonp({
         statusCode: 200,
