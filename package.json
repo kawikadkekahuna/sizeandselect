@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Rastalamm/sizeandselect#readme",
   "devDependencies": {
+    "express-jwt": "^3.1.0",
     "gulp": "^3.9.0",
     "gulp-connect": "^2.2.0",
     "gulp-sass": "^2.0.4"
@@ -28,6 +29,7 @@
     "express": "^4.13.3",
     "express-session": "^1.11.3",
     "mailgun-js": "^0.7.2",
+    "jsonwebtoken": "^5.4.0",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
     "pg": "^4.4.1",

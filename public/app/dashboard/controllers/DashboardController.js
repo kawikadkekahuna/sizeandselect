@@ -1,7 +1,8 @@
 angular.module('app')
 
-.controller('DashboardController', function ($scope) {
-  console.log('Dashboard controller');  
+.controller('DashboardController', function ($scope, $rootScope) {
+  
+
 
   $scope.testMessage = 'Dashboard Controller Linked';
 

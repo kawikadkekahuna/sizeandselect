@@ -1,5 +1,4 @@
 'use strict';
-
 var express = require('express');
 var app = express();
 var db = require('./models');
@@ -8,26 +7,14 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('./models').User;
+var expressJwt = require('express-jwt');
 var bcrypt = require('bcrypt');
-var session = require('express-session')
-var flash = require('connect-flash');
-var cookieParser = require('cookie-parser');
 
 app.use(express.static('public'));
-app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    httpOnly: true
-  }
-}))
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -43,7 +30,7 @@ passport.deserializeUser(function(obj, done) {
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
+  res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
   next();
 });
 
@@ -69,6 +56,10 @@ function localStrategy (username, password, done) {
 passport.use(new LocalStrategy(localStrategy));
 
 app.use('/api', routes);
+
+app.all('/*', function(req, res, next) {
+    res.sendFile('/public/index.html', { root: __dirname });
+});
 
 var server = app.listen(3000, function () {
   var host = server.address().address;

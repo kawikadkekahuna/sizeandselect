@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('RegistrationController', function($scope, $state, DropdownService, RegexService, RegistrationService) {
+.controller('RegistrationController', function($scope, $state, DropdownService, RegexService, AuthorizationService, $localStorage) {
 
   DropdownService.getAccountTypes().then(function(accountTypes) {
     $scope.accountTypes = accountTypes.data;
@@ -12,10 +12,10 @@ angular.module('app')
   }
 
   $scope.createUser = function(user) {
-    RegistrationService.createUser(user).then(function(res){
-      alert('user created');
-      $state.go('login');
-    });
+    AuthorizationService.createUser(user).then(function (user){
+      $localStorage.token = user.data.sizeselect_access_token;
+      $state.go('dashboard');
+    }); 
   };
 
 

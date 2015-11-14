@@ -1,14 +1,23 @@
-SERVER = 'http://localhost:3000' ;
+SERVER = 'http://localhost:3000';
 
-angular.module('app', ['ui.router','ngMessages'])
+angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
+  .constant('AUTH_EVENTS', {
+    loginSuccess: 'auth-login-success',
+    loginFailed: 'auth-login-failed',
+    logoutSuccess: 'auth-logout-success',
+    sessionTimeout: 'auth-session-timeout',
+    notAuthenticated: 'auth-not-authenticated',
+    notAuthorized: 'auth-not-authorized'
+  })
 
-.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-  $stateProvider
-    .state('about-us', {
-      url: '/about-us',
-      templateUrl: 'partials/about-us.html',
-      controller: 'AboutUsController'
-    })
+.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
+    
+    $stateProvider
+      .state('about-us', {
+        url: '/about-us',
+        templateUrl: 'partials/about-us.html',
+        controller: 'AboutUsController'
+      })
 
     .state('contact-us', {
       url: '/contact-us',
@@ -23,6 +32,9 @@ angular.module('app', ['ui.router','ngMessages'])
 
     .state('dashboard', {
       url: '/dashboard',
+      resolve:{
+        authenticate: isAuthenticated
+      },
       templateUrl: 'partials/dashboard.html',
       controller: 'DashboardController'
     })
@@ -30,7 +42,7 @@ angular.module('app', ['ui.router','ngMessages'])
     .state('login', {
       url: '/login',
       templateUrl: 'partials/login.html',
-      controller: 'LoginController'
+      controller: 'AuthorizationController'
     })
 
     .state('messages', {
@@ -75,23 +87,28 @@ angular.module('app', ['ui.router','ngMessages'])
       // controller: 'ResourcesController'
     });
 
-  $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/login');
+    $locationProvider.html5Mode({enabled: true, requireBase: false});
 
-  $httpProvider.interceptors.push(function($q,$location){
+    function isAuthenticated($q, $timeout, $http, $location, $rootScope, $localStorage) {
+      $http.defaults.headers.common['Bearer'] = $localStorage.token;
+      var deferred = $q.defer();
+      console.log('token', $localStorage.token); 
+      $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).success(function(user) {
 
-    return{
-      response: function (response){
-        return response;
-      },
-      responseError: function(response){
-        if(response.status === 401){
+        console.log('user', user);
+        if (user.status === 200){
+          alert('switching states');
+          deferred.resolve();
+        }
+        else {
+          alert('DENIED');
+          $rootScope.message = 'You need to log in.';
+          deferred.reject();
           $location.url('/login');
         }
-        return $q.reject(response);
-      }
-    }
+      });
+      return deferred.promise;
+    };
 
-  });
-
-});
-
+  })
