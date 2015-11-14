@@ -1,5 +1,4 @@
 'use strict';
-
 var express = require('express');
 var app = express();
 var db = require('./models');
@@ -10,20 +9,12 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('./models').User;
 var expressJwt = require('express-jwt');
 var bcrypt = require('bcrypt');
-var session = require('express-session')
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-
-
-app.use(session({
-  secret: 'sushisecret',
-  resave: false,
-  saveUninitialized: true,
-}))
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -42,7 +33,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
   next();
 });
-app.use('/api/user', expressJwt({secret: 'sushisecret'}));
+
 
 function localStrategy (username, password, done) {
   process.nextTick(function () {

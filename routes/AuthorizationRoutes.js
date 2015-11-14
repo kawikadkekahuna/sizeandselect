@@ -1,5 +1,4 @@
 'use strict';
-
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
@@ -12,7 +11,8 @@ router.get('/logout', function (req, res){
 });
 
 router.get('/isAuthenticated', function (req, res){
-  jwt.verify(req.headers.bearer, 'sushisecret', function (err, decoded){
+  var token = req.headers.bearer;
+  jwt.verify(token, 'sushisecret', function (err, decoded){
     if(decoded){
       res.json({message:'success'});
     }else{
@@ -39,14 +39,12 @@ router.post('/login', function (req, res, next) {
         error: 'Unauthorized'
       });
     } else {
-
-      var payload = {
-        token: JSON.stringify(user.id) 
+      var payload =  {
+        iss: 'sizeselect.com',
+        iat: Date.now()
       };
-
-      var token = jwt.sign({payload: payload}, 'sushisecret',{expires:'6h'})
-      
-      res.header('Bearer ', token); 
+      var token = jwt.sign({payload: user.id}, 'sushisecret');
+     
       res.jsonp({
         statusCode: 200,
         id: user.id,

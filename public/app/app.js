@@ -77,17 +77,17 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     $urlRouterProvider.otherwise('/login');
 
     function isAuthenticated($q, $timeout, $http, $location, $rootScope, $localStorage) {
-      console.log('token', $localStorage.token)
+      $http.defaults.headers.common['Bearer'] = $localStorage.token;
       var deferred = $q.defer();
-      $http.get(SERVER +'/api/auth/isAuthenticated').success(function(user) {
-        // if (user !== '0') deferred.resolve();
-        // else {
-        //   $rootScope.message = 'You need to log in.';
-        //   deferred.reject();
-        //   $location.url('/login');
-        // }
+      $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).success(function(user) {
+        if (user !== '0') deferred.resolve();
+        else {
+          $rootScope.message = 'You need to log in.';
+          deferred.reject();
+          $location.url('/login');
+        }
       });
-      // return deferred.promise;
+      return deferred.promise;
     };
 
   })

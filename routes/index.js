@@ -5,7 +5,8 @@ var router = express.Router();
 var defaults = require('./DefaultRoutes'),
     auth = require('./AuthorizationRoutes'),
     user = require('./UserRoutes'),
-    project = require('./ProjectRoutes') 
+    project = require('./ProjectRoutes')
+
 
 router.use('/defaults', defaults);
 router.use('/auth', auth);
