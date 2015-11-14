@@ -6,12 +6,6 @@ var jwt = require('jsonwebtoken');
 var User = require('../models').User;
 var bcrypt = require('bcrypt');
 
-router.get('/logout', function (req, res){
-  res.header('Bearer', '');
-  req.logout();
-  res.json({status:200, message:'Logout successful'});
-});
-
 router.get('/isAuthenticated', function (req, res){
   var token = req.headers.bearer;
   jwt.verify(token, 'sushisecret', function (err, decoded){
@@ -60,6 +54,12 @@ router.post('/login', function (req, res, next) {
       });
     }
   })(req, res, next);
+});
+
+router.get('/logout', function (req, res){
+  res.header('Bearer', '');
+  req.logout();
+  res.json({status:200, message:'Logout successful'});
 });
 
 router.post('/register' , function (req,res){

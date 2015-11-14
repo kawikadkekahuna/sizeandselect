@@ -5,13 +5,17 @@ angular.module('app')
 function AuthorizationService ($http, $localStorage) {
   this.login = function (user) { 
     return $http.post(SERVER + '/api/auth/login', user);
-  }
+  };
 
   this.logout = function () {
     return $http.get(SERVER + '/api/auth/logout');
-  }
+  };
 
   this.createUser = function (user) {
     return $http.post(SERVER + '/api/auth/register', user);
-  }
+  };
+
+  this.resetPassword = function (user){
+    return $http.post(SERVER + '/api/auth/reset_password')
+  };
 }

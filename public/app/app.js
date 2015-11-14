@@ -25,11 +25,6 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
       controller: 'ContactUsController'
     })
 
-    .state('error-messages', {
-      url: '/error-messages',
-      templateUrl: 'partials/error-messages.html'
-    })
-
     .state('dashboard', {
       url: '/dashboard',
       resolve:{
@@ -69,22 +64,10 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
       controller: 'RegistrationController'
     })
 
-    .state('resources', {
-      url: '/resources',
-      templateUrl: 'partials/resources.html',
-      controller: 'ResourcesController'
-    })
-
     .state('forgot-password', {
-      url: '/forgot-password'
-      // templateUrl: 'partials/resources.html',
-      // controller: 'ResourcesController'
-    })
-
-    .state('reset-password', {
-      url: '/reset-password'
-      // templateUrl: 'partials/resources.html',
-      // controller: 'ResourcesController'
+      url: '/forgot-password',
+      templateUrl: 'partials/forgot-password.html',
+      controller: 'ForgotPasswordController'
     });
 
     $urlRouterProvider.otherwise('/login');
