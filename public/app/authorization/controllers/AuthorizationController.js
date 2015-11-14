@@ -4,7 +4,6 @@ angular.module('app')
 
   $scope.login = function(user) {
     AuthorizationService.login(user).success(function (data, status) {
-      console.log('data', data);
       if(data.statusCode !== 200){
         return;
       };

@@ -2,7 +2,9 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var jwt = require('jsonwebtoken')
+var jwt = require('jsonwebtoken');
+var User = require('../models').User;
+var bcrypt = require('bcrypt');
 
 router.get('/logout', function (req, res){
   res.header('Bearer', '');
@@ -59,7 +61,65 @@ router.post('/login', function (req, res, next) {
     }
   })(req, res, next);
 });
-router.all('/*', function(req, res) {
-  res.sendfile('/public/index.html');
+
+router.post('/register' , function (req,res){
+  console.log(req.body);
+  User.find(
+    { where : {
+        $or: [
+          {
+            username : req.body.username
+          },
+          {
+            email : req.body.email
+          }
+        ]
+      }
+    }
+  ).then(function (user){
+    if (user) {
+      res.json({
+        status: 401,
+        error: 'Unauthorized',
+        message: 'The username or email currently exists in the database'
+      });
+    } else {
+      createUser(req);
+      var payload =  {
+        iss: 'sizeselect.com',
+        iat: Date.now()
+      };
+      var token = jwt.sign({payload: payload}, 'sushisecret');
+      req.body.sizeselect_access_token = token;
+      res.status(200).json(req.body);
+    };
+  });
 });
+
+
+function createUser(req){
+  var password = req.body.password;
+
+  User.create({
+    username: req.body.username,
+    // first_name: req.body.first_name,
+    // last_name: req.body.last_name,
+    email: req.body.email,
+    password: generateHash(password)
+    // city: req.body.city,
+    // state: req.body.selectedState.name,
+    // zipcode: req.body.zipcode,
+    // company: req.body.company,
+    // job_title: req.body.job_title,
+    // phone_number: req.body.phone_number,
+    // user_picture: req.body.user_picture,
+    // account_hidden: DEFAULT_HIDDEN
+  })
+};
+
+function generateHash(password){
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+};
+
+
 module.exports = router;

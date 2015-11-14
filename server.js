@@ -58,7 +58,7 @@ passport.use(new LocalStrategy(localStrategy));
 app.use('/api', routes);
 
 app.all('/*', function(req, res, next) {
-    res.sendfile('/public/index.html', { root: __dirname });
+    res.sendFile('/public/index.html', { root: __dirname });
 });
 
 var server = app.listen(3000, function () {

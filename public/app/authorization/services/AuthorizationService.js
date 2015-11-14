@@ -11,7 +11,7 @@ function AuthorizationService ($http, $localStorage) {
     return $http.get(SERVER + '/api/auth/logout');
   }
 
-  this.createUser = function () {
-    return $http.get(SERVER + '/api/auth/register');
+  this.createUser = function (user) {
+    return $http.post(SERVER + '/api/auth/register', user);
   }
 }
