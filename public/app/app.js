@@ -10,7 +10,8 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     notAuthorized: 'auth-not-authorized'
   })
 
-.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
+    
     $stateProvider
       .state('about-us', {
         url: '/about-us',
@@ -75,11 +76,15 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     });
 
     $urlRouterProvider.otherwise('/login');
+    $locationProvider.html5Mode({enabled: true, requireBase: false});
 
     function isAuthenticated($q, $timeout, $http, $location, $rootScope, $localStorage) {
       $http.defaults.headers.common['Bearer'] = $localStorage.token;
       var deferred = $q.defer();
+      console.log('token', $localStorage.token); 
       $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).success(function(user) {
+
+        console.log('user', user);
         if (user.status === 200){
           alert('switching states');
           deferred.resolve();
@@ -93,8 +98,5 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
       });
       return deferred.promise;
     };
-
-  })
-  .run(function($rootScope, $location, $state, $localStorage, $q, $http) {
 
   })

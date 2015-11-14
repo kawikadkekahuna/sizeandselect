@@ -34,7 +34,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-
 function localStrategy (username, password, done) {
   process.nextTick(function () {
       User.findOne({
@@ -57,6 +56,10 @@ function localStrategy (username, password, done) {
 passport.use(new LocalStrategy(localStrategy));
 
 app.use('/api', routes);
+
+app.all('/*', function(req, res, next) {
+    res.sendfile('/public/index.html', { root: __dirname });
+});
 
 var server = app.listen(3000, function () {
   var host = server.address().address;

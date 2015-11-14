@@ -11,10 +11,6 @@ function AuthorizationService ($http, $localStorage) {
     return $http.get(SERVER + '/api/auth/logout');
   }
 
-  this.isAuthenticated = function () {
-    return $localStorage.token === data.sizeselect_access_token;
-  }
-
   this.createUser = function () {
     return $http.get(SERVER + '/api/auth/register');
   }

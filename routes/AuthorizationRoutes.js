@@ -7,7 +7,7 @@ var jwt = require('jsonwebtoken')
 router.get('/logout', function (req, res){
   res.header('Bearer', '');
   req.logout();
-  res.status(200).send({message:'logout success', status:200});
+  res.json({status:200, message:'Logout successful'});
 });
 
 router.get('/isAuthenticated', function (req, res){
@@ -30,7 +30,6 @@ router.get('/isAuthenticated', function (req, res){
 
 
 router.post('/login', function (req, res, next) {
-
   passport.authenticate('local', function (err, user, info) {
     if (err) {
       return next(err);
@@ -47,9 +46,8 @@ router.post('/login', function (req, res, next) {
         iss: 'sizeselect.com',
         iat: Date.now()
       };
-      
+
       var token = jwt.sign({payload: payload}, 'sushisecret');
-     
       res.jsonp({
         statusCode: 200,
         id: user.id,
@@ -61,5 +59,7 @@ router.post('/login', function (req, res, next) {
     }
   })(req, res, next);
 });
-
+router.all('/*', function(req, res) {
+  res.sendfile('/public/index.html');
+});
 module.exports = router;
