@@ -63,7 +63,6 @@ router.get('/logout', function (req, res){
 });
 
 router.post('/register' , function (req,res){
-  console.log(req.body);
   User.find(
     { where : {
         $or: [
