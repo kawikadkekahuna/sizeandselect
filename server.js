@@ -42,7 +42,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
   next();
 });
-app.use('/api', expressJwt({secret: 'sushisecret'}));
+app.use('/api/user', expressJwt({secret: 'sushisecret'}));
 
 function localStrategy (username, password, done) {
   process.nextTick(function () {
