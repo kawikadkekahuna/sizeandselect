@@ -9,7 +9,6 @@ function AuthorizationService ($http, $localStorage, $state) {
 
   this.logout = function () {
     return $http.get(SERVER + '/api/auth/logout').then(function (res){
-      console.log('res in logout', res);
       delete($localStorage.token);
       $state.go('login');
     });
@@ -27,7 +26,6 @@ function AuthorizationService ($http, $localStorage, $state) {
     if($localStorage.token){
       $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).then(function (res){
         if(res.data.status === 200){
-          console.log('returning true');
           return true;
         };
         return false;

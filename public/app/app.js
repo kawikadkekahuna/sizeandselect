@@ -1,13 +1,21 @@
 SERVER = 'http://localhost:3000';
 
 angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
+.run(function ($sessionStorage){
+  $sessionStorage.SizeSelect = {};
+  $sessionStorage.SizeSelect.CURRENT_MODAL = 'CURRENT_MODAL';
+
+})
 .config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
-    
   $stateProvider
   .state('about-us', {
     url: '/about-us',
     templateUrl: 'views/partials/about-us.html',
     controller: 'AboutUsController'
+  })
+  
+  .state('modal', {
+    templateUrl: 'views/modules/modal.html'
   })
 
   .state('contact-us', {
