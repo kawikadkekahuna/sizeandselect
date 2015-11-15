@@ -10,17 +10,13 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
   $stateProvider
   .state('about-us', {
     url: '/about-us',
-    templateUrl: 'views/partials/about-us.html',
+    templateUrl: 'views/resources/about-us.html',
     controller: 'AboutUsController'
-  })
-  
-  .state('modal', {
-    templateUrl: 'views/modules/modal.html'
   })
 
   .state('contact-us', {
     url: '/contact-us',
-    templateUrl: 'views/partials/contact-us.html',
+    templateUrl: 'views/resources/contact-us.html',
     controller: 'ContactUsController'
   })
 
@@ -29,13 +25,13 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     resolve:{
       authenticate: isAuthenticated
     },
-    templateUrl: 'views/sections/dashboard.html',
+    templateUrl: 'views/user/dashboard.html',
     controller: 'DashboardController'
   })
 
   .state('login', {
     url: '/login',
-    templateUrl: 'views/sections/login.html',
+    templateUrl: 'views/auth/login.html',
     controller: 'AuthorizationController'
   })
 
@@ -53,31 +49,35 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
 
   .state('forbidden', {
     url: '/forbidden',
-    templateUrl: 'views/partials/forbidden.html'
+    templateUrl: 'views/resources/forbidden.html'
   })
 
   .state('project', {
     url: '/project',
-    templateUrl: 'views/partials/project.html',
+    templateUrl: 'views/project/project.html',
     controller: 'ProjectController'
   })
 
   .state('registration', {
     url: '/register',
-    templateUrl: 'views/partials/registration.html',
+    templateUrl: 'views/auth/registration.html',
     controller: 'RegistrationController'
   })
 
   .state('reference-library',{
     url:'/reference-library',
-    templateUrl: 'views/partials/reference-library.html',
+    templateUrl: 'views/resources/reference-library.html',
     controller: 'ReferenceLibraryController'
   })
 
   .state('forgot-password', {
     url: '/forgot-password',
-    templateUrl: 'views/partials/forgot-password.html',
+    templateUrl: 'views/auth/forgot-password.html',
     controller: 'ForgotPasswordController'
+  })
+  
+  .state('modal', {
+    templateUrl: 'views/modal/modal.html'
   });
 
   $urlRouterProvider.otherwise('/login');
