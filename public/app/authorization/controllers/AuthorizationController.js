@@ -1,6 +1,7 @@
 angular.module('app')
 
 .controller('AuthorizationController', function($scope, $state, $localStorage, $state, AuthorizationService, SessionService) {
+  $scope.header = {name: 'header', url :'views/partials/navigation.html'};
 
   $scope.login = function(user) {
     AuthorizationService.login(user).success(function (data, status) {

@@ -15,13 +15,13 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     $stateProvider
       .state('about-us', {
         url: '/about-us',
-        templateUrl: 'partials/about-us.html',
+        templateUrl: 'views/partials/about-us.html',
         controller: 'AboutUsController'
       })
 
     .state('contact-us', {
       url: '/contact-us',
-      templateUrl: 'partials/contact-us.html',
+      templateUrl: 'views/partials/contact-us.html',
       controller: 'ContactUsController'
     })
 
@@ -30,43 +30,43 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
       resolve:{
         authenticate: isAuthenticated
       },
-      templateUrl: 'partials/dashboard.html',
+      templateUrl: 'views/partials/dashboard.html',
       controller: 'DashboardController'
     })
 
     .state('login', {
       url: '/login',
-      templateUrl: 'partials/login.html',
+      templateUrl: 'views/sections/login.html',
       controller: 'AuthorizationController'
     })
 
     .state('messages', {
       url: '/messages',
-      templateUrl: 'partials/messages.html',
+      templateUrl: 'views/partials/messages.html',
       controller: 'MessagesController'
     })
 
     .state('profile', {
       url: '/profile',
-      templateUrl: 'partials/profile.html',
+      templateUrl: 'views/partials/profile.html',
       controller: 'ProfileController'
     })
 
     .state('project', {
       url: '/project',
-      templateUrl: 'partials/project.html',
+      templateUrl: 'views/partials/project.html',
       controller: 'ProjectController'
     })
 
     .state('registration', {
       url: '/register',
-      templateUrl: 'partials/registration.html',
+      templateUrl: 'views/partials/registration.html',
       controller: 'RegistrationController'
     })
 
     .state('forgot-password', {
       url: '/forgot-password',
-      templateUrl: 'partials/forgot-password.html',
+      templateUrl: 'views/partials/forgot-password.html',
       controller: 'ForgotPasswordController'
     });
 

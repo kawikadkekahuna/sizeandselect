@@ -11,7 +11,7 @@ angular.module('app')
       items: '='
     },
     controller: 'RegistrationController as dropdownSelect',
-    templateUrl: 'partials/resources/dropdown-select.tpl.html',
+    templateUrl: 'views/partials/resources/dropdown-select.tpl.html',
     link: function(scope, element, attributes, ngModel) {
       /**
        * [attachToModel]
