@@ -1,7 +1,30 @@
-$dark-color : #333333;
+body{
+  background-color:white;
+}
 
 .error-messages .ng-scope{
   color:red;
   font-size:11px;
 }
 
+// Normalize
+// ---------------------------------------------------
+
+
+// Mixin, Variables, Etc
+// ---------------------------------------------------
+
+
+// Modules
+// ---------------------------------------------------
+
+
+// Partials
+// ---------------------------------------------------
+@import "./partials/_navigation.scss";
+
+
+
+// Sections
+// ---------------------------------------------------
+@import "./sections/_login.scss";

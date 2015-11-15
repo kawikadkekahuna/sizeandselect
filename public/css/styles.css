@@ -1,3 +1,35 @@
+body {
+  background-color: white; }
+
 .error-messages .ng-scope {
   color: red;
   font-size: 11px; }
+
+.header {
+  background-color: yellow;
+  height: 75px; }
+  .header li {
+    display: inline-block;
+    background-color: pink;
+    width: 19%;
+    height: 100%; }
+
+.login {
+  background-color: red;
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 50; }
+  .login .form {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    height: 50%;
+    width: 50%; }
+    .login .form .container {
+      padding-top: 25%; }
+      .login .form .container input {
+        height: 50%;
+        width: 50%; }
