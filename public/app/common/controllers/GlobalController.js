@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('GlobalController', function ($scope, $state, AuthorizationService, $localStorage, AUTH_EVENTS){
+.controller('GlobalController', function ($scope, $state, AuthorizationService, $localStorage){
   $scope.token = $localStorage.token;
 
   $scope.logout = function(user){

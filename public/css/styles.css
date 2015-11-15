@@ -28,8 +28,29 @@ body {
     text-align: center;
     height: 50%;
     width: 50%; }
-    .login .form .container {
+    .login .form .login-container {
       padding-top: 25%; }
-      .login .form .container input {
-        height: 50%;
-        width: 50%; }
+      .login .form .login-container input {
+        padding: 10px;
+        border: solid 1px #FFF;
+        transition: border 0.3s;
+        height: 100%;
+        width: 100%; }
+    .login .form .registration-container {
+      padding-top: 2%; }
+      .login .form .registration-container input {
+        padding: 10px;
+        border: solid 1px #FFF;
+        transition: border 0.3s;
+        height: 100%;
+        width: 100%; }
+      .login .form .registration-container select {
+        text-align: left;
+        padding: 10px;
+        border: solid 1px #FFF;
+        transition: border 0.3s; }
+      .login .form .registration-container button {
+        font-weight: 800;
+        height: 50px;
+        padding: 10px;
+        width: 100%; }

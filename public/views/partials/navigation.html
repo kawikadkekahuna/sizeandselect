@@ -11,7 +11,7 @@
   <li>
     <a href="/dashboard">Dashboard</a>
   </li>
-  <li ng-if="!isLoggedIn">
+  <li ng-if="!isLoggedIn" ui-sref="login">
     Login!
   </li>
   <li ng-click="logout()" ng-if="isLoggedIn">

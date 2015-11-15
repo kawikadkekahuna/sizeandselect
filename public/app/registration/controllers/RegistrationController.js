@@ -1,6 +1,7 @@
 angular.module('app')
 
 .controller('RegistrationController', function($scope, $state, DropdownService, RegexService, AuthorizationService, $localStorage) {
+  $scope.header = {name: 'header', url :'views/partials/navigation.html'};
 
   DropdownService.getAccountTypes().then(function(accountTypes) {
     $scope.accountTypes = accountTypes.data;

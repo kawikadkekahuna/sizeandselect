@@ -13,13 +13,38 @@
     height:50%;
     width:50%;
   
-    .container{
+    .login-container{
       padding-top:25%;
       input{
-        height:50%;
-        width:50%;
+        padding: 10px;
+        border: solid 1px #FFF;
+        transition: border 0.3s;
+        height:100%;
+        width:100%;
+      }
+    }
+
+    .registration-container{
+      padding-top:2%;
+      input{
+        padding: 10px;
+        border: solid 1px #FFF;
+        transition: border 0.3s;
+        height:100%;
+        width:100%;
+      }
+      select{
+        text-align:left;
+        padding: 10px;
+        border: solid 1px #FFF;
+        transition: border 0.3s;
+      }
+      button{
+        font-weight:800;
+        height: 50px;
+        padding: 10px;
+        width:100%;
       }
     }  
   }
-
 }

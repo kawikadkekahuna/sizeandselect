@@ -1,23 +1,14 @@
 SERVER = 'http://localhost:3000';
 
 angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
-  .constant('AUTH_EVENTS', {
-    loginSuccess: 'auth-login-success',
-    loginFailed: 'auth-login-failed',
-    logoutSuccess: 'auth-logout-success',
-    sessionTimeout: 'auth-session-timeout',
-    notAuthenticated: 'auth-not-authenticated',
-    notAuthorized: 'auth-not-authorized'
-  })
-
 .config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
     
-    $stateProvider
-    .state('about-us', {
-      url: '/about-us',
-      templateUrl: 'views/partials/about-us.html',
-      controller: 'AboutUsController'
-    })
+  $stateProvider
+  .state('about-us', {
+    url: '/about-us',
+    templateUrl: 'views/partials/about-us.html',
+    controller: 'AboutUsController'
+  })
 
   .state('contact-us', {
     url: '/contact-us',
@@ -52,6 +43,11 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     controller: 'ProfileController'
   })
 
+  .state('forbidden', {
+    url: '/forbidden',
+    templateUrl: 'views/partials/forbidden.html'
+  })
+
   .state('project', {
     url: '/project',
     templateUrl: 'views/partials/project.html',
@@ -64,6 +60,12 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     controller: 'RegistrationController'
   })
 
+  .state('reference-library',{
+    url:'/reference-library',
+    templateUrl: 'views/partials/reference-library.html',
+    controller: 'ReferenceLibraryController'
+  })
+
   .state('forgot-password', {
     url: '/forgot-password',
     templateUrl: 'views/partials/forgot-password.html',
@@ -73,10 +75,9 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
   $urlRouterProvider.otherwise('/login');
   $locationProvider.html5Mode({enabled: true, requireBase: false});
 
-  function isAuthenticated($q, $timeout, $http, $location, $rootScope, $localStorage) {
+  function isAuthenticated($q, $state, $timeout, $http, $location, $rootScope, $localStorage) {
     $http.defaults.headers.common['Bearer'] = $localStorage.token;
     var deferred = $q.defer();
-    console.log('token', $localStorage.token); 
     $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).success(function(user) {
 
       if (user.status === 200){
@@ -85,7 +86,7 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
       else {
         $rootScope.message = 'You need to log in.';
         deferred.reject();
-        $location.url('/login');
+        $state.go('forbidden');
       }
     });
     return deferred.promise;
