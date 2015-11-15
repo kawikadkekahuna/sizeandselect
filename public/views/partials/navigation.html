@@ -1,0 +1,20 @@
+<ul class="nav" ng-controller="NavigationController">
+  <li>
+    <a href="/about-us">About Us</a>
+  </li>
+  <li>
+    <a href="/reference-library">Reference Library</a>
+  </li>
+  <li>
+    <a href="/contact-us">Contact Us</a>
+  </li>
+  <li>
+    <a href="/dashboard">Dashboard</a>
+  </li>
+  <li ng-if="!isLoggedIn" ui-sref="login">
+    Login!
+  </li>
+  <li ng-click="logout()" ng-if="isLoggedIn">
+    Logout!
+  </li>
+</ul>

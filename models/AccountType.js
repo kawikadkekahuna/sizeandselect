@@ -11,17 +11,9 @@ module.exports = function (sequelize, DataTypes) {
     underscored: true,
     tableName: "account_types",
     classMethods: {
-      /**
-       * [associate]
-       * @description {
-       * Associate function used to create inner joins between tables.
-       * Inner join linked between 'users'.
-       * Relationship association: belongsTo('users')
-       * }
-       */
-      // associate: function(models) {
-
-      // }
+      associate : function (models) {
+        // AccountType.hasMany(models.User);
+      }
     }
   });
 

@@ -1,0 +1,50 @@
+.login{
+  background-color: red;
+  width:100%;
+  height:50%;
+  position:absolute;
+  right:0;
+  left:0;
+  bottom:50; 
+  .form{
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    height:50%;
+    width:50%;
+  
+    .login-container{
+      padding-top:25%;
+      input{
+        padding: 10px;
+        border: solid 1px #FFF;
+        transition: border 0.3s;
+        height:100%;
+        width:100%;
+      }
+    }
+
+    .registration-container{
+      padding-top:2%;
+      input{
+        padding: 10px;
+        border: solid 1px #FFF;
+        transition: border 0.3s;
+        height:100%;
+        width:100%;
+      }
+      select{
+        text-align:left;
+        padding: 10px;
+        border: solid 1px #FFF;
+        transition: border 0.3s;
+      }
+      button{
+        font-weight:800;
+        height: 50px;
+        padding: 10px;
+        width:100%;
+      }
+    }  
+  }
+}

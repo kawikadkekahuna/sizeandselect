@@ -6,8 +6,10 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    text: DataTypes.STRING
-
+    project_name: DataTypes.STRING,
+    company_name: DataTypes.STRING,
+    status: DataTypes.STRING,
+    location: DataTypes.STRING
   }, {
     underscored: true,
     tableName: "projects",
@@ -16,15 +18,16 @@ module.exports = function (sequelize, DataTypes) {
        * [associate]
        * @description {
        * Associate function used to create inner joins between tables.
-       * Inner join linked between 'users'. 
+       * Inner join linked between 'users'.
        * Inner join linked between 'tags'.
        * Relationship association: belongsTo('users')
        * Relationship association: hasMany('tag')
        * }
        */
-      // associate: function(models) {
-
-      // }
+      associate: function(models) {
+        Project.belongsTo(models.ProjectStatus, {foreignKey: 'project_status_id'});
+        Project.belongsTo(models.User, {foreignKey: 'user_id'});
+      }
     }
   });
 

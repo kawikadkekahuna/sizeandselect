@@ -1,8 +1,30 @@
-@import "partials/settings";
-@import "partials/foundation";
-
-$dark-color : #333333;
-
-body {
-  background: $dark-color;
+body{
+  background-color:blue;
 }
+
+.error-messages .ng-scope{
+  color:red;
+  font-size:11px;
+}
+
+// Normalize
+// ---------------------------------------------------
+
+
+// Mixin, Variables, Etc
+// ---------------------------------------------------
+
+
+// Modules
+// ---------------------------------------------------
+
+
+// Partials
+// ---------------------------------------------------
+@import "./partials/_navigation.scss";
+
+
+
+// Sections
+// ---------------------------------------------------
+@import "./sections/_login.scss";
