@@ -14,6 +14,6 @@ angular.module('app')
     .error(function (data) {
       $state.go('login'); 
     });
-  }
+  };
 
 });

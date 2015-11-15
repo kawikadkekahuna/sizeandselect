@@ -5,10 +5,10 @@ body {
   color: red;
   font-size: 11px; }
 
-.header {
+.nav {
   background-color: yellow;
   height: 75px; }
-  .header li {
+  .nav li {
     display: inline-block;
     background-color: pink;
     width: 19%;
