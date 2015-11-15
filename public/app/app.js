@@ -21,7 +21,7 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     resolve:{
       authenticate: isAuthenticated
     },
-    templateUrl: 'views/partials/dashboard.html',
+    templateUrl: 'views/sections/dashboard.html',
     controller: 'DashboardController'
   })
 

@@ -1,0 +1,48 @@
+.dashboard{
+  background-color:red;   
+  position:fixed;
+  height:100%;
+  width:100%;
+
+  .left-column{
+    float:left;
+    display:inline-block;
+    width:12.5%;
+    height:95%;
+    background-color:skyblue;
+
+    .account-picture{
+      height:25%;
+      width:100%;
+      background-color:black;
+    }
+
+    .dropdown-links{
+      height:75%;
+      width:100%;
+      margin:auto;
+      background-color:white;
+    }
+  }
+
+  .middle-column{
+    display:inline-block;
+    width:75%;
+    height:95%;
+    background-color:purple;
+
+    .project-wrapper{
+      width:100%;
+      height:100%;
+    }
+  }
+
+  .right-column{
+    float:right;
+    display:inline-block;
+    width:12.5%;
+    height:95%;
+    background-color:green;
+  }
+
+}
