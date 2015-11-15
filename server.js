@@ -2,11 +2,6 @@
 var express = require('express');
 var app = express();
 var db = require('./models');
-<<<<<<< HEAD
-var User = db.User;
-var bodyParser = require('body-parser');
-=======
->>>>>>> development
 var routes = require('./routes');
 var bodyParser = require('body-parser');
 var passport = require('passport');
