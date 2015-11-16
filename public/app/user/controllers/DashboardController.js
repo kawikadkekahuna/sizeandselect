@@ -10,8 +10,10 @@ angular.module('app')
     $sessionStorage.SizeSelect.CURRENT_MODAL = 'New Project';
   };
 
-  $scope.createProject = function () {
-    console.log('create project here');
-  }
+  $scope.createProject = function (projectData) {
+    ProjectService.create(projectData).then(function (res){
+      console.log('res', res);
+    });
+  };
 
 });

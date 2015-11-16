@@ -2,22 +2,23 @@
 
 var express = require('express');
 var router = express.Router();
-var passport = require('passport');
-var jwt = require('jsonwebtoken')
+var Project = require('../models').Project;
 
+router.post('/create', function (req, res){
+  try{
+    Project.create({
+      project_name: req.body.name,
+      company_name: req.body.company,
+      location: req.body.location
 
-router.post('/', function (req, res){
-  jwt.verify(req.headers.bearer, 'sushisecret', function (err, decoded){
-    if(decoded){
-      res.json({message:'success'});
-    }else{
-      res.status(401).send({
-        error:'Unauthorized', 
-        status: 401, 
-        message:'Invalid or expired access token.'
-      });
-    };
-  });
+    }).then(function (project){
+      console.log('project', project);
+      res.json(project);
+    })
+  }catch(err){
+    console.log('Oops.  Something went wrong with creating projects');
+    throw new err;
+  }
 });
 
 module.exports = router;

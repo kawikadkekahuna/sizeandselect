@@ -2,14 +2,14 @@
   <div class="close" ng-click="close()">x</div>
   <form>
     <div>
-      <input type="text" placeholder="Company">
+      <input ng-model="project.company"type="text" placeholder="Company">
     </div>
     <div>
-      <input type="text" placeholder="Project Name">
+      <input ng-model="project.name"type="text" placeholder="Project Name">
     </div>
     <div>
-      <input type="text" placeholder="Location">
+      <input ng-model="project.location"type="text" placeholder="Location">
     </div>
-    <button ng-click="createProject()">Create Project</button>
+    <button ng-click="createProject(project)">Create Project</button>
   </form>
 </div>

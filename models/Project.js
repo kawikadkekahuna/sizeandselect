@@ -8,8 +8,8 @@ module.exports = function (sequelize, DataTypes) {
     },
     project_name: DataTypes.STRING,
     company_name: DataTypes.STRING,
-    status: DataTypes.STRING,
-    location: DataTypes.STRING
+    location: DataTypes.STRING,
+    status: DataTypes.STRING
   }, {
     underscored: true,
     tableName: "projects",
