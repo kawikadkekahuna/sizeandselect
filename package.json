@@ -20,7 +20,8 @@
     "express-jwt": "^3.1.0",
     "gulp": "^3.9.0",
     "gulp-connect": "^2.2.0",
-    "gulp-sass": "^2.0.4"
+    "gulp-sass": "^2.0.4",
+    "node-sass": "^3.4.2"
   },
   "dependencies": {
     "async": "^1.4.2",
