@@ -1,16 +1,5 @@
 <div ng-controller="ModalController">
-  <div class="modal" ng-if="CURRENT_MODAL === 'New Project'">
-    <div class="close" ng-click="close()">x</div>
-    <form>
-      <div>
-        <input type="text" placeholder="Company">
-      </div>
-      <div>
-        <input type="text" placeholder="Project Name">
-      </div>
-      <div>
-        <input type="text" placeholder="Location">
-      </div>
-    </form>
+  <div ng-if="CURRENT_MODAL === 'New Project'">
+    <div ng-include="modal.url"></div>
   </div>
 </div>
