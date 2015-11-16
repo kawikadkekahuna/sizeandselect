@@ -1,7 +1,8 @@
 angular.module('app')
 
 .controller('ForgotPasswordController', function ($scope, $state, ForgotPasswordService){
-    console.log("forgot password controller");
+    $scope.header = {name: 'header', url :'views/partials/navigation.html'};
+    // console.log("forgot password controller");
   $scope.sendForgotPasswordEmail = function (inputEmail) {
     console.log("on scope", inputEmail);
     ForgotPasswordService.sendForgotPasswordEmail(inputEmail).then(function (inputEmail) {
@@ -9,4 +10,5 @@ angular.module('app')
         // $state.go('login');
     })
   }
+
 });
