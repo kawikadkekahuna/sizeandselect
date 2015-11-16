@@ -4,7 +4,11 @@ angular.module('app')
 //probably could throw on authroization controller and just use templates?
 //
 //thoughts?
-.controller('ForgotPasswordController', function ($scope){
-  $scope.templates = [{name: 'forgot-password', url:'partials/resources/reset-password.tpl.html'}]
-  $scope.template = $scope.templates[0];
+.controller('ForgotPasswordController', function ($scope, $state, ForgotPasswordService){
+  $scope.sendForgotPasswordEmail = function (inputEmail) {
+    ForgotPasswordService.sendForgotPasswordEmail(inputEmail).then(function (inputEmail) {
+        console.log("inputEmail", inputEmail);
+        // $state.go('login');
+    })
+  }
 });
