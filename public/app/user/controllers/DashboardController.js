@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('DashboardController', function ($scope, $state, $stateParams, $rootScope, $sessionStorage, $location) {
+.controller('DashboardController', function ($scope, $state, $stateParams, $rootScope, $sessionStorage, $location, ProjectService) {
   $scope.header = {name: 'header', url: 'views/partials/navigation.html'};
   $scope.modal = {name: 'modal', url: 'views/modal/modal.html'};
   
@@ -13,6 +13,5 @@ angular.module('app')
   $scope.createProject = function () {
     console.log('create project here');
   }
-
 
 });
