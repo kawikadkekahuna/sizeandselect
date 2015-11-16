@@ -9,8 +9,8 @@ angular.module('app')
 
   $scope.validations = {
     email:RegexService.getEmail(),
-    phoneNumber: RegexService.getPhoneNumber(),
-  }
+    phoneNumber: RegexService.getPhoneNumber()
+  };
 
   $scope.createUser = function(user) {
     AuthorizationService.createUser(user).then(function (user){
