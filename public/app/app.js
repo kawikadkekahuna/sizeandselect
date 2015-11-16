@@ -75,7 +75,13 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     templateUrl: 'views/auth/forgot-password.html',
     controller: 'ForgotPasswordController'
   })
-  
+
+  .state('reset-password', {
+    url: '/reset-password',
+    templateUrl: 'views/auth/reset-password.html'
+    // controller: 'ForgotPasswordController'
+  })
+
   .state('modal', {
     templateUrl: 'views/modal/modal.html'
   });
