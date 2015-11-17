@@ -33,11 +33,6 @@ router.put('/', function (req, res) {
     where: {email : req.body.email}
   }).then(function (user) {
     if (!user) {
-
-      console.log("no user found");
-
-      //need to have an alert be sent to user that email is not in system
-
       res.status({status : 404}).send(false);
     } else {
     var pwResetInfo = {
@@ -55,10 +50,8 @@ router.put('/', function (req, res) {
       };
 
       mailgun.messages().send(data, function (error, body) {
-        if (error) {
-          //throw error
 
-          console.log("email pw error", error);
+        if (error) {
           res.status({status : 200}).send(false);
 
         } else {
@@ -72,7 +65,6 @@ router.put('/', function (req, res) {
 
         //either show the forgot page that says check email
         //or show a alert/message that says check email
-        console.log("did this just work?????");
 
           res.send(200);
         }

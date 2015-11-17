@@ -7,7 +7,15 @@ angular.module('app')
     console.log("on scope", inputEmail);
     ForgotPasswordService.sendForgotPasswordEmail(inputEmail).then(function (inputEmail) {
         console.log("inputEmail", inputEmail);
-        // $state.go('login');
+
+        if (!inputEmail.data) {
+
+            alert("problem, please try again");
+        } else {
+            alert("Please check your email for pw reset instructions");
+            $state.go('login');
+
+        }
     })
   }
 
