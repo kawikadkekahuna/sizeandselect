@@ -1,7 +1,7 @@
 angular.module('app')
 
-.controller('ResetPasswordController', function ($scope, $routeParams, ResetPasswordService){
-    console.log("reset password controller", $routeParams.id);
+.controller('ResetPasswordController', function ($scope, $state, $urlRouterProvider, ResetPasswordService){
+    console.log("reset password controller");
 
     $scope.resetUserPassword = function(inputPassword) {
         ResetPasswordService.resetUserPassword(inputPassword).then(function (inputPassword) {
