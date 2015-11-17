@@ -34,7 +34,7 @@ router.put('/', function (req, res) {
   }).then(function (user) {
     if (!user) {
       console.log("no user found");
-      res.status({status : 404}).send(false);
+      res.status({status : 404}).send("No user with that email found in the system");
     } else {
     var pwResetInfo = {
       reset_password_token : crypto.randomBytes(25).toString('hex'),
@@ -53,7 +53,8 @@ router.put('/', function (req, res) {
       mailgun.messages().send(data, function (error, body) {
 
         if (error) {
-          res.status({status : 200}).send(false);
+          console.log("Error with sending our mailgun", error);
+          res.status({status : 400}).send("Error with sending our mailgun", error);
 
         } else {
           //update user account
@@ -64,12 +65,10 @@ router.put('/', function (req, res) {
               fields : ['reset_password_token', 'reset_password_expires']
           });
 
-
-
         //either show the forgot page that says check email
         //or show a alert/message that says check email
 
-          res.send(200);
+          res.sendStatus(200);
         }
       });
     }

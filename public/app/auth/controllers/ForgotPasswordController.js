@@ -8,7 +8,7 @@ angular.module('app')
     ForgotPasswordService.sendForgotPasswordEmail(inputEmail).then(function (inputEmail) {
         console.log("inputEmail", inputEmail);
 
-        if (!inputEmail.data) {
+        if (inputEmail.response !== 200) {
 
             alert("problem, please try again");
         } else {
