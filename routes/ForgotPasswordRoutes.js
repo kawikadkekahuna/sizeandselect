@@ -68,6 +68,8 @@ router.put('/', function (req, res) {
         //either show the forgot page that says check email
         //or show a alert/message that says check email
 
+        console.log("email sent to the user");
+
           res.sendStatus(200);
         }
       });

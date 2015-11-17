@@ -11,6 +11,7 @@ function generateHash(password) {
 
 
 router.get('/:token', function (req, res) {
+  console.log("token we are looking for", req.params.token);
   User.find({
     where : {
         reset_password_token: req.params.token,
@@ -19,6 +20,7 @@ router.get('/:token', function (req, res) {
         }
     }
   }).then(function (user) {
+    console.log("user in the system", user);
 
     if (!user) {
         console.log("Password reset token is invalid or has expired.");
