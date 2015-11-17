@@ -33,6 +33,7 @@ router.put('/', function (req, res) {
     where: {email : req.body.email}
   }).then(function (user) {
     if (!user) {
+      console.log("no user found");
       res.status({status : 404}).send(false);
     } else {
     var pwResetInfo = {
@@ -62,6 +63,8 @@ router.put('/', function (req, res) {
           }, {
               fields : ['reset_password_token', 'reset_password_expires']
           });
+
+
 
         //either show the forgot page that says check email
         //or show a alert/message that says check email
