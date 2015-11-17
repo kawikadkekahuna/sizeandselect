@@ -28,15 +28,17 @@ var mailgun = require('mailgun-js')({apiKey: mailgunApiKey, domain: domain});
 
 
 router.put('/', function (req, res) {
-  console.log("@@@@@@@@@@", req.body.email)
-  User.find({
+
+  User.findOne({
     where: {email : req.body.email}
   }).then(function (user) {
     if (!user) {
 
+      console.log("no user found");
+
       //need to have an alert be sent to user that email is not in system
 
-      res.status({status : 200}).send(false);
+      res.status({status : 404}).send(false);
     } else {
     var pwResetInfo = {
       reset_password_token : crypto.randomBytes(25).toString('hex'),
@@ -70,6 +72,7 @@ router.put('/', function (req, res) {
 
         //either show the forgot page that says check email
         //or show a alert/message that says check email
+        console.log("did this just work?????");
 
           res.send(200);
         }
