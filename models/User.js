@@ -26,7 +26,7 @@ module.exports = function (sequelize, DataTypes) {
     tableName: "users",
     classMethods: {
       associate : function (models) {
-        User.belongsTo(models.AccountType, {foreignKey: 'account_type_id'});
+        User.hasMany(models.Project, {foreign_key:'user_id', foreignKeyConstraint: true});
       }
     }
   });

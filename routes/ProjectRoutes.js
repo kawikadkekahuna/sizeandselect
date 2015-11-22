@@ -4,6 +4,13 @@ var express = require('express');
 var router = express.Router();
 var Project = require('../models').Project;
 
+router.get('/projects', function (req, res){
+  Project.findAll({}).then(function (projects){
+    console.log(projects); 
+    res.json(projects);
+  });
+});
+
 router.post('/create', function (req, res){
   try{
     Project.create({
