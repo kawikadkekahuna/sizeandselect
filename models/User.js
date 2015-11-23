@@ -26,7 +26,7 @@ module.exports = function (sequelize, DataTypes) {
     tableName: "users",
     classMethods: {
       associate : function (models) {
-        User.hasMany(models.Project, {foreign_key:'user_id', foreignKeyConstraint: true});
+        User.hasMany(models.Project,{foreign_key:'user_id', foreignKeyConstraint: true});
       }
     }
   });

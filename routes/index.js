@@ -8,9 +8,9 @@ var defaults = require('./DefaultRoutes'),
     project = require('./ProjectRoutes')
 
 
+router.use('/user', user);
 router.use('/defaults', defaults);
 router.use('/auth', auth);
-router.use('/user', user);
 router.use('/project', project);
 
 module.exports = router;

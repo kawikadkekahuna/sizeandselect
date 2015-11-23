@@ -25,7 +25,12 @@ module.exports = function (sequelize, DataTypes) {
        * }
        */
       associate: function(models) {
-        Project.belongsTo(models.User,{foreignKey:'user_id', foreignKeyConstraint: true});
+        Project.belongsTo(models.User,{
+          onDelete: 'CASCADE',
+          foreignKey:{
+            allowNull: false
+          }
+        });
       }
     }
   });

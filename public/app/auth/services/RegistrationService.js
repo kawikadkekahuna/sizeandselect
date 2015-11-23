@@ -5,8 +5,6 @@ angular.module('app')
 function RegistrationService ($http) {
 
   this.createUser = function (user) {
-    return $http.post(SERVER + '/api/registration/register', {
-      newUser: user
-    });
+    return $http.post(SERVER + '/api/registration/register',user);
   }
 }

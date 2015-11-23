@@ -1,12 +1,12 @@
 angular.module('app')
 
-.controller('DashboardController', function ($scope, $state, $stateParams, $rootScope, $sessionStorage, $location, ProjectService) {
+.controller('DashboardController', function ($scope, $state, $stateParams, $rootScope, $sessionStorage, $location, $localStorage, ProjectService) {
   $scope.header = {name: 'header', url: 'views/partials/navigation.html'};
   $scope.modal = {name: 'modal', url: 'views/modal/modal.html'};
 
   ProjectService.getProjects().then(function (projects) {
-    console.log('projects', projects);
     $scope.projects = projects.data;
+    console.log('$scope.projects', projects);
   });
 
   $scope.newProjectModal = function(){
@@ -16,8 +16,10 @@ angular.module('app')
   };
 
   $scope.createProject = function (projectData) {
+    projectData.user_id = $localStorage.userId;
+    console.log('projectData', projectData);
     ProjectService.create(projectData).then(function (res){
-      console.log('res', res);
+      console.log('project created');
     });
   };
 

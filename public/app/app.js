@@ -61,7 +61,7 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
   .state('registration', {
     url: '/register',
     templateUrl: 'views/auth/registration.html',
-    controller: 'RegistrationController'
+    controller: 'AuthorizationController'
   })
 
   .state('reference-library',{
@@ -90,10 +90,9 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
   $locationProvider.html5Mode({enabled: true, requireBase: false});
 
   function isAuthenticated($q, $state, $timeout, $http, $location, $rootScope, $localStorage) {
-    $http.defaults.headers.common['Bearer'] = $localStorage.token;
+    $http.defaults.headers.common['Authorization'] = $localStorage.token;
     var deferred = $q.defer();
     $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).success(function(user) {
-
       if (user.status === 200){
         deferred.resolve();
       }
