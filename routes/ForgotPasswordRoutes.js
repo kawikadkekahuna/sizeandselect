@@ -29,6 +29,8 @@ var mailgun = require('mailgun-js')({apiKey: mailgunApiKey, domain: domain});
 
 router.put('/', function (req, res) {
 
+  console.log("req.body.email", req.body.email)
+
   User.findOne({
     where: {email : req.body.email}
   }).then(function (user) {

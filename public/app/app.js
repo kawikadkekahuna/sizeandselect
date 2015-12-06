@@ -76,8 +76,10 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     controller: 'ForgotPasswordController'
   })
 
+  //reset-password/fjlkadsjfkahgsdkjfo
+
   .state('reset-password', {
-    url: '/reset-password/:token',
+    url: '/reset-password',
     templateUrl: 'views/auth/reset-password.html',
     controller: 'ResetPasswordController'
   })

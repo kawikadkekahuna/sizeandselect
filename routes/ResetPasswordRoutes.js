@@ -9,6 +9,11 @@ function generateHash(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(11));
 }
 
+router.get('/', function (req, res) {
+  console.log("@@@@@@@@@@@@@@@@@@@");
+  res.send("ok");
+});
+
 
 router.get('/:token', function (req, res) {
   console.log("token we are looking for", req.params.token);
