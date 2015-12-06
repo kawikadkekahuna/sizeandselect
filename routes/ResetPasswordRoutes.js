@@ -9,12 +9,6 @@ function generateHash(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(11));
 }
 
-router.get('/', function (req, res) {
-  console.log("@@@@@@@@@@@@@@@@@@@");
-  res.send("ok");
-});
-
-
 router.get('/:token', function (req, res) {
   console.log("token we are looking for", req.params.token);
   User.find({
@@ -40,9 +34,6 @@ router.get('/:token', function (req, res) {
 });
 
 router.put('/', function (req, res) {
-
-
-
   User.find({
     where : {
       reset_password_token : req.body.token

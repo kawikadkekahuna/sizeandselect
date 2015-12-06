@@ -8,6 +8,7 @@ function ResetPasswordService ($http) {
 
 
   this.resetUserPassword = function (inputPassword) {
+    console.log("in the service");
     return $http.put(SERVER + '/api/reset-password', {
         password: inputPassword
     });
