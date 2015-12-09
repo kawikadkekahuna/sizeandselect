@@ -9,26 +9,21 @@ function generateHash(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(11));
 }
 
-router.get('/:token', function (req, res) {
-  console.log("token we are looking for", req.params.token);
+router.get('/', function (req, res) {
+  console.log("token we are looking for", req.query.token);
   User.find({
     where : {
-        reset_password_token: req.params.token,
-        $and : {
-            reset_password_expires : { $gt: Date.now() }
-        }
+        reset_password_token: req.query.token,
+        reset_password_expires : { $gt: Date.now() }
     }
   }).then(function (user) {
     console.log("user in the system", user);
 
     if (!user) {
-        console.log("Password reset token is invalid or has expired.");
-        return res.redirect('/forgot-password');
+      res.send(404).message("Bad token");
+    } else {
+      res.send(200);
     }
-
-    // Send the token to the form as hidden input and validate on the PUT request
-
-    res.redirect('/reset-password');
 
   });
 });

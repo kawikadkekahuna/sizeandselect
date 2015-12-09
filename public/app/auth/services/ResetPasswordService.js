@@ -4,13 +4,15 @@ angular.module('app')
 
 function ResetPasswordService ($http) {
 
-    // return $http.get(SERVER + '/api/reset-password/:token');
+    this.checkIfTokenExists = function (token) {
+        console.log("in the reset pw service toekn checkIfTokenExists", token);
+        return $http.get(SERVER + '/api/reset-password?token=' + token);
+    }
 
 
-  this.resetUserPassword = function (inputPassword) {
-    console.log("in the service");
-    return $http.put(SERVER + '/api/reset-password', {
-        password: inputPassword
-    });
-  }
+    this.resetUserPassword = function (inputPassword) {
+        return $http.put(SERVER + '/api/reset-password', {
+            password: inputPassword
+        });
+    }
 }
