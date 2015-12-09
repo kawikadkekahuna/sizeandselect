@@ -22,7 +22,7 @@ router.get('/', function (req, res) {
     if (!user) {
       res.send(404).message("Bad token");
     } else {
-      res.send(200);
+      res.json(200);
     }
 
   });
