@@ -20,15 +20,16 @@ router.get('/', function (req, res) {
     console.log("user in the system", user);
 
     if (!user) {
-      res.send(404).message("Bad token");
+      res.sendStatus(404);
     } else {
-      res.send(200);
+      res.sendStatus(200);
     }
 
   });
 });
 
 router.put('/', function (req, res) {
+  console.log("req", req.body);
   User.find({
     where : {
       reset_password_token : req.body.token
@@ -36,7 +37,7 @@ router.put('/', function (req, res) {
     }).then(function (user) {
     if (!user) {
       //ERROR with finding user
-      res.redirect('/forgot-password');
+      res.sendStatus(404);
 
     } else {
       user.update({
@@ -45,9 +46,8 @@ router.put('/', function (req, res) {
           fields : ["password"]
       });
 
-      res.redirect('/dashboard');
+      res.send(204);
 
-      // NEED TO ADD IN USER ID TO REQUEST
     }
   });
 });
