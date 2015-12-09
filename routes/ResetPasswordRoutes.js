@@ -17,8 +17,6 @@ router.get('/', function (req, res) {
         reset_password_expires : { $gt: Date.now() }
     }
   }).then(function (user) {
-    console.log("user in the system", user);
-
     if (!user) {
       res.sendStatus(404);
     } else {
@@ -29,7 +27,6 @@ router.get('/', function (req, res) {
 });
 
 router.put('/', function (req, res) {
-  console.log("req", req.body);
   User.find({
     where : {
       reset_password_token : req.body.token
