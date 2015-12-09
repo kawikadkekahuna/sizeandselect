@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('AuthorizationController', function($scope, $state, $localStorage, $state, AuthorizationService) {
+.controller('AuthorizationController', function ($scope, $state, $localStorage, $state, AuthorizationService) {
   $scope.header = {name: 'header', url :'views/partials/navigation.html'};
 
   $scope.login = function(user) {
@@ -9,10 +9,10 @@ angular.module('app')
         return;
       };
       $localStorage.token = data.sizeselect_access_token;
-      $state.go('dashboard');  
+      $state.go('dashboard');
     })
     .error(function (data) {
-      $state.go('login'); 
+      $state.go('login');
     });
   };
 
