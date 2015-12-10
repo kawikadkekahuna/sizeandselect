@@ -10,13 +10,13 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
   $stateProvider
   .state('about-us', {
     url: '/about-us',
-    templateUrl: 'views/resources/about-us.html',
+    templateUrl: '/views/resources/about-us.html',
     controller: 'AboutUsController'
   })
 
   .state('contact-us', {
     url: '/contact-us',
-    templateUrl: 'views/resources/contact-us.html',
+    templateUrl: '/views/resources/contact-us.html',
     controller: 'ContactUsController'
   })
 
@@ -25,65 +25,65 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     resolve:{
       authenticate: isAuthenticated
     },
-    templateUrl: 'views/user/dashboard.html',
+    templateUrl: '/views/user/dashboard.html',
     controller: 'DashboardController'
   })
 
   .state('login', {
     url: '/login',
-    templateUrl: 'views/auth/login.html',
+    templateUrl: '/views/auth/login.html',
     controller: 'AuthorizationController'
   })
 
   .state('messages', {
     url: '/messages',
-    templateUrl: 'views/partials/messages.html',
+    templateUrl: '/views/partials/messages.html',
     controller: 'MessagesController'
   })
 
   .state('profile', {
     url: '/profile',
-    templateUrl: 'views/partials/profile.html',
+    templateUrl: '/views/partials/profile.html',
     controller: 'ProfileController'
   })
 
   .state('forbidden', {
     url: '/forbidden',
-    templateUrl: 'views/resources/forbidden.html'
+    templateUrl: '/views/resources/forbidden.html'
   })
 
   .state('project', {
     url: '/project',
-    templateUrl: 'views/project/project.html',
+    templateUrl: '/views/project/project.html',
     controller: 'ProjectController'
   })
 
   .state('registration', {
     url: '/register',
-    templateUrl: 'views/auth/registration.html',
+    templateUrl: '/views/auth/registration.html',
     controller: 'RegistrationController'
   })
 
   .state('reference-library',{
     url:'/reference-library',
-    templateUrl: 'views/resources/reference-library.html',
+    templateUrl: '/views/resources/reference-library.html',
     controller: 'ReferenceLibraryController'
   })
 
   .state('forgot-password', {
     url: '/forgot-password',
-    templateUrl: 'views/auth/forgot-password.html',
+    templateUrl: '/views/auth/forgot-password.html',
     controller: 'ForgotPasswordController'
   })
 
   .state('reset-password', {
     url: '/reset-password/:token',
-    templateUrl: '../views/auth/reset-password.html',
+    templateUrl: '/views/auth/reset-password.html',
     controller: 'ResetPasswordController'
   })
 
   .state('modal', {
-    templateUrl: 'views/modal/modal.html'
+    templateUrl: '/views/modal/modal.html'
   });
 
   $urlRouterProvider.otherwise('/login');
