@@ -21,7 +21,7 @@ module.exports = function (sequelize, DataTypes) {
     built_up_back_pressure: DataTypes.DOUBLE,
     variable_super_imposed_pressure: DataTypes.DOUBLE,
     constant_super_imposed_pressure: DataTypes.DOUBLE,
-    sizing_basis: DataTypes.DOUBLE,
+
     inlet_loss_percentage: DataTypes.DOUBLE,
     inlet_loss: DataTypes.DOUBLE,
     rupture_disc: DataTypes.DOUBLE,
@@ -43,7 +43,8 @@ module.exports = function (sequelize, DataTypes) {
        * }
        */
       associate: function(models) {
-        TagCalculation.belongsTo(models.LiquidMedia, {foreignKey: 'liquid_media_id'});
+        TagCalculation.belongsTo(models.LiquidMedia);
+        TagCalculation.belongsTo(models.SizingBasis);
       }
     }
   });

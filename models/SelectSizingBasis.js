@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
 
-  var SelectSizingBasis = sequelize.define("SelectSizingBasis", {
+  var SizingBasis = sequelize.define("SizingBasis", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -8,9 +8,8 @@ module.exports = function (sequelize, DataTypes) {
     },
     name : DataTypes.STRING
   }, {
-    underscored: true,
-    tableName: "select_sizing_basis"
+    tableName: "sizing_basis"
   });
 
-  return SelectSizingBasis;
+  return SizingBasis;
 };
