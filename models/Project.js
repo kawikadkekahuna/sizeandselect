@@ -10,7 +10,6 @@ module.exports = function (sequelize, DataTypes) {
     company_name: DataTypes.STRING,
     location: DataTypes.STRING
   }, {
-    underscored: true,
     tableName: "projects",
     classMethods: {
       /**
