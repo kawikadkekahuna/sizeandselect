@@ -48,7 +48,7 @@ INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'P', '6.380');
 INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'Q', '11.05');
 INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'R', '16.00');
 
--- name UNSURE
+-- name UNSURE/Need more descriptive title "tag_actions"
 INSERT INTO Action VALUES (DEFAULT, 'Technical Support');
 INSERT INTO Action VALUES (DEFAULT, 'Quote');
 INSERT INTO Action VALUES (DEFAULT, 'Status Update Needed');
