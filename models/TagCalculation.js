@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     atm: DataTypes.DOUBLE,
     built_up_back_pressure: DataTypes.DOUBLE,
-    calculated_area: DataTypes.DOUBLE
+    calculated_area: DataTypes.DOUBLE,
     constant_super_imposed_pressure: DataTypes.DOUBLE,
     design_max_temperature: DataTypes.DOUBLE,
     design_min_temperature: DataTypes.DOUBLE,
@@ -26,7 +26,7 @@ module.exports = function (sequelize, DataTypes) {
     specific_gravity: DataTypes.DOUBLE,
     text: DataTypes.STRING,
     variable_super_imposed_pressure: DataTypes.DOUBLE,
-    viscosity: DataTypes.DOUBLE,
+    viscosity: DataTypes.DOUBLE
   }, {
     tableName: "tag_calculations",
     classMethods: {
