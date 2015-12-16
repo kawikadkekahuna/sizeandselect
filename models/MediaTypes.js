@@ -1,16 +1,17 @@
 module.exports = function (sequelize, DataTypes) {
 
-  var SizingBasis = sequelize.define("SizingBasis", {
+  var MediaType = sequelize.define("MediaType", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
     name: DataTypes.STRING,
-    overpressure: DataTypes.DOUBLE
+    k_factor: DataTypes.DOUBLE
   }, {
-    tableName: "sizing_basis"
+    underscored: true,
+    tableName: "media_types"
   });
 
-  return SizingBasis;
+  return MediaType;
 };

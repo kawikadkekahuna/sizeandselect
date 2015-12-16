@@ -41,7 +41,8 @@ module.exports = function (sequelize, DataTypes) {
        * }
        */
       associate: function(models) {
-        TagCalculation.belongsTo(models.LiquidMedia);
+        TagCalculation.belongsTo(models.MediaType);
+        TagCalculation.belongsTo(models.Media);
         TagCalculation.belongsTo(models.SizingBasis);
       }
     }

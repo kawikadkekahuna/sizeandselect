@@ -1,17 +1,16 @@
 module.exports = function (sequelize, DataTypes) {
 
-  var OrificeSize = sequelize.define("OrificeSize", {
+  var TagAction = sequelize.define("TagAction", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    orifice_type: DataTypes.STRING,
-    area: DataTypes.STRING
+    name : DataTypes.STRING
   }, {
     underscored: true,
-    tableName: "orifice_sizes",
+    tableName: "tag_actions"
   });
 
-  return OrificeSize;
+  return TagAction;
 };

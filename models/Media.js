@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
 
-  var LiquidMedia = sequelize.define("LiquidMedia", {
+  var Media = sequelize.define("Media", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -11,8 +11,8 @@ module.exports = function (sequelize, DataTypes) {
     viscosity : DataTypes.INTEGER
   }, {
     underscored: true,
-    tableName: "liquid_medias"
+    tableName: "medias"
   });
 
-  return LiquidMedia;
+  return Media;
 };

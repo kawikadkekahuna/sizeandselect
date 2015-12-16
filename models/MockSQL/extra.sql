@@ -1,64 +1,7 @@
--- name,% overpressure -- bill added overpressure
-INSERT INTO select_sizing_basis VALUES (DEFAULT, 'Blocked Discharge', '10%');
-INSERT INTO select_sizing_basis VALUES (DEFAULT, 'Control Valve Failure', '10%');
-INSERT INTO select_sizing_basis VALUES (DEFAULT, 'Fire Case', '21%');
-INSERT INTO select_sizing_basis VALUES (DEFAULT, 'Runaway Reaction', '10%');
-INSERT INTO select_sizing_basis VALUES (DEFAULT, 'Thermal Relief', '10%');
-INSERT INTO select_sizing_basis VALUES (DEFAULT, 'Tube Rupture', '10%');
-INSERT INTO select_sizing_basis VALUES (DEFAULT, 'Valve Capacity', '10%');
-
--- INSERT INTO orifice_sizes VALUES (DEFAULT, 'Media Type', 'K Factor', 'Orifice', 'Area');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'D', '0.110');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'E', '0.196');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'F', '0.307');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'G', '0.503');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'H', '0.785');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'J', '1.287');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'K', '1.838');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'L', '2.853');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'M', '3.600');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'N', '4.340');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'P', '6.380');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'Q', '11.05');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Gas', '0.975', 'R', '16.00');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'D', '0.110');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'E', '0.196');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'F', '0.307');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'G', '0.503');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'H', '0.785');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'J', '1.287');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'K', '1.838');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'L', '2.853');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'M', '3.600');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'N', '4.340');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'P', '6.380');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'Q', '11.05');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Liquid', '0.650', 'R', '16.00');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'D', '0.110');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'E', '0.196');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'F', '0.307');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'G', '0.503');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'H', '0.785');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'J', '1.287');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'K', '1.838');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'L', '2.853');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'M', '3.600');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'N', '4.340');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'P', '6.380');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'Q', '11.05');
-INSERT INTO orifice_sizes VALUES (DEFAULT, 'Steam', '0.975', 'R', '16.00');
-
--- name UNSURE/Need more descriptive title "tag_actions"
-INSERT INTO Action VALUES (DEFAULT, 'Technical Support');
-INSERT INTO Action VALUES (DEFAULT, 'Quote');
-INSERT INTO Action VALUES (DEFAULT, 'Status Update Needed');
-INSERT INTO Action VALUES (DEFAULT, 'Tracking Information');
-INSERT INTO Action VALUES (DEFAULT, 'Test and Repair');
-INSERT INTO Action VALUES (DEFAULT, 'Message');
 
 -- additional media types  - consider creating a new table for medai type categories (liquid, vapor)
--- name, Molecular Weight, K (Cp/Cv), Compressibility
-INSERT INTO vapor_medias VALUES (DEFAULT, 'Acetone', '58.080', '1.120', '1.000');
+-- name, Molecular Weight, K (Cp/Cv), Compressibility,
+INSERT INTO vapor_medias VALUES (DEFAULT, 'Acetone', '58.080', '1.120', '1.000',);
 INSERT INTO vapor_medias VALUES (DEFAULT, 'Acetylene', '26.040', '1.260', '1.000');
 INSERT INTO vapor_medias VALUES (DEFAULT, 'Air', '28.970', '1.400', '1.000');
 INSERT INTO vapor_medias VALUES (DEFAULT, 'Ammonia', '17.030', '1.310', '1.000');
