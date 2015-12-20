@@ -116,12 +116,9 @@ body {
     width: 75%;
     height: 95%;
     background-color: purple; }
-    .dashboard .middle-column .project {
-      border: 2px solid orange;
-      margin-top: 20px; }
-      .dashboard .middle-column .project .data {
-        display: inline-block;
-        width: 32%; }
+    .dashboard .middle-column .project-wrapper {
+      width: 100%;
+      height: 100%; }
   .dashboard .right-column {
     float: right;
     display: inline-block;

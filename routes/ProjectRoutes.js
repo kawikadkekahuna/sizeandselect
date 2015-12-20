@@ -5,19 +5,6 @@ var router = express.Router();
 var Project = require('../models').Project;
 var jwt = require('jsonwebtoken');
 
-//gets by id
-router.get('/project', verify, function (req,res){
-  var projectId = req.query.projectId;
-  console.log('projectId', projectId);
-  Project.findAll({where:{
-    id: projectId
-  }}).then(function (project){
-    console.log('project', project);
-    res.json(project)
-  });
-});
-
-//gets all project
 router.get('/projects', verify, function (req,res){
   var userId = req.query.user_id;
   Project.findAll({where:{

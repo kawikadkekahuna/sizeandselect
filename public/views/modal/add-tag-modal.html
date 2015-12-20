@@ -1,0 +1,33 @@
+<div ng-controller="ProjectController" class="modal">
+  <div class="close" ng-click="close()">x</div>
+  <form>
+    <div>
+      <input ng-model="Tag.quantity"type="text" placeholder="Quantity">
+    </div>
+    <div>
+      <input ng-model="Tag.name"type="text" placeholder="Tag Name">
+    </div>
+    <div>
+      <input ng-model="Tag.pid"type="text" placeholder="PID">
+    </div>
+    <div>
+      <input ng-model="Tag.service"type="text" placeholder="Service">
+    </div>
+    <div>
+      <input ng-model="Tag.line_number"type="text" placeholder="Line Number">
+    </div>
+    <div>
+      <input ng-model="Tag.model_number"type="text" placeholder="Model Number">
+    </div>
+    <div>
+      <input ng-model="Tag.need_by_date"type="text" placeholder="Due Date">
+    </div>
+    <div>
+      <input ng-model="Tag.ship_date"type="text" placeholder="Ship Date">
+    </div>
+    <div>
+      <input ng-model="Tag.tracking_number"type="text" placeholder="Tracking Number">
+    </div>
+    <button ng-click="addTag(Tag)">Create Tag</button>
+  </form>
+</div>
