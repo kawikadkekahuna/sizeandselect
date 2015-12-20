@@ -14,6 +14,15 @@ router.get('/projects', verify, function (req,res){
   });
 });
 
+router.get('/id', verify, function (req,res){
+  var projectId = req.query.projectId;
+  Project.findOne({where:{
+    id: projectId
+  }}).then(function (project){
+    res.json(project);
+  });
+});
+
 router.post('/create', verify, function (req, res){
   var load = req.body;
   for(var key in req.body){

@@ -26,7 +26,6 @@ function AuthorizationService ($http, $localStorage, $state) {
   this.isAuthenticated = function (){
     if($localStorage.token){
       $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).then(function (res){
-        console.log('res', res);
         if(res.data.status === 200){
           return true;
         };

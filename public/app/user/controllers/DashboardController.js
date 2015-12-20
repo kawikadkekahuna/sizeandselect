@@ -12,7 +12,7 @@ angular.module('app')
   $scope.newProjectModal = function(){
     //must call to reinstantiate ModalController
     $rootScope.$broadcast('resetModal');
-    $sessionStorage.SizeSelect.CURRENT_MODAL = 'New Project';
+    $sessionStorage.SizeSelect.CURRENT_MODAL = 'addProject';
   };
 
   $scope.createProject = function (projectData) {
@@ -22,5 +22,9 @@ angular.module('app')
       console.log('project created');
     });
   };
+
+  $scope.openProject = function (id){
+    $state.go('project',{projectId: id});
+  }
 
 });

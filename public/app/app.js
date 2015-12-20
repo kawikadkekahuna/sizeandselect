@@ -53,8 +53,8 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
   })
 
   .state('project', {
-    url: '/project',
-    templateUrl: 'views/project/project.html',
+    url: '/project/:projectId',
+    templateUrl: 'views/projects/project.html',
     controller: 'ProjectController'
   })
 
@@ -80,6 +80,12 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     url: '/reset-password',
     templateUrl: 'views/auth/reset-password.html'
     // controller: 'ForgotPasswordController'
+  })
+
+  .state('tag', {
+    url: '/tag',
+    templateUrl: 'views/tag/tag.html',
+    controller: 'TagController'
   })
 
   .state('modal', {

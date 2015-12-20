@@ -10,11 +10,13 @@ angular.module('app')
 
   _.each($scope.modals, function (template) {
     if (template.name === $scope.CURRENT_MODAL){
-      console.log('found template'); 
+      console.log('found template');
+      console.log('template' ,template); 
       $scope.modal = template;
       return;
+    }else{
+      console.log('in here now');
     }
-    $scope.modal = null;
   });
 
 
@@ -27,5 +29,6 @@ angular.module('app')
     $state.reload();
   });
 
+  console.log('$scope.CURRENT_MODAL', $scope.CURRENT_MODAL);
 
 });
