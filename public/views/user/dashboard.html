@@ -12,9 +12,11 @@
       </ul>
     </div>
   </div>
-  <div class="middle-column">
-    <div>
-      <h2> hlelo :w {{projects}}</h2>
+  <div class="middle-column project-wrapper">
+    <div class="project" ng-repeat="project in projects" ng-click="enterTag(project.id)">
+      <div class="data">Project Name : {{project.project_name}}</div>
+      <div class="data">Company Name : {{project.company_name}}</div>
+      <div class="data">Location : {{project.location}}</div>
     </div>
   </div>
   <div class="right-column">

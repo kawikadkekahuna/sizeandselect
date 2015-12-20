@@ -8,6 +8,10 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
 })
 .config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
   $stateProvider
+  .state('app', {
+      abstract: true,
+      templateUrl: "tpl.menu.html",
+  })
   .state('about-us', {
     url: '/about-us',
     templateUrl: 'views/resources/about-us.html',
@@ -53,9 +57,17 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
   })
 
   .state('project', {
-    url: '/project',
-    templateUrl: 'views/project/project.html',
+    url: '/project/{projectId}',
+    templateUrl: 'views/projects/project.html',
     controller: 'ProjectController'
+  })
+  
+  .state('project.tag', {
+    url: '/tag',
+    templateUrl: 'views/tag/tag.html',
+    resolve:{
+      authenticate: isAuthenticated
+    }
   })
 
   .state('registration', {

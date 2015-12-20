@@ -1,1 +1,32 @@
-<div>{{testMessage}}</div>
+<div ng-include="header.url"></div>
+<div ng-include="modal.url"></div>
+
+<div class="dashboard">
+  <div class="left-column">
+    <div class="account-picture">
+      
+    </div>
+    <div class="dropdown-links">
+      <ul>
+        <li ng-click="newProjectModal()">New Project</li>
+      </ul>
+    </div>
+  </div>
+  <div class="middle-column project-wrapper">
+    <h3>
+      You are now viewing project id  {{projectId}}
+    </h3>
+    <div class="project">
+      <div class="data">Project Name : {{project.project_name}}</div>
+      <div class="data">Company Name : {{project.company_name}}</div>
+      <div class="data">Location : {{project.location}}</div>
+      <br>
+
+      <div ng-click="addTag()">Add Tag</div>
+  
+    </div>
+  </div>
+  <div class="right-column">
+    
+  </div>
+</div>
