@@ -8,8 +8,8 @@ function TagService ($http) {
     return $http.post(SERVER + '/api/tag/create', {tagData: tagData});
   }
 
-  this.getTag = function (id){
-    return $http.get(SERVER + '/api/tag/');
+  this.getTags = function (projectId){
+    return $http.get(SERVER + '/api/tag/tags',{ params:{projectId: projectId}});
   }
 
 

@@ -21,10 +21,22 @@
       <div class="data">Company Name : {{project.company_name}}</div>
       <div class="data">Location : {{project.location}}</div>
       <br>
-
-      <div ng-click="addTag()">Add Tag</div>
-  
+      <div ng-repeat="tag in tags">
+        <tt>{{tags.name}}</tt>
+        <tt>{{tags.quantiy}}</tt>
+        <tt>{{tags.pid}}</tt>
+        <tt>{{tags.service}}</tt>
+        <tt>{{tags.line_number}}</tt>
+        <tt>{{tags.model_number}}</tt>
+        <tt>{{tags.need_by_date}}</tt>
+        <tt>{{tags.ship_date}}</tt>
+        <tt>{{tags.tracking_number}}</tt>
+        <tt>{{tags.projectId}}</tt>
+      </div>
+      <br>
+      <div ng-click="newTagModal()">Add Tag</div>
     </div>
+
   </div>
   <div class="right-column">
     

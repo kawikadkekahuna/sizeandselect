@@ -54,6 +54,9 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
 
   .state('project', {
     url: '/project/:projectId',
+    resolve:{
+      authenticate: isAuthenticated
+    },    
     templateUrl: 'views/projects/project.html',
     controller: 'ProjectController'
   })
