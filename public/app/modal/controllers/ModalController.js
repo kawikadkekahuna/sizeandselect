@@ -10,7 +10,6 @@ angular.module('app')
 
   _.each($scope.modals, function (template) {
     if (template.name === $scope.CURRENT_MODAL){
-      console.log('template' ,template); 
       $scope.modal = template;
       return;
     }

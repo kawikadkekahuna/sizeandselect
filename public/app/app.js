@@ -61,6 +61,15 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     controller: 'ProjectController'
   })
 
+  .state('project.tag', {
+    url: '/tag/:tagId',
+    resolve:{
+      authenticate: isAuthenticated
+    },
+    templateUrl: '/views/tag/tag.html',
+    controller: 'TagController'
+  })
+
   .state('registration', {
     url: '/register',
     templateUrl: '/views/auth/registration.html',
@@ -83,12 +92,6 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     url: '/reset-password/:token',
     templateUrl: '/views/auth/reset-password.html',
     controller: 'ResetPasswordController'
-  })
-
-  .state('tag', {
-    url: '/tag',
-    templateUrl: 'views/tag/tag.html',
-    controller: 'TagController'
   })
 
   .state('modal', {

@@ -12,5 +12,8 @@ function TagService ($http) {
     return $http.get(SERVER + '/api/tag/tags',{ params:{projectId: projectId}});
   }
 
+  this.getTagById = function (tagId){
+    return $http.get(SERVER + '/api/tag/tags',{ params:{tagId: tagId}});
+  }
 
 }
