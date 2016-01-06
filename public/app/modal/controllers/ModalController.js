@@ -4,7 +4,7 @@ angular.module('app')
   $scope.CURRENT_MODAL = $sessionStorage.SizeSelect.CURRENT_MODAL;
   //Add modals here
   //$sessionStorage.SizeSelect.CURRENT_MODAL.name must match template $scope.modals.name
-  $scope.modals = [{name:'addProject', url:'views/modal/add-project-modal.html'},
+  $scope.modals = [{name:'addProject', url:'/views/modal/add-project-modal.html'},
                     {name:'addTag', url:'/views/modal/add-tag-modal.html'}
                   ];
 

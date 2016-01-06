@@ -1,13 +1,13 @@
 angular.module('app')
 
 .controller('ProjectController', function ($scope, $rootScope, $sessionStorage, $stateParams, ProjectService, TagService) {
-  $scope.header = {name: 'header', url: 'views/partials/navigation.html'};
-  $scope.modal = {name: 'modal', url: 'views/modal/modal.html'};
+  $scope.header = {name: 'header', url: '/views/partials/navigation.html'};
+  $scope.modal = {name: 'modal', url: '/views/modal/modal.html'};
   $scope.projectId = $stateParams.projectId;
 
   TagService.getTags($scope.projectId).then(function (tags){
-    $scope.tags = tags.data[0];
-    console.log($scope.tags);
+    $scope.tags = tags.data;
+    console.log('$scope.tags', $scope.tags);
   });
 
   ProjectService.getProjectById($scope.projectId).then(function (project){
@@ -25,6 +25,10 @@ angular.module('app')
     console.log('tagData', tagData);
     tagData.projectId = $scope.projectId;
     TagService.addTag({tagData: tagData});    
+  };
+
+  $scope.enterTag = function (tagId){
+    console.log('enter tag id', tagId);
   };  
 
 });
