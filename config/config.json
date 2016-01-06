@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "judah",
+    "username": "postgres",
     "password": null,
     "database": "sizeselect_development",
     "host": "127.0.0.1",
