@@ -13,12 +13,9 @@
     </div>
   </div>
   <div class="middle-column project-wrapper">
-    <div class="project" ng-repeat="project in projects" ng-click="enterTag(project.id)">
-      <div class="data">Project Name : {{project.project_name}}</div>
-      <div class="data">Company Name : {{project.company_name}}</div>
-      <div class="data">Location : {{project.location}}</div>
-      <h1 ng-click="openProject(project.id)">Open Project</h1>
-    </div>
+    <h3>
+      You are now viewing modal {{project.id}}
+    </h3>
   </div>
   <div class="right-column">
     

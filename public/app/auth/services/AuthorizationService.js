@@ -10,6 +10,7 @@ function AuthorizationService ($http, $localStorage, $state) {
   this.logout = function () {
     return $http.get(SERVER + '/api/auth/logout').then(function (res){
       delete($localStorage.token);
+      delete($localStorage.userId);
       $state.go('login');
     });
   };

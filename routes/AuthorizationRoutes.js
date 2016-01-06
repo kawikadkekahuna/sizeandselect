@@ -7,7 +7,8 @@ var User = require('../models').User;
 var bcrypt = require('bcrypt');
 
 router.get('/isAuthenticated', function (req, res){
-  var token = req.headers.bearer;
+  var token = req.headers.authorization;
+
   jwt.verify(token, 'sushisecret', function (err, decoded){
     if(decoded){
       res.status(200).send({
@@ -83,14 +84,18 @@ router.post('/register' , function (req,res){
         message: 'The username or email currently exists in the database'
       });
     } else {
-      createUser(req);
-      var payload =  {
-        iss: 'sizeselect.com',
-        iat: Date.now()
-      };
-      var token = jwt.sign({payload: payload}, 'sushisecret');
-      req.body.sizeselect_access_token = token;
-      res.status(200).json(req.body);
+      createUser(req).then(function (user){
+        var newUser = {};
+        var payload =  {
+          iss: 'sizeselect.com',
+          iat: Date.now()
+        };
+        var token = jwt.sign({payload: payload}, 'sushisecret');
+        req.body.sizeselect_access_token = token;
+        newUser.token = token;
+        newUser.id = user.id;
+        res.status(200).json(newUser);
+      })
     };
   });
 });
@@ -98,8 +103,7 @@ router.post('/register' , function (req,res){
 
 function createUser(req){
   var password = req.body.password;
-
-  User.create({
+  return User.create({
     username: req.body.username,
     // first_name: req.body.first_name,
     // last_name: req.body.last_name,
@@ -113,7 +117,7 @@ function createUser(req){
     // phone_number: req.body.phone_number,
     // user_picture: req.body.user_picture,
     // account_hidden: DEFAULT_HIDDEN
-  })
+  });
 };
 
 function generateHash(password){

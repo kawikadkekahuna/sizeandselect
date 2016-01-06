@@ -7,13 +7,15 @@ var express = require('express'),
     user = require('./UserRoutes'),
     project = require('./ProjectRoutes'),
     forgotPassword = require('./ForgotPasswordRoutes'),
-    resetPassword = require('./ResetPasswordRoutes');
+    resetPassword = require('./ResetPasswordRoutes'),
+    tag = require('./TagRoutes');
 
+router.use('/user', user);
 router.use('/defaults', defaults);
 router.use('/auth', auth);
-router.use('/user', user);
 router.use('/project', project);
 router.use('/forgot-password', forgotPassword);
 router.use('/reset-password', resetPassword);
+router.use('/tag', tag);
 
 module.exports = router;

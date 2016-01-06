@@ -24,8 +24,12 @@ module.exports = function (sequelize, DataTypes) {
        * }
        */
       associate: function(models) {
-        Project.belongsTo(models.ProjectStatus, {foreignKey: 'project_status_id'});
-        Project.belongsTo(models.User, {foreignKey: 'user_id'});
+        Project.belongsTo(models.User,{
+          onDelete: 'CASCADE',
+          foreignKey:{
+            allowNull: false
+          }
+        });
       }
     }
   });
