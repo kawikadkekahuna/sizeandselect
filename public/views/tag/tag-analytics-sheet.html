@@ -1,0 +1,150 @@
+<div ng-include="header.url"></div>
+<div ng-include="modal.url"></div>
+
+<div ng-init="init()" class="dashboard">
+  <div class="left-column">
+    <div class="account-picture">
+      
+    </div>
+    <div class="dropdown-links">
+      <ul>
+        <li ng-click="newProjectModal()">New Project</li>
+      </ul>
+    </div>
+  </div>
+  <div class="middle-column project-wrapper">
+    <form ng-submit="createTagAnalytics(tagAnalaytics)" name="tagAnalyticsSheet">
+    <ul>
+      <li>
+        <input class="tag-dropdown">Liquid Media
+        <select name="accountType" ng-model="tagAnalaytics.liquidMedia">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Specific Gravity
+        <select name="accountType" ng-model="tagAnalaytics.specificGravity">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Viscosity
+        <select name="accountType" ng-model="tagAnalaytics.viscosity">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Relief Temp
+        <select name="accountType" ng-model="tagAnalaytics.reliefTemperature">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Operating Temp
+        <select name="accountType" ng-model="tagAnalaytics.operatingTemperature">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Design Min Temp
+        <select name="accountType" ng-model="tagAnalaytics.designMinTemperature">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Design Max Temp
+        <select name="accountType" ng-model="tagAnalaytics.designMaxTemperature">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Required Flow Capacity
+        <select name="accountType" ng-model="tagAnalaytics.requiredFlowCapacity">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown" value="{{TAG_DEFAULT_VALUES.ATM_PRESSURE}}">ATM
+        <select name="accountType" ng-model="tagAnalaytics.atmPressure">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">MAWP
+        <select name="accountType" ng-model="tagAnalaytics.mawp">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Operating Pressure
+        <select name="accountType" ng-model="tagAnalaytics.operatingPressure">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+        <input class="tag-dropdown">Set Pressure
+        <select name="accountType" ng-model="tagAnalaytics.setPressure">
+          <option value="">--Units--</option>
+        </select>
+        <li>
+        <input class="tag-dropdown">Back Pressure Built Up
+        <select name="accountType" ng-model="tagAnalaytics.backPressureBuiltUp">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Var Superimposed
+        <select name="accountType" ng-model="tagAnalaytics.varSuperimposed">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Constant Superimposed
+        <select name="accountType" ng-model="tagAnalaytics.constantSuperimposed">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Overpressure
+        <select name="accountType" ng-model="tagAnalaytics.overpressure">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Inlet Loss %
+        <select name="accountType" ng-model="tagAnalaytics.inletLossPercent">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Inlet Loss
+        <select name="accountType" ng-model="tagAnalaytics.inletLoss">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Rupture Disc
+        <select name="accountType" ng-model="tagAnalaytics.ruptureDisc">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown" readonly value="ORIFICE_GENERATED_VALUE">Orifice Required
+        <select name="accountType" ng-model="tagAnalaytics.orificeRequired">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <li>
+        <input class="tag-dropdown">Toggle Sizing
+        <select name="accountType" ng-model="tagAnalaytics.toggleSizing">
+          <option value="">--Units--</option>
+        </select>
+      </li>
+      <button ng-click="goToSelectionSheet()" type="submit">Submit</button>
+     </ul> 
+   </form>
+  </div>
+  <div class="right-column">
+  </div>
+</div>
+
+

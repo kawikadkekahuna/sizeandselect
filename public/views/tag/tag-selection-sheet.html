@@ -1,0 +1,65 @@
+<div ng-include="header.url"></div>
+<div ng-include="modal.url"></div>
+
+<div ng-init="init()" class="dashboard">
+  <div class="left-column">
+    <div class="account-picture">
+      
+    </div>
+    <div class="dropdown-links">
+      <ul>
+        <li ng-click="newProjectModal()">New Project</li>
+      </ul>
+    </div>
+  </div>
+  <div class="middle-column project-wrapper">
+    <form ng-submit="createTagAnalytics(tagAnalaytics)" name="tagSelectionSheet">
+    <ul>
+      <li>
+       <select name="accountType" required ng-model="newUser.account_type" ng-options="accountType.name for accountType in accountTypes">
+          <option value="">--User Type--</option>
+        </select>
+      </li>
+      <li>
+       <select name="accountType" required ng-model="newUser.account_type" ng-options="accountType.name for accountType in accountTypes">
+          <option value="">--User Type--</option>
+        </select>
+      </li>
+      <li>
+       <select name="accountType" required ng-model="newUser.account_type" ng-options="accountType.name for accountType in accountTypes">
+          <option value="">--User Type--</option>
+        </select>
+      </li>
+      <li>
+       <select name="accountType" required ng-model="newUser.account_type" ng-options="accountType.name for accountType in accountTypes">
+          <option value="">--User Type--</option>
+        </select>
+      </li>
+      <li>
+       <select name="accountType" required ng-model="newUser.account_type" ng-options="accountType.name for accountType in accountTypes">
+          <option value="">--User Type--</option>
+        </select>
+      </li>
+      <li>
+       <select name="accountType" required ng-model="newUser.account_type" ng-options="accountType.name for accountType in accountTypes">
+          <option value="">--User Type--</option>
+        </select>
+      </li>
+      <li>
+       <select name="accountType" required ng-model="newUser.account_type" ng-options="accountType.name for accountType in accountTypes">
+          <option value="">--User Type--</option>
+        </select>
+      </li>
+      <li>
+       <select name="accountType" required ng-model="newUser.account_type" ng-options="accountType.name for accountType in accountTypes">
+          <option value="">--User Type--</option>
+        </select>
+      </li>
+    </ul> 
+   </form>
+  </div>
+  <div class="right-column">
+  </div>
+</div>
+
+

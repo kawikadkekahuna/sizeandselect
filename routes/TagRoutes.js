@@ -39,7 +39,7 @@ router.get('/tags', function (req,res){
 router.get('/id', function (req,res){
   var tagId = req.query.tagId;
   Tag.findOne({where:{
-    project_id: projectId
+    project_id: tagId
   }}).then(function (project){
     res.json(project);
   });

@@ -66,7 +66,7 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
     resolve:{
       authenticate: isAuthenticated
     },
-    templateUrl: '/views/tag/tag.html',
+    templateUrl: '/views/tag/tag-analytics-sheet.html',
     controller: 'TagController'
   })
 
