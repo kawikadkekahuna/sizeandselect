@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('TagController', function ($scope, $stateParams, $state, TagService) {
+.controller('TagController', function ($scope, $stateParams, $state, TagService, UnitService) {
   $scope.init = function (){
     var tagId = $stateParams.tagId;
     TagService.getTagById(tagId).then(function (tag){
@@ -16,10 +16,9 @@ angular.module('app')
      *  Not enough data to continue development.
      * @return {???}
      */
-    $scope.createTagAnalytics = TagService.createTagAnalytics();
   };
 
-
+  $scope.createTagAnalytics = TagService.createTagAnalytics();
   $scope.testMessage = 'Tag Controller Linked';
 });
 

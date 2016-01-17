@@ -2,7 +2,8 @@
 
 var express = require('express');
 var router = express.Router();
-var Tag = require('../models').Tag;
+var Tag = require('../models').Tag,
+    TagCalculation = require('../models').TagCalculation;
 
 
 router.post('/create', function (req, res) {

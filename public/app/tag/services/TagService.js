@@ -23,7 +23,7 @@ function TagService ($http, $state) {
      * Redirects to next state as placeholder
      */
     console.log(tagAnalytics);
-    $state.go('project.tag.selection-sheet');
+    // $state.go('project.tag.selection-sheet');
   };
 
   this.defaultValues = function (){

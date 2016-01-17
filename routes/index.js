@@ -8,7 +8,8 @@ var express = require('express'),
     project = require('./ProjectRoutes'),
     forgotPassword = require('./ForgotPasswordRoutes'),
     resetPassword = require('./ResetPasswordRoutes'),
-    tag = require('./TagRoutes');
+    tag = require('./TagRoutes'),
+    unitAnalytics = require('./UnitAnalyticsRoutes');
 
 router.use('/user', user);
 router.use('/defaults', defaults);
@@ -17,5 +18,6 @@ router.use('/project', project);
 router.use('/forgot-password', forgotPassword);
 router.use('/reset-password', resetPassword);
 router.use('/tag', tag);
+router.use('/unitAnalytics', unitAnalytics);
 
 module.exports = router;

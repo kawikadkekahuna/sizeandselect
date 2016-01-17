@@ -33,9 +33,9 @@ router.post('/create', verify, function (req, res){
         key !== 'user_id' &&
         key !== 'status'){
         res.json({error: 'Invalid request', message: 'Request must contain fields [name, company, location, status, user_id]'})
-      }
-    }
-  }
+      };
+    };
+  };
   try{
     Project.create({
       project_name: req.body.name,
@@ -48,7 +48,7 @@ router.post('/create', verify, function (req, res){
     });
   }catch(err){
     res.json({error: err});
-  }
+  };
 });
 
 function verify (req, res, next) {
@@ -63,5 +63,5 @@ function verify (req, res, next) {
       });
     };
   });
-}
+};
 module.exports = router;
