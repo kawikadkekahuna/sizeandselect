@@ -4,7 +4,7 @@
 <div ng-init="init()" class="dashboard">
   <div class="left-column">
     <div class="account-picture">
-      
+
     </div>
     <div class="dropdown-links">
       <ul>
@@ -16,131 +16,218 @@
     <form ng-submit="createTagAnalytics(tagAnalaytics)" name="tagAnalyticsSheet">
     <ul>
       <li>
-        <input class="tag-dropdown">Liquid Media
-        <select name="accountType" ng-model="tagAnalaytics.liquidMedia">
-          <option value="">--Units--</option>
-        </select>
+        <label>Media Type
+          <select name="accountType" ng-model="tagAnalaytics.mediaType">
+            <option value="">Pull from db mediaTypes</option>
+          </select>
+
+        </label>
+      </li>
+
+      <li>
+        <label>Media (fuzzy saerch - DB medias)
+          <input name="accountType" ng-model="tagAnalaytics.media">
+        </label>
+      </li>
+
+      <!-- Only show below three if media type is VAPOR or STEAM -->
+      <li>
+      <label>Molecular Weight (value based on media)
+        <input name="accountType" ng-model="tagAnalaytics.molecularWeight">
+      </label>
       </li>
       <li>
-        <input class="tag-dropdown">Specific Gravity
-        <select name="accountType" ng-model="tagAnalaytics.specificGravity">
-          <option value="">--Units--</option>
-        </select>
+        <label>Specific Heat (k) (value based on media/function)
+          <input name="accountType" ng-model="tagAnalaytics.specificHeat">
+        </label>
       </li>
       <li>
-        <input class="tag-dropdown">Viscosity
-        <select name="accountType" ng-model="tagAnalaytics.viscosity">
-          <option value="">--Units--</option>
-        </select>
+        <label>Compressibility Factor
+          <input name="accountType" ng-model="tagAnalaytics.compressibility" value="{{TAG_DEFAULT_VALUES.COMPRESSIBILITY}}">
+        </label>
+      </li>
+
+      <!-- Only show below two if media type is LIQUID -->
+      <li>
+        <label>Specific Gravity
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.specificGravity">
+        </label>
       </li>
       <li>
-        <input class="tag-dropdown">Relief Temp
-        <select name="accountType" ng-model="tagAnalaytics.reliefTemperature">
-          <option value="">--Units--</option>
-        </select>
+        <label>Viscosity
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.viscosity">
+          <select name="accountType" ng-model="tagAnalaytics.viscosityUnit">
+            <option value="">viscosity units</option>
+          </select>
+        </label>
+      </li>
+
+
+      <li>
+        <label>Relief Temp
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.reliefTemperature">
+          <select name="accountType" ng-model="tagAnalaytics.reliefTemperatureUnit">
+            <option value="">temp units</option>
+          </select>
+        </label>
+      </li>
+
+
+      <li>
+        <label>Operating Temp
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.operatingTemperature">
+          <select name="accountType" ng-model="tagAnalaytics.operatingTemperatureUnit">
+            <option value="">temp units</option>
+          </select>
+        </label>
       </li>
       <li>
-        <input class="tag-dropdown">Operating Temp
-        <select name="accountType" ng-model="tagAnalaytics.operatingTemperature">
-          <option value="">--Units--</option>
-        </select>
+        <label>Design Min Temp
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.designMinTemperature">
+          <select name="accountType" ng-model="tagAnalaytics.designMinTemperatureUnit">
+            <option value="">temp units</option>
+          </select>
+        </label>
       </li>
       <li>
-        <input class="tag-dropdown">Design Min Temp
-        <select name="accountType" ng-model="tagAnalaytics.designMinTemperature">
-          <option value="">--Units--</option>
-        </select>
+        <label>Design Max Temp
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.designMaxTemperature">
+          <select name="accountType" ng-model="tagAnalaytics.designMaxTemperatureUnit">
+            <option value="">temp units</option>
+          </select>
+        </label>
+      </li>
+
+
+      <li>
+        <label>Required Flow Capacity
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.requiredFlowCapacity">
+          <select name="accountType" ng-model="tagAnalaytics.requiredFlowCapacityUnit">
+            <option value="">flow Capacity Units</option>
+          </select>
+        </label>
+      </li>
+
+
+
+      <li>
+        <label>ATM
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.atmPressure" value="{{TAG_DEFAULT_VALUES.ATM_PRESSURE}}">
+          <select name="accountType" ng-model="tagAnalaytics.atmPressureUnit">
+            <option value="">pressure units</option>
+          </select>
+        </label>
+      </li>
+
+      <li>
+        <label>MAWP
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.mawp">
+          <select name="accountType" ng-model="tagAnalaytics.mawpUnit">
+            <option value="">pressure units</option>
+          </select>
+        </label>
       </li>
       <li>
-        <input class="tag-dropdown">Design Max Temp
-        <select name="accountType" ng-model="tagAnalaytics.designMaxTemperature">
-          <option value="">--Units--</option>
-        </select>
+        <label>Operating Pressure
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.operatingPressure">
+          <select name="accountType" ng-model="tagAnalaytics.operatingPressureUnit">
+            <option value="">pressure units</option>
+          </select>
+        </label>
       </li>
       <li>
-        <input class="tag-dropdown">Required Flow Capacity
-        <select name="accountType" ng-model="tagAnalaytics.requiredFlowCapacity">
-          <option value="">--Units--</option>
+        <label>Set Pressure
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.setPressure">
+          <select name="accountType" ng-model="tagAnalaytics.setPressureUnit">
+            <option value="">pressure units</option>
+          </select>
+        </label>
+      </li>
+
+      <li>
+        <label>Back Pressure Built Up
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.backPressureBuiltUp">
+          <select name="accountType" ng-model="tagAnalaytics.backPressureBuiltUpUnit">
+            <option value="">pressure units</option>
+          </select>
+        </label>
+      </li>
+
+      <li>
+        <label>Variable Superimposed Back Pressure
+        <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.varSuperimposed">Var Superimposed
+        <select name="accountType" ng-model="tagAnalaytics.varSuperimposedUnit">
+          <option value="">pressure units</option>
         </select>
+        </label>
       </li>
       <li>
-        <input class="tag-dropdown" value="{{TAG_DEFAULT_VALUES.ATM_PRESSURE}}">ATM
-        <select name="accountType" ng-model="tagAnalaytics.atmPressure">
-          <option value="">--Units--</option>
-        </select>
+        <label>Constant Superimposed Back Pressure
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.constantSuperimposed">
+          <select name="accountType" ng-model="tagAnalaytics.constantSuperimposedUnit">
+            <option value="">pressure units</option>
+          </select>
+        </label>
+      </li>
+
+      <li>
+        <label>Select Sizing Basis
+          <select name="accountType" ng-model="tagAnalaytics.sizingBasis">
+            <option value="">comes from db sizingBasis</option>
+          </select>
+        </label>
       </li>
       <li>
-        <input class="tag-dropdown">MAWP
-        <select name="accountType" ng-model="tagAnalaytics.mawp">
-          <option value="">--Units--</option>
-        </select>
+        <label>Overpressure (based on sizing basis selection)
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.overpressure">
+        </label>
+      </li>
+
+      <!-- Below two are funkkyyy -->
+      <!-- They are related to each other so if a user enters a value in one, the other gets populated
+        based on a function. And visa versa -->
+
+      <li>
+        <label>Inlet Loss %
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.inletLossPercent">
+        </label>
       </li>
       <li>
-        <input class="tag-dropdown">Operating Pressure
-        <select name="accountType" ng-model="tagAnalaytics.operatingPressure">
-          <option value="">--Units--</option>
-        </select>
+        <label>Inlet Loss
+          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.inletLoss">
+        </label>
       </li>
-        <input class="tag-dropdown">Set Pressure
-        <select name="accountType" ng-model="tagAnalaytics.setPressure">
-          <option value="">--Units--</option>
-        </select>
-        <li>
-        <input class="tag-dropdown">Back Pressure Built Up
-        <select name="accountType" ng-model="tagAnalaytics.backPressureBuiltUp">
-          <option value="">--Units--</option>
-        </select>
-      </li>
+
+
+      <!-- This is a checkbox and if true, then show an input with default -->
+
       <li>
-        <input class="tag-dropdown">Var Superimposed
-        <select name="accountType" ng-model="tagAnalaytics.varSuperimposed">
-          <option value="">--Units--</option>
-        </select>
+        Rupture Disc:
+        <label>Yes
+          <input type="checkbox" ng-model="tagAnalaytics.ruptureDiscYes">
+        </label>
+        <label>No
+          <input type="checkbox" ng-model="tagAnalaytics.ruptureDiscNo">
+        </label>
+        <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.ruptureDisc">Rupture Disc {{TAG_DEFAULT_VALUES.RUPTURE_DISC}}
       </li>
+
+
       <li>
-        <input class="tag-dropdown">Constant Superimposed
-        <select name="accountType" ng-model="tagAnalaytics.constantSuperimposed">
-          <option value="">--Units--</option>
-        </select>
+        <label>Orifice Required
+          <input class="tag-dropdown" readonly value="ORIFICE_GENERATED_VALUE">Orifice Required
+        </label>
       </li>
+
       <li>
-        <input class="tag-dropdown">Overpressure
-        <select name="accountType" ng-model="tagAnalaytics.overpressure">
-          <option value="">--Units--</option>
-        </select>
-      </li>
-      <li>
-        <input class="tag-dropdown">Inlet Loss %
-        <select name="accountType" ng-model="tagAnalaytics.inletLossPercent">
-          <option value="">--Units--</option>
-        </select>
-      </li>
-      <li>
-        <input class="tag-dropdown">Inlet Loss
-        <select name="accountType" ng-model="tagAnalaytics.inletLoss">
-          <option value="">--Units--</option>
-        </select>
-      </li>
-      <li>
-        <input class="tag-dropdown">Rupture Disc
-        <select name="accountType" ng-model="tagAnalaytics.ruptureDisc">
-          <option value="">--Units--</option>
-        </select>
-      </li>
-      <li>
-        <input class="tag-dropdown" readonly value="ORIFICE_GENERATED_VALUE">Orifice Required
-        <select name="accountType" ng-model="tagAnalaytics.orificeRequired">
-          <option value="">--Units--</option>
-        </select>
-      </li>
-      <li>
-        <input class="tag-dropdown">Toggle Sizing
+        Toggle Sizing
         <select name="accountType" ng-model="tagAnalaytics.toggleSizing">
-          <option value="">--Units--</option>
+          <option value="">comes from DB toggle_api_asme_sizing</option>
         </select>
       </li>
+
       <button ng-click="goToSelectionSheet()" type="submit">Submit</button>
-     </ul> 
+     </ul>
    </form>
   </div>
   <div class="right-column">
