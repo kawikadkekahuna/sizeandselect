@@ -1,6 +1,12 @@
 angular.module('app')
 
-.controller('TagController', function ($scope, $stateParams, $state, TagService, UnitService) {
+.controller('TagController', function ($scope, $stateParams, $state, TagService, UnitService, DropdownService) {
+
+  DropdownService.getApiAsmeToggleSizes().then(function(sizingToggles) {
+    $scope.sizingToggles = sizingToggles.data;
+  });
+
+
   $scope.init = function (){
     var tagId = $stateParams.tagId;
     TagService.getTagById(tagId).then(function (tag){

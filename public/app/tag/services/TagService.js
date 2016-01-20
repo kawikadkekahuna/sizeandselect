@@ -29,7 +29,8 @@ function TagService ($http, $state) {
   this.defaultValues = function (){
     var config = {
       ATM_PRESSURE: 14.696,
-      COMPRESSIBILITY: 1
+      COMPRESSIBILITY: 1,
+      RUPTURE_DISC: 1
     };
     return config;
   };

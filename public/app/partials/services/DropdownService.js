@@ -10,4 +10,8 @@ function DropdownService ($http) {
   this.getStates = function()  {
     return $http.get(SERVER + '/api/defaults/_states');
   };
+
+  this.getApiAsmeToggleSizes = function () {
+    return $http.get(SERVER + '/api/defaults/_api_apme_toggle_sizes');
+  }
 }

@@ -221,7 +221,7 @@
 
       <li>
         Toggle Sizing
-        <select name="accountType" ng-model="tagAnalaytics.toggleSizing">
+        <select name="sizingToggle" ng-model="tagAnalaytics.toggleSizing" ng-options="sizingToggle.name for sizingToggle in sizingToggles">
           <option value="">comes from DB toggle_api_asme_sizing</option>
         </select>
       </li>
