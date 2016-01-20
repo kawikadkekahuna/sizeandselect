@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('TagController', function ($scope, $stateParams, $state, TagService, UnitService, DropdownService) {
+.controller('TagController', function ($scope, $stateParams, $state, TagService, DropdownService) {
 
   DropdownService.getApiAsmeToggleSizes().then(function(sizingToggles) {
     $scope.sizingToggles = sizingToggles.data;
@@ -8,6 +8,30 @@ angular.module('app')
 
   DropdownService.getMediaTypes().then(function(mediaTypes) {
     $scope.mediaTypes = mediaTypes.data;
+  });
+
+  DropdownService.getPressureUnits().then(function(pressureUnits) {
+    console.log("pressureUnits", pressureUnits)
+    $scope.pressureUnits = pressureUnits.data;
+  });
+
+  DropdownService.getTemperatureUnits().then(function(temperatureUnits) {
+    $scope.temperatureUnits = temperatureUnits.data;
+  });
+
+  DropdownService.getViscosityUnits().then(function(viscosityUnits) {
+    console.log("viscosityUnits", viscosityUnits);
+    $scope.viscosityUnits = viscosityUnits.data;
+  });
+
+  DropdownService.getFlowCapacityUnits().then(function(flowCapacityUnits) {
+    console.log("flow cap", flowCapacityUnits)
+    $scope.flowCapacityUnits = flowCapacityUnits.data;
+  });
+
+  DropdownService.getSizingBasisUnits().then(function(sizingBasisUnits) {
+    console.log("sizing", sizingBasisUnits)
+    $scope.sizingBasisUnits = sizingBasisUnits.data;
   });
 
   $scope.init = function (){

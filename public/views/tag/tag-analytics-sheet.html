@@ -56,7 +56,7 @@
       <li>
         <label>Viscosity
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.viscosity">
-          <select name="accountType" ng-model="tagAnalaytics.viscosityUnit">
+          <select name="accountType" ng-model="tagAnalaytics.viscosityUnit" ng-options="viscosityUnit.name for viscosityUnit in viscosityUnits">
             <option value="">viscosity units</option>
           </select>
         </label>
@@ -66,7 +66,7 @@
       <li>
         <label>Relief Temp
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.reliefTemperature">
-          <select name="accountType" ng-model="tagAnalaytics.reliefTemperatureUnit">
+          <select name="accountType" ng-model="tagAnalaytics.reliefTemperatureUnit" ng-options="temperatureUnit.name for temperatureUnit in temperatureUnits">
             <option value="">temp units</option>
           </select>
         </label>
@@ -76,7 +76,7 @@
       <li>
         <label>Operating Temp
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.operatingTemperature">
-          <select name="accountType" ng-model="tagAnalaytics.operatingTemperatureUnit">
+          <select name="accountType" ng-model="tagAnalaytics.operatingTemperatureUnit" ng-options="temperatureUnit.name for temperatureUnit in temperatureUnits">
             <option value="">temp units</option>
           </select>
         </label>
@@ -84,7 +84,7 @@
       <li>
         <label>Design Min Temp
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.designMinTemperature">
-          <select name="accountType" ng-model="tagAnalaytics.designMinTemperatureUnit">
+          <select name="accountType" ng-model="tagAnalaytics.designMinTemperatureUnit" ng-options="temperatureUnit.name for temperatureUnit in temperatureUnits">
             <option value="">temp units</option>
           </select>
         </label>
@@ -92,7 +92,7 @@
       <li>
         <label>Design Max Temp
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.designMaxTemperature">
-          <select name="accountType" ng-model="tagAnalaytics.designMaxTemperatureUnit">
+          <select name="accountType" ng-model="tagAnalaytics.designMaxTemperatureUnit" ng-options="temperatureUnit.name for temperatureUnit in temperatureUnits">
             <option value="">temp units</option>
           </select>
         </label>
@@ -102,7 +102,7 @@
       <li>
         <label>Required Flow Capacity
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.requiredFlowCapacity">
-          <select name="accountType" ng-model="tagAnalaytics.requiredFlowCapacityUnit">
+          <select name="accountType" ng-model="tagAnalaytics.requiredFlowCapacityUnit" ng-options="flowCapacityUnit.name for flowCapacityUnit in flowCapacityUnits">
             <option value="">flow Capacity Units</option>
           </select>
         </label>
@@ -113,7 +113,7 @@
       <li>
         <label>ATM
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.atmPressure" value="{{TAG_DEFAULT_VALUES.ATM_PRESSURE}}">
-          <select name="accountType" ng-model="tagAnalaytics.atmPressureUnit">
+          <select name="accountType" ng-model="tagAnalaytics.atmPressureUnit" ng-options="pressureUnit.name for pressureUnit in pressureUnits">
             <option value="">pressure units</option>
           </select>
         </label>
@@ -122,7 +122,7 @@
       <li>
         <label>MAWP
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.mawp">
-          <select name="accountType" ng-model="tagAnalaytics.mawpUnit">
+          <select name="accountType" ng-model="tagAnalaytics.mawpUnit" ng-options="pressureUnit.name for pressureUnit in pressureUnits">
             <option value="">pressure units</option>
           </select>
         </label>
@@ -130,7 +130,7 @@
       <li>
         <label>Operating Pressure
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.operatingPressure">
-          <select name="accountType" ng-model="tagAnalaytics.operatingPressureUnit">
+          <select name="accountType" ng-model="tagAnalaytics.operatingPressureUnit" ng-options="pressureUnit.name for pressureUnit in pressureUnits">
             <option value="">pressure units</option>
           </select>
         </label>
@@ -138,7 +138,7 @@
       <li>
         <label>Set Pressure
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.setPressure">
-          <select name="accountType" ng-model="tagAnalaytics.setPressureUnit">
+          <select name="accountType" ng-model="tagAnalaytics.setPressureUnit" ng-options="pressureUnit.name for pressureUnit in pressureUnits">
             <option value="">pressure units</option>
           </select>
         </label>
@@ -147,7 +147,7 @@
       <li>
         <label>Back Pressure Built Up
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.backPressureBuiltUp">
-          <select name="accountType" ng-model="tagAnalaytics.backPressureBuiltUpUnit">
+          <select name="accountType" ng-model="tagAnalaytics.backPressureBuiltUpUnit" ng-options="pressureUnit.name for pressureUnit in pressureUnits">
             <option value="">pressure units</option>
           </select>
         </label>
@@ -156,7 +156,7 @@
       <li>
         <label>Variable Superimposed Back Pressure
         <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.varSuperimposed">Var Superimposed
-        <select name="accountType" ng-model="tagAnalaytics.varSuperimposedUnit">
+        <select name="accountType" ng-model="tagAnalaytics.varSuperimposedUnit" ng-options="pressureUnit.name for pressureUnit in pressureUnits">
           <option value="">pressure units</option>
         </select>
         </label>
@@ -164,7 +164,7 @@
       <li>
         <label>Constant Superimposed Back Pressure
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.constantSuperimposed">
-          <select name="accountType" ng-model="tagAnalaytics.constantSuperimposedUnit">
+          <select name="accountType" ng-model="tagAnalaytics.constantSuperimposedUnit" ng-options="pressureUnit.name for pressureUnit in pressureUnits">
             <option value="">pressure units</option>
           </select>
         </label>
@@ -172,8 +172,8 @@
 
       <li>
         <label>Select Sizing Basis
-          <select name="accountType" ng-model="tagAnalaytics.sizingBasis">
-            <option value="">comes from db sizingBasis</option>
+          <select name="accountType" ng-model="tagAnalaytics.sizingBasis" ng-options="sizingBasisUnit.name for sizingBasisUnit in sizingBasisUnits">
+            <option value="">sizingBasis units</option>
           </select>
         </label>
       </li>

@@ -18,4 +18,24 @@ function DropdownService ($http) {
   this.getApiAsmeToggleSizes = function () {
     return $http.get(SERVER + '/api/defaults/_api_apme_toggle_sizes');
   }
+
+  this.getPressureUnits = function() {
+    return $http.get(SERVER+ '/api/unitAnalytics/pressure');
+  };
+
+  this.getTemperatureUnits = function() {
+    return $http.get(SERVER+ '/api/unitAnalytics/temperature');
+  };
+
+  this.getViscosityUnits = function() {
+    return $http.get(SERVER+ '/api/unitAnalytics/viscosity');
+  };
+
+  this.getFlowCapacityUnits = function() {
+    return $http.get(SERVER+ '/api/unitAnalytics/flowCapacity');
+  };
+
+  this.getSizingBasisUnits = function() {
+    return $http.get(SERVER+ '/api/unitAnalytics/sizingBasis');
+  };
 }
