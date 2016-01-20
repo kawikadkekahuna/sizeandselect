@@ -17,8 +17,8 @@
     <ul>
       <li>
         <label>Media Type
-          <select name="accountType" ng-model="tagAnalaytics.mediaType">
-            <option value="">Pull from db mediaTypes</option>
+          <select name="accountType" ng-model="tagAnalaytics.mediaType" ng-options="mediaType.name for mediaType in mediaTypes">
+            <option>--Select Media Type--</option>
           </select>
 
         </label>

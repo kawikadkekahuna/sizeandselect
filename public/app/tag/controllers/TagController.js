@@ -6,6 +6,9 @@ angular.module('app')
     $scope.sizingToggles = sizingToggles.data;
   });
 
+  DropdownService.getMediaTypes().then(function(mediaTypes) {
+    $scope.mediaTypes = mediaTypes.data;
+  });
 
   $scope.init = function (){
     var tagId = $stateParams.tagId;
