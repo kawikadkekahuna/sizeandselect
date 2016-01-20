@@ -1,7 +1,7 @@
-
 -- additional media types  - consider creating a new table for medai type categories (liquid, vapor)
--- name, Molecular Weight, K (Cp/Cv), Compressibility,
-INSERT INTO vapor_medias VALUES (DEFAULT, 'Acetone', '58.080', '1.120', '1.000',);
+
+-- name, Molecular Weight, Specific heat), Compressibility, Specific Gravity, Viscosity
+
 INSERT INTO vapor_medias VALUES (DEFAULT, 'Acetylene', '26.040', '1.260', '1.000');
 INSERT INTO vapor_medias VALUES (DEFAULT, 'Air', '28.970', '1.400', '1.000');
 INSERT INTO vapor_medias VALUES (DEFAULT, 'Ammonia', '17.030', '1.310', '1.000');
