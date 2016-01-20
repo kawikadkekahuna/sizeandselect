@@ -6,11 +6,13 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    name : DataTypes.STRING,
-    specific_gravity : DataTypes.INTEGER,
-    viscosity : DataTypes.INTEGER
+    name: DataTypes.STRING,
+    compressiblity: DataTypes.INTEGER,
+    molecular_weight: DataTypes.INTEGER,
+    specific_gravity: DataTypes.INTEGER,
+    specific_heat: DataTypes.INTEGER,
+    viscosity: DataTypes.INTEGER
   }, {
-    underscored: true,
     tableName: "medias"
   });
 
