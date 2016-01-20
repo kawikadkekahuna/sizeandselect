@@ -155,10 +155,14 @@
 
       <li>
         <label>Variable Superimposed Back Pressure
-        <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.varSuperimposed">Var Superimposed
-        <select name="accountType" ng-model="tagAnalaytics.varSuperimposedUnit" ng-options="pressureUnit.name for pressureUnit in pressureUnits">
-          <option value="">pressure units</option>
-        </select>
+        <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.varSuperimposed">
+        </label>
+      </li>
+      <li>
+        <label>Var Superimposed
+          <select name="accountType" ng-model="tagAnalaytics.varSuperimposedUnit" ng-options="pressureUnit.name for pressureUnit in pressureUnits">
+            <option value="">pressure units</option>
+          </select>
         </label>
       </li>
       <li>

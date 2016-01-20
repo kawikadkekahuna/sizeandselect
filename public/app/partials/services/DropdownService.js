@@ -32,10 +32,10 @@ function DropdownService ($http) {
   };
 
   this.getFlowCapacityUnits = function() {
-    return $http.get(SERVER+ '/api/unitAnalytics/flowCapacity');
+    return $http.get(SERVER+ '/api/unitAnalytics/flow-capacity');
   };
 
   this.getSizingBasisUnits = function() {
-    return $http.get(SERVER+ '/api/unitAnalytics/sizingBasis');
+    return $http.get(SERVER+ '/api/unitAnalytics/sizing-basis');
   };
 }

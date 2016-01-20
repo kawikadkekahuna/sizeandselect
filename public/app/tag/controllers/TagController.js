@@ -20,17 +20,14 @@ angular.module('app')
   });
 
   DropdownService.getViscosityUnits().then(function(viscosityUnits) {
-    console.log("viscosityUnits", viscosityUnits);
     $scope.viscosityUnits = viscosityUnits.data;
   });
 
   DropdownService.getFlowCapacityUnits().then(function(flowCapacityUnits) {
-    console.log("flow cap", flowCapacityUnits)
     $scope.flowCapacityUnits = flowCapacityUnits.data;
   });
 
   DropdownService.getSizingBasisUnits().then(function(sizingBasisUnits) {
-    console.log("sizing", sizingBasisUnits)
     $scope.sizingBasisUnits = sizingBasisUnits.data;
   });
 
