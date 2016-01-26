@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('TagController', function ($scope, $stateParams, $state, TagService, DropdownService) {
+.controller('TagController', function ($scope, $stateParams, $state, TagService, DropdownService, DataCalculationService) {
 
   DropdownService.getApiAsmeToggleSizes().then(function(sizingToggles) {
     $scope.sizingToggles = sizingToggles.data;
@@ -50,6 +50,11 @@ angular.module('app')
 
   $scope.createTagAnalytics = TagService.createTagAnalytics();
   $scope.testMessage = 'Tag Controller Linked';
+
+  $scope.calculateReliefTemp = function (formInput) {
+    DataCalculationService.calculateReliefTemp(formInput);
+  }
+
 });
 
 

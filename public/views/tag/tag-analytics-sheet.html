@@ -65,7 +65,7 @@
 
       <li>
         <label>Relief Temp
-          <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.reliefTemperature">
+          <input class="tag-dropdown" name="accountType" ng-click="calculateReliefTemp(tagAnalaytics)" ng-model="tagAnalaytics.reliefTemperature">
           <select name="accountType" ng-model="tagAnalaytics.reliefTemperatureUnit" ng-options="temperatureUnit.name for temperatureUnit in temperatureUnits">
             <option value="">temp units</option>
           </select>
