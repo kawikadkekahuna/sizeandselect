@@ -23,13 +23,11 @@
 
         </label>
       </li>
-
       <li>
         <label>Media (fuzzy saerch - DB medias)
           <input name="accountType" ng-model="tagAnalaytics.media">
         </label>
       </li>
-
       <!-- Only show below three if media type is VAPOR or STEAM -->
       <li>
       <label>Molecular Weight (value based on media)
@@ -46,7 +44,6 @@
           <input name="accountType" ng-model="tagAnalaytics.compressibility" value="{{TAG_DEFAULT_VALUES.COMPRESSIBILITY}}">
         </label>
       </li>
-
       <!-- Only show below two if media type is LIQUID -->
       <li>
         <label>Specific Gravity
@@ -61,8 +58,6 @@
           </select>
         </label>
       </li>
-
-
       <li>
         <label>Relief Temp
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.reliefTemperature">
@@ -71,8 +66,6 @@
           </select>
         </label>
       </li>
-
-
       <li>
         <label>Operating Temp
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.operatingTemperature">
@@ -97,8 +90,6 @@
           </select>
         </label>
       </li>
-
-
       <li>
         <label>Required Flow Capacity
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.requiredFlowCapacity">
@@ -107,9 +98,6 @@
           </select>
         </label>
       </li>
-
-
-
       <li>
         <label>ATM
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.atmPressure" value="{{TAG_DEFAULT_VALUES.ATM_PRESSURE}}">
@@ -118,7 +106,6 @@
           </select>
         </label>
       </li>
-
       <li>
         <label>MAWP
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.mawp">
@@ -143,7 +130,6 @@
           </select>
         </label>
       </li>
-
       <li>
         <label>Back Pressure Built Up
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.backPressureBuiltUp">
@@ -152,7 +138,6 @@
           </select>
         </label>
       </li>
-
       <li>
         <label>Variable Superimposed Back Pressure
         <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.varSuperimposed">
@@ -173,7 +158,6 @@
           </select>
         </label>
       </li>
-
       <li>
         <label>Select Sizing Basis
           <select name="accountType" ng-model="tagAnalaytics.sizingBasis" ng-options="sizingBasisUnit.name for sizingBasisUnit in sizingBasisUnits">
@@ -201,10 +185,7 @@
           <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.inletLoss">
         </label>
       </li>
-
-
-      <!-- This is a checkbox and if true, then show an input with default -->
-
+     <!-- This is a checkbox and if true, then show an input with default -->
       <li>
         Rupture Disc:
         <label>Yes
@@ -215,21 +196,17 @@
         </label>
         <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.ruptureDisc">Rupture Disc {{TAG_DEFAULT_VALUES.RUPTURE_DISC}}
       </li>
-
-
       <li>
         <label>Orifice Required
           <input class="tag-dropdown" readonly value="ORIFICE_GENERATED_VALUE">Orifice Required
         </label>
       </li>
-
       <li>
         Toggle Sizing
         <select name="sizingToggle" ng-model="tagAnalaytics.toggleSizing" ng-options="sizingToggle.name for sizingToggle in sizingToggles">
           <option value="">comes from DB toggle_api_asme_sizing</option>
         </select>
       </li>
-
       <button ng-click="goToSelectionSheet()" type="submit">Submit</button>
      </ul>
    </form>

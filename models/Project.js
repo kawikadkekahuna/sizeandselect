@@ -8,8 +8,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     project_name: DataTypes.STRING,
     company_name: DataTypes.STRING,
-    location: DataTypes.STRING,
-    date: DataTypes.DATE
+    location: DataTypes.STRING
   }, {
     tableName: "projects",
     classMethods: {

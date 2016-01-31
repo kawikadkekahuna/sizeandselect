@@ -18,6 +18,8 @@ angular.module('app')
   $scope.createProject = function (projectData) {
     projectData.user_id = $localStorage.userId;
     ProjectService.create(projectData).then(function (res){
+      console.log('res',res);
+      console.log('project successfully created. route to project name');
     });
   };
 

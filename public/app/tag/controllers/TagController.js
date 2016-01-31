@@ -7,6 +7,7 @@ angular.module('app')
   });
 
   DropdownService.getMediaTypes().then(function(mediaTypes) {
+    console.log('mediaTypes',mediaTypes);
     $scope.mediaTypes = mediaTypes.data;
   });
 

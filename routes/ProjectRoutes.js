@@ -25,8 +25,8 @@ router.get('/id', verify, function (req,res){
 
 router.post('/create', verify, function (req, res){
   var load = req.body;
-  for(var key in req.body){
-    if(req.body.hasOwnProperty(key)){
+  for(var key in load){
+    if(load.hasOwnProperty(key)){
       if(key !== 'name' &&
         key !== 'company' &&
         key !== 'location' &&
@@ -38,11 +38,11 @@ router.post('/create', verify, function (req, res){
   };
   try{
     Project.create({
-      project_name: req.body.name,
-      company_name: req.body.company,
-      location: req.body.location,
+      project_name: load.name,
+      company_name: load.company,
+      location: load.location,
       status:'open',
-      user_id: req.body.user_id
+      user_id: load.user_id
     }).then(function (project){
       res.json(project);
     });
