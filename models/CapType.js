@@ -8,8 +8,8 @@ module.exports = function (sequelize, DataTypes) {
     },
     description : DataTypes.STRING
   }, {
+    timestamps: false,
     underscored: true,
-
     tableName: "cap_types",
   });
 

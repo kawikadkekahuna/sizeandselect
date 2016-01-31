@@ -9,6 +9,7 @@ module.exports = function (sequelize, DataTypes) {
     size: DataTypes.STRING
   }, {
     underscored: true,
+    timestamps: false,
     tableName: "connection_sizes",
   });
 

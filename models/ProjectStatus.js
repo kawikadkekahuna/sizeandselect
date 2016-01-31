@@ -8,6 +8,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     status: DataTypes.STRING
   }, {
+    timestamps: false,
     underscored: true,
     tableName: "project_statuses",
     classMethods: {

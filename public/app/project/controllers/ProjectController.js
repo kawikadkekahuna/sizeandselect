@@ -1,8 +1,6 @@
 angular.module('app')
 
 .controller('ProjectController', function ($scope, $rootScope, $sessionStorage, $stateParams, ProjectService, TagService, $state, ModalFactory) {
-  // $scope.header = {name: 'header', url: '/views/partials/navigation.html'};
-  // $scope.modal = {name: 'modal', url: '/views/modal/modal.html'};
   $scope.projectId = $stateParams.projectId;
 
   TagService.getTags($scope.projectId).then(function (tags){
@@ -21,11 +19,10 @@ angular.module('app')
 
   $scope.addTag = function (tagData){
     tagData.project_id = $scope.projectId;
-    console.log('tag',tagData);
     TagService.addTag(tagData).then(function (tag){
-      console.log('tag',tag.status);
       if(tag.status == 200){
         $state.go('project.tag',{tagId: tag.data.id});
+        $rootScope.$broadcast('modal:destroy');
       };
       return;
     });

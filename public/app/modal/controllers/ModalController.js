@@ -8,6 +8,9 @@ angular.module('app')
                   ];
 
 
+  /**
+   * Modal Listeners
+   */
   $scope.$on('modal:updated', function(event,data) {
     $scope.CURRENT_MODAL = data;
     _.each($scope.modals, function (template) {
@@ -18,11 +21,16 @@ angular.module('app')
     });
   });
 
+  $scope.$on('modal:destroy', function(event,data) {
+    $scope.close();
+    return;
+  });
+
+
 
 
   $scope.close = function (){
     $scope.CURRENT_MODAL = '';
-    $sessionStorage.SizeSelect.CURRENT_MODAL = '';
   };
 
   $scope.$on('resetModal', function (){

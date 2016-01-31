@@ -9,6 +9,7 @@ module.exports = function (sequelize, DataTypes) {
     name: DataTypes.STRING,
     overpressure: DataTypes.DOUBLE
   }, {
+    timestamps: false,
     tableName: "sizing_basis"
   });
 

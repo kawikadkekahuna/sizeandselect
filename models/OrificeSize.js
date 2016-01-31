@@ -9,6 +9,7 @@ module.exports = function (sequelize, DataTypes) {
     orifice_type: DataTypes.STRING,
     area: DataTypes.STRING
   }, {
+    timestamps: false,
     underscored: true,
     tableName: "orifice_sizes",
   });

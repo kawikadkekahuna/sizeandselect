@@ -13,6 +13,7 @@ module.exports = function (sequelize, DataTypes) {
     specific_heat: DataTypes.INTEGER,
     viscosity: DataTypes.INTEGER
   }, {
+    timestamps: false,
     tableName: "medias"
   });
 

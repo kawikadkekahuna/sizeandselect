@@ -28,7 +28,8 @@
   .middle-column{
     display:inline-block;
     width:75%;
-    height:95%;
+    height:90%;
+    overflow:auto;
     background-color:purple;
 
     .project-wrapper{

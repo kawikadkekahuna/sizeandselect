@@ -6,8 +6,10 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    weight: DataTypes.STRING
   }, {
+    timestamps: false,
     tableName: "media_types"
   });
 

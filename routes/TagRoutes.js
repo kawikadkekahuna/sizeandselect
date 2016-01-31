@@ -8,7 +8,7 @@ var Tag = require('../models').Tag,
 
 router.post('/create', verify, function (req, res) {
   var tagData = req.body;
-  console.log('tagData',tagData);
+  console.log('tagData',tagData.pid);
   for(var key in tagData){
     if(tagData.hasOwnProperty(key)){
       if(key !== 'name' &&
@@ -28,15 +28,17 @@ router.post('/create', verify, function (req, res) {
   try{
     Tag.create({
       name: tagData.name ,
-      quantity: tagData.quantiy ,
-      pid: tagData.pid ,
+      quantity: tagData.quantity ,
+      pid: tagData.pid,
       service: tagData.service ,
       line_number: tagData.line_number ,
       model_number: tagData.model_number ,
       need_by_date: tagData.need_by_date ,
       ship_date: tagData.ship_date,
       tracking_number: tagData.tracking_number,
-      project_id: tagData.project_id 
+      project_id: tagData.project_id,
+      project_status: 'open',
+      device: 'Relief Valve'
     }).then(function (tag){
       res.json(tag);
     });

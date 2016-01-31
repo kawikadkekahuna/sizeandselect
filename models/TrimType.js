@@ -9,6 +9,7 @@ module.exports = function (sequelize, DataTypes) {
     type: DataTypes.STRING
 
   }, {
+    timestamps: false,
     underscored: true,
     tableName: "trim_types",
     classMethods: {
