@@ -3,11 +3,28 @@
 var express = require('express');
 var router = express.Router();
 var Tag = require('../models').Tag,
-    TagCalculation = require('../models').TagCalculation;
+    TagCalculation = require('../models').TagCalculation,
+    jwt = require('jsonwebtoken');
 
-
-router.post('/create', function (req, res) {
-  var tagData = req.body.tagData.tagData;
+router.post('/create', verify, function (req, res) {
+  var tagData = req.body;
+  console.log('tagData',tagData);
+  for(var key in tagData){
+    if(tagData.hasOwnProperty(key)){
+      if(key !== 'name' &&
+        key !== 'quantity' &&
+        key !== 'pid' &&
+        key !== 'service' &&
+        key !== 'line_number' &&
+        key !== 'model_number' &&
+        key !== 'need_by_date' &&
+        key !== 'ship_date' &&
+        key !== 'tracking_number' &&
+        key !== 'project_id'){
+        res.json({error: 'Invalid request', message: 'Request must contain fields [name, quantity, pid, service, line_number, model_number, need_by_date, ship_date, tracking_number, projectId]'})
+      };
+    };
+  };
   try{
     Tag.create({
       name: tagData.name ,
@@ -19,7 +36,7 @@ router.post('/create', function (req, res) {
       need_by_date: tagData.need_by_date ,
       ship_date: tagData.ship_date,
       tracking_number: tagData.tracking_number,
-      project_id: tagData.projectId 
+      project_id: tagData.project_id 
     }).then(function (tag){
       res.json(tag);
     });
@@ -46,4 +63,17 @@ router.get('/id', function (req,res){
   });
 });
 
+function verify (req, res, next) {
+  jwt.verify(req.headers.authorization, 'sushisecret', function (err, decoded){
+    if(decoded){
+      next();
+    }else{
+      res.json({
+        error:'Unauthorized', 
+        status: 401, 
+        message:'Invalid or expired access token.'
+      });
+    };
+  });
+};
 module.exports = router;
