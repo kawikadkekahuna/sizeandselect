@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body ng-controller="GlobalController">
-	<div ng-include="header.url"></div>
-	<div ng-include="modal.url"></div>
-	<div ui-view></div>
+<div ng-include="header.url"></div>
+<div ng-include="modal.url"></div>	
+<div ui-view></div>
 
 
 <!-- Dependencies -->
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.2/angular.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-messages.min.js"></script>
@@ -34,6 +34,9 @@
 <script src="/app/partials/directives/compare-to.js"></script>
 <script src="/app/partials/directives/select-default-options-directive.js"></script>
 <script src="/app/partials/directives/dropdown-select.js"></script>
+<!-- Angular Factory -->
+<script src="/app/sizeandselect/factory/ModalFactory.js"></script>
+
 <!-- Angular Controllers -->
 <script src="/app/GlobalController.js"></script>
 <script src="/app/modal/controllers/ModalController.js"></script>

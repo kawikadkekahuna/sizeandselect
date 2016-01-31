@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('ProjectController', function ($scope, $rootScope, $sessionStorage, $stateParams, ProjectService, TagService, $state) {
+.controller('ProjectController', function ($scope, $rootScope, $sessionStorage, $stateParams, ProjectService, TagService, $state, ModalFactory) {
   // $scope.header = {name: 'header', url: '/views/partials/navigation.html'};
   // $scope.modal = {name: 'modal', url: '/views/modal/modal.html'};
   $scope.projectId = $stateParams.projectId;
@@ -14,11 +14,10 @@ angular.module('app')
     $scope.project = project.data;
   });
 
-  $scope.newTagModal = function(){
-    //must call to reinstantiate ModalController
-    $rootScope.$broadcast('resetModal');
-    $sessionStorage.SizeSelect.CURRENT_MODAL = 'addTag';
+  $scope.setModal = function (template){
+    ModalFactory.setModal(template);
   };
+
 
   $scope.addTag = function (tagData){
     tagData.project_id = $scope.projectId;
