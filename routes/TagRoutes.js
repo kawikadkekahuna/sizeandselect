@@ -47,7 +47,7 @@ router.post('/create', verify, function (req, res) {
   }
 });
 
-router.get('/tags', function (req,res){
+router.get('/tags', verify, function (req,res){
   var projectId = req.query.projectId;
   Tag.findAll({where:{
     project_id: projectId
@@ -56,7 +56,7 @@ router.get('/tags', function (req,res){
   });
 });
 
-router.get('/id', function (req,res){
+router.get('/id', verify, function (req,res){
   var tagId = req.query.tagId;
   Tag.findOne({where:{
     project_id: tagId
