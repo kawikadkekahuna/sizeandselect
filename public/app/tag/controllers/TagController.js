@@ -6,6 +6,31 @@ angular.module('app')
     TagService.getTagById(tagId).then(function (tag){
       $scope.tag = tag
     });
+
+    DropdownService.getAnalyticUnits().then(function (units){
+      $scope.UNITS = units.data;
+      $scope.tagAnalytics = {};
+
+      var medias = $scope.UNITS.MEDIA;
+
+      function suggest_media(term) {
+        var q = term.toLowerCase().trim();
+        var results = [];
+
+        // Find first 10 medias that start with `term`.
+        for (var i = 0; i < medias.length && results.length < 10; i++) {
+          var media = medias[i].name;
+          if (media.toLowerCase().indexOf(q) === 0)
+            results.push({ label: media, value: media });
+        }
+        return results;
+      }
+
+      $scope.autocomplete_options = {
+        suggest: suggest_media
+      };
+    });
+
     $scope.TAG_DEFAULT_VALUES = TagService.defaultValues();
     /**
      * @param  {callback}
@@ -16,39 +41,7 @@ angular.module('app')
      */
   };
 
-  DropdownService.getApiAsmeToggleSizes().then(function(sizingToggles) {
-    $scope.sizingToggles = sizingToggles.data;
-  });
-
-  DropdownService.getMediaTypes().then(function(mediaTypes) {
-    console.log('mediaTypes',mediaTypes);
-    $scope.mediaTypes = mediaTypes.data;
-  });
-
-  DropdownService.getPressureUnits().then(function(pressureUnits) {
-    console.log("pressureUnits", pressureUnits)
-    $scope.pressureUnits = pressureUnits.data;
-  });
-
-  DropdownService.getTemperatureUnits().then(function(temperatureUnits) {
-    $scope.temperatureUnits = temperatureUnits.data;
-  });
-
-  DropdownService.getViscosityUnits().then(function(viscosityUnits) {
-    $scope.viscosityUnits = viscosityUnits.data;
-  });
-
-  DropdownService.getFlowCapacityUnits().then(function(flowCapacityUnits) {
-    $scope.flowCapacityUnits = flowCapacityUnits.data;
-  });
-
-  DropdownService.getSizingBasisUnits().then(function(sizingBasisUnits) {
-    $scope.sizingBasisUnits = sizingBasisUnits.data;
-  });
-
-
   $scope.createTagAnalytics = TagService.createTagAnalytics();
-  $scope.testMessage = 'Tag Controller Linked';
 });
 
 

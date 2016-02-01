@@ -14,15 +14,16 @@
     <ul>
       <li>
         <label>Media Type
-          <select name="accountType" ng-model="tagAnalaytics.mediaType" ng-options="mediaType.name for mediaType in mediaTypes">
-            <option>--Select Media Type--</option>
+          <select name="accountType" ng-model="tagAnalaytics.mediaType">
+            <option ng-repeat="type in UNITS.MEDIA_TYPE">{{type.name}}</option>
           </select>
-
         </label>
       </li>
       <li>
-        <label>Media (fuzzy saerch - DB medias)
-          <input name="accountType" ng-model="tagAnalaytics.media">
+        <label>Media
+          <div style="display:inline-block;" mass-autocomplete>
+            <input ng-model="tagAnalytics.media" mass-autocomplete-item="autocomplete_options">
+          </div>
         </label>
       </li>
       <!-- Only show below three if media type is VAPOR or STEAM -->

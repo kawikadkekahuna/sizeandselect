@@ -35,6 +35,9 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use('/scripts', express.static(__dirname + '/node_modules/'));
+
+
 
 function localStrategy (username, password, done) {
   process.nextTick(function () {

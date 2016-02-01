@@ -1,6 +1,6 @@
 SERVER = 'http://localhost:3000';
 
-angular.module('app', ['ui.router', 'ngMessages', 'ngStorage'])
+angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'MassAutoComplete'])
 .run(function ($sessionStorage){
   $sessionStorage.SizeSelect = {};
   $sessionStorage.SizeSelect.CURRENT_MODAL = 'CURRENT_MODAL';

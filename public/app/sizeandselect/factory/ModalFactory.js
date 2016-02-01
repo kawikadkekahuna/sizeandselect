@@ -20,6 +20,9 @@ function ModalFactory($http, $rootScope) {
     },
     setModal: function (template){
       setModal(template);
+    },
+    destroyModal: function (){
+      return $rootScope.$broadcast('modal:destroy');
     }
   };
 };

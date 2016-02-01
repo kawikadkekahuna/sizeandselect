@@ -24,14 +24,15 @@
     "node-sass": "^3.4.2"
   },
   "dependencies": {
+    "angular-mass-autocomplete": "^0.2.3",
     "async": "^1.4.2",
     "bcrypt": "^0.8.5",
     "body-parser": "^1.14.0",
     "crypto": "0.0.3",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
-    "mailgun-js": "^0.7.2",
     "jsonwebtoken": "^5.4.0",
+    "mailgun-js": "^0.7.2",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
     "pg": "^4.4.1",

@@ -38,4 +38,8 @@ function DropdownService ($http) {
   this.getSizingBasisUnits = function() {
     return $http.get(SERVER+ '/api/unitAnalytics/sizing-basis');
   };
+
+  this.getAnalyticUnits = function (){
+    return $http.get(SERVER+ '/api/unitAnalytics/all');
+  };
 }
