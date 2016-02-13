@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
       autoIncrement: true
     },
     name: DataTypes.STRING,
-    weight: DataTypes.STRING
+    k_constant: DataTypes.STRING
   }, {
     timestamps: false,
     tableName: "media_types"
