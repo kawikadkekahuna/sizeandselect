@@ -9,6 +9,7 @@ module.exports = function (sequelize, DataTypes) {
     dimensions: DataTypes.STRING
 
   }, {
+    timestamps: false,
     underscored: true,
     tableName: "flange_facings",
   });

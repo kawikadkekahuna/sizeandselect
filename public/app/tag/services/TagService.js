@@ -5,7 +5,7 @@ angular.module('app')
 function TagService ($http, $state) {
 
   this.addTag = function (tagData){
-    return $http.post(SERVER + '/api/tag/create', {tagData: tagData});
+    return $http.post(SERVER + '/api/tag/create', tagData);
   };
 
   this.getTags = function (projectId){

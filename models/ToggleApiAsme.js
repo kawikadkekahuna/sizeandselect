@@ -8,6 +8,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     name : DataTypes.STRING
   }, {
+    timestamps:false,
     tableName: "toggle_api_asme_sizing"
   });
 

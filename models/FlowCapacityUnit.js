@@ -8,6 +8,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     name: DataTypes.STRING
   }, {
+    timestamps: false,
     underscored: true,
     createdAt: false,
     tableName: "flow_capacity_units",

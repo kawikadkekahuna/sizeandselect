@@ -1,6 +1,7 @@
 'use strict';
 var express = require('express');
 var app = express();
+var router = express.Router();
 var db = require('./models');
 var routes = require('./routes');
 var bodyParser = require('body-parser');
@@ -34,6 +35,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use('/scripts', express.static(__dirname + '/node_modules/'));
+
+
+
 function localStrategy (username, password, done) {
   process.nextTick(function () {
       User.findOne({
@@ -51,10 +56,9 @@ function localStrategy (username, password, done) {
         throw err;
       });
   });
-}
+};
 
 passport.use(new LocalStrategy(localStrategy));
-
 app.use('/api', routes);
 
 app.all('/*', function(req, res, next) {

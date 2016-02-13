@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     name: DataTypes.STRING,
     quantity: DataTypes.INTEGER,
-    p_and_id: DataTypes.STRING,
+    pid: DataTypes.STRING,
     service: DataTypes.STRING,
     line_number: DataTypes.INTEGER,
     model_number: DataTypes.STRING,

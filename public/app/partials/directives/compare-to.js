@@ -1,7 +1,6 @@
 angular.module('app')
 
 .directive('compareTo', function () {
-
   return {
     require: 'ngModel',
     scope: {

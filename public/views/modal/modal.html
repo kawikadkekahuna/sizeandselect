@@ -1,8 +1,5 @@
 <div ng-controller="ModalController">
-  <div ng-if="CURRENT_MODAL === 'addTag'">
-    <div ng-include="modal.url"></div>
-  </div>
-  <div ng-if="CURRENT_MODAL === 'addProject'">
-    <div ng-include="modal.url"></div>
+  <div ng-if="CURRENT_MODAL === modal.name">
+	<div ng-include="modal.url"></div>
   </div>
 </div>

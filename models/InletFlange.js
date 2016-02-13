@@ -8,6 +8,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     rating: DataTypes.STRING
   }, {
+    timestamps: false,
     underscored: true,
     tableName: "inlet_flanges",
   });

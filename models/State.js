@@ -9,6 +9,7 @@ module.exports = function (sequelize, DataTypes) {
     name: DataTypes.STRING,
     abbreviation: DataTypes.STRING
   }, {
+    timestamps: false,
     underscored: true,
     tableName: "states"
   });

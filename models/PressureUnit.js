@@ -8,6 +8,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     name: DataTypes.STRING
   }, {
+    timestamps: false,
     underscored: true,
     tableName: "pressure_units",
   });

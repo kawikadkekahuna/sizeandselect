@@ -1,8 +1,6 @@
 angular.module('app')
 
-.controller('ProjectController', function ($scope, $rootScope, $sessionStorage, $stateParams, ProjectService, TagService, $state) {
-  $scope.header = {name: 'header', url: '/views/partials/navigation.html'};
-  $scope.modal = {name: 'modal', url: '/views/modal/modal.html'};
+.controller('ProjectController', function ($scope, $rootScope, $sessionStorage, $stateParams, ProjectService, TagService, $state, ModalFactory) {
   $scope.projectId = $stateParams.projectId;
 
   TagService.getTags($scope.projectId).then(function (tags){
@@ -14,19 +12,23 @@ angular.module('app')
     $scope.project = project.data;
   });
 
-  $scope.newTagModal = function(){
-    //must call to reinstantiate ModalController
-    $rootScope.$broadcast('resetModal');
-    $sessionStorage.SizeSelect.CURRENT_MODAL = 'addTag';
+  $scope.setModal = function (template){
+    ModalFactory.setModal(template);
   };
 
+
   $scope.addTag = function (tagData){
-    tagData.projectId = $scope.projectId;
-    TagService.addTag({tagData: tagData});    
+    tagData.project_id = $scope.projectId;
+    TagService.addTag(tagData).then(function (tag){
+      if(tag.status == 200){
+        $state.go('project.tag',{tagId: tag.data.id});
+        $rootScope.$broadcast('modal:destroy');
+      };
+      return;
+    });
   };
 
   $scope.enterTag = function (tagId){
     $state.go('project.tag',{tagId: tagId});
   };  
-
 });

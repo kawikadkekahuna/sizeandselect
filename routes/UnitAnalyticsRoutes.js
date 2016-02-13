@@ -13,6 +13,8 @@ var PressureUnit = require('../models').PressureUnit,
     TrimType = require('../models').TrimType,
     SeatType = require('../models').SeatType,
     MaterialVariable = require('../models').MaterialVariable,
+    Media = require('../models').Media,
+    MediaType = require('../models').MediaType,
     CapType = require('../models').CapType;
 
 router.get('/all', function (req,res){
@@ -27,6 +29,8 @@ router.get('/all', function (req,res){
       trimType,
       seatType,
       materialVariable,
+      media,
+      mediaType,
       capType;
 
   PressureUnit.findAll({}).then(function (unit){
@@ -73,26 +77,34 @@ router.get('/all', function (req,res){
     materialVariable = unit;
   });
 
+  Media.findAll({}).then(function (unit){
+    media = unit;
+  });
+
+  MediaType.findAll({}).then(function (unit){
+    mediaType = unit;
+  });
+
   CapType.findAll({}).then(function (unit){
     capType = unit;
     var units = {
-      pressure: pressure,
-      temperature: temperature,
-      viscosity: viscosity,
-      flowCapacity: flowCapacity,
-      sizingBasis: sizingBasis,
-      toggleApiAsme: toggleApiAsme,
-      inletFlange: inletFlange,
-      flangeFacing: flangeFacing,
-      trimType: trimType,
-      seatType: seatType,
-      materialVariable: materialVariable,
-      capType: capType
+      PRESSURE: pressure,
+      TEMPERATURE: temperature,
+      VISCOSITY: viscosity,
+      FLOW_CAPACITY: flowCapacity,
+      SIZING_BASIS: sizingBasis,
+      TOGGLE_API_AS_ME: toggleApiAsme,
+      INLET_FLANGE: inletFlange,
+      FLANGE_FACING: flangeFacing,
+      TRIM_TYPE: trimType,
+      SEAT_TYPE: seatType,
+      MATERIAL_VARIABLE: materialVariable,
+      MEDIA: media,
+      MEDIA_TYPE: mediaType,
+      CAP_TYPE: capType
     };
-    console.log('units', units);
     res.json(units);
   });
-
 });
 
 router.get('/pressure', function (req,res){
