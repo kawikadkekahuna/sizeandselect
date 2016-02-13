@@ -45,9 +45,6 @@ angular.module('app')
 
 });
 
-
-
-
 function loadEventHandlers($scope, $stateParams, $state, TagService, DropdownService){
   var tagId = $stateParams.tagId;
 
@@ -86,6 +83,4 @@ function loadEventHandlers($scope, $stateParams, $state, TagService, DropdownSer
     DataCalculationService.calculateReliefTemp(formInput);
   }
 
-});
-
-
+};
