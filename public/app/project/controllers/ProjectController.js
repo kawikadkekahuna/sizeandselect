@@ -30,5 +30,5 @@ angular.module('app')
 
   $scope.enterTag = function (tagId){
     $state.go('project.tag',{tagId: tagId});
-  };  
+  };
 });
