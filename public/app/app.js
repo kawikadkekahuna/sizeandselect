@@ -37,12 +37,18 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
 
   .state('messages', {
     url: '/messages',
+    resolve:{
+      authenticate: isAuthenticated
+    },
     templateUrl: '/views/partials/messages.html',
     controller: 'MessagesController'
   })
 
   .state('profile', {
     url: '/profile',
+    resolve:{
+      authenticate: isAuthenticated
+    },
     templateUrl: '/views/partials/profile.html',
     controller: 'ProfileController'
   })
@@ -106,6 +112,7 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
     var deferred = $q.defer();
     $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).success(function(user) {
       if (user.status === 200){
+        $localStorage.authenticated = true;
         deferred.resolve();
       }
       else {
