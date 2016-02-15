@@ -4,7 +4,8 @@ angular.module('app')
   //Add modals here
   //$sessionStorage.SizeSelect.CURRENT_MODAL.name must match template $scope.modals.name
   $scope.modals = [{name:'addProject', url:'/views/modal/add-project-modal.html'},
-                    {name:'addTag', url:'/views/modal/add-tag-modal.html'}
+                    {name:'addTag', url:'/views/modal/add-tag-modal.html'},
+                    {name:'register', url:'/views/modal/register-user-modal.html'}
                   ];
   /**
    * Modal Listeners

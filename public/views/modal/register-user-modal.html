@@ -1,0 +1,41 @@
+<div class="modal" ng-controller="NavigationController" ng-init="init()">
+  <div class="close" ng-click="close()">x</div>
+  <form ng-submit="createUser(newUser)" name="registrationForm">
+    <div class="registration-container">
+      <input name="username"
+            ng-model="newUser.username"
+            type="text"
+            ng-minlength="3"
+            required
+            placeholder="Username"><br />
+      <p ng-show="registrationForm.username.$error.minlength">Username is too short.</p>
+      <p ng-show="registrationForm.username.$error.required">Please enter a username</p>
+      <!-- Need to fix confirm-to password validation--> 
+      <input ng-model="newUser.password"
+        type="password"
+        required
+        name="password"
+        placeholder="Password"><br />
+      <p ng-show="registrationForm.password.$error.required">Please enter a password</p>
+
+      <input name="confirmation"
+        required
+        compare-to="newUser.password"
+        ng-model="newUser.confirmation"
+        type="password"
+        placeholder="Confirm Password"><br />
+
+      <input name="email" ng-pattern="validations.email" required ng-model="newUser.email"
+        type="text"
+        placeholder="xxx@xxxx.xxx"><br />
+        <p ng-show="registrationForm.password.$error.required">Please enter an email address</p>
+      <select name="accountType" required ng-model="newUser.account_type" ng-options="accountType.name for accountType in accountTypes">
+        <option value="">--User Type--</option>
+      </select>
+      <div ng-messages="registrationForm.userType.$error" ng-show="registrationForm.userType.$touched">
+        <p ng-message="required">User Type is required</p>
+      </div>
+      <button type="submit">Create User!</button>
+    </div>
+  </form>
+</div>
