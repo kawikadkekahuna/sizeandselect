@@ -8,17 +8,6 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
 })
 .config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
   $stateProvider
-  .state('about-us', {
-    url: '/about-us',
-    templateUrl: '/views/resources/about-us.html',
-    controller: 'AboutUsController'
-  })
-
-  .state('contact-us', {
-    url: '/contact-us',
-    templateUrl: '/views/resources/contact-us.html',
-    controller: 'ContactUsController'
-  })
 
   .state('dashboard', {
     url: '/dashboard',
@@ -29,19 +18,16 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
     controller: 'DashboardController'
   })
 
+  .state('home', {
+    url:'/',
+    templateUrl:'/views/user/home.html',
+    controler: 'DashboardController'
+  })
+
   .state('login', {
     url: '/login',
     templateUrl: '/views/auth/login.html',
     controller: 'AuthorizationController'
-  })
-
-  .state('messages', {
-    url: '/messages',
-    resolve:{
-      authenticate: isAuthenticated
-    },
-    templateUrl: '/views/partials/messages.html',
-    controller: 'MessagesController'
   })
 
   .state('profile', {
@@ -104,7 +90,7 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
     templateUrl: '/views/modal/modal.html'
   });
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/');
   $locationProvider.html5Mode({enabled: true, requireBase: false});
 
   function isAuthenticated($q, $state, $timeout, $http, $location, $rootScope, $localStorage) {

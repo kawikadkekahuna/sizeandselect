@@ -1,3 +1,7 @@
+body, html {
+  margin: 0;
+  padding: 0; }
+
 body {
   background-color: blue; }
 
@@ -42,13 +46,59 @@ body {
     right: 0; }
 
 .nav {
-  background-color: yellow;
-  height: 75px; }
-  .nav li {
-    display: inline-block;
-    background-color: pink;
-    width: 19%;
-    height: 100%; }
+  width: 100%; }
+  .nav .nav__public {
+    display: flex;
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 75px;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 0; }
+  .nav .nav__public-item {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    font-weight: 600;
+    font-size: 1em; }
+  .nav .nav__public-item--button {
+    justify-content: flex-end; }
+  .nav .nav__dropdown {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    list-style: none;
+    padding: 0;
+    height: 0;
+    width: 300px;
+    transform: translateX(-90%);
+    overflow: hidden;
+    transition: all 0.2s;
+    top: 80px; }
+    .nav .nav__dropdown.active {
+      transition: all 0.2s;
+      height: 150px;
+      border: 1px solid #000000; }
+  .nav .nav__paragraph {
+    display: inline-block; }
+  .nav .nav__input {
+    display: inline-block; }
+  .nav .nav__wrapper {
+    display: flex;
+    width: 35%;
+    justify-content: space-around;
+    align-items: center; }
+  .nav .nav__button {
+    height: 30px;
+    width: 50px;
+    border: 1px solid #000000;
+    background-color: #FFFFFF;
+    margin: 0 15px;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center; }
 
 .login {
   background-color: red;

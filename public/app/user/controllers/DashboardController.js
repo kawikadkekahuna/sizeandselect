@@ -6,6 +6,7 @@ angular.module('app')
   });
 
   $scope.setModal = function (template){
+    console.log('template',template);
     ModalFactory.setModal(template);
   };
 
