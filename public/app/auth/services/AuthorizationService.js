@@ -17,6 +17,11 @@ function AuthorizationService ($http, $localStorage, $state, $sessionStorage) {
 
   };
 
+  this.getUser = function (){
+    var userId = $localStorage.userId;
+    return $http.get(SERVER + '/api/user/' + userId);
+  };
+
   this.createUser = function (user) {
     return $http.post(SERVER + '/api/auth/register', user);
   };
