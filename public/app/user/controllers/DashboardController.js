@@ -1,6 +1,7 @@
 angular.module('app')
 
 .controller('DashboardController', function ($scope, $state, $stateParams, $rootScope, $sessionStorage, $location, $localStorage, ProjectService, ModalFactory) {
+
   ProjectService.getProjects().then(function (projects) {
     $scope.projects = projects.data;
   });

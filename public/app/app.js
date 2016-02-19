@@ -21,7 +21,7 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
   .state('home', {
     url:'/',
     templateUrl:'/views/user/home.html',
-    controler: 'DashboardController'
+    controler: 'HomeController'
   })
 
   .state('login', {
@@ -93,17 +93,19 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
   $urlRouterProvider.otherwise('/');
   $locationProvider.html5Mode({enabled: true, requireBase: false});
 
-  function isAuthenticated($q, $state, $timeout, $http, $location, $rootScope, $localStorage) {
+  function isAuthenticated($q, $state, $timeout, $http, $location, $rootScope, $localStorage, HelperFactory) {
     $http.defaults.headers.common['Authorization'] = $localStorage.token;
     var deferred = $q.defer();
     $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).success(function(user) {
       if (user.status === 200){
         $localStorage.authenticated = true;
+        HelperFactory.setNavigation('private');
         deferred.resolve();
       }
       else {
         $rootScope.message = 'You need to log in.';
         deferred.reject();
+        HelperFactory.setNavigation('public');
         $state.go('forbidden');
       }
     });

@@ -13,6 +13,7 @@ angular.module('app')
   };
 
   $scope.createUser = function(user) {
+    debugger;
     $http.defaults.headers.common['Bearer'] = $localStorage.token;
     user.token = $localStorage.token;
     AuthorizationService.createUser(user).then(function (user){

@@ -12,7 +12,7 @@ function AuthorizationService ($http, $localStorage, $state, $sessionStorage) {
       delete($localStorage.token);
       delete($localStorage.userId);
       $localStorage.authenticated = false;
-      $state.go('login');
+      $state.go('home');
     });
 
   };

@@ -1,11 +1,11 @@
 <nav class="nav" ng-controller="NavigationController" ng-init="init()">
 	<ul class="nav__public">
-		<li class="nav__public-item  nav__public-item--logo">Logo</li>
+		<li class="nav__public-item  nav__item--logo">Logo</li>
 		<div class="nav__wrapper">
 			<li class="nav__public-item">Features </li>
 			<li class="nav__public-item">Pricing</li>
 			<li class="nav__public-item">
-				<p ng-click="toggle()">Login</p>
+				<p class="nav__paragraph" ng-click="toggle()">Login</p>
 				<ul tabindex="1" ng-class="toggleState" class="nav__dropdown">
 					<form ng-submit="login(user)">
 						<li class="nav__public-item" ><p class="nav__paragraph">USERNAME:</p><input 

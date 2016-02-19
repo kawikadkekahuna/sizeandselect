@@ -1,15 +1,11 @@
 <nav class="nav" ng-controller="NavigationController" ng-init="init()">
-	<div>
-		<ul class="nav__public">
-			<li class="nav__public-item">Logo</li>
-			<li class="nav__public-item">Features <ul>
-				<li><p class="nav__paragraph">USERNAME:</p><input class="nav__input" type="text"></li>
-				<li><p class="nav__paragraph">PASSWORD:</p><input class="nav__input" type="text"></li>
-				<li><a href="#" class="nav__button">Go!</a></li>
-			</ul></li>
-			<li class="nav__public-item">Pricing</li>
-			<li class="nav__public-item">Login</li>
-			<li class="nav__public-item">Sign Up</li>
-		</ul>
-	</div>
+	<ul class="nav__public">
+		<li class="nav__public-item  nav__item--logo">Logo</li>
+		<div class="nav__wrapper">
+			<li class="nav__public-item">Help</li>
+			<li class="nav__public-item" ui-sref="dashboard">Dashboard</li>
+			<li class="nav__public-item" ui-sref="profile">Profile</li>
+			<li class="nav__public-item" ng-click="logout()">Logout</li>
+		</div>
+	</ul
 </nav>
