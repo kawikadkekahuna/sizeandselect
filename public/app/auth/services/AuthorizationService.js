@@ -2,7 +2,7 @@ angular.module('app')
 
 .service('AuthorizationService',['$http', '$localStorage', '$state', AuthorizationService]);
 
-function AuthorizationService ($http, $localStorage, $state) {
+function AuthorizationService ($http, $localStorage, $state, $sessionStorage) {
   this.login = function (user) { 
     return $http.post(SERVER + '/api/auth/login', user);
   };
@@ -11,8 +11,15 @@ function AuthorizationService ($http, $localStorage, $state) {
     return $http.get(SERVER + '/api/auth/logout').then(function (res){
       delete($localStorage.token);
       delete($localStorage.userId);
-      $state.go('login');
+      $localStorage.authenticated = false;
+      $state.go('home');
     });
+
+  };
+
+  this.getUser = function (){
+    var userId = $localStorage.userId;
+    return $http.get(SERVER + '/api/user/' + userId);
   };
 
   this.createUser = function (user) {
@@ -25,15 +32,15 @@ function AuthorizationService ($http, $localStorage, $state) {
 
   this.isAuthenticated = function (){
     if($localStorage.token){
+      var authenticated;
       $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).then(function (res){
         if(res.data.status === 200){
-          return true;
+          authenticated = true
+        }else{
+          authenticated = false
         };
-        return false;
+        return authenticated;
       });
-    }else{
-      return false;
-    }
-    return true;
+    };
   };
 }

@@ -11,7 +11,7 @@ gulp.task('connect', function(){
 
 // keeps gulp from crashing for scss errors
 gulp.task('sass', function () {
-  return gulp.src('./sass/*.scss')
+  return gulp.src('./public/css/sass/*.scss')
       .pipe(sass({ errLogToConsole: true }))
       .pipe(gulp.dest('./public/css'));
 });
@@ -22,7 +22,7 @@ gulp.task('livereload', function (){
 });
 
 gulp.task('watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+  gulp.watch('./public/css/sass/**/*.scss', ['sass']);
   gulp.watch('./public/**/*', ['livereload']);
 });
 

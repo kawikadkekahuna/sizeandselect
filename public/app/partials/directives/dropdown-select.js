@@ -10,7 +10,6 @@ angular.module('app')
     scope: {
       items: '='
     },
-    controller: 'RegistrationController as dropdownSelect',
     templateUrl: 'views/partials/resources/dropdown-select.tpl.html',
     link: function(scope, element, attributes, ngModel) {
       /**

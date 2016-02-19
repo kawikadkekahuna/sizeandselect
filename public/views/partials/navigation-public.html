@@ -1,0 +1,33 @@
+<nav class="nav" ng-controller="NavigationController" ng-init="init()">
+	<ul class="nav__public">
+		<li class="nav__public-item  nav__item--logo">Logo</li>
+		<div class="nav__wrapper">
+			<li class="nav__public-item">Features </li>
+			<li class="nav__public-item">Pricing</li>
+			<li class="nav__public-item">
+				<p class="nav__paragraph" ng-click="toggle()">Login</p>
+				<ul tabindex="1" ng-class="toggleState" class="nav__dropdown">
+					<form ng-submit="login(user)">
+						<li class="nav__public-item" ><p class="nav__paragraph">USERNAME:</p><input 
+						class="nav__input" 
+						type="text"
+						ng-model="user.username"
+            type="text"
+            required
+            placeholder="Username"
+						></li>
+						<li class="nav__public-item" ><p class="nav__paragraph">PASSWORD:</p><input 
+						class="nav__input"
+						ng-model="user.password"
+            type="password"
+            required
+            placeholder="Password">
+						</li>
+						<li class="nav__public-item nav__public-item--button" ><button ng- class="nav__button">Go!</button></li>
+					</form>
+				</ul>
+			</li>
+			<li class="nav__public-item" ng-click="setModal('register')">Sign Up</li>
+		</div>
+	</ul>
+</nav>

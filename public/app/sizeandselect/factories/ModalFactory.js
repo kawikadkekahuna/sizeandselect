@@ -10,8 +10,8 @@ function ModalFactory($http, $rootScope) {
   };
 
   function setModal(template) {
-    $rootScope.$broadcast('modal:updated', template);
     this._currentModal = template;
+    $rootScope.$broadcast('modal:updated', template);
   };
 
   return {
@@ -22,6 +22,7 @@ function ModalFactory($http, $rootScope) {
       setModal(template);
     },
     destroyModal: function (){
+      setModal('');
       return $rootScope.$broadcast('modal:destroy');
     }
   };

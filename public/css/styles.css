@@ -1,3 +1,7 @@
+body, html {
+  margin: 0;
+  padding: 0; }
+
 body {
   background-color: blue; }
 
@@ -16,39 +20,115 @@ body {
   z-index: 10001; }
 
 .modal {
-  background-color: navy;
-  display: block;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   z-index: 10002;
   width: 100%;
-  height: 250px;
+  height: 350px;
   max-width: 750px;
-  min-width: 300px;
   top: 25%;
   left: 25%;
   bottom: auto;
-  right: auto;
-  -webkit-text-stroke: 0.35px;
-  -webkit-font-smoothing: antialiased; }
-  .modal input {
-    max-width: 550px;
-    padding: 10px;
-    border: solid 1px #FFF;
-    transition: border 0.3s;
-    height: 100%;
-    width: 100%; }
+  right: auto; }
   .modal .close {
     position: absolute;
     right: 0; }
+  .modal .modal__registration {
+    padding: 0 25px; }
+  .modal .modal__input {
+    display: inline-block;
+    width: 350px;
+    height: 30px;
+    margin: 5px 0; }
+  .modal .modal__input--login {
+    text-align: center;
+    height: auto;
+    font-size: 0.725em; }
+  .modal .modal__input--button {
+    text-align: center;
+    background-color: orange;
+    color: #FFFFFF;
+    border-radius: 25px; }
+  .modal .modal__select {
+    background-color: white;
+    height: 35px;
+    width: 354px;
+    display: inline-block; }
 
 .nav {
-  background-color: yellow;
-  height: 75px; }
-  .nav li {
-    display: inline-block;
-    background-color: pink;
-    width: 19%;
-    height: 100%; }
+  width: 100%; }
+
+.nav__public {
+  display: flex;
+  background-color: #FFFFFF;
+  height: 75px;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 0; }
+
+.nav__wrapper {
+  margin-right: 20px; }
+
+.nav__public-item {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  font-weight: 600;
+  font-size: 1em; }
+  .nav__public-item:hover {
+    cursor: pointer; }
+
+.nav__dropdown {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  list-style: none;
+  padding: 0;
+  height: 0;
+  width: 300px;
+  transform: translateX(-100%);
+  overflow: hidden;
+  transition: all 0.2s;
+  top: 80px; }
+  .nav__dropdown.active {
+    transition: all 0.2s;
+    height: 150px;
+    border: 1px solid #000000; }
+
+.nav__paragraph {
+  display: inline-block; }
+
+.nav__input {
+  display: inline-block;
+  width: 350px;
+  height: 30px; }
+
+.nav__wrapper {
+  display: flex;
+  width: 35%;
+  justify-content: space-around;
+  align-items: center; }
+
+.button {
+  height: 30px;
+  width: 50px;
+  font-size: 0.725em;
+  border: 1px solid #000000;
+  background-color: orange;
+  margin: 0 15px;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center; }
+
+.input__main {
+  height: 30px;
+  width: 250px; }
 
 .login {
   background-color: red;

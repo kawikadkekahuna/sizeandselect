@@ -1,0 +1,11 @@
+<nav class="nav" ng-controller="NavigationController" ng-init="init()">
+	<ul class="nav__public">
+		<li class="nav__public-item  nav__item--logo">Logo</li>
+		<div class="nav__wrapper">
+			<li class="nav__public-item">Help</li>
+			<li class="nav__public-item" ui-sref="dashboard">Dashboard</li>
+			<li class="nav__public-item" ui-sref="profile">Profile</li>
+			<li class="nav__public-item" ng-click="logout()">Logout</li>
+		</div>
+	</ul
+</nav>
