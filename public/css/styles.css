@@ -126,6 +126,10 @@ body {
   align-items: center;
   justify-content: center; }
 
+.input__main {
+  height: 30px;
+  width: 250px; }
+
 .login {
   background-color: red;
   width: 100%;

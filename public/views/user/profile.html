@@ -3,92 +3,57 @@
 <div>
 <form ng-submit="createUser(newUser)" name="registration">
   <div>
-    <input name="first_name"
-          ng-model="newUser.first_name"
-          type="text"
-          required
-          placeholder="First Name"><br />
-    <div ng-messages="registration.first_name.$error">
-      <div ng-messages-include src="views/partials/resources/error-messages.tpl.html"></div>
-    </div>
-
-    <input name="last_name"
-          ng-model="newUser.last_name"
-          type="text"
-          required
-          placeholder="Last Name"><br />
-    <div ng-messages="registration.last_name.$error">
-      <div ng-messages-include src="views/partials/resources/error-messages.tpl.html"></div>
-    </div>
-
-    <input name="username"
-          ng-model="newUser.username"
-          type="text"
-          required
-          placeholder="Username"><br />
-    <div ng-messages="registration.username.$error">
-      <div ng-messages-include src="views/partials/resources/error-messages.tpl.html"></div>
-    </div>
-
-    <input ng-model="newUser.password"
-      type="password"
-      required
-      name="password"
-      placeholder="Password"><br />
-    <div ng-messages="registration.password.$error">
-      <div ng-messages-include src="views/partials/resources/error-messages.tpl.html"></div>
-    </div>
-
-    <input name="confirmation"
-      required
-      compare-to="newUser.password"
-      ng-model="newUser.confirmation"
-      type="password"
-      placeholder="Confirm Password"><br />
-    <div ng-messages="registration.confirmation.$error">
-      <div ng-messages-include src="views/partials/resources/error-messages.tpl.html"></div>
-    </div>
-
-    <input name="email" ng-pattern="validations.email" required ng-model="newUser.email"
+    <input class="input__main" name="first_name"
+      ng-model="newUser.first_name"
       type="text"
-      placeholder="xxx@xxxx.xxx"><br />
-    <div ng-messages="registration.email.$error">
-      <div ng-messages-include src="views/partials/resources/error-messages.tpl.html"></div>
-    </div>
+      required
+      placeholder="First Name"><br />
+  
+    <input class="input__main" name="last_name"
+    ng-model="newUser.last_name"
+    type="text"
+    required
+    placeholder="Last Name"><br />
+    
+
+    <input class="input__main" name="username"
+    ng-model="newUser.username"
+    type="text"
+    required
+    placeholder="Username"><br />
+
+    <input class="input__main" ng-model="newUser.password"
+    type="password"
+    required
+    name="password"
+    placeholder="Password"><br />
+
+    <input class="input__main" name="confirmation"
+    required
+    compare-to="newUser.password"
+    ng-model="newUser.confirmation"
+    type="password"
+    placeholder="Confirm Password"><br />
+
+    <input class="input__main" name="email" ng-pattern="validations.email" required ng-model="newUser.email"
+    type="text"
+    placeholder="xxx@xxxx.xxx"><br />
 
     <dropdown-select items="accountTypes" ng-model="newUser.account_type"></dropdown-select><br />
 
-    <input name="address" required ng-model="newUser.address" type="text" placeholder="Address"><br />
-    <div ng-messages="registration.address.$error">
-      <div ng-messages-include src="views/partials/resources/error-messages.tpl.html"></div>
-    </div>
+    <input class="input__main" name="address" required ng-model="newUser.address" type="text" placeholder="Address"><br />
 
-    <input required name="city" ng-model="newUser.city" type="text" placeholder="City"><br />
-    <div ng-messages="registration.city.$error">
-      <div ng-messages-include src="views/partials/resources/error-messages.tpl.html"></div>
-    </div>
+    <input class="input__main" required name="city" ng-model="newUser.city" type="text" placeholder="City"><br />
 
     <dropdown-select items="states" ng-model="newUser.selectedState"></dropdown-select><br />
 
-    <input required ng-pattern="validations.zipcode" name="zipcode" ng-model="newUser.zipcode" type="text" placeholder="Zipcode"><br />
-    <div ng-messages="registration.zipcode.$error">
-      <div ng-messages-include src="views/partials/resources/error-messages.tpl.html"></div>
-    </div>
+    <input class="input__main" required ng-pattern="validations.zipcode" name="zipcode" ng-model="newUser.zipcode" type="text" placeholder="Zipcode"><br />
 
-    <input required name="company" ng-model="newUser.company" type="text" placeholder="Company"><br />
-    <div ng-messages="registration.company.$error">
-      <div ng-messages-include src="views/partials/resources/error-messages.tpl.html"></div>
-    </div>
+    <input class="input__main" required name="company" ng-model="newUser.company" type="text" placeholder="Company"><br />
 
-    <input required name="job_title" ng-model="newUser.job_title" type="text" placeholder="Job Title"><br />
-    <div ng-messages="registration.job_title.$error">
-      <div ng-messages-include src="views/partials/resources/error-messages.tpl.html"></div>
-    </div>
+    <input class="input__main" required name="job_title" ng-model="newUser.job_title" type="text" placeholder="Job Title"><br />
 
-    <input required ng-pattern="validations.phoneNumber" name="phone_number" ng-model="newUser.phone_number" type="text" placeholder="(xxx)xxx-xxxx"><br />
-    <div ng-messages="registration.phone_number.$error">
-      <div ng-messages-include src="views/partials/resources/error-messages.tpl.html"></div>
-    </div>
+    <input class="input__main" required ng-pattern="validations.phoneNumber" name="phone_number" ng-model="newUser.phone_number" type="text" placeholder="(xxx)xxx-xxxx"><br />
 
   </div>
   <button type="submit">Create User!</button>

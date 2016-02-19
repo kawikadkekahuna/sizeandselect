@@ -35,7 +35,7 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
     resolve:{
       authenticate: isAuthenticated
     },
-    templateUrl: '/views/partials/profile.html',
+    templateUrl: '/views/user/profile.html',
     controller: 'ProfileController'
   })
 
@@ -99,13 +99,11 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
     $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).success(function(user) {
       if (user.status === 200){
         $localStorage.authenticated = true;
-        HelperFactory.setNavigation('private');
         deferred.resolve();
       }
       else {
         $rootScope.message = 'You need to log in.';
         deferred.reject();
-        HelperFactory.setNavigation('public');
         $state.go('forbidden');
       }
     });
