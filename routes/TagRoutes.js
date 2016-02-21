@@ -1,8 +1,8 @@
 'use strict';
 
 var express = require('express');
-var router = express.Router();
-var Tag = require('../models').Tag,
+var router = express.Router(),
+    Tag = require('../models').Tag,
     TagCalculation = require('../models').TagCalculation,
     jwt = require('jsonwebtoken');
 
@@ -65,14 +65,52 @@ router.get('/id', verify, function (req,res){
   });
 });
 
+router.post('/tag-sheet', function (req, res){
+
+  const body = req.body;
+
+  TagCalculation.create({
+    atm: body.atmPressure,
+    built_up_back_pressure: body.backPressureBuiltUp,
+    compressibility: body.compressibility,
+    constant_super_imposed_pressure: body.constantSuperimposed,
+    design_max_temperature: body.designMaxTemperature,
+    design_min_temperature: body.designMinTemperature,
+    inlet_loss: body.inletLoss,
+    inlet_loss_percentage: body.inletLossPercent,
+    mawp: body.mawp,
+    molecular_weight: body.molecularWeight,
+    operating_pressure: body.operatingPressure,
+    operating_temperature: body.operatingTemperature,
+    orifice_size: body.OrificeSize,
+    overpressure: body.overpressure,
+    relief_temperature: body.reliefTemperature,
+    required_flow_capacity: body.requiredFlowCapacity,
+    rupture_disc_checkbox: body.ruptureDiscCheckbox,
+    rupture_disc: body.ruptureDisc,
+    set_pressure: body.setPressure,
+    specific_gravity: body.specificGravity,
+    specific_heat: body.specificHeat,
+    variable_super_imposed_pressure: body.varSuperimposed,
+    viscosity: body.viscosity
+    // media_id: media
+    // media_type_id: mediaType
+    // sizing_basis_id:
+
+  })
+    .then(function (tagSheet) {
+      res.json(tagSheet)
+    });
+})
+
 function verify (req, res, next) {
   jwt.verify(req.headers.authorization, 'sushisecret', function (err, decoded){
     if(decoded){
       next();
     }else{
       res.json({
-        error:'Unauthorized', 
-        status: 401, 
+        error:'Unauthorized',
+        status: 401,
         message:'Invalid or expired access token.'
       });
     };
