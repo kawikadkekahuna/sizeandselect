@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('TagController', function ($scope, $stateParams, $state, TagService, DropdownService) {
+.controller('TagController', function ($scope, $stateParams, $state, TagService, DropdownService, DataCalculationService) {
   $scope.init = function (){
     loadEventHandlers($scope, $stateParams, $state, TagService, DropdownService);
   };
@@ -41,7 +41,21 @@ angular.module('app')
     console.log('unit',unit);
   });
 
+  $scope.processTagInputData = function(tagInputData) {
 
+    // Crunch all the numbers..
+    // make below a promise so when its done it can pass the data to the next service
+
+    DataCalculationService.processDataInputs(tagInputData)
+
+        // // Pass the info to the DB
+        // TagService.createTagAnalytics(tagAnalytics)
+
+
+    // Forward them to the next page
+    // $state.go('project.tag.selection-sheet');
+
+  };
 
 });
 
@@ -78,5 +92,7 @@ function loadEventHandlers($scope, $stateParams, $state, TagService, DropdownSer
     };
   });
   $scope.TAG_DEFAULT_VALUES = TagService.defaultValues();
-  $scope.createTagAnalytics = TagService.createTagAnalytics();
+  // $scope.createTagAnalytics = TagService.createTagAnalytics();
+
+
 };

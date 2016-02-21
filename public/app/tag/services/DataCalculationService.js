@@ -9,6 +9,11 @@ angular.module('app')
 
 function DataCalculationService () {
 
+  this.processDataInputs = function (tagInputData) {
+    console.log("what is tagInputData", tagInputData)
+    return tagInputData;
+  };
+
 
 
   this.calculateReliefTemp = function (formInput) {

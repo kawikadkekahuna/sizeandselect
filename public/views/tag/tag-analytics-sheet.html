@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="middle-column project-wrapper">
-    <form ng-submit="createTagAnalytics(tagAnalytics)" name="tagAnalyticsSheet">
+    <form ng-submit="processTagInputData(tagAnalytics)" name="tagAnalyticsSheet">
     <ul>
       <li>
         <label>Media Type
@@ -28,9 +28,9 @@
       <!-- Only show below three if media type is VAPOR (Gas?) or STEAM -->
       <div ng-if="tagAnalytics.mediaType === 'Gas' || tagAnalytics.mediaType === 'Steam'">
         <li>
-        <label>Molecular Weight (value based on media)
-          <input ng-model="tagAnalytics.molecularWeight">
-        </label>
+          <label>Molecular Weight (value based on media)
+            <input ng-model="tagAnalytics.molecularWeight">
+          </label>
         </li>
         <li>
           <label>Specific Heat (k) (value based on media/function)
@@ -47,13 +47,13 @@
       <div ng-if="tagAnalytics.mediaType === 'Liquid'">
         <li>
           <label>Specific Gravity
-            <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.specificGravity">
+            <input class="tag-dropdown" name="accountType" ng-model="tagAnalytics.specificGravity">
           </label>
         </li>
         <li>
           <label>Viscosity
-            <input class="tag-dropdown" name="accountType" ng-model="tagAnalaytics.viscosity">
-            <select name="accountType" ng-model="tagAnalaytics.viscosityUnit" ng-options="viscosityUnit.name for viscosityUnit in viscosityUnits">
+            <input class="tag-dropdown" name="accountType" ng-model="tagAnalytics.viscosity">
+            <select name="accountType" ng-model="tagAnalytics.viscosityUnit" ng-options="viscosityUnit.name for viscosityUnit in viscosityUnits">
               <option value="">viscosity units</option>
             </select>
           </label>
@@ -214,10 +214,8 @@
         </select>
       </li>
     </ul>
-      <button ng-click="calculateOrificeSize(tagAnalaytics)" type="submit">Submit</button>
+      <button type="submit">Submit</button>
    </form>
-  </div>
-  <div class="right-column">
   </div>
 </div>
 
