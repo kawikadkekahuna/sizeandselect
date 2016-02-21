@@ -10,23 +10,24 @@
 }
 .modal{
   background-color: $white;
-  border-radius:15px;
-  display: flex;
-  justify-content: space-between;
-  align-items:center;
+  border-radius: 15px;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items:center;
   position: absolute;
-  z-index: 10002;
-  width: 100%;
-  height:350px;
-  max-width: 750px;
+  z-index: 1000;
+  padding: 2%;
+  max-width: 550px;
   top: 25%;
   left: 25%;
   bottom: auto;
   right: auto;
 
   .close{
-    position:absolute;
-    right:0;
+    position: absolute;
+    right: 2%;
+    top: 4%;
+    font-size: .9em;
   }
 
   .modal__registration{
@@ -35,22 +36,23 @@
 
   .modal__input{
     display: inline-block;
-    width:350px;
-    height:30px; 
+    border-radius: 10px;
     margin:5px 0;
   }
 
   .modal__input--login{
     text-align: center;
     height:auto;
-    font-size: 0.725em;
+    font-size: 0.8em;
   }
 
   .modal__input--button{
     text-align: center;
-    background-color:orange;
+    background-color: #1381B4;
     color: $white;
     border-radius: 25px;
+    width: 300px;
+    line-height: 30px;
   }
 
   .modal__select{

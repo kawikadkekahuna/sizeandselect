@@ -3311,37 +3311,36 @@ table {
 .modal {
   background-color: #FFFFFF;
   border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: absolute;
-  z-index: 10002;
-  width: 100%;
-  height: 350px;
-  max-width: 750px;
+  z-index: 1000;
+  padding: 2%;
+  max-width: 550px;
   top: 25%;
   left: 25%;
   bottom: auto;
   right: auto; }
   .modal .close {
     position: absolute;
-    right: 0; }
+    right: 2%;
+    top: 4%;
+    font-size: .9em; }
   .modal .modal__registration {
     padding: 0 25px; }
   .modal .modal__input {
     display: inline-block;
-    width: 350px;
-    height: 30px;
+    border-radius: 10px;
     margin: 5px 0; }
   .modal .modal__input--login {
     text-align: center;
     height: auto;
-    font-size: 0.725em; }
+    font-size: 0.8em; }
   .modal .modal__input--button {
     text-align: center;
-    background-color: orange;
+    background-color: #1381B4;
     color: #FFFFFF;
-    border-radius: 25px; }
+    border-radius: 25px;
+    width: 300px;
+    line-height: 30px; }
   .modal .modal__select {
     background-color: white;
     height: 35px;
@@ -3753,7 +3752,8 @@ table {
   .nav__dropdown.active {
     transition: all 0.2s;
     height: 150px;
-    border: 1px solid #000000; }
+    border: 1px solid #000000;
+    z-index: 10001; }
 
 .nav__paragraph {
   display: inline-block; }
@@ -3768,6 +3768,9 @@ table {
   width: 35%;
   justify-content: space-around;
   align-items: center; }
+
+.nav__item--logo {
+  width: 150px; }
 
 .button {
   height: 30px;
@@ -3808,7 +3811,6 @@ table {
   font-size: 1.7em; }
 
 .login {
-  background-color: red;
   width: 100%;
   height: 50%;
   position: absolute;
