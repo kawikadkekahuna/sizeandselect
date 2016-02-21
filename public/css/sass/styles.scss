@@ -1,38 +1,36 @@
-body,html {
-  margin:0;
-  padding:0;
-}
-body{
-  background-color:blue;
-}
-
 .error-messages .ng-scope{
   color:red;
   font-size:11px;
 }
 
+@import "./partials/_foundation.scss";
+@import "./partials/_settings.scss";
+
 // Normalize
 // ---------------------------------------------------
-
+@import "./partials/_clearfix.scss";
+@import "./partials/_reset.scss";
 
 // Mixin, Variables, Etc
 // ---------------------------------------------------
 @import "./framework/_colors.scss";
 
-
 // Modules
 // ---------------------------------------------------
 @import "./modules/_modal.scss";
+@import "./modules/flipclock.scss";
 
 // Partials
 // ---------------------------------------------------
 @import "./partials/_navigation.scss";
 @import "./partials/_button.scss";
 @import "./partials/_input.scss";
+@import "./partials/_images.scss";
 
 
 
 // Sections
 // ---------------------------------------------------
+@import "./sections/_home.scss";
 @import "./sections/_login.scss";
 @import "./sections/_dashboard.scss";
