@@ -69,6 +69,8 @@ router.post('/tag-sheet', function (req, res){
 
   const body = req.body;
 
+  console.log("what is body", body);
+
   TagCalculation.create({
     atm: body.atmPressure,
     built_up_back_pressure: body.backPressureBuiltUp,
@@ -100,6 +102,9 @@ router.post('/tag-sheet', function (req, res){
     // temperature_unit_id:
     // required_flow_capacity_unit_id:
     // pressure_unit_id:
+    // asme_sizing_id:
+    // code_type_id:
+
 
   })
     .then(function (tagSheet) {
