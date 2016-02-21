@@ -10,35 +10,59 @@ angular.module('app')
 function DataCalculationService () {
 
   this.processDataInputs = function (tagInputData) {
+
     console.log("what is tagInputData", tagInputData)
+
+    var V = tagInputData.requiredFlowCapacity,
+      M = tagInputData.molecularWeight,
+      Temperature = 100,
+      T = calculateReliefTemp(Temperature),
+      Z = tagInputData.compressibility || 1.0,
+      K = 0.865, //Always the default,
+      k = specificHeat,
+      C = || 315, //I HAVE NO IDEA WHAT THIS IS
+      W = tagInputData.requiredFlowCapacity
+      setPressure = tagInputData.setPressure,
+      inletLossPressure = tagInputData.inletLoss,
+      allowableOverPressure = tagInputData.allowableOverPressure,
+      P1 = calculateP1V(setPressure, inletLossPressure, allowableOverPressure),
+      A = calculateRequiredAreaWeight(V, M, T, Z, C, K P1),
+      // tagInputData.orificeSize = calculateRequiredAreaWeight(V, M, T, Z, C, K P1),
+      backPressureBuiltUp = tagInputData.backPressureBuiltUp;
+
+
+
+    // validate the information
+    // Run the numbers
+    // pass the information to the next service to add to the DB
+
     return tagInputData;
   };
 
-
-
-  this.calculateReliefTemp = function (formInput) {
-    console.log("formInput", formInput);
-    var reliefTemp = 100, //input value for relief Temp field on tag
-      reliefTempunit = "F";
-
-    interalGlobalTemp = reliefTempunit;
-    interalGlobalTemp = reliefTemp + reliefTempBase;
-
-  };
-
-  this.calculateP1V = function () {
-
-    var reliefTemp  = calculateReliefTemp(model.inputTemp)
-
-    // var setPressure = 0, //set pressure input
-    //     inletPressureLoss = 0, //inlet pressure loss input
-    //     allowableOverPressure = 0, //allowable over pressure input
-    //     p1Value = (setPressure - inletPressureLoss) + ( allowableOverPressure + p1Base);
-
-        // return p1Value + reliefTemp;
-        return p1Base + reliefTemp;
-  }
-
-
-
 };
+
+function calculateReliefTemp(Temperature) {
+  return Temperature + 460;
+}
+
+function calculateP1V(setPressure, inletLossPressure, allowableOverPressure) {
+  return (setPressure - inletLossPressure) + allowableOverPressure + 14.7;
+}
+
+function calculateRequiredAreaWeight(V, M, T, Z, C, K P1) {
+  return (V * (Math.sqrt((M * T * Z)))) / (6.32 * C * K * P1)
+}
+
+function calculateRequiredAreaVolume() {
+  return (W / (C * K * P1 * Kb * Kc)) * Math.sqrt(((T * Z) / M))
+}
+
+function validateAreNumbers(tagInputData) {
+  const tagInputs = Object.keys(tagInputData);
+
+    return tagInputs.every(function (tagInput) {
+        return !isNaN(parseFloat(body[tagInput])) && isFinite(body[tagInput]);
+    });
+}
+
+
