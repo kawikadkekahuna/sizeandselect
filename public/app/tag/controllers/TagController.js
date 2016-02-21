@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('TagController', function ($scope, $stateParams, $state, TagService, DropdownService, DataCalculationService) {
+.controller('TagController', function ($scope, $stateParams, $state, TagService, DropdownService) {
   $scope.init = function (){
     loadEventHandlers($scope, $stateParams, $state, TagService, DropdownService);
   };
@@ -12,6 +12,7 @@ angular.module('app')
     specificHeat: '',
     compressibility: ''
   };
+
 
   $scope.$watch('tagAnalytics.media', function (val){
     if($scope.UNITS){
@@ -40,9 +41,10 @@ angular.module('app')
     console.log('unit',unit);
   });
 
-  $scope.calculateOrificeSize = function (inputData) {
-    console.log("inputData", inputData);
-  }
+
+
+});
+
 
 
 
@@ -76,17 +78,5 @@ function loadEventHandlers($scope, $stateParams, $state, TagService, DropdownSer
     };
   });
   $scope.TAG_DEFAULT_VALUES = TagService.defaultValues();
-  $scope.createTagAnalytics = function (data) {
-    console.log("data", data)
-    TagService.createTagAnalytics()
-  };
-
-  $scope.testMessage = 'Tag Controller Linked';
-
-  $scope.calculateReliefTemp = function (formInput) {
-    DataCalculationService.calculateReliefTemp(formInput);
-  }
-
+  $scope.createTagAnalytics = TagService.createTagAnalytics();
 };
-
-});
