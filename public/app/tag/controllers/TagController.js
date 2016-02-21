@@ -13,7 +13,6 @@ angular.module('app')
     compressibility: ''
   };
 
-
   $scope.$watch('tagAnalytics.media', function (val){
     if($scope.UNITS){
       var media = _.filter($scope.UNITS.MEDIA, function (unit){
@@ -41,9 +40,11 @@ angular.module('app')
     console.log('unit',unit);
   });
 
+  $scope.calculateOrificeSize = function (inputData) {
+    console.log("inputData", inputData);
+  }
 
 
-});
 
 function loadEventHandlers($scope, $stateParams, $state, TagService, DropdownService){
   var tagId = $stateParams.tagId;
@@ -75,7 +76,10 @@ function loadEventHandlers($scope, $stateParams, $state, TagService, DropdownSer
     };
   });
   $scope.TAG_DEFAULT_VALUES = TagService.defaultValues();
-  $scope.createTagAnalytics = TagService.createTagAnalytics();
+  $scope.createTagAnalytics = function (data) {
+    console.log("data", data)
+    TagService.createTagAnalytics()
+  };
 
   $scope.testMessage = 'Tag Controller Linked';
 
@@ -84,3 +88,5 @@ function loadEventHandlers($scope, $stateParams, $state, TagService, DropdownSer
   }
 
 };
+
+});
