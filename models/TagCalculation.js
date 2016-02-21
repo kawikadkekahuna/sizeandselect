@@ -36,6 +36,10 @@ module.exports = function (sequelize, DataTypes) {
         TagCalculation.belongsTo(models.MediaType);
         TagCalculation.belongsTo(models.Media);
         TagCalculation.belongsTo(models.SizingBasis);
+        TagCalculation.belongsTo(models.FlowCapacityUnit);
+        TagCalculation.belongsTo(models.PressureUnit);
+        TagCalculation.belongsTo(models.TemperatureUnit);
+        TagCalculation.belongsTo(models.ViscosityUnit);
       }
     }
   });

@@ -17,13 +17,7 @@ function TagService ($http, $state) {
   };
 
   this.createTagAnalytics = function(tagAnalytics){
-    /*
-     * TODO:
-     * What to do with data?
-     * Redirects to next state as placeholder
-     */
     return $http.post(SERVER + '/api/tag/tag-sheet' , tagAnalytics)
-
   };
 
   this.defaultValues = function (){

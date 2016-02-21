@@ -96,6 +96,10 @@ router.post('/tag-sheet', function (req, res){
     // media_id: media
     // media_type_id: mediaType
     // sizing_basis_id:
+    // viscosity_unit_id
+    // temperature_unit_id:
+    // required_flow_capacity_unit_id:
+    // pressure_unit_id:
 
   })
     .then(function (tagSheet) {
