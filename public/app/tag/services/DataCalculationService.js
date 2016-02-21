@@ -20,7 +20,7 @@ function DataCalculationService () {
       Z = tagInputData.compressibility || 1.0,
       K = 0.865, //Always the default,
       k = specificHeat,
-      C = || 315, //I HAVE NO IDEA WHAT THIS IS
+      C = 315, //I HAVE NO IDEA WHAT THIS IS
       W = tagInputData.requiredFlowCapacity
       setPressure = tagInputData.setPressure,
       inletLossPressure = tagInputData.inletLoss,
