@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
 
-  var ToggleApiAsme = sequelize.define("ToggleApiAsme", {
+  var CodeType = sequelize.define("CodeType", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -8,9 +8,9 @@ module.exports = function (sequelize, DataTypes) {
     },
     name : DataTypes.STRING
   }, {
-    timestamps:false,
-    tableName: "toggle_api_asme_sizing"
+    timestamps: false,
+    tableName: "code_types",
   });
 
-  return ToggleApiAsme;
+  return CodeType;
 };

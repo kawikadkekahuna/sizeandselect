@@ -104,6 +104,9 @@ INSERT INTO medias VALUES (DEFAULT, 'Air', 1.000, 28.970, null, 1.400, null);
 INSERT INTO medias VALUES (DEFAULT, 'Water', null, null, 1.000, null, 1.0070);
 INSERT INTO medias VALUES (DEFAULT, 'Steam', 1.000, 18.020, null, 1.310, null);
 
+INSERT INTO code_types VALUES (DEFAULT, 'Section VIII');
+INSERT INTO code_types VALUES (DEFAULT, 'Section I');
+INSERT INTO code_types VALUES (DEFAULT, 'None Code');
 
 INSERT INTO sizing_basis VALUES (DEFAULT, 'Blocked Discharge', 10);
 INSERT INTO sizing_basis VALUES (DEFAULT, 'Control Valve Failure', 10);
@@ -112,8 +115,8 @@ INSERT INTO sizing_basis VALUES (DEFAULT, 'Runaway Reaction', 10);
 INSERT INTO sizing_basis VALUES (DEFAULT, 'Thermal Relief', 10);
 INSERT INTO sizing_basis VALUES (DEFAULT, 'Tube Rupture', 10);
 INSERT INTO sizing_basis VALUES (DEFAULT, 'Valve Capacity', 10);
-INSERT INTO toggle_api_asme_sizing VALUES (DEFAULT, 'API');
-INSERT INTO toggle_api_asme_sizing VALUES (DEFAULT, 'ASME');
+INSERT INTO asme_sizing VALUES (DEFAULT, 'API');
+INSERT INTO asme_sizing VALUES (DEFAULT, 'ASME');
 INSERT INTO orifice_sizes VALUES (DEFAULT, 'D', '0.110');
 INSERT INTO orifice_sizes VALUES (DEFAULT, 'E', '0.196');
 INSERT INTO orifice_sizes VALUES (DEFAULT, 'F', '0.307');
