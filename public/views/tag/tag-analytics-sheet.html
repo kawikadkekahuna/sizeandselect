@@ -12,9 +12,16 @@
     <form ng-submit="processTagInputData(tagAnalytics)" name="tagAnalyticsSheet">
     <ul>
       <li>
+        <label>Select Code Type
+          <select ng-model="tagAnalytics.codeType">
+            <option ng-model="tagAnalytics.codeTypeSelection"> NEED TO GET THIS</option>
+          </select>
+        </label>
+      </li>
+      <li>
         <label>Media Type
           <select ng-model="tagAnalytics.mediaType">
-            <option ng-repeat="type in UNITS.MEDIA_TYPE">{{type.name}}</option>
+            <option ng-model="tagAnalytics.mediaTypeSelection" ng-repeat="type in UNITS.MEDIA_TYPE">{{type.name}}</option>
           </select>
         </label>
       </li>
@@ -208,8 +215,8 @@
       </li>
 
       <li>
-        Toggle Sizing
-        <select name="sizingToggle" ng-model="tagAnalytics.toggleSizing" ng-options="sizingToggle.name for sizingToggle in UNITS.TOGGLE_API_ASME">
+        ASME Sizing
+        <select name="asmeSizing" ng-model="tagAnalytics.asmeSizing">
           <option value="">comes from DB toggle_api_asme_sizing</option>
         </select>
       </li>
