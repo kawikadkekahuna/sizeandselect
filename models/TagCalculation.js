@@ -33,6 +33,8 @@ module.exports = function (sequelize, DataTypes) {
     tableName: "tag_calculations",
     classMethods: {
       associate: function(models) {
+        TagCalculation.belongsTo(models.AsmeSizing);
+        TagCalculation.belongsTo(models.CodeType);
         TagCalculation.belongsTo(models.MediaType);
         TagCalculation.belongsTo(models.Media);
         TagCalculation.belongsTo(models.SizingBasis);
