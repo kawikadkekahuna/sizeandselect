@@ -20,15 +20,21 @@ function DataCalculationService () {
       Z = tagInputData.compressibility || 1.0,
       K = 0.865, //Always the default,
       k = specificHeat,
-      C = 315, //I HAVE NO IDEA WHAT THIS IS
+      C = 315,
       W = tagInputData.requiredFlowCapacity
       setPressure = tagInputData.setPressure,
       inletLossPressure = tagInputData.inletLoss,
       allowableOverPressure = tagInputData.allowableOverPressure,
+      // Kb =
+      // Kc = tagInputData.ruptureDisc -> need to get this value
       P1 = calculateP1V(setPressure, inletLossPressure, allowableOverPressure),
       A = calculateRequiredAreaWeight(V, M, T, Z, C, K P1),
       // tagInputData.orificeSize = calculateRequiredAreaWeight(V, M, T, Z, C, K P1),
-      backPressureBuiltUp = tagInputData.backPressureBuiltUp;
+      backPressureBuiltUp = tagInputData.backPressureBuiltUp || 0;
+
+      // weight vs volume is based on media
+      // Weight = water/steam
+      // Vol = gas/vapor
 
 
 
