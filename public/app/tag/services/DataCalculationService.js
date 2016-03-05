@@ -14,14 +14,15 @@
     }
 
     function calculatePRPrime(P2, P1) {
-        const part1 = 11;
-        const part2 = 11;
+        const part1 = 11; //Fake
+        const part2 = 11; //Fake
 
         return part1 * (P2 / P1) + part2;
     }
 
     function calculateKb(C, k, P1, P2) {
         var PRprime = calculatePRPrime(P2, P1);
+        console.log("C", C, k, P1, P2, PRprime)
 
         return (735 / C) * (Math.sqrt((k / (k - 1)) * ((Math.pow(PRprime, (2 / k))) - (Math.pow(PRprime, ((k + 1) / k))))));
     }
@@ -44,6 +45,8 @@
         const T = inputs.T;
         const V = inputs.V;
         const Z = inputs.Z;
+
+        console.log("inputs", inputs);
 
         return V * (Math.sqrt((M * T * Z))) / (6.32 * C * K * P1 * Kb * Kc);
     }
@@ -68,12 +71,14 @@
 
             console.log("what is tagInputData", tagInputData);
 
-            const allowableOverPressure = tagInputData.allowableOverPressure;
+            // What is allowable over pressure?
+
+            const allowableOverPressure = tagInputData.allowableOverPressure || 1; //Fake
             const backPressureBuiltUp = tagInputData.backPressureBuiltUp || 0;
             const inletLossPressure = tagInputData.inletLoss;
-            const k = tagInputData.specificHeat;
+            const k = tagInputData.specificHeat || 1; //Fake
             const Kc = tagInputData.ruptureDisc || 1;
-            const M = tagInputData.molecularWeight;
+            const M = tagInputData.molecularWeight || 500; //FAKE
             const media = tagInputData.media;
             const setPressure = tagInputData.setPressure;
             const V = tagInputData.requiredFlowCapacity;
@@ -82,7 +87,7 @@
 
             const C = 315;
             const K = 0.865;
-            const P2 = 5;
+            const P2 = 500; //Fake
             const temperature = 100;
 
             const P1 = calculateP1V(setPressure, inletLossPressure, allowableOverPressure);
