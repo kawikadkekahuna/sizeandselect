@@ -12,7 +12,7 @@
             type: 'string',
             required: true,
             message: 'Name is required'
-        }
+        },
         quantity: {
             type: 'number',
             required: true,
@@ -21,42 +21,42 @@
         pid: {
             type: 'string',
             required: true,
-            message: 'Name is required'
+            message: 'pid is required'
         },
         service: {
             type: 'string',
             required: true,
-            message: 'Name is required'
+            message: 'Service is required'
         },
         line_number: {
-            type: 'string',
+            type: 'number',
             required: true,
-            message: 'Name is required'
+            message: 'LIne Number is required'
         },
         model_number: {
-            type: 'string',
+            type: 'number',
             required: true,
-            message: 'Name is required'
+            message: 'Model number is required'
         },
         need_by_date: {
-            type: 'string',
+            type: 'number',
             required: true,
-            message: 'Name is required'
+            message: 'Need by date is required'
         },
         ship_date: {
-            type: 'string',
+            type: 'number',
             required: true,
-            message: 'Name is required'
+            message: 'Ship Date is required'
         },
         tracking_number: {
-            type: 'string',
+            type: 'number',
             required: true,
-            message: 'Name is required'
+            message: 'Tracking Number is required'
         },
         project_id: {
-            type: 'string',
+            type: 'number',
             required: true,
-            message: 'Name is required'
+            message: 'Project Id is required'
         },
         project_status: {
             type: 'string',
@@ -67,8 +67,8 @@
             type: 'string',
             required: true,
             message: 'Device is required'
-        };
-    })
+        }
+    });
 
     function findAllTags(projectId) {
       return Tag.findAll({
@@ -116,7 +116,7 @@
           })
           .catch(function (error) {
                 console.error("Catch all error", error);
-                res.json(error);
+                res.json({error});
           });
     });
 
@@ -156,7 +156,7 @@
           res.json(tag);
         })
         .catch(function (error) {
-            res.json({error}
+            res.json({error});
         });
     });
 
