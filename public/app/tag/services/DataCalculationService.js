@@ -66,12 +66,9 @@
     }
 
     function DataCalculationService() {
-
         this.processDataInputs = function (tagInputData) {
 
             console.log("what is tagInputData", tagInputData);
-
-            // What is allowable over pressure?
 
             const allowableOverPressure = tagInputData.allowableOverPressure || 1; //Fake
             const backPressureBuiltUp = tagInputData.backPressureBuiltUp || 0;
@@ -97,10 +94,9 @@
             const inputs = {media, C, K, Kb, Kc, M, P1, T, V, W, Z};
             const orificeSize = calculateOrificeSize(inputs);
 
-            return orificeSize;
+            return orificeSize; //Put this on the page
 
         };
-
     }
 
 }());
