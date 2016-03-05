@@ -1,74 +1,101 @@
-angular.module('app')
+(function () {
+    "use strict";
 
-.service('DataCalculationService',['$http','$state', DataCalculationService])
-  var reliefTempBase = 460,
-      p1Base = 14.7,
-      gasConstant = 315,
-      interalGlobalTemp = 560,
-      interalGlobalTempUnit = "F";
-
-function DataCalculationService () {
-
-  this.processDataInputs = function (tagInputData) {
-
-    console.log("what is tagInputData", tagInputData)
-
-    var V = tagInputData.requiredFlowCapacity,
-      M = tagInputData.molecularWeight,
-      Temperature = 100,
-      T = calculateReliefTemp(Temperature),
-      Z = tagInputData.compressibility || 1.0,
-      K = 0.865, //Always the default,
-      k = specificHeat,
-      C = 315,
-      W = tagInputData.requiredFlowCapacity
-      setPressure = tagInputData.setPressure,
-      inletLossPressure = tagInputData.inletLoss,
-      allowableOverPressure = tagInputData.allowableOverPressure,
-      // Kb =
-      // Kc = tagInputData.ruptureDisc -> need to get this value
-      P1 = calculateP1V(setPressure, inletLossPressure, allowableOverPressure),
-      A = calculateRequiredAreaWeight(V, M, T, Z, C, K P1),
-      // tagInputData.orificeSize = calculateRequiredAreaWeight(V, M, T, Z, C, K P1),
-      backPressureBuiltUp = tagInputData.backPressureBuiltUp || 0;
-
-      // weight vs volume is based on media
-      // Weight = water/steam
-      // Vol = gas/vapor
+    angular.module('app')
+        .service('DataCalculationService', ['$http', '$state', DataCalculationService]);
 
 
+    function calculateReliefTemp(temperature) {
+        return temperature + 460;
+    }
 
-    // validate the information
-    // Run the numbers
-    // pass the information to the next service to add to the DB
+    function calculateP1V(setPressure, inletLossPressure, allowableOverPressure) {
+        return (setPressure - inletLossPressure) + allowableOverPressure + 14.7;
+    }
 
-    return tagInputData;
-  };
+    function calculatePRPrime(P2, P1) {
+        const part1 = 11;
+        const part2 = 11;
 
-};
+        return part1 * (P2 / P1) + part2;
+    }
 
-function calculateReliefTemp(Temperature) {
-  return Temperature + 460;
-}
+    function calculateKb(C, k, P1, P2) {
+        var PRprime = calculatePRPrime(P2, P1);
 
-function calculateP1V(setPressure, inletLossPressure, allowableOverPressure) {
-  return (setPressure - inletLossPressure) + allowableOverPressure + 14.7;
-}
+        return (735 / C) * (Math.sqrt((k / (k - 1)) * ((Math.pow(PRprime, (2 / k))) - (Math.pow(PRprime, ((k + 1) / k))))));
+    }
 
-function calculateRequiredAreaWeight(V, M, T, Z, C, K P1) {
-  return (V * (Math.sqrt((M * T * Z)))) / (6.32 * C * K * P1)
-}
+    function calculateOrificeSize(inputs) {
+        if (inputs.media === "Vapor") {
+            return calculateRequiredAreaVolume(inputs);
+        } else {
+            return calculateRequiredAreaWeight(inputs);
+        }
+    }
 
-function calculateRequiredAreaVolume() {
-  return (W / (C * K * P1 * Kb * Kc)) * Math.sqrt(((T * Z) / M))
-}
+    function calculateRequiredAreaVolume(inputs) {
+        const C = inputs.C;
+        const K = inputs.K;
+        const Kb = inputs.Kb;
+        const Kc = inputs.Kc;
+        const M = inputs.M;
+        const P1 = inputs.P1;
+        const T = inputs.T;
+        const V = inputs.V;
+        const Z = inputs.Z;
 
-function validateAreNumbers(tagInputData) {
-  const tagInputs = Object.keys(tagInputData);
+        return V * (Math.sqrt((M * T * Z))) / (6.32 * C * K * P1 * Kb * Kc);
+    }
 
-    return tagInputs.every(function (tagInput) {
-        return !isNaN(parseFloat(body[tagInput])) && isFinite(body[tagInput]);
-    });
-}
+    function calculateRequiredAreaWeight(inputs) {
+        const C = inputs.C;
+        const K = inputs.K;
+        const Kb = inputs.Kb;
+        const Kc = inputs.Kc;
+        const M = inputs.M;
+        const P1 = inputs.P1;
+        const T = inputs.T;
+        const W = inputs.W;
+        const Z = inputs.Z;
 
+        return W / (C * K * P1 * Kb * Kc) * Math.sqrt(((T * Z) / M));
+    }
 
+    function DataCalculationService() {
+
+        this.processDataInputs = function (tagInputData) {
+
+            console.log("what is tagInputData", tagInputData);
+
+            const allowableOverPressure = tagInputData.allowableOverPressure;
+            const backPressureBuiltUp = tagInputData.backPressureBuiltUp || 0;
+            const inletLossPressure = tagInputData.inletLoss;
+            const k = tagInputData.specificHeat;
+            const Kc = tagInputData.ruptureDisc || 1;
+            const M = tagInputData.molecularWeight;
+            const media = tagInputData.media;
+            const setPressure = tagInputData.setPressure;
+            const V = tagInputData.requiredFlowCapacity;
+            const W = tagInputData.requiredFlowCapacity;
+            const Z = tagInputData.compressibility || 1.0;
+
+            const C = 315;
+            const K = 0.865;
+            const P2 = 5;
+            const temperature = 100;
+
+            const P1 = calculateP1V(setPressure, inletLossPressure, allowableOverPressure);
+            const Kb = calculateKb(C, k, P1, P2);
+            const T = calculateReliefTemp(temperature);
+
+            const inputs = {media, C, K, Kb, Kc, M, P1, T, V, W, Z};
+            const orificeSize = calculateOrificeSize(inputs);
+
+            return orificeSize;
+
+        };
+
+    }
+
+}());
