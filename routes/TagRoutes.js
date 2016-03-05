@@ -6,6 +6,69 @@
     const models = require('../models');
     const Tag = models.Tag;
     const TagCalculation = models.TagCalculation;
+    const schema = require('validate');
+    const newTag = schema({
+        name: {
+            type: 'string',
+            required: true,
+            message: 'Name is required'
+        }
+        quantity: {
+            type: 'number',
+            required: true,
+            message: 'Quantity is required'
+        },
+        pid: {
+            type: 'string',
+            required: true,
+            message: 'Name is required'
+        },
+        service: {
+            type: 'string',
+            required: true,
+            message: 'Name is required'
+        },
+        line_number: {
+            type: 'string',
+            required: true,
+            message: 'Name is required'
+        },
+        model_number: {
+            type: 'string',
+            required: true,
+            message: 'Name is required'
+        },
+        need_by_date: {
+            type: 'string',
+            required: true,
+            message: 'Name is required'
+        },
+        ship_date: {
+            type: 'string',
+            required: true,
+            message: 'Name is required'
+        },
+        tracking_number: {
+            type: 'string',
+            required: true,
+            message: 'Name is required'
+        },
+        project_id: {
+            type: 'string',
+            required: true,
+            message: 'Name is required'
+        },
+        project_status: {
+            type: 'string',
+            required: true,
+            message: 'Project Status is required'
+        },
+        device: {
+            type: 'string',
+            required: true,
+            message: 'Device is required'
+        };
+    })
 
     function findAllTags(projectId) {
       return Tag.findAll({
@@ -23,45 +86,8 @@
         });
     }
 
-    router.get('/', function (req, res) {
-      const projectId = req.query.projectId;
-
-        findAllTags(projectId)
-          .then(function (tags){
-            res.json(tags);
-          })
-    });
-
-    router.get('/:id', function (req, res){
-      const tagId = req.params.tagId;
-
-      findTag(tagId)
-          .then(function (tag){
-            res.json(tag);
-          });
-    });
-
-    router.post('/', function (req, res) {
-      var tagData = req.body;
-      console.log('tagData',tagData.pid);
-      for(var key in tagData){
-        if(tagData.hasOwnProperty(key)){
-          if(key !== 'name' &&
-            key !== 'quantity' &&
-            key !== 'pid' &&
-            key !== 'service' &&
-            key !== 'line_number' &&
-            key !== 'model_number' &&
-            key !== 'need_by_date' &&
-            key !== 'ship_date' &&
-            key !== 'tracking_number' &&
-            key !== 'project_id'){
-            res.json({error: 'Invalid request', message: 'Request must contain fields [name, quantity, pid, service, line_number, model_number, need_by_date, ship_date, tracking_number, projectId]'})
-          };
-        };
-      };
-      try{
-        Tag.create({
+    function createtag(tagData) {
+        return Tag.create({
           name: tagData.name ,
           quantity: tagData.quantity ,
           pid: tagData.pid,
@@ -74,15 +100,65 @@
           project_id: tagData.project_id,
           project_status: 'open',
           device: 'Relief Valve'
-        }).then(function (tag){
-          res.json(tag);
         });
-      }catch(err){
-        res.json({error: err});
-      }
+    }
+
+    router.get('/', function (req, res) {
+      const projectId = req.query.projectId;
+
+        findAllTags(projectId)
+          .then(function (tags){
+            res.json(tags);
+          })
+          .catch({code: 401}, function (error) {
+              console.error("401 error", error);
+              res.json({error});
+          })
+          .catch(function (error) {
+                console.error("Catch all error", error);
+                res.json(error);
+          });
     });
 
+    router.get('/:id', function (req, res){
+      const tagId = req.params.tagId;
 
+      findTag(tagId)
+          .then(function (tag){
+            res.json(tag);
+          });
+    });
+
+    function ensureAllTagInputsExist(tagData) {
+        for(var key in tagData){
+                if(tagData.hasOwnProperty(key)){
+                  if(key !== 'name' &&
+                    key !== 'quantity' &&
+                    key !== 'pid' &&
+                    key !== 'service' &&
+                    key !== 'line_number' &&
+                    key !== 'model_number' &&
+                    key !== 'need_by_date' &&
+                    key !== 'ship_date' &&
+                    key !== 'tracking_number' &&
+                    key !== 'project_id'){
+                    res.json({error: 'Invalid request', message: 'Request must contain fields [name, quantity, pid, service, line_number, model_number, need_by_date, ship_date, tracking_number, projectId]'})
+                  };
+                };
+              };
+    }
+
+    router.post('/', function (req, res) {
+      var tagData = req.body;
+
+      createtag(tagData)
+        .then(function (tag) {
+          res.json(tag);
+        })
+        .catch(function (error) {
+            res.json({error}
+        });
+    });
 
     router.post('/tag-sheet', function (req, res){
 

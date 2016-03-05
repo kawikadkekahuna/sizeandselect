@@ -7,14 +7,6 @@ angular.module('app')
     .then(function (tags) {
       $scope.showTags = true;
       $scope.tags = tags.data;
-    })
-    .catch({code: 401}, function (err) {
-        console.error(err);
-        res.sendStatus(400);
-    })
-    .catch(function (err) {
-        console.error("50000", err);
-        res.sendStatus(500);
     });
 
   ProjectService.getProjectById($scope.projectId).then(function (project){
