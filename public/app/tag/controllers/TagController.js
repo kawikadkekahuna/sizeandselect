@@ -49,7 +49,7 @@ angular.module('app')
     DataCalculationService.processDataInputs(tagInputData)
 
         // // Pass the info to the DB
-        // TagService.createTagAnalytics(tagAnalytics)
+        // TagService.createTagSheet(tagInputData)
 
 
     // Forward them to the next page
@@ -92,7 +92,7 @@ function loadEventHandlers($scope, $stateParams, $state, TagService, DropdownSer
     };
   });
   $scope.TAG_DEFAULT_VALUES = TagService.defaultValues();
-  // $scope.createTagAnalytics = TagService.createTagAnalytics();
+  // $scope.createTagSheet = TagService.createTagSheet();
 
 
 };
