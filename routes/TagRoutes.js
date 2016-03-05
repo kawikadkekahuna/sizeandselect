@@ -95,16 +95,16 @@ router.post('/tag-sheet', function (req, res){
     specific_heat: body.specificHeat,
     variable_super_imposed_pressure: body.varSuperimposed,
     viscosity: body.viscosity
-    // media_id: media
-    // media_type_id: mediaType
-    // sizing_basis_id:
-    // viscosity_unit_id
-    // temperature_unit_id:
-    // required_flow_capacity_unit_id:
+    // media_id: body.media
+    // media_type_id: body.mediaType
+    // sizing_basis_id: body.
+    // viscosity_unit_id: body.
+    // temperature_unit_id: body.
+    // required_flow_capacity_unit_id: body.
     // pressure_unit_id:
     // asme_sizing_id:
     // code_type_id:
-
+    // tag_id:
 
   })
     .then(function (tagSheet) {

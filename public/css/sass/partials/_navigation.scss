@@ -3,7 +3,7 @@
 }
 .nav__public{
 	display: flex;
-	background-color: $white;	
+	background-color: $white;
 	height:75px;
 	justify-content:space-between;
 	flex-direction:row;
@@ -31,7 +31,7 @@
 	background-color:rgba(255, 255, 255 ,0.9);
 	list-style:none;
 	padding:0;
-	height:0;	
+	height:0;
 	width:300px;
 	transform: translateX(-100%);
 	overflow: hidden;
@@ -41,6 +41,7 @@
 	  transition: (all 0.2s);
 		height:150px;
 		border:1px solid $black;
+		z-index: 10001;
 	}
 }
 
@@ -63,6 +64,5 @@
 
 
 .nav__item--logo{
-	// width:400px;
-	// background-image:url('/assets/home-logo-image.jpg');
+	width: 150px;
 }

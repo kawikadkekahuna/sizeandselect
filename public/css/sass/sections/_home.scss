@@ -1,0 +1,37 @@
+.home__main {
+    background-image: $homeBackground;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.home__center-logo {
+    text-align: center;
+}
+
+.home__main-text-box {
+
+}
+
+.home__text {
+    color: white;
+    font-size: 2em;
+}
+
+.home__time-box {
+    text-align: center;
+    margin-top: 10%;
+
+    .home__time-counter {
+
+    }
+}
+
+.home__trial-box {
+
+    .home__trial-text {
+        color: white;
+        font-size: 1.7em;
+    }
+}
