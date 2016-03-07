@@ -11,15 +11,14 @@
             </div>
             <div ng-repeat="tag in tags">
                 <div>Tag Name: {{tag.name}}</div>
-                <div>Quantity: {{tag.quantiy}}</div>
+                <div>Quantity: {{tag.quantity}}</div>
                 <div>pid: {{tag.pid}}</div>
                 <div>Service: {{tag.service}}</div>
                 <div>Line Number: {{tag.line_number}}</div>
                 <div>Model Number: {{tag.model_number}}</div>
-                <div>Due Date: {{tag.need_by_date}}</div>
-                <div>Ship Date: {{tag.ship_date}}</div>
+                <div>Due Date: {{tag.due_date | date:'MM/dd/yyyy'}}</div>
+                <div>Ship Date: {{tag.ship_date | date:'MM/dd/yyyy'}}</div>
                 <div>Tracking Number: {{tag.tracking_number}}</div>
-                <div>Project Id: {{tag.Project.id}}</div>
                 <button ng-click="enterTag(tag.id)">ENTER TAG</button>
             </div>
         </div>

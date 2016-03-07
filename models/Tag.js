@@ -15,7 +15,7 @@
             line_number: DataTypes.INTEGER,
             model_number: DataTypes.STRING,
             due_date: DataTypes.DATE,
-            ship_date: DataTypes.STRING,
+            ship_date: DataTypes.DATE,
             tracking_number: DataTypes.STRING
         }, {
             tableName: "tags",
