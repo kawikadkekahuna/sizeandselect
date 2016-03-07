@@ -1,14 +1,15 @@
 <div class="dashboard">
-  <div class="left-column">
-    <div class="account-picture">
-    </div>
+
+
+
+
+
+  <div class="middle-column project-wrapper">
     <div class="dropdown-links">
       <ul>
         <li ng-click="setModal('addProject')">New Project</li>
       </ul>
     </div>
-  </div>
-  <div class="middle-column project-wrapper">
     <div class="project" ng-repeat="project in projects" ng-click="enterTag(project.id)">
       <div class="data">Project Name : {{project.project_name}}</div>
       <div class="data">Company Name : {{project.company_name}}</div>
@@ -17,6 +18,6 @@
     </div>
   </div>
   <div class="right-column">
-    
+    <h1>Ad goes here</h1>
   </div>
 </div>

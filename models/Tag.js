@@ -14,7 +14,7 @@
             service: DataTypes.STRING,
             line_number: DataTypes.INTEGER,
             model_number: DataTypes.STRING,
-            need_by_date: DataTypes.DATE,
+            due_date: DataTypes.DATE,
             ship_date: DataTypes.STRING,
             tracking_number: DataTypes.STRING
         }, {

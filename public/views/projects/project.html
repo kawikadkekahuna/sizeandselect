@@ -1,16 +1,14 @@
 <div ui-view>
   <div class="dashboard">
-    <div class="left-column">
-      <div class="account-picture">
-      </div>
-      <div class="dropdown-links">
-        <ul>
-          <li ng-click="setModal('addProject')">New Project</li>
-          <li ng-click="setModal('addTag')">Add Tag</li>
-        </ul>
-      </div>
-    </div>
     <div class="middle-column project-wrapper">
+
+        <div>
+          <ul>
+            <li ng-click="setModal('addProject')">New Project</li>
+            <li ng-click="setModal('addTag')">Add Tag</li>
+          </ul>
+        </div>
+
       <h3>
         You are now viewing project id  {{projectId}}
       </h3>
