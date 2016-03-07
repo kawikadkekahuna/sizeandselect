@@ -34,12 +34,12 @@
             message: 'LIne Number is required'
         },
         model_number: {
-            type: 'number',
+            type: 'string',
             required: true,
             message: 'Model number is required'
         },
         need_by_date: {
-            type: 'number',
+            type: 'date',
             required: true,
             message: 'Need by date is required'
         },
@@ -59,12 +59,12 @@
             message: 'Project Id is required'
         },
         project_status: {
-            type: 'string',
+            type: 'number',
             required: true,
             message: 'Project Status is required'
         },
         device: {
-            type: 'string',
+            type: 'number',
             required: true,
             message: 'Device is required'
         }
