@@ -182,24 +182,23 @@
         overpressure: body.overpressure,
         relief_temperature: body.reliefTemperature,
         required_flow_capacity: body.requiredFlowCapacity,
-        rupture_disc_checkbox: body.ruptureDiscCheckbox,
         rupture_disc: body.ruptureDisc,
+        rupture_disc_checkbox: body.ruptureDiscCheckbox,
         set_pressure: body.setPressure,
         specific_gravity: body.specificGravity,
         specific_heat: body.specificHeat,
         variable_super_imposed_pressure: body.varSuperimposed,
-        viscosity: body.viscosity
-        // media_id: body.media
-        // media_type_id: body.mediaType
-        // sizing_basis_id: body.
-        // viscosity_unit_id: body.
-        // temperature_unit_id: body.
-        // required_flow_capacity_unit_id: body.
-        // pressure_unit_id:
-        // asme_sizing_id:
-        // code_type_id:
-        // tag_id:
-
+        viscosity: body.viscosity,
+        asme_sizing_id: body.asmeSizing,
+        code_type_id: body.codeType,
+        media_id: body.media,
+        media_type_id: body.mediaType,
+        sizing_basis_id: body.sizingBasis,
+        required_flow_capacity_unit_id: body.requiredFlowCapacityUnit,
+        viscosity_unit_id: body.ViscosityUnit,
+        temperature_unit_id: body.temperatureUnit,
+        pressure_unit_id: body.pressureUnit,
+        tag_id: body.tagId
       })
         .then(function (tagSheet) {
           res.json(tagSheet)
