@@ -14,13 +14,13 @@
                     VISCOSITY: dropdownValues.viscosity,
                     FLOW_CAPACITY: dropdownValues.flowCapacity,
                     SIZING_BASIS: dropdownValues.sizingBasis,
-                    TOGGLE_API_AS_ME: dropdownValues.asmeSizings,
+                    ASME_SIZING: dropdownValues.asmeSizings,
+                    CODE_TYPE: dropdownValues.codeTypes,
                     INLET_FLANGE: dropdownValues.inletFlanges,
                     FLANGE_FACING: dropdownValues.flangeFacings,
                     TRIM_TYPE: dropdownValues.trimTypes,
                     SEAT_TYPE: dropdownValues.seatTypes,
                     MATERIAL_VARIABLE: dropdownValues.materialVariables,
-                    MEDIA: dropdownValues.medias,
                     MEDIA_TYPE: dropdownValues.mediaTypes,
                     CAP_TYPE: dropdownValues.capTypes
                 });

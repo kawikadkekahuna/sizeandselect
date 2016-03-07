@@ -69,9 +69,10 @@ function loadEventHandlers($scope, $stateParams, $state, TagService, DropdownSer
     $scope.tag = tag
   });
 
-  DropdownService.getAnalyticUnits().then(function (units){
+  DropdownService.getAnalyticUnits().then(function (units) {
     $scope.UNITS = units.data;
     console.log('$scope.UNITS',$scope.UNITS);
+    console.log('units.data', units.data);
     var medias = $scope.UNITS.MEDIA;
 
     function suggest_media(term) {

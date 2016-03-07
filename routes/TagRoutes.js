@@ -6,6 +6,8 @@
     const models = require('../models');
     const Project = models.Project;
     const Tag = models.Tag;
+    const Device = models.Device;
+    const ProjectStatus = models.ProjectStatus;
     const TagSheet = models.TagSheet;
     const schema = require('validate');
     // Not hooked into anything yet
@@ -77,7 +79,7 @@
             where:{
               project_id: projectId
             },
-            include: [Project]
+            include: [Project, Device, ProjectStatus]
         });
     }
 
@@ -86,12 +88,11 @@
             where:{
                 project_id: tagId
             },
-            include: [Project]
+            include: [Project, Device, ProjectStatus]
         });
     }
 
     function createtag(tagData) {
-        console.log("give it me", tagData)
         return Tag.create({
           name: tagData.name ,
           quantity: tagData.quantity ,
@@ -103,8 +104,8 @@
           ship_date: tagData.ship_date,
           tracking_number: tagData.tracking_number,
           project_id: tagData.project_id,
-          project_status_id: 1,
-          device_id: 1
+          project_status_id: 1, //default to open
+          device_id: 1 //default to Relief Valves
         });
     }
 
@@ -159,54 +160,56 @@
       createtag(tagData)
         .then(function (tag) {
           res.json(tag);
-        })
-        .catch(function (error) {
-            res.json({error});
         });
+        // .catch(function (error) {
+        //     res.json({error});
+        // });
     });
 
-    router.post('/tag-sheet', function (req, res){
+    router.post('/tag-sheet', function (req, res) {
 
-      const body = req.body;
+        const body = req.body;
 
-      TagSheet.create({
-        atm: body.atmPressure,
-        built_up_back_pressure: body.backPressureBuiltUp,
-        compressibility: body.compressibility,
-        constant_super_imposed_pressure: body.constantSuperimposed,
-        design_max_temperature: body.designMaxTemperature,
-        design_min_temperature: body.designMinTemperature,
-        inlet_loss: body.inletLoss,
-        inlet_loss_percentage: body.inletLossPercent,
-        mawp: body.mawp,
-        molecular_weight: body.molecularWeight,
-        operating_pressure: body.operatingPressure,
-        operating_temperature: body.operatingTemperature,
-        orifice_size: body.OrificeSize,
-        overpressure: body.overpressure,
-        relief_temperature: body.reliefTemperature,
-        required_flow_capacity: body.requiredFlowCapacity,
-        rupture_disc: body.ruptureDisc,
-        rupture_disc_checkbox: body.ruptureDiscCheckbox,
-        set_pressure: body.setPressure,
-        specific_gravity: body.specificGravity,
-        specific_heat: body.specificHeat,
-        variable_super_imposed_pressure: body.varSuperimposed,
-        viscosity: body.viscosity,
-        asme_sizing_id: body.asmeSizing,
-        code_type_id: body.codeType,
-        media_id: body.media,
-        media_type_id: body.mediaType,
-        sizing_basis_id: body.sizingBasis,
-        required_flow_capacity_unit_id: body.requiredFlowCapacityUnit,
-        viscosity_unit_id: body.ViscosityUnit,
-        temperature_unit_id: body.temperatureUnit,
-        pressure_unit_id: body.pressureUnit,
-        tag_id: body.tagId
-      })
-        .then(function (tagSheet) {
-          res.json(tagSheet)
-        });
+         console.log("$$$ incoming tag Sheet $$$", body)
+
+        TagSheet.create({
+            atm: body.atmPressure,
+            built_up_back_pressure: body.backPressureBuiltUp,
+            compressibility: body.compressibility,
+            constant_super_imposed_pressure: body.constantSuperimposed,
+            design_max_temperature: body.designMaxTemperature,
+            design_min_temperature: body.designMinTemperature,
+            inlet_loss: body.inletLoss,
+            inlet_loss_percentage: body.inletLossPercent,
+            mawp: body.mawp,
+            molecular_weight: body.molecularWeight,
+            operating_pressure: body.operatingPressure,
+            operating_temperature: body.operatingTemperature,
+            orifice_size: body.OrificeSize,
+            overpressure: body.overpressure,
+            relief_temperature: body.reliefTemperature,
+            required_flow_capacity: body.requiredFlowCapacity,
+            rupture_disc: body.ruptureDisc,
+            rupture_disc_checkbox: body.ruptureDiscCheckbox,
+            set_pressure: body.setPressure,
+            specific_gravity: body.specificGravity,
+            specific_heat: body.specificHeat,
+            variable_super_imposed_pressure: body.varSuperimposed,
+            viscosity: body.viscosity,
+            asme_sizing_id: body.asmeSizing,
+            code_type_id: body.codeType,
+            media_id: body.media,
+            media_type_id: body.mediaType,
+            sizing_basis_id: body.sizingBasis,
+            required_flow_capacity_unit_id: body.requiredFlowCapacityUnit,
+            viscosity_unit_id: body.ViscosityUnit,
+            temperature_unit_id: body.temperatureUnit,
+            pressure_unit_id: body.pressureUnit,
+            tag_id: body.tagId
+        })
+            .then(function (tagSheet) {
+                res.json(tagSheet)
+            });
     });
 
     module.exports = router;

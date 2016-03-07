@@ -9,12 +9,12 @@
     const FlowCapacityUnit = models.FlowCapacityUnit;
     const SizingBasis = models.SizingBasis;
     const AsmeSizing = models.AsmeSizing;
+    const CodeType = models.CodeType;
     const InletFlange = models.InletFlange;
     const FlangeFacing = models.FlangeFacing;
     const TrimType = models.TrimType;
     const SeatType = models.SeatType;
     const MaterialVariable = models.MaterialVariable;
-    const Media = models.Media;
     const MediaType = models.MediaType;
     const CapType = models.CapType;
 
@@ -42,6 +42,10 @@
         return AsmeSizing.findAll();
     };
 
+    const getCodeType = function () {
+        return CodeType.findAll();
+    };
+
     const getInletFlanges = function () {
         return InletFlange.findAll();
     };
@@ -62,10 +66,6 @@
         return MaterialVariable.findAll();
     };
 
-    const getMedias = function () {
-        return Media.findAll();
-    };
-
     const getMediaTypes = function () {
         return MediaType.findAll();
     };
@@ -82,12 +82,12 @@
             getFlowCapacityUnits(),
             getSizingBasisUnits(),
             getAsmeSizings(),
+            getCodeType(),
             getInletFlanges(),
             getFlangeFacings(),
             getTrimTypes(),
             getSeatTypes(),
             getMaterialVariables(),
-            getMedias(),
             getMediaTypes(),
             getCapTypes(),
             function (
@@ -97,12 +97,12 @@
                 flowCapacity,
                 sizingBasis,
                 asmeSizings,
+                codeTypes,
                 inletFlanges,
                 flangeFacings,
                 trimTypes,
                 seatTypes,
                 materialVariables,
-                medias,
                 mediaTypes,
                 capTypes
             ) {
@@ -113,12 +113,12 @@
                     flowCapacity,
                     sizingBasis,
                     asmeSizings,
+                    codeTypes,
                     inletFlanges,
                     flangeFacings,
                     trimTypes,
                     seatTypes,
                     materialVariables,
-                    medias,
                     mediaTypes,
                     capTypes
                 };
@@ -133,12 +133,12 @@
         getFlowCapacityUnits,
         getSizingBasisUnits,
         getAsmeSizings,
+        getCodeType,
         getInletFlanges,
         getFlangeFacings,
         getTrimTypes,
         getSeatTypes,
         getMaterialVariables,
-        getMedias,
         getMediaTypes,
         getCapTypes,
         getAllDropdownValues
