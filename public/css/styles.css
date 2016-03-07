@@ -3851,7 +3851,7 @@ table {
         width: 100%; }
 
 .dashboard {
-  background-color: red;
+  border: 1px solid black;
   position: fixed;
   height: 100%;
   width: 100%; }
@@ -3860,22 +3860,26 @@ table {
     display: inline-block;
     width: 12.5%;
     height: 95%;
-    background-color: skyblue; }
+    border: 1px solid black;
+  }
     .dashboard .left-column .account-picture {
       height: 25%;
       width: 100%;
-      background-color: black; }
+      background-color: black;
+    }
     .dashboard .left-column .dropdown-links {
       height: 75%;
       width: 100%;
       margin: auto;
-      background-color: white; }
+      border: 1px solid black;
+    }
   .dashboard .middle-column {
     display: inline-block;
     width: 75%;
     height: 90%;
     overflow: auto;
-    background-color: purple; }
+    border: 1px solid black;
+  }
     .dashboard .middle-column .project-wrapper {
       width: 100%;
       height: 100%; }
@@ -3884,4 +3888,5 @@ table {
     display: inline-block;
     width: 12.5%;
     height: 95%;
-    background-color: green; }
+    border: 1px solid black;
+  }

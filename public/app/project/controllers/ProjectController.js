@@ -5,6 +5,7 @@ angular.module('app')
 
   TagService.getTags($scope.projectId)
     .then(function (tags) {
+      console.log("what is tags", tags);
       $scope.showTags = true;
       $scope.tags = tags.data;
     });

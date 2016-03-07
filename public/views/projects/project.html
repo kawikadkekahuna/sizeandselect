@@ -15,23 +15,23 @@
         You are now viewing project id  {{projectId}}
       </h3>
       <div class="project">
-        <div class="data">Project Name : {{project.project_name}}</div>
-        <div class="data">Company Name : {{project.company_name}}</div>
-        <div class="data">Location : {{project.location}}</div>
+        <div class="data">Project Name: {{project.project_name}}</div>
+        <div class="data">Company Name: {{project.company_name}}</div>
+        <div class="data">Location: {{project.location}}</div>
         <br>
         <div ng-if="showTags">
           <div ng-repeat="tag in tags">
-            <div>name: {{tag.name}}</div>
-            <div>quantity: {{tag.quantiy}}</div>
+            <div>Tag Name: {{tag.name}}</div>
+            <div>Quantity: {{tag.quantiy}}</div>
             <div>pid: {{tag.pid}}</div>
-            <div>service: {{tag.service}}</div>
-            <div>line_number: {{tag.line_number}}</div>
-            <div>model_number: {{tag.model_number}}</div>
-            <div>tag.need_by_date: {{tag.need_by_date}}</div>
-            <div>tag.ship_date: {{tag.ship_date}}</div>
-            <div>tag.tracking_number: {{tag.tracking_number}}</div>
-            <div>tag.projectId: {{tag.projectId}}</div>
-            <h3 ng-click="enterTag(tag.id)">ENTER TAG</h3>
+            <div>Service: {{tag.service}}</div>
+            <div>Line Number: {{tag.line_number}}</div>
+            <div>Model Number: {{tag.model_number}}</div>
+            <div>Due Date: {{tag.need_by_date}}</div>
+            <div>Ship Date: {{tag.ship_date}}</div>
+            <div>Tracking Number: {{tag.tracking_number}}</div>
+            <div>Project Id: {{tag.Project.id}}</div>
+            <button ng-click="enterTag(tag.id)">ENTER TAG</button>
             <div style="height: 2px; width:100%; background-color:black;"></div>
           </div>
         </div>
@@ -39,7 +39,7 @@
 
     </div>
     <div class="right-column">
-      
+      <h1>Ad goes here</h1>
     </div>
   </div>
 </div>

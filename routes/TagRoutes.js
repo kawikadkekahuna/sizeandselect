@@ -4,6 +4,7 @@
     const express = require('express');
     const router = express.Router();
     const models = require('../models');
+    const Project = models.Project;
     const Tag = models.Tag;
     const TagSheet = models.TagSheet;
     const schema = require('validate');
@@ -75,7 +76,8 @@
       return Tag.findAll({
             where:{
               project_id: projectId
-            }
+            },
+            include: [Project]
         });
     }
 
@@ -83,11 +85,13 @@
         return Tag.findOne({
             where:{
                 project_id: tagId
-            }
+            },
+            include: [Project]
         });
     }
 
     function createtag(tagData) {
+        console.log("give it me", tagData)
         return Tag.create({
           name: tagData.name ,
           quantity: tagData.quantity ,
@@ -95,12 +99,12 @@
           service: tagData.service ,
           line_number: tagData.line_number ,
           model_number: tagData.model_number ,
-          need_by_date: tagData.need_by_date ,
+          due_date: tagData.need_by_date ,
           ship_date: tagData.ship_date,
           tracking_number: tagData.tracking_number,
           project_id: tagData.project_id,
-          project_status: 1,
-          device: 1
+          project_status_id: 1,
+          device_id: 1
         });
     }
 
@@ -110,15 +114,15 @@
         findAllTags(projectId)
           .then(function (tags){
             res.json(tags);
-          })
-          .catch({code: 401}, function (error) {
-              console.error("401 error", error);
-              res.json({error});
-          })
-          .catch(function (error) {
-                console.error("Catch all error", error);
-                res.json({error});
           });
+          // .catch({code: 401}, function (error) {
+          //     console.error("401 error", error);
+          //     res.json({error});
+          // })
+          // .catch(function (error) {
+          //       console.error("Catch all error", error);
+          //       res.json({error});
+          // });
     });
 
     router.get('/:id', function (req, res){
