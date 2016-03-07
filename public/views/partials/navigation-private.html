@@ -1,6 +1,11 @@
 <nav class="nav" ng-controller="NavigationController" ng-init="init()">
 	<ul class="nav__public">
-		<li class="nav__public-item  nav__item--logo">Logo</li>
+		<li class="nav__public-item  nav__item--logo">
+            <a href="/">
+                <img class="nav__item--logo" src="./assets/home-logo-image.jpg" alt="">
+            </a>
+        </li>
+
 		<div class="nav__wrapper">
 			<li class="nav__public-item">Help</li>
 			<li class="nav__public-item" ui-sref="dashboard">Dashboard</li>
