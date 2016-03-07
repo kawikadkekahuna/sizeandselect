@@ -3828,7 +3828,9 @@ table {
     margin-bottom: 2%; }
 
 .dashboard .dashboard__project-container {
-  border: 1px solid black; }
+  border: 1px solid black;
+  margin: 2%;
+  padding: 2%; }
 
 .right-column {
   border: 1px solid black; }
