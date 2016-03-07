@@ -46,11 +46,12 @@ angular.module('app')
     // Crunch all the numbers..
     // make below a promise so when its done it can pass the data to the next service
 
-    DataCalculationService.processDataInputs(tagInputData)
-
-        // // Pass the info to the DB
-        // TagService.createTagSheet(tagInputData)
-
+      DataCalculationService.processDataInputs(tagInputData)
+          .then(function (calculations) {
+              console.log("what are my calculations", calculations);
+              console.log("I still  have access to originals", tagInputData);
+              TagService.createTagSheet(tagInputData)
+          })
 
     // Forward them to the next page
     // $state.go('project.tag.selection-sheet');
@@ -72,7 +73,7 @@ function loadEventHandlers($scope, $stateParams, $state, TagService, DropdownSer
   DropdownService.getAnalyticUnits().then(function (units) {
     $scope.UNITS = units.data;
     console.log('$scope.UNITS',$scope.UNITS);
-    console.log('units.data', units.data);
+
     var medias = $scope.UNITS.MEDIA;
 
     function suggest_media(term) {
