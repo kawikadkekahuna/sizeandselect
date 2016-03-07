@@ -1,5 +1,18 @@
 .dashboard{
-    border: 1px solid black;
+
+    .dashboard__project-heading {
+        text-align: center;
+        margin-bottom: 5%;
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 2%;
+        }
+    }
+
+    .dashboard__project-container {
+        border: 1px solid black;
+    }
 }
 .right-column{
     border: 1px solid black;

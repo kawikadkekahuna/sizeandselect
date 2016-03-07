@@ -1,25 +1,25 @@
 <div ui-view>
     <div class="row">
-        <div class="small-10 medium-8 columns tag__dashboard">
-            <h1>Project Page</h1>
-            <button ng-click="setModal('addProject')">New Project</button>
-            <button ng-click="setModal('addTag')">Add Tag</button>
-            <div>
-                <h2>Project Name: {{project.project_name}}</h2>
-                <h2>Company Name: {{project.company_name}}</h2>
-                <h2>Location: {{project.location}}</h2>
+        <div class="small-10 medium-8 columns project__tag-dashboard">
+            <div class="project__tag-heading-container">
+                <h1>Project Name: {{project.project_name}}</h1>
+                <h1>Company Name: {{project.company_name}}</h1>
+                <h1>Location: {{project.location}}</h1>
+                <a href="#" ng-click="setModal('addTag')">Add Tag</a>
             </div>
-            <div ng-repeat="tag in tags">
-                <div>Tag Name: {{tag.name}}</div>
-                <div>Quantity: {{tag.quantity}}</div>
-                <div>pid: {{tag.pid}}</div>
-                <div>Service: {{tag.service}}</div>
-                <div>Line Number: {{tag.line_number}}</div>
-                <div>Model Number: {{tag.model_number}}</div>
-                <div>Due Date: {{tag.due_date | date:'MM/dd/yyyy'}}</div>
-                <div>Ship Date: {{tag.ship_date | date:'MM/dd/yyyy'}}</div>
-                <div>Tracking Number: {{tag.tracking_number}}</div>
-                <button ng-click="enterTag(tag.id)">ENTER TAG</button>
+            <div class="project__tag-container" ng-repeat="tag in tags">
+                <div class="project__tag-fields">Tag Name: {{tag.name}}</div>
+                <div class="project__tag-fields">Quantity: {{tag.quantity}}</div>
+                <div class="project__tag-fields">PID: {{tag.pid}}</div>
+                <div class="project__tag-fields">Service: {{tag.service}}</div>
+                <div class="project__tag-fields">Line Number: {{tag.line_number}}</div>
+                <div class="project__tag-fields">Model Number: {{tag.model_number}}</div>
+                <div class="project__tag-fields">Due Date: {{tag.due_date | date:'MM/dd/yyyy'}}</div>
+                <div class="project__tag-fields">Ship Date: {{tag.ship_date | date:'MM/dd/yyyy'}}</div>
+                <div class="project__tag-fields">Tracking Number: {{tag.tracking_number}}</div>
+                <div class="project__tag-button">
+                    <a href="#" ng-click="enterTag(tag.id)">ENTER TAG</a>
+                </div>
             </div>
         </div>
         <div class="small-2 medium-4 columns right-column">
