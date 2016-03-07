@@ -5,7 +5,6 @@
     const router = express.Router();
     const Dropdown = require('./utilities/dropdown.js');
 
-
     router.get('/all', function (ignore, res) {
         Dropdown.getAllDropdownValues()
             .then(function (dropdownValues) {

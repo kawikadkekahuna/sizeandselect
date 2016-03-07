@@ -1,5 +1,6 @@
 (function () {
     "use strict";
+
     const Promise = require('bluebird');
     const models = require('../../models');
     const PressureUnit = models.PressureUnit;
