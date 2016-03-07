@@ -5,8 +5,9 @@
     const router = express.Router();
     const models = require('../models');
     const Tag = models.Tag;
-    const TagCalculation = models.TagCalculation;
+    const TagSheet = models.TagSheet;
     const schema = require('validate');
+    // Not hooked into anything yet
     const newTag = schema({
         name: {
             type: 'string',
@@ -98,8 +99,8 @@
           ship_date: tagData.ship_date,
           tracking_number: tagData.tracking_number,
           project_id: tagData.project_id,
-          project_status: 'open',
-          device: 'Relief Valve'
+          project_status: 1,
+          device: 1
         });
     }
 
@@ -164,7 +165,7 @@
 
       const body = req.body;
 
-      TagCalculation.create({
+      TagSheet.create({
         atm: body.atmPressure,
         built_up_back_pressure: body.backPressureBuiltUp,
         compressibility: body.compressibility,

@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
         ValveSelection.belongsTo(models.TrimType);
         ValveSelection.belongsTo(models.SeatType);
         ValveSelection.belongsTo(models.MaterialVariable);
-        ValveSelection.belongsTo(models.TagCalculation);
+        ValveSelection.belongsTo(models.TagSheet);
       }
     }
   });
