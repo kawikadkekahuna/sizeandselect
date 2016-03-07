@@ -3772,22 +3772,6 @@ table {
 .nav__item--logo {
   width: 150px; }
 
-.button {
-  height: 30px;
-  width: 50px;
-  font-size: 0.725em;
-  border: 1px solid #000000;
-  background-color: orange;
-  margin: 0 15px;
-  display: flex;
-  text-decoration: none;
-  align-items: center;
-  justify-content: center; }
-
-.input__main {
-  height: 30px;
-  width: 250px; }
-
 .home__main {
   background-image: url("../assets/home-background.jpg");
   background-size: cover;
