@@ -1,53 +1,52 @@
 <div ng-init="init()" class="">
     <form ng-submit="processTagInputData(tagAnalytics)" name="tagAnalyticsSheet">
         <div class="row">
-            <div class="small-12 columns">
-                <div>
-                    <label>Media Type*
-                            <select ng-model="tagAnalytics.mediaType"
-                            ng-options="mediaType.name for mediaType in UNITS.MEDIA_TYPE">
-                                <option ng-model="tagAnalytics.mediaTypeSelection"></option>
-                            </select>
-                    </label>
-                </div>
-                <div>
-                    <label>Select Code Type*
-                            <select ng-model="tagAnalytics.codeType"
-                            ng-options="codeType.name for codeType in UNITS.CODE_TYPE">
-                                <option ng-model="tagAnalytics.codeTypeSelection"></option>
-                            </select>
-                    </label>
-                </div>
+            <div class="small-5 columns">
+                <label>Media Type*
+                        <select ng-model="tagAnalytics.mediaType"
+                        ng-options="mediaType.name for mediaType in UNITS.MEDIA_TYPE">
+                            <option ng-model="tagAnalytics.mediaTypeSelection"></option>
+                        </select>
+                </label>
+            </div>
+            <div class="small-2 columns"></div>
+            <div class="small-5 columns">
+                <label>Select Code Type*
+                        <select ng-model="tagAnalytics.codeType"
+                        ng-options="codeType.name for codeType in UNITS.CODE_TYPE">
+                            <option ng-model="tagAnalytics.codeTypeSelection"></option>
+                        </select>
+                </label>
             </div>
         </div>
         <div class="row">
-            <div class="small-12 columns" style="border: 1px solid black">
+            <div class="small-12 columns tag__mid-section">
                 <div class="row">
-                    <div class="small-6 columns" style="border: 1px solid black">
-                        <div>
+                    <div class="small-6 columns tag__mid-section-left">
+                        <div class="tag__input-box">
                             <h1>Media Name*</h1>
                             <input ng-model="tagAnalytics.media">
                         </div>
                         <div ng-if="tagAnalytics.mediaType === 'Gas' || tagAnalytics.mediaType === 'Steam'">
-                            <div>
+                            <div class="tag__input-box">
                                 <h1>Molecular Weight*</h1>
                                 <input ng-model="tagAnalytics.molecularWeight">
                             </div>
-                            <div>
+                            <div class="tag__input-box">
                                 <h1>Specific Heat (k)*</h1>
                                 <input ng-model="tagAnalytics.specificHeat">
                             </div>
-                            <div>
+                            <div class="tag__input-box">
                                 <h1>Compressibility Factor*</h1>
                                 <input ng-model="tagAnalytics.compressibility">
                             </div>
                         </div>
                         <div ng-if="tagAnalytics.mediaType === 'Liquid'">
-                            <div>
+                            <div class="tag__input-box">
                                 <h1>Specific Gravity*</h1>
                                 <input class="tag-dropdown" name="accountType" ng-model="tagAnalytics.specificGravity">
                             </div>
-                            <div>
+                            <div class="tag__input-box">
                                 <h1>Viscosity*</h1>
                                 <input class="tag-dropdown" name="accountType" ng-model="tagAnalytics.viscosity">
                                 <select name="accountType" ng-model="tagAnalytics.viscosityUnit" ng-options="viscosityUnit.name for viscosityUnit in viscosityUnits">
@@ -55,35 +54,35 @@
                                 </select>
                             </div>
                         </div>
-                        <div>
+                        <div class="tag__input-box">
                             <h1>Relief Temperature*</h1>
                             <input class="tag-dropdown" ng-model="tagAnalytics.reliefTemperature">
                             <select ng-model="tagAnalytics.temperatureUnit" ng-options="temperatureUnit.name for temperatureUnit in UNITS.TEMPERATURE">
                                 <option value="">temp units</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="tag__input-box">
                             <h1>Operating Temperature*</h1>
                             <input class="tag-dropdown" ng-model="tagAnalytics.operatingTemperature">
                             <select ng-model="tagAnalytics.temperatureUnit" ng-options="temperatureUnit.name for temperatureUnit in UNITS.TEMPERATURE">
                                 <option value="">temp units</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="tag__input-box">
                             <h1>Design Min Temperature</h1>
                             <input class="tag-dropdown" ng-model="tagAnalytics.designMinTemperature">
                             <select ng-model="tagAnalytics.temperatureUnit" ng-options="temperatureUnit.name for temperatureUnit in UNITS.TEMPERATURE">
                                 <option value="">temp units</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="tag__input-box">
                             <h1>Design Max Temperature</h1>
                             <input class="tag-dropdown" ng-model="tagAnalytics.designMaxTemperature">
                             <select ng-model="tagAnalytics.temperatureUnit" ng-options="temperatureUnit.name for temperatureUnit in UNITS.TEMPERATURE">
                                 <option value="">temp units</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="tag__input-box">
                             <h1>Required Flow Capacity*</h1>
                             <input class="tag-dropdown" ng-model="tagAnalytics.requiredFlowCapacity">
                             <select ng-model="tagAnalytics.requiredFlowCapacityUnit" ng-options="flowCapacityUnit.name for flowCapacityUnit in UNITS.FLOW_CAPACITY">
@@ -91,50 +90,50 @@
                             </select>
                         </div>
                     </div>
-                    <div class="small-6 columns" style="border: 1px solid black">
-                        <div>
+                    <div class="small-6 columns tag__mid-section-right">
+                        <div class="tag__input-box">
                             <h1>ATM: Pressure*</h1>
                             <input class="tag-dropdown" ng-model="tagAnalytics.atmPressure">
                             <select ng-model="tagAnalytics.pressure" ng-options="pressureUnit.name for pressureUnit in UNITS.PRESSURE">
                                 <option value="">pressure units</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="tag__input-box">
                             <h1>MAWP</h1>
                             <input class="tag-dropdown" ng-model="tagAnalytics.mawp">
                             <select ng-model="tagAnalytics.pressure" ng-options="pressureUnit.name for pressureUnit in UNITS.PRESSURE">
                                 <option value="">pressure units</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="tag__input-box">
                             <h1>Operating Pressure</h1>
                             <input class="tag-dropdown" ng-model="tagAnalytics.operatingPressure">
                             <select ng-model="tagAnalytics.pressure" ng-options="pressureUnit.name for pressureUnit in UNITS.PRESSURE">
                                 <option value="">pressure units</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="tag__input-box">
                             <h1>Set Pressure*</h1>
                             <input class="tag-dropdown" ng-model="tagAnalytics.setPressure">
                             <select ng-model="tagAnalytics.pressure" ng-options="pressureUnit.name for pressureUnit in UNITS.PRESSURE">
                                 <option value="">pressure units</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="tag__input-box">
                             <h1>Built Up Back Pressure</h1>
                             <input class="tag-dropdown" ng-model="tagAnalytics.backPressureBuiltUp">
                             <select ng-model="tagAnalytics.pressure" ng-options="pressureUnit.name for pressureUnit in UNITS.PRESSURE">
                                 <option value="">pressure units</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="tag__input-box">
                             <h1>Variable Superimposed Back Pressure</h1>
                             <input class="tag-dropdown" ng-model="tagAnalytics.varSuperimposed">
                             <select ng-model="tagAnalytics.pressure" ng-options="pressureUnit.name for pressureUnit in UNITS.PRESSURE">
                                 <option value="">pressure units</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="tag__input-box">
                             <h1>Constant Superimposed Back Pressure</h1>
                             <input class="tag-dropdown" ng-model="tagAnalytics.constantSuperimposed">
                             <select ng-model="tagAnalytics.pressure" ng-options="pressureUnit.name for pressureUnit in UNITS.PRESSURE">
