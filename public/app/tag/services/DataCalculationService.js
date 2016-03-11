@@ -20,13 +20,13 @@ function DataCalculationService () {
       Z = tagInputData.compressibility || 1.0,
       K = 0.865, //Always the default,
       k = specificHeat,
-      C = || 315, //I HAVE NO IDEA WHAT THIS IS
+      C = 0 || 315, //I HAVE NO IDEA WHAT THIS IS
       W = tagInputData.requiredFlowCapacity
       setPressure = tagInputData.setPressure,
       inletLossPressure = tagInputData.inletLoss,
       allowableOverPressure = tagInputData.allowableOverPressure,
       P1 = calculateP1V(setPressure, inletLossPressure, allowableOverPressure),
-      A = calculateRequiredAreaWeight(V, M, T, Z, C, K P1),
+      A = calculateRequiredAreaWeight(V, M, T, Z, C, K, P1),
       // tagInputData.orificeSize = calculateRequiredAreaWeight(V, M, T, Z, C, K P1),
       backPressureBuiltUp = tagInputData.backPressureBuiltUp;
 
@@ -49,7 +49,7 @@ function calculateP1V(setPressure, inletLossPressure, allowableOverPressure) {
   return (setPressure - inletLossPressure) + allowableOverPressure + 14.7;
 }
 
-function calculateRequiredAreaWeight(V, M, T, Z, C, K P1) {
+function calculateRequiredAreaWeight(V, M, T, Z, C, K, P1) {
   return (V * (Math.sqrt((M * T * Z)))) / (6.32 * C * K * P1)
 }
 
@@ -58,7 +58,7 @@ function calculateRequiredAreaVolume() {
 }
 
 function validateAreNumbers(tagInputData) {
-  const tagInputs = Object.keys(tagInputData);
+  var tagInputs = Object.keys(tagInputData);
 
     return tagInputs.every(function (tagInput) {
         return !isNaN(parseFloat(body[tagInput])) && isFinite(body[tagInput]);
