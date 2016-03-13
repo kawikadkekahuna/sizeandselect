@@ -15,10 +15,7 @@
         };
     }
 
-
     router.put('/', function (req, res) {
-
-        console.log("req.body.email", req.body.email);
         const userEmail = req.body.email;
 
         User.findOne({
@@ -40,12 +37,7 @@
                             resetPasswordToken: pwResetInfo.resetPasswordToken
                         };
 
-
-
                         Email.sendResetPasswordToken(emailInfo);
-                            // .catch(function (err) {
-                            //     console.error("There was an error with sending the reset password token to the user.", err);
-                            // });
 
                         return user.update({
                             reset_password_token: pwResetInfo.resetPasswordToken,
@@ -62,7 +54,5 @@
     });
 
 
-
     module.exports = router;
-
 }());
