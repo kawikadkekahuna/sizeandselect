@@ -49,11 +49,6 @@
     }
 
     function sendResetPasswordToken(user) {
-
-        console.log("user", user.firstName);
-        console.log("email", user.email);
-        console.log("user.otke", user.resetPasswordToken);
-
         const
             emailType = 'reset-password-token',
             subject = 'Forgot Password',
@@ -68,7 +63,5 @@
 
     module.exports = {
         sendResetPasswordToken
-
     };
-
 }());
