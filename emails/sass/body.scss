@@ -1,0 +1,18 @@
+body {
+    background-color: $extraLightGrey;
+    padding: 2em;
+}
+
+    .emails {
+        background-color: white;
+        border: 1px solid none;
+        border-radius: 5px;
+        font-size: 1.2em;
+        max-width: 60ch;
+        margin: auto;
+        padding: 0 1em;
+    }
+
+        .emails-content {
+            margin: auto;
+        }

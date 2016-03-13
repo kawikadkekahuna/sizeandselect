@@ -49,9 +49,14 @@
     }
 
     function sendResetPasswordToken(user) {
+
+        console.log("user", user.firstName);
+        console.log("email", user.email);
+        console.log("user.otke", user.resetPasswordToken);
+
         const
             emailType = 'reset-password-token',
-            subject = '',
+            subject = 'Forgot Password',
             locals = {
                 firstName: user.firstName,
                 email: user.email,

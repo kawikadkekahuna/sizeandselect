@@ -34,12 +34,18 @@
                 return Promise.resolve(generatePwResetToken())
                     .then(function (pwResetInfo) {
 
-                        user.resetPasswordToken = pwResetInfo.reset_password_token;
+                        const emailInfo = {
+                            firstName: user.first_name,
+                            email: user.email,
+                            resetPasswordToken: pwResetInfo.resetPasswordToken
+                        };
 
-                        Email.sendResetPasswordToken(user)
-                            .catch(function (err) {
-                                console.error("There was an error with sending the reset password token to the user.", err);
-                            });
+
+
+                        Email.sendResetPasswordToken(emailInfo);
+                            // .catch(function (err) {
+                            //     console.error("There was an error with sending the reset password token to the user.", err);
+                            // });
 
                         return user.update({
                             reset_password_token: pwResetInfo.resetPasswordToken,
