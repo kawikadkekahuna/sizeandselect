@@ -1,0 +1,11 @@
+extends ../../partials/html.jade
+
+block email-content
+    p Hi #{firstName},
+    p You are receiving this because you (or someone else) have requested the reset of the password for your account.
+    p Please click the link below to reset your password:
+    a.emails-reset-password-button.button(href= "http://www.sizeandselect.com/reset-password/#{resetPasswordToken}")
+        | Reset Password
+    p Alternatively, you can copy the following link into your browser:
+        a(href="http://www.sizeandselect.com/reset-password/#{resetPasswordToken}") http://www.sizeandselect.com/reset-password/#{resetPasswordToken}
+    p If you did not request this, please ignore this email and your password will remain unchanged.
