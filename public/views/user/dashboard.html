@@ -1,22 +1,30 @@
-<div class="dashboard">
-  <div class="left-column">
-    <div class="account-picture">
+<div class="row">
+    <div class="small-10 medium-8 columns dashboard">
+        <div class="dashboard__project-heading">
+            <h1>My Projects</h1>
+            <a href="#" ng-click="setModal('addProject')">Create new project</a>
+        </div>
+
+        <div class="dashboard__project-container" ng-repeat="project in projects" ng-click="enterTag(project.id)">
+            <div class="row">
+                <div class="small-2 columns">
+                    <img src="http://placehold.it/140x100" alt="">
+                </div>
+                <div class="small-5 columns">
+                    <h1>{{project.project_name}}</h1>
+                    <h1>{{project.company_name}} | {{project.created_at | date:'MM/dd/yyyy'}}</h1>
+                </div>
+                <div class="small-2 columns">
+                    <h1> {{project.location}}</h1>
+                </div>
+                <div class="small-3 columns" ng-click="openProject(project.id)">
+                    <a href="">Open Project</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="dropdown-links">
-      <ul>
-        <li ng-click="setModal('addProject')">New Project</li>
-      </ul>
+    <div class="small-2 medium-4 columns right-column">
+        <h1>Ad goes here</h1>
     </div>
-  </div>
-  <div class="middle-column project-wrapper">
-    <div class="project" ng-repeat="project in projects" ng-click="enterTag(project.id)">
-      <div class="data">Project Name : {{project.project_name}}</div>
-      <div class="data">Company Name : {{project.company_name}}</div>
-      <div class="data">Location : {{project.location}}</div>
-      <h1 ng-click="openProject(project.id)">Open Project</h1>
-    </div>
-  </div>
-  <div class="right-column">
-    
-  </div>
 </div>
+

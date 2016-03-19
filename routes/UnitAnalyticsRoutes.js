@@ -1,182 +1,115 @@
-'use strict';
+(function () {
+    "use strict";
 
-var express = require('express');
-var router = express.Router();
-var PressureUnit = require('../models').PressureUnit,
-    TemperatureUnit = require('../models').TemperatureUnit,
-    ViscosityUnit = require('../models').ViscosityUnit,
-    FlowCapacityUnit = require('../models').FlowCapacityUnit,
-    SizingBasis = require('../models').SizingBasis,
-    ToggleApiAsme = require('../models').ToggleApiAsme,
-    InletFlange = require('../models').InletFlange,
-    FlangeFacing = require('../models').FlangeFacing,
-    TrimType = require('../models').TrimType,
-    SeatType = require('../models').SeatType,
-    MaterialVariable = require('../models').MaterialVariable,
-    Media = require('../models').Media,
-    MediaType = require('../models').MediaType,
-    CapType = require('../models').CapType;
+    const express = require('express');
+    const router = express.Router();
+    const Dropdown = require('./utilities/dropdown.js');
 
-router.get('/all', function (req,res){
-  var pressure,
-      temperature,
-      viscosity,
-      flowCapacity,
-      sizingBasis,
-      toggleApiAsme,
-      inletFlange,
-      flangeFacing,
-      trimType,
-      seatType,
-      materialVariable,
-      media,
-      mediaType,
-      capType;
+    router.get('/all', function (ignore, res) {
+        Dropdown.getAllDropdownValues()
+            .then(function (dropdownValues) {
+                res.json({
+                    PRESSURE: dropdownValues.pressure,
+                    TEMPERATURE: dropdownValues.temp,
+                    VISCOSITY: dropdownValues.viscosity,
+                    FLOW_CAPACITY: dropdownValues.flowCapacity,
+                    SIZING_BASIS: dropdownValues.sizingBasis,
+                    ASME_SIZING: dropdownValues.asmeSizings,
+                    CODE_TYPE: dropdownValues.codeTypes,
+                    INLET_FLANGE: dropdownValues.inletFlanges,
+                    FLANGE_FACING: dropdownValues.flangeFacings,
+                    TRIM_TYPE: dropdownValues.trimTypes,
+                    SEAT_TYPE: dropdownValues.seatTypes,
+                    MATERIAL_VARIABLE: dropdownValues.materialVariables,
+                    MEDIA_TYPE: dropdownValues.mediaTypes,
+                    CAP_TYPE: dropdownValues.capTypes
+                });
+            });
+    });
 
-  PressureUnit.findAll({}).then(function (unit){
-    pressure = unit;
-  });
+    router.get('/pressure', function (ignore, res) {
+        Dropdown.getPressureUnits()
+            .then(function (units) {
+                res.json(units);
+            });
+    });
 
-  TemperatureUnit.findAll({}).then(function (unit){
-    temperature = unit;
-  });
+    router.get('/temperature', function (ignore, res) {
+        Dropdown.getTemperatureUnits()
+            .then(function (units) {
+                res.json(units);
+            });
+    });
 
-  ViscosityUnit.findAll({}).then(function (unit){
-    viscosity = unit;
-  });
+    router.get('/viscosity', function (ignore, res) {
+        Dropdown.getViscosityUnits()
+            .then(function (units) {
+                res.json(units);
+            });
+    });
 
-  FlowCapacityUnit.findAll({}).then(function (unit){
-    flowCapacity = unit;
-  });
+    router.get('/flow-capacity', function (ignore, res) {
+        Dropdown.getFlowCapacityUnits()
+            .then(function (units) {
+                res.json(units);
+            });
+    });
 
-  SizingBasis.findAll({}).then(function (unit){
-    sizingBasis = unit;
-  });
+    router.get('/sizing-basis', function (ignore, res) {
+        Dropdown.getSizingBasisUnits()
+            .then(function (units) {
+                res.json(units);
+            });
+    });
 
-  ToggleApiAsme.findAll({}).then(function (unit){
-    toggleApiAsme = unit;
-  });
+    router.get('/toggle-apiasme', function (ignore, res) {
+        Dropdown.getAsmeSizings()
+            .then(function (asmeSizings) {
+                res.json(asmeSizings);
+            });
+    });
 
-  InletFlange.findAll({}).then(function (unit){
-    inletFlange = unit;
-  });
+    router.get('/inlet-flange', function (ignore, res) {
+        Dropdown.getInletFlanges()
+            .then(function (flanges) {
+                res.json(flanges);
+            });
+    });
 
-  FlangeFacing.findAll({}).then(function (unit){
-    flangeFacing = unit;
-  });
+    router.get('/flange-facing', function (ignore, res) {
+        Dropdown.getFlangeFacings()
+            .then(function (flangeFacings) {
+                res.json(flangeFacings);
+            });
+    });
 
-  TrimType.findAll({}).then(function (unit){
-    trimType = unit;
-  });
+    router.get('/trim-type', function (ignore, res) {
+        Dropdown.getTrimTypes()
+            .then(function (trimTypes) {
+                res.json(trimTypes);
+            });
+    });
 
-  SeatType.findAll({}).then(function (unit){
-    seatType = unit;
-  });
+    router.get('/seat-type', function (ignore, res) {
+        Dropdown.getSeatTypes()
+            .then(function (seatTypes) {
+                res.json(seatTypes);
+            });
+    });
 
-  MaterialVariable.findAll({}).then(function (unit){
-    materialVariable = unit;
-  });
+    router.get('/material-variable', function (ignore, res) {
+        Dropdown.getMaterialVariables()
+            .then(function (materialVariables) {
+                res.json(materialVariables);
+            });
+    });
 
-  Media.findAll({}).then(function (unit){
-    media = unit;
-  });
+    router.get('/cap-type', function (ignore, res) {
+        Dropdown.getCapTypes()
+            .then(function (capTypes) {
+                res.json(capTypes);
+            });
+    });
 
-  MediaType.findAll({}).then(function (unit){
-    mediaType = unit;
-  });
-
-  CapType.findAll({}).then(function (unit){
-    capType = unit;
-    var units = {
-      PRESSURE: pressure,
-      TEMPERATURE: temperature,
-      VISCOSITY: viscosity,
-      FLOW_CAPACITY: flowCapacity,
-      SIZING_BASIS: sizingBasis,
-      TOGGLE_API_AS_ME: toggleApiAsme,
-      INLET_FLANGE: inletFlange,
-      FLANGE_FACING: flangeFacing,
-      TRIM_TYPE: trimType,
-      SEAT_TYPE: seatType,
-      MATERIAL_VARIABLE: materialVariable,
-      MEDIA: media,
-      MEDIA_TYPE: mediaType,
-      CAP_TYPE: capType
-    };
-    res.json(units);
-  });
-});
-
-router.get('/pressure', function (req,res){
-  PressureUnit.findAll({}).then(function (unit){
-    res.json(unit);
-  });
-}); 
-
-router.get('/temperature', function (req,res){
-  TemperatureUnit.findAll({}).then(function (unit){
-    res.json(unit);
-  });
-});
-
-router.get('/viscosity', function (req,res){
-  ViscosityUnit.findAll({}).then(function (unit){
-    res.json(unit);
-  });
-});
-
-router.get('/flow-capacity', function (req,res){
-  FlowCapacityUnit.findAll({}).then(function (unit){
-    res.json(unit);
-  });
-});
-
-router.get('/sizing-basis', function (req,res){
-  SizingBasis.findAll({}).then(function (unit){
-    res.json(unit);
-  });
-});
-
-router.get('/toggle-apiasme', function (req,res){
-  ToggleApiAsme.findAll({}).then(function (unit){
-    res.json(unit);
-  });
-});
-
-router.get('/inlet-flange', function (req,res){
-  InletFlange.findAll({}).then(function (unit){
-    res.json(unit);
-  });
-});
-
-router.get('/flange-facing', function (req,res){
-  FlangeFacing.findAll({}).then(function (unit){
-    res.json(unit);
-  });
-});
-
-router.get('/trim-type', function (req,res){
-  TrimType.findAll({}).then(function (unit){
-    res.json(unit);
-  });
-});
-
-router.get('/seat-type', function (req,res){
-  SeatType.findAll({}).then(function (unit){
-    res.json(unit);
-  });
-});
-
-router.get('/material-variable', function (req,res){
-  MaterialVariable.findAll({}).then(function (unit){
-    res.json(unit);
-  });
-});
-
-router.get('/cap-type', function (req,res){
-  CapType.findAll({}).then(function (unit){
-    res.json(unit);
-  });
-});
-
-module.exports = router;
+    module.exports = router;
+}());

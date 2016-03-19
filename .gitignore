@@ -27,3 +27,4 @@ build/Release
 node_modules
 config/*
 public/bower_components
+public/css/styles.css

@@ -1,0 +1,23 @@
+.tag__top-section {
+    display: inline-flex;
+}
+
+.tag__mid-section {
+
+    .tag__mid-section-left {
+        border: 1px solid black;
+    }
+
+    .tag__mid-section-right {
+        border: 1px solid black;
+    }
+
+}
+
+.tag__input-box {
+    display: inline-flex;
+
+    select {
+        height: 6ch;
+    }
+}

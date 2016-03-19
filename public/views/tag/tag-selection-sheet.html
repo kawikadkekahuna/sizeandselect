@@ -3,7 +3,7 @@
 <div ng-init="init()" class="dashboard">
   <div class="left-column">
     <div class="account-picture">
-      
+
     </div>
     <div class="dropdown-links">
       <ul>
@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="middle-column project-wrapper">
-    <form ng-submit="createTagAnalytics(tagAnalaytics)" name="tagSelectionSheet">
+    <form ng-submit="createTagSheet(tagAnalaytics)" name="tagSelectionSheet">
     <ul>
       <li>
        <select name="accountType" required ng-model="newUser.account_type" ng-options="accountType.name for accountType in accountTypes">
@@ -54,7 +54,7 @@
           <option value="">--User Type--</option>
         </select>
       </li>
-    </ul> 
+    </ul>
    </form>
   </div>
   <div class="right-column">

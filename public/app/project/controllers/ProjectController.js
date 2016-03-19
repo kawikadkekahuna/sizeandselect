@@ -3,10 +3,14 @@ angular.module('app')
 .controller('ProjectController', function ($scope, $rootScope, $sessionStorage, $stateParams, ProjectService, TagService, $state, ModalFactory) {
   $scope.projectId = $stateParams.projectId;
 
-  TagService.getTags($scope.projectId).then(function (tags){
-    $scope.showTags = true;
-    $scope.tags = tags.data;
-  });
+  console.log("$scope.projectId", $scope.projectId);
+
+  TagService.getTags($scope.projectId)
+    .then(function (tags) {
+      console.log("what is tags", tags);
+      $scope.showTags = true;
+      $scope.tags = tags.data;
+    });
 
   ProjectService.getProjectById($scope.projectId).then(function (project){
     $scope.project = project.data;
