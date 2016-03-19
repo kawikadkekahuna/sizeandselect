@@ -1,32 +1,41 @@
-<div ng-controller="ProjectController" class="modal">
+<div ng-controller="ProjectController" class="modal" style="border: 1px solid black">
   <div class="close" ng-click="close()">x</div>
   <form>
     <div>
-      <input ng-model="Tag.quantity"type="text" placeholder="Quantity">
+      <label>Tag Name*: </label>
+      <input ng-model="Tag.name" type="text" placeholder="Tag Name" required>
     </div>
     <div>
-      <input ng-model="Tag.name"type="text" placeholder="Tag Name">
+      <label>P &amp; ID*: </label>
+      <input ng-model="Tag.pid" type="text" placeholder="P &amp; ID" required>
     </div>
     <div>
-      <input ng-model="Tag.pid"type="text" placeholder="PID">
+      <label>Service: </label>
+      <input ng-model="Tag.service" type="text" placeholder="Service">
     </div>
     <div>
-      <input ng-model="Tag.service"type="text" placeholder="Service">
+      <label>Line Number: </label>
+      <input ng-model="Tag.line_number" type="text" placeholder="Line Number">
     </div>
     <div>
-      <input ng-model="Tag.line_number"type="text" placeholder="Line Number">
+      <label>Quanitity*:</label>
+      <input ng-model="Tag.quantity" type="text" placeholder="Quantity" value="1" required>
     </div>
     <div>
-      <input ng-model="Tag.model_number"type="text" placeholder="Model Number">
+      <label>Model Number: </label>
+      <input ng-model="Tag.model_number" type="text" placeholder="Model Number">
     </div>
     <div>
-      <input ng-model="Tag.need_by_date"type="text" placeholder="Due Date">
+      <label>Need By Date: </label>
+      <input ng-model="Tag.due_date" type="date" placeholder="Need By Date">
     </div>
     <div>
-      <input ng-model="Tag.ship_date"type="text" placeholder="Ship Date">
+      <label>Estimated Ship Date: </label>
+      <input ng-model="Tag.ship_date" type="date" placeholder="Estimated Ship Date">
     </div>
     <div>
-      <input ng-model="Tag.tracking_number"type="text" placeholder="Tracking Number">
+      <label>Tracking Number: </label>
+      <input ng-model="Tag.tracking_number" type="text" placeholder="Tracking Number">
     </div>
     <button ng-click="addTag(Tag)">Create Tag</button>
   </form>

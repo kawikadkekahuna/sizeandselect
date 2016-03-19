@@ -28,6 +28,7 @@
     "angular-mass-autocomplete": "^0.2.3",
     "async": "^1.4.2",
     "bcrypt": "^0.8.5",
+    "bluebird": "^3.3.3",
     "body-parser": "^1.14.0",
     "crypto": "0.0.3",
     "express": "^4.13.3",
@@ -38,6 +39,7 @@
     "passport-local": "^1.0.0",
     "pg": "^4.4.1",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^3.9.0"
+    "sequelize": "^3.9.0",
+    "validate": "^3.0.1"
   }
 }

@@ -9,20 +9,24 @@ function ModalFactory($http, $rootScope) {
                     {name:'register', url:'/views/modal/register-user-modal.html'},
                     {name:'login', url:'/views/modal/login-modal.html'}
                     ];
+  var self = this;
+
 
   function getAllModals(){
-    return this.allModals;
+    console.log('this.', self.allModals);
+    return self.allModals;
   }
 
   function getModal() {
-    return this._currentModal;    
+    return self._currentModal;    
   };
 
   function setModal(template) {
     if(!template){
       return;
     };
-    this._currentModal = template;
+    //refactor for es6.
+    self._currentModal = template;
     $rootScope.$broadcast('modal:updated', template);
   };
 

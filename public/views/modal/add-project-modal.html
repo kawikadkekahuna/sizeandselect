@@ -2,13 +2,16 @@
   <div class="close" ng-click="close()">x</div>
   <form>
     <div>
-      <input ng-model="project.company"type="text" placeholder="Company">
+      <label>Project Name:</label>
+      <input ng-model="project.name"type="text" placeholder="Project Name" required>
     </div>
     <div>
-      <input ng-model="project.name"type="text" placeholder="Project Name">
+      <label>Company:</label>
+      <input ng-model="project.company"type="text" placeholder="Company" required>
     </div>
     <div>
-      <input ng-model="project.location"type="text" placeholder="Location">
+      <label>Location: </label>
+      <input ng-model="project.location"type="text" placeholder="Location" required>
     </div>
     <button ng-click="createProject(project)">Create Project</button>
   </form>

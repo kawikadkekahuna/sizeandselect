@@ -11,30 +11,43 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
   .state('layout', {
     abstract: true,
     controller: 'GlobalController',
-    controllerAs: 'global'
+    controllerAs: 'global',
+    template: '<ui-view/>'
   })
 
-  .state('home', {
+  .state('layout.home', {
     controller: 'HomeController',
     controllerAs: 'home',
-    templateUrl: '/views/session/home.html', 
-    url: '/'
+    templateUrl: '/views/user/home.html',
+    url:'/' 
   })
 
-  // .state('layout', {
-  //   abstract: true,
-  //   controller: 'GlobalController',
-  //   controllerAs: 'global'
-  // })
+  .state('layout.dashboard', {
+    url: '/dashboard',
+    resolve:{
+      authenticate: isAuthenticated
+    },
+    templateUrl: '/views/user/dashboard.html',
+    controller: 'DashboardController'
+  })
 
-  // .state('dashboard', {
-  //   url: '/dashboard',
-  //   resolve:{
-  //     authenticate: isAuthenticated
-  //   },
-  //   templateUrl: '/views/user/dashboard.html',
-  //   controller: 'DashboardController'
-  // })
+  .state('layout.project', {
+    url: '/project/:projectId',
+    resolve:{
+      authenticate: isAuthenticated
+    },    
+    templateUrl: '/views/projects/project.html',
+    controller: 'ProjectController'
+  })
+
+  .state('layout.project.tag', {
+    url: '/tag/:tagId',
+    resolve:{
+      authenticate: isAuthenticated
+    },
+    templateUrl: '/views/tag/tag-analytics-sheet.html',
+    controller: 'TagController'
+  })
 
   // .state('home', {
   //   url:'/',
@@ -98,9 +111,9 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
   //   controller: 'ResetPasswordController'
   // })
 
-  // .state('modal', {
-  //   templateUrl: '/views/modal/modal.html'
-  // });
+  .state('layout.modal', {
+    templateUrl: '/views/modal/modal.html'
+  });
 
   $urlRouterProvider.otherwise('/');
   $locationProvider.html5Mode({enabled: true, requireBase: false});
