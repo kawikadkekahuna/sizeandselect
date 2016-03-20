@@ -1,0 +1,32 @@
+.emails-outro {
+    margin-top: 3em;
+    text-align: center;
+  }
+
+    .emails-outro-text {
+        font-size: 0.8em;
+        line-height: 0;
+    }
+
+.line-break {
+    background: $blue;
+    height: 2px;
+}
+
+.emails-social-icons {
+    text-align: center;
+    padding-left: 0;
+}
+
+    .emails-social-icon {
+        padding: 0 0.5em;
+        display: inline-block;
+    }
+
+        .emails-social-icon-name {
+            font-size: 0.6em;
+        }
+
+        .emails-social-icon-circle {
+            width: 3em;
+        }

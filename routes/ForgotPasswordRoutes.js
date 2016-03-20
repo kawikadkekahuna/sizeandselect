@@ -1,84 +1,58 @@
-'use strict';
+(function () {
+    "use strict";
 
-var express = require('express');
-var router = express.Router();
-var User = require('../models').User;
-var crypto = require('crypto');
-var apiKeysFile = require('../config/.apiKeys');
-var mailgunApiKey = apiKeysFile.mailgun;
-var domain = 'sandboxeb3a33eecb81490b8b2d70a6cf832d5e.mailgun.org';
-var mailgun = require('mailgun-js')({apiKey: mailgunApiKey, domain: domain});
+    const express = require('express');
+    const router = express.Router();
+    const User = require('../models').User;
+    const crypto = require('crypto');
+    const Email = require('../emails/emails.js');
+    const Promise = require('bluebird');
 
-
-
-
-/**
- * [POST]
- * [If user successfully logins]
- * send status 200 eg:
- * res.status(200).send(..{}..)
- * Add Bearer token to Headers.
- *
- * [If user unsuccessfuly tried to sign in]
- * Send status 401 eg:
- * res.status(401).send({error:'Unauthorized',status:'401',message:'Invalid credentials'})
- *
- */
-
-
-
-router.put('/', function (req, res) {
-
-  console.log("req.body.email", req.body.email)
-
-  User.findOne({
-    where: {email : req.body.email}
-  }).then(function (user) {
-    if (!user) {
-      console.log("no user found");
-      res.status({status : 404}).send("No user with that email found in the system");
-    } else {
-    var pwResetInfo = {
-      reset_password_token : crypto.randomBytes(25).toString('hex'),
-      reset_password_expires : Date.now() + 3600000 // 1 hour
-    },
-      data = {
-        from: 'Size & Select Team <info@' + domain + '>',
-        to: user.email,
-        subject: 'Forgot Password',
-        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-                  'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-                  'http://' + req.headers.host + '/reset-password/' + pwResetInfo.reset_password_token + '\n\n' +
-                  'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-      };
-
-      mailgun.messages().send(data, function (error, body) {
-
-        if (error) {
-          console.log("Error with sending our mailgun", error);
-          res.status({status : 400}).send("Error with sending our mailgun", error);
-
-        } else {
-          //update user account
-          user.update({
-              reset_password_token : pwResetInfo.reset_password_token,
-              reset_password_expires : pwResetInfo.reset_password_expires
-          }, {
-              fields : ['reset_password_token', 'reset_password_expires']
-          });
-
-        //either show the forgot page that says check email
-        //or show a alert/message that says check email
-
-        console.log("email sent to the user");
-
-          res.sendStatus(200);
-        }
-      });
+    function generatePwResetToken() {
+        return {
+            resetPasswordToken: crypto.randomBytes(25).toString('hex'),
+            resetPasswordExpires: Date.now() + 3600000 // 1 hour
+        };
     }
-  });
-});
+
+    router.put('/', function (req, res) {
+        const userEmail = req.body.email;
+
+        User.findOne({
+            where: {
+                email: userEmail
+            }
+        })
+            .then(function (user) {
+                if (!user) {
+                    throw {status: 404, message: "No user with that email found in the system"};
+                }
+
+                return Promise.resolve(generatePwResetToken())
+                    .then(function (pwResetInfo) {
+
+                        const emailInfo = {
+                            firstName: user.first_name,
+                            email: user.email,
+                            resetPasswordToken: pwResetInfo.resetPasswordToken
+                        };
+
+                        Email.sendResetPasswordToken(emailInfo);
+
+                        return user.update({
+                            reset_password_token: pwResetInfo.resetPasswordToken,
+                            reset_password_expires: pwResetInfo.resetPasswordExpires
+                        }, {
+                            fields: ['reset_password_token', 'reset_password_expires']
+                        });
+
+                    });
+            })
+            .then(function () {
+                res.sendStatus(200);
+            });
+    });
 
 
-
-module.exports = router;
+    module.exports = router;
+}());

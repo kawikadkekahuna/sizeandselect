@@ -3,7 +3,6 @@ angular.module('app')
 .controller('NavigationController', function($scope, $http, $localStorage, $state, AuthorizationService, DropdownService, RegexService, ModalFactory, HelperFactory){
 
 	$scope.isLoggedIn = $localStorage.authenticated;
-
   $scope.init = function (){
     DropdownService.getAccountTypes().then(function(accountTypes) {
       $scope.accountTypes = accountTypes.data;
@@ -14,7 +13,7 @@ angular.module('app')
       phoneNumber: RegexService.getPhoneNumber()
     };
 
-    $scope.toggleState = 'hidden' 
+    $scope._toggleState = 'hidden' 
   };
 
   $scope.createUser = function(user) {
@@ -24,7 +23,7 @@ angular.module('app')
       $localStorage.token = user.data.token;
       $localStorage.userId = user.data.id;
       ModalFactory.destroyModal();
-      $state.go('dashboard');
+      $state.go('layout.dashboard');
     }); 
   };
 
@@ -35,17 +34,19 @@ angular.module('app')
   $scope.setModal = function (template){
     if(!ModalFactory.getModal()){
       ModalFactory.setModal(template);
+      $('#nav__login_dropdown').removeClass('active'); 
     }else{
       ModalFactory.destroyModal();
     };
   };
 
  	$scope.toggle = function (){
-    if($scope.toggleState == 'hidden'){
-      ModalFactory.destroyModal();
-      $scope.toggleState = 'active';
+    var currentState = $('#nav__login_dropdown'); 
+    if(!currentState.hasClass('active')){
+      (ModalFactory.getModal() ) ? ModalFactory.destroyModal() : null;
+      currentState.addClass('active');
     }else{
-      $scope.toggleState = 'hidden' 
+      currentState.removeClass('active');
     };
  	};
 

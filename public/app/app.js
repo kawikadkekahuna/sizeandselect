@@ -40,7 +40,7 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
     controller: 'ProjectController'
   })
 
-  .state('layout.project.tag', {
+  .state('layout.tag', {
     url: '/tag/:tagId',
     resolve:{
       authenticate: isAuthenticated
@@ -48,12 +48,6 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
     templateUrl: '/views/tag/tag-analytics-sheet.html',
     controller: 'TagController'
   })
-
-  // .state('home', {
-  //   url:'/',
-  //   templateUrl:'/views/user/home.html',
-  //   controler: 'HomeController'
-  // })
 
   // .state('profile', {
   //   url: '/profile',

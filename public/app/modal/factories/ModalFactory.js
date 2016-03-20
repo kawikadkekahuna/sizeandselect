@@ -13,7 +13,6 @@ function ModalFactory($http, $rootScope) {
 
 
   function getAllModals(){
-    console.log('this.', self.allModals);
     return self.allModals;
   }
 
@@ -41,7 +40,7 @@ function ModalFactory($http, $rootScope) {
       setModal(template);
     },
     destroyModal: function (){
-      this._currentModal = '';      
+      self._currentModal = '';
       return $rootScope.$broadcast('modal:destroy');
     }
   };

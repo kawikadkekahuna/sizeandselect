@@ -5,14 +5,9 @@ angular.module('app')
   this.modal = {name: 'modal', url: '/views/modal/modal.html'};
   this.token = $localStorage.token;
   this.authenticated = $localStorage.authenticated;
-  // $scope.publicNavigation = {name: 'navigation:public', url: '/views/partials/navigation-public.html'};
-  // $scope.privateNavigation = {name: 'navigation:private', url: '/views/partials/navigation-private.html'};
 
-  $scope.setHeaderPublic = function (){
-    HelperFactory.setNavigation('public');
-  };
-
-  $scope.login = function(user) {
+  this.login = function(user) {
+    alert('in global controller');
     AuthorizationService.login(user).success(function (data, status) {
       if(data.statusCode !== 200){
         return;

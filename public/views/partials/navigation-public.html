@@ -1,4 +1,4 @@
-<nav class="nav" ng-controller="NavigationController" ng-init="init()">
+<nav class="nav" ng-controller="NavigationController as nav" ng-init="init()">
 	<ul class="nav__public">
 		<li class="nav__public-item">
 			<a href="/dashboard">
@@ -10,9 +10,8 @@
 			<li class="nav__public-item">Pricing</li>
 			<li class="nav__public-item">
 				<p class="nav__paragraph" ng-click="toggle()">Login</p>
-				<ul tabindex="1" ng-class="toggleState" class="nav__dropdown">
-
-					<form ng-submit="login(user)">
+				<ul id="nav__login_dropdown" tabindex="1" class="hidden nav__dropdown hidden">
+					<form ng-submit="global.login(user)">
 						<li class="nav__public-item">
 							<p class="nav__paragraph">USERNAME:</p>
 							<input
