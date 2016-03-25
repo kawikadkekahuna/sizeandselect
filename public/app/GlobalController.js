@@ -1,13 +1,12 @@
 angular.module('app')
 
-.controller('GlobalController', function ($scope, $state, AuthorizationService, $localStorage, HelperFactory){
+.controller('GlobalController', function ($scope, $state, AuthorizationService, $localStorage, HelperFactory, ModalFactory){
   this.header = HelperFactory.getNavigation();
   this.modal = {name: 'modal', url: '/views/modal/modal.html'};
   this.token = $localStorage.token;
   this.authenticated = $localStorage.authenticated;
 
   this.login = function(user) {
-    alert('in global controller');
     AuthorizationService.login(user).success(function (data, status) {
       if(data.statusCode !== 200){
         return;
@@ -19,6 +18,16 @@ angular.module('app')
     .error(function (data) {
       $state.go('layout.home');
     });
+  };
+
+  this.unfocusModal = function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    var currentModal = ModalFactory.getModal();
+    if(currentModal){
+      console.log('currentModal', currentModal);
+      ModalFactory.destroyModal();
+    }
   };
 
   $scope.$on('navigation:update', function(event,data) {

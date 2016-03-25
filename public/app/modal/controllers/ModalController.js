@@ -8,20 +8,15 @@ angular.module('app')
    */
   $scope.$on('modal:updated', function (event,data) {
     $scope.CURRENT_MODAL = data;
-
-    console.log('$scope.CURRENT_MODAL', $scope.CURRENT_MODAL);
-    console.log('$scope.modals', $scope.modals);
-    _.each($scope.modals, function (template) {
+    $scope.modal = _.filter($scope.modals, function (template) {
       if (template.name === $scope.CURRENT_MODAL){
-        $scope.modal = template;
-        return;
+        return template;
       }
-    });
+    })[0];
   });
 
   $scope.$on('modal:destroy', function (event,data) {
     $scope.close();
-    return;
   });
 
   $scope.close = function (){

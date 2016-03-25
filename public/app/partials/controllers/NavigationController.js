@@ -40,7 +40,7 @@ angular.module('app')
     };
   };
 
- 	$scope.toggle = function (){
+ 	$scope.toggle = function (event){
     var currentState = $('#nav__login_dropdown'); 
     if(!currentState.hasClass('active')){
       (ModalFactory.getModal() ) ? ModalFactory.destroyModal() : null;

@@ -9,6 +9,7 @@ function ModalFactory($http, $rootScope) {
                     {name:'register', url:'/views/modal/register-user-modal.html'},
                     {name:'login', url:'/views/modal/login-modal.html'}
                     ];
+  this._modalOverlayElement = '.overlay';                  
   var self = this;
 
 
@@ -29,6 +30,11 @@ function ModalFactory($http, $rootScope) {
     $rootScope.$broadcast('modal:updated', template);
   };
 
+  function destroyModal(){
+    self._currentModal = '';
+    $rootScope.$broadcast('modal:destroy');
+  }
+
   return {
     getAllModals: function (){
       return getAllModals();
@@ -40,8 +46,7 @@ function ModalFactory($http, $rootScope) {
       setModal(template);
     },
     destroyModal: function (){
-      self._currentModal = '';
-      return $rootScope.$broadcast('modal:destroy');
+      destroyModal();
     }
   };
 };

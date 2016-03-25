@@ -1,5 +1,5 @@
 <div ng-controller="ModalController">
   <div ng-if="CURRENT_MODAL === modal.name">
-    <div ng-include="modal.url"></div>
+    <div ng-include="modal.url" class="overlay" ng-click="global.unfocusModal($event)"></div>
   </div>
 </div>
