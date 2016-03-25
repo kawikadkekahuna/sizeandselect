@@ -9,8 +9,12 @@ angular.module('app')
   this.login = function(user) {
     AuthorizationService.login(user).success(function (data, status) {
       if(data.statusCode !== 200){
+        console.log('$scope.login', this.login);
+        console.log('this.password', this.password);
+        this.login.password.$setValidity('correctPassword', false);
         return;
       };
+      this.login.password.$setValidity('correctPassword', true);
       $localStorage.userId = data.id;
       $localStorage.token = data.sizeselect_access_token;
       $state.go('layout.dashboard');

@@ -11,25 +11,33 @@
 			<li class="nav__public-item">
 				<p class="nav__paragraph" ng-click="toggle()">Login</p>
 				<ul id="nav__login_dropdown" tabindex="1" class="hidden nav__dropdown hidden">
-					<form ng-submit="global.login(user)">
+					<form name="login" ng-submit="global.login(user)">
 						<li class="nav__public-item">
 							<p class="nav__paragraph">USERNAME:</p>
 							<input
 								class="nav__input"
 								type="text"
+								name="username"
 								ng-model="user.username"
 					            type="text"
 					            required
 					            placeholder="Username">
+					  	<div ng-messages="login.username.$error" role="alert">
+						    <div class="error-message" ng-message="required">You must enter a username</div>
+						  </div>
 						</li>
 						<li class="nav__public-item" >
 							<p class="nav__paragraph">PASSWORD:</p>
 							<input
 								class="nav__input"
 								ng-model="user.password"
+											name="password"
 					            type="password"
 					            required
 					            placeholder="Password">
+							<div ng-messages="login.password.$error" role="alert">
+						    <div ng-message="correctPassword" class="error-message">You have entered an incorrect password</div>
+						  </div>
 						</li>
 						<li class="nav__public-item nav__public-item--button" >
 							<button ng-class="nav__button">Login</button>
