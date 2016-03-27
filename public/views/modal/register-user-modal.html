@@ -1,4 +1,4 @@
-<div ng-controller="NavigationController" class="modal" ng-init="init()">
+<div ng-controller="NavigationController" class="modal" ng-init="init()" ng-click="$event.stopPropagation();">
   <div class="close" ng-click="destroyModal()">X</div>
   <div>
     <form ng-submit="createUser(newUser)" class="modal__registration">
