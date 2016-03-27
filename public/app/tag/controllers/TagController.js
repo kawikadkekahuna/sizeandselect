@@ -13,7 +13,6 @@ angular.module('app')
     compressibility: ''
   };
 
-
   $scope.$watch('tagAnalytics.media', function (val){
     if($scope.UNITS){
       var media = _.filter($scope.UNITS.MEDIA, function (unit){
@@ -22,6 +21,7 @@ angular.module('app')
       if(media){
         /*
         Calculate specific heat based on k factor function.  attach to :
+
 
         '$scope.tagAnalytics.specificHeat'
          */
@@ -45,16 +45,15 @@ angular.module('app')
 
     // Crunch all the numbers..
     // make below a promise so when its done it can pass the data to the next service
+      const tagCalculationOutputs = DataCalculationService.processDataInputs(tagInputData);
+      $scope.tagCalculationOutputs = tagCalculationOutputs;
 
-      DataCalculationService.processDataInputs(tagInputData)
-          .then(function (calculations) {
-              console.log("what are my calculations", calculations);
-              console.log("I still  have access to originals", tagInputData);
-              TagService.createTagSheet(tagInputData)
-          })
+      console.log("tagCalculationOutputs", tagCalculationOutputs);
+      TagService.createTagSheet(tagCalculationOutputs)
+
 
     // Forward them to the next page
-    // $state.go('project.tag.selection-sheet');
+    $state.go('project.tag.selection-sheet');
 
   };
 
