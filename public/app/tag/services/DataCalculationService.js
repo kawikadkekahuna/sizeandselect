@@ -26,14 +26,6 @@
         return (735 / C) * (Math.sqrt((k / (k - 1)) * ((Math.pow(PRprime, (2 / k))) - (Math.pow(PRprime, ((k + 1) / k))))));
     }
 
-    function calculateOrificeSize(inputs) {
-        if (inputs.media === "Vapor") {
-            return calculateRequiredAreaVolume(inputs);
-        } else {
-            return calculateRequiredAreaWeight(inputs);
-        }
-    }
-
     function calculateRequiredAreaVolume(inputs) {
         const C = inputs.C;
         const K = inputs.K;
@@ -62,6 +54,14 @@
         const Z = inputs.Z;
 
         return W / (C * K * P1 * Kb * Kc) * Math.sqrt(((T * Z) / M));
+    }
+
+    function calculateOrificeSize(inputs) {
+        if (inputs.media === "Vapor") {
+            return calculateRequiredAreaVolume(inputs);
+        } else {
+            return calculateRequiredAreaWeight(inputs);
+        }
     }
 
     function DataCalculationService() {
@@ -94,7 +94,10 @@
             const inputs = {media, C, K, Kb, Kc, M, P1, T, V, W, Z};
             const orificeSize = calculateOrificeSize(inputs);
 
-            return {orificeSize}; //Put this on the page
+            return {
+                orificeSize,
+                backPressureBuiltUp
+            }; //Put this on the page
 
         };
     }
