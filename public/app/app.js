@@ -8,87 +8,99 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
 })
 .config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
   $stateProvider
-
-  .state('dashboard', {
-    url: '/dashboard',
-    resolve:{
-      authenticate: isAuthenticated
-    },
-    templateUrl: '/views/user/dashboard.html',
-    controller: 'DashboardController'
+  .state('layout', {
+    abstract: true,
+    controller: 'GlobalController',
+    controllerAs: 'global'
   })
 
   .state('home', {
-    url:'/',
-    templateUrl:'/views/user/home.html',
-    controler: 'HomeController'
+    controller: 'HomeController',
+    controllerAs: 'home',
+    templateUrl: '/views/session/home.html', 
+    url: '/'
   })
 
-  .state('login', {
-    url: '/login',
-    templateUrl: '/views/auth/login.html',
-    controller: 'AuthorizationController'
-  })
+  // .state('layout', {
+  //   abstract: true,
+  //   controller: 'GlobalController',
+  //   controllerAs: 'global'
+  // })
 
-  .state('profile', {
-    url: '/profile',
-    resolve:{
-      authenticate: isAuthenticated
-    },
-    templateUrl: '/views/user/profile.html',
-    controller: 'ProfileController'
-  })
+  // .state('dashboard', {
+  //   url: '/dashboard',
+  //   resolve:{
+  //     authenticate: isAuthenticated
+  //   },
+  //   templateUrl: '/views/user/dashboard.html',
+  //   controller: 'DashboardController'
+  // })
 
-  .state('forbidden', {
-    url: '/forbidden',
-    templateUrl: '/views/resources/forbidden.html'
-  })
+  // .state('home', {
+  //   url:'/',
+  //   templateUrl:'/views/user/home.html',
+  //   controler: 'HomeController'
+  // })
 
-  .state('project', {
-    url: '/project/:projectId',
-    resolve:{
-      authenticate: isAuthenticated
-    },    
-    templateUrl: '/views/projects/project.html',
-    controller: 'ProjectController'
-  })
+  // .state('profile', {
+  //   url: '/profile',
+  //   resolve:{
+  //     authenticate: isAuthenticated
+  //   },
+  //   templateUrl: '/views/user/profile.html',
+  //   controller: 'ProfileController'
+  // })
 
-  .state('project.tag', {
-    url: '/tag/:tagId',
-    resolve:{
-      authenticate: isAuthenticated
-    },
-    templateUrl: '/views/tag/tag-analytics-sheet.html',
-    controller: 'TagController'
-  })
+  // .state('forbidden', {
+  //   url: '/forbidden',
+  //   templateUrl: '/views/resources/forbidden.html'
+  // })
 
-  .state('registration', {
-    url: '/register',
-    templateUrl: '/views/auth/registration.html',
-    controller: 'AuthorizationController'
-  })
+  // .state('project', {
+  //   url: '/project/:projectId',
+  //   resolve:{
+  //     authenticate: isAuthenticated
+  //   },    
+  //   templateUrl: '/views/projects/project.html',
+  //   controller: 'ProjectController'
+  // })
 
-  .state('reference-library',{
-    url:'/reference-library',
-    templateUrl: '/views/resources/reference-library.html',
-    controller: 'ReferenceLibraryController'
-  })
+  // .state('project.tag', {
+  //   url: '/tag/:tagId',
+  //   resolve:{
+  //     authenticate: isAuthenticated
+  //   },
+  //   templateUrl: '/views/tag/tag-analytics-sheet.html',
+  //   controller: 'TagController'
+  // })
 
-  .state('forgot-password', {
-    url: '/forgot-password',
-    templateUrl: '/views/auth/forgot-password.html',
-    controller: 'ForgotPasswordController'
-  })
+  // .state('registration', {
+  //   url: '/register',
+  //   templateUrl: '/views/auth/registration.html',
+  //   controller: 'AuthorizationController'
+  // })
 
-  .state('reset-password', {
-    url: '/reset-password/:token',
-    templateUrl: '/views/auth/reset-password.html',
-    controller: 'ResetPasswordController'
-  })
+  // .state('reference-library',{
+  //   url:'/reference-library',
+  //   templateUrl: '/views/resources/reference-library.html',
+  //   controller: 'ReferenceLibraryController'
+  // })
 
-  .state('modal', {
-    templateUrl: '/views/modal/modal.html'
-  });
+  // .state('forgot-password', {
+  //   url: '/forgot-password',
+  //   templateUrl: '/views/auth/forgot-password.html',
+  //   controller: 'ForgotPasswordController'
+  // })
+
+  // .state('reset-password', {
+  //   url: '/reset-password/:token',
+  //   templateUrl: '/views/auth/reset-password.html',
+  //   controller: 'ResetPasswordController'
+  // })
+
+  // .state('modal', {
+  //   templateUrl: '/views/modal/modal.html'
+  // });
 
   $urlRouterProvider.otherwise('/');
   $locationProvider.html5Mode({enabled: true, requireBase: false});

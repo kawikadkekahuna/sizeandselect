@@ -21,7 +21,7 @@
 
     function calculateKb(C, k, P1, P2) {
         var PRprime = calculatePRPrime(P2, P1);
-        console.log("C", C, k, P1, P2, PRprime)
+        console.log("C", C, k, P1, P2, PRprime);
 
         return (735 / C) * (Math.sqrt((k / (k - 1)) * ((Math.pow(PRprime, (2 / k))) - (Math.pow(PRprime, ((k + 1) / k))))));
     }
@@ -64,41 +64,39 @@
         return W / (C * K * P1 * Kb * Kc) * Math.sqrt(((T * Z) / M));
     }
 
+    function DataCalculationService() {
 
+        this.processDataInputs = function (tagInputData) {
 
-        function DataCalculationService() {
+            console.log("what is tagInputData", tagInputData);
 
-            this.processDataInputs = function (tagInputData) {
+            const allowableOverPressure = tagInputData.allowableOverPressure || 0.1; //Fake
+            const backPressureBuiltUp = tagInputData.backPressureBuiltUp || 0;
+            const inletLossPressure = tagInputData.inletLoss;
+            const k = tagInputData.specificHeat || 10; //Fake
+            const Kc = tagInputData.ruptureDisc || 1;
+            const M = tagInputData.molecularWeight || 500; //FAKE
+            const media = tagInputData.media;
+            const setPressure = tagInputData.setPressure;
+            const V = tagInputData.requiredFlowCapacity;
+            const W = tagInputData.requiredFlowCapacity;
+            const Z = tagInputData.compressibility || 1.0;
 
-                console.log("what is tagInputData", tagInputData);
+            const C = 315;
+            const K = 0.865;
+            const P2 = 500; //Fake
+            const temperature = 100;
 
-                const allowableOverPressure = tagInputData.allowableOverPressure || .1; //Fake
-                const backPressureBuiltUp = tagInputData.backPressureBuiltUp || 0;
-                const inletLossPressure = tagInputData.inletLoss;
-                const k = tagInputData.specificHeat || 10; //Fake
-                const Kc = tagInputData.ruptureDisc || 1;
-                const M = tagInputData.molecularWeight || 500; //FAKE
-                const media = tagInputData.media;
-                const setPressure = tagInputData.setPressure;
-                const V = tagInputData.requiredFlowCapacity;
-                const W = tagInputData.requiredFlowCapacity;
-                const Z = tagInputData.compressibility || 1.0;
+            const P1 = calculateP1V(setPressure, inletLossPressure, allowableOverPressure);
+            const Kb = calculateKb(C, k, P1, P2);
+            const T = calculateReliefTemp(temperature);
 
-                const C = 315;
-                const K = 0.865;
-                const P2 = 500; //Fake
-                const temperature = 100;
+            const inputs = {media, C, K, Kb, Kc, M, P1, T, V, W, Z};
+            const orificeSize = calculateOrificeSize(inputs);
 
-                const P1 = calculateP1V(setPressure, inletLossPressure, allowableOverPressure);
-                const Kb = calculateKb(C, k, P1, P2);
-                const T = calculateReliefTemp(temperature);
+            return {orificeSize}; //Put this on the page
 
-                const inputs = {media, C, K, Kb, Kc, M, P1, T, V, W, Z};
-                const orificeSize = calculateOrificeSize(inputs);
-
-                return {orificeSize}; //Put this on the page
-
-            };
-        }
+        };
+    }
 
 }());
