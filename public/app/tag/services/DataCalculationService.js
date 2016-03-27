@@ -75,7 +75,7 @@
                 const allowableOverPressure = tagInputData.allowableOverPressure || .1; //Fake
                 const backPressureBuiltUp = tagInputData.backPressureBuiltUp || 0;
                 const inletLossPressure = tagInputData.inletLoss;
-                const k = tagInputData.specificHeat || 1; //Fake
+                const k = tagInputData.specificHeat || 10; //Fake
                 const Kc = tagInputData.ruptureDisc || 1;
                 const M = tagInputData.molecularWeight || 500; //FAKE
                 const media = tagInputData.media;
@@ -96,7 +96,7 @@
                 const inputs = {media, C, K, Kb, Kc, M, P1, T, V, W, Z};
                 const orificeSize = calculateOrificeSize(inputs);
 
-                return orificeSize; //Put this on the page
+                return {orificeSize}; //Put this on the page
 
             };
         }
