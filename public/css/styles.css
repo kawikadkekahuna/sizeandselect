@@ -3701,7 +3701,9 @@ table {
     opacity: 0; } }
 
 .nav {
-  width: 100%; }
+  width: 100%;
+  border-bottom: 5px solid blue;
+  margin-bottom: 2%; }
 
 .nav__public {
   display: flex;
@@ -3759,27 +3761,8 @@ table {
 .nav__item--logo {
   width: 150px; }
 
-.button {
-  height: 30px;
-  width: 50px;
-  font-size: 0.725em;
-  border: 1px solid #000000;
-  background-color: orange;
-  margin: 0 15px;
-  display: flex;
-  text-decoration: none;
-  align-items: center;
-  justify-content: center; }
-
-.input__main {
-  height: 30px;
-  width: 250px; }
-
 .home__main {
-  background-image: url("../assets/home-background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: blue;
   text-align: center; }
 
 .home__center-logo {
@@ -3837,38 +3820,51 @@ table {
         padding: 10px;
         width: 100%; }
 
-.dashboard {
-  background-color: red;
-  position: fixed;
-  height: 100%;
-  width: 100%; }
-  .dashboard .left-column {
-    float: left;
-    display: inline-block;
-    width: 12.5%;
-    height: 95%;
-    background-color: skyblue; }
-    .dashboard .left-column .account-picture {
-      height: 25%;
-      width: 100%;
-      background-color: black; }
-    .dashboard .left-column .dropdown-links {
-      height: 75%;
-      width: 100%;
-      margin: auto;
-      background-color: white; }
-  .dashboard .middle-column {
-    display: inline-block;
-    width: 75%;
-    height: 90%;
-    overflow: auto;
-    background-color: purple; }
-    .dashboard .middle-column .project-wrapper {
-      width: 100%;
-      height: 100%; }
-  .dashboard .right-column {
-    float: right;
-    display: inline-block;
-    width: 12.5%;
-    height: 95%;
-    background-color: green; }
+.dashboard .dashboard__project-heading {
+  text-align: center;
+  margin-bottom: 5%; }
+  .dashboard .dashboard__project-heading h1 {
+    font-size: 2em;
+    margin-bottom: 2%; }
+
+.dashboard .dashboard__project-container {
+  border: 1px solid black;
+  margin: 2%;
+  padding: 2%; }
+
+.right-column {
+  border: 1px solid black; }
+
+.project__tag-dashboard {
+  border: 1px solid black; }
+  .project__tag-dashboard .project__tag-heading-container {
+    text-align: center;
+    margin-bottom: 5%; }
+    .project__tag-dashboard .project__tag-heading-container h1 {
+      font-size: 1.4em;
+      margin-bottom: 2%; }
+
+.project__tag-container {
+  margin: 5%; }
+  .project__tag-container .project__tag-fields {
+    margin: 1%; }
+  .project__tag-container .project__tag-button {
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 20%;
+    text-align: center;
+    padding: 1%; }
+
+.tag__top-section {
+  display: inline-flex; }
+
+.tag__mid-section .tag__mid-section-left {
+  border: 1px solid black; }
+
+.tag__mid-section .tag__mid-section-right {
+  border: 1px solid black; }
+
+.tag__input-box {
+  display: inline-flex; }
+  .tag__input-box select {
+    height: 6ch; }
