@@ -149,9 +149,9 @@
     const password = form.password;
 
     return Promise.resolve()
-      .then(function () {
-        return usernameAndEmailAreUnique(username, email);
-      })
+      // .then(function () {
+      //   return usernameAndEmailAreUnique(username, email);
+      // })
       .then(function () {
         return User.create({
           username: username,
