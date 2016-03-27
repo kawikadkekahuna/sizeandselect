@@ -27,7 +27,7 @@
                             <h1>Media Name*</h1>
                             <input ng-model="tagAnalytics.media">
                         </div>
-                        <div ng-if="tagAnalytics.mediaType === 'Gas' || tagAnalytics.mediaType === 'Steam'">
+                        <div ng-if="tagAnalytics.mediaType.name === 'Gas' || tagAnalytics.mediaType.name === 'Steam'">
                             <div class="tag__input-box">
                                 <h1>Molecular Weight*</h1>
                                 <input ng-model="tagAnalytics.molecularWeight">
@@ -41,7 +41,7 @@
                                 <input ng-model="tagAnalytics.compressibility">
                             </div>
                         </div>
-                        <div ng-if="tagAnalytics.mediaType === 'Liquid'">
+                        <div ng-if="tagAnalytics.mediaType.name === 'Liquid'">
                             <div class="tag__input-box">
                                 <h1>Specific Gravity*</h1>
                                 <input class="tag-dropdown" name="accountType" ng-model="tagAnalytics.specificGravity">
@@ -159,8 +159,7 @@
                 </div>
                 <div>
                     <h1>Overpressure*</h1>
-                    <h3>value is based on what was selected in sizing basis HELP</h3>
-                    <input class="tag-dropdown" ng-model="tagAnalytics.overpressure">
+                    <h3 ng-model="tagAnalytics.overpressure">{{tagAnalytics.sizingBasis.overpressure}}</h3>
                 </div>
             </div>
             <div class="small-4 columns" style="border: 1px solid black">
@@ -191,7 +190,7 @@
                 <h1>Calculated Orifice*</h1>
                 <div>
                     <h2>Orifice Required</h2>
-                    <div>OUTPUT ORIFICE REQUIRED</div>
+                    <div>{{tagCalculationOutputs.orificeSize}}</div>
                 </div>
                 <div>
                     <h1>ASME Sizing*</h1>
