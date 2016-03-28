@@ -68,7 +68,6 @@
   router.post('/register', function (req, res) {
 
     const form = req.body;
-
     createUser(form)
       .then(function () {
         res.sendStatus(201);
@@ -126,8 +125,8 @@
       .then(function (users) {
 
         const usernameOrEmailExists = users.some(function (user) {
-          const usernamesMatch = users.username.toLowerCase() === username.toLowerCase();
-          const emailsMatch = users.email === email;
+          const usernamesMatch = user.username.toLowerCase() === username.toLowerCase();
+          const emailsMatch = user.email === email;
 
           return usernamesMatch || emailsMatch;
         });

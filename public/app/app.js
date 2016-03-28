@@ -115,7 +115,9 @@ angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngSanitize', 'Ma
   function isAuthenticated($q, $state, $timeout, $http, $location, $rootScope, $localStorage, HelperFactory) {
     $http.defaults.headers.common['Authorization'] = $localStorage.token;
     var deferred = $q.defer();
+    console.log('$localStorage.token', $localStorage.token);
     $http.get(SERVER +'/api/auth/isAuthenticated', $localStorage.token).success(function(user) {
+      console.log('user', user);
       if (user.status === 200){
         $localStorage.authenticated = true;
         deferred.resolve();

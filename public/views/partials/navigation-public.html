@@ -31,13 +31,13 @@
 							<input
 								class="nav__input"
 								ng-model="user.password"
-											name="password"
-					            type="password"
-					            required
-					            placeholder="Password">
-							<div ng-messages="login.password.$error" role="alert">
-						    <div ng-message="correctPassword" class="error-message">You have entered an incorrect password</div>
-						  </div>
+								name="password"
+		            type="password"
+		            required
+		            placeholder="Password">
+			        <div class="error" data-ng-messages="serverErrors" data-ng-show="login.$submitted" data-ng-cloak>
+			            <p data-ng-message="emailexists">Email already exists</p>
+			        </div>	
 						</li>
 						<li class="nav__public-item nav__public-item--button" >
 							<button ng-class="nav__button">Login</button>

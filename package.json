@@ -4,6 +4,7 @@
   "description": "Size and Select",
   "main": "index.js",
   "scripts": {
+    "start": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,21 +29,31 @@
   "dependencies": {
     "angular-mass-autocomplete": "^0.2.3",
     "async": "^1.4.2",
+    "babel-core": "^6.7.4",
+    "babel-loader": "^6.2.4",
     "bcrypt": "^0.8.5",
     "bluebird": "^3.3.3",
     "body-parser": "^1.14.0",
+    "browser-sync": "^2.11.2",
     "crypto": "0.0.3",
+    "css-loader": "^0.23.1",
     "email-templates": "^2.1.0",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
+    "file-loader": "^0.8.5",
     "jsonwebtoken": "^5.4.0",
     "mailgun.js": "^1.4.0",
     "moment": "^2.12.0",
+    "node-sass": "^3.4.2",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
     "pg": "^4.4.1",
     "pg-hstore": "^2.3.2",
+    "run-sequence": "^1.1.1",
+    "sass-loader": "^3.2.0",
     "sequelize": "^3.9.0",
-    "validate": "^3.0.1"
+    "style-loader": "^0.13.1",
+    "validate": "^3.0.1",
+    "webpack-stream": "^3.1.0"
   }
 }

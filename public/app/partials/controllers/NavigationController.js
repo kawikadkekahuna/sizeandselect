@@ -1,6 +1,7 @@
 angular.module('app')
 
 .controller('NavigationController', function($scope, $http, $localStorage, $state, AuthorizationService, DropdownService, RegexService, ModalFactory, HelperFactory){
+  var nav = this;
 
 	$scope.isLoggedIn = $localStorage.authenticated;
   $scope.init = function (){
@@ -23,6 +24,7 @@ angular.module('app')
       $localStorage.token = user.data.token;
       $localStorage.userId = user.data.id;
       ModalFactory.destroyModal();
+      console.log('user', user);
       $state.go('layout.dashboard');
     }); 
   };
