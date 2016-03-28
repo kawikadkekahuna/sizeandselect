@@ -11,6 +11,7 @@
     const TagSheet = models.TagSheet;
     const schema = require('validate');
     // Not hooked into anything yet
+    // All about validation
     const newTag = schema({
         name: {
             type: 'string',
@@ -171,6 +172,8 @@
         const body = req.body;
 
          console.log("$$$ incoming tag Sheet $$$", body)
+         console.log("atmPressure", body.atmPressure)
+         console.log("atmPressure", typeof body.atmPressure)
 
         TagSheet.create({
             atm: body.atmPressure,
