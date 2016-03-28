@@ -78,6 +78,8 @@
             const M = tagInputData.molecularWeight || 500; //FAKE
             const media = tagInputData.media;
             const setPressure = tagInputData.setPressure;
+            const varSuperimposed = tagInputData.varSuperimposed;
+            const constantSuperimposed = tagInputData.constantSuperimposed;
             const V = tagInputData.requiredFlowCapacity;
             const W = tagInputData.requiredFlowCapacity;
             const Z = tagInputData.compressibility || 1.0;
@@ -90,13 +92,14 @@
             const P1 = calculateP1V(setPressure, inletLossPressure, allowableOverPressure);
             const Kb = calculateKb(C, k, P1, P2);
             const T = calculateReliefTemp(temperature);
+            const totalBackPressure = 100;// (backPressureBuiltUp + varSuperimposed + constantSuperimposed);
 
             const inputs = {media, C, K, Kb, Kc, M, P1, T, V, W, Z};
-            const orificeSize = calculateOrificeSize(inputs);
+            const orificeSize = 100; //calculateOrificeSize(inputs);
 
             return {
                 orificeSize,
-                backPressureBuiltUp
+                totalBackPressure
             }; //Put this on the page
 
         };
