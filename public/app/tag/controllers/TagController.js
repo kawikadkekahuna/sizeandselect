@@ -48,8 +48,11 @@ angular.module('app')
         $scope.tagCalculationOutputs = tagCalculationOutputs;
 
         console.log("tagCalculationOutputs", tagCalculationOutputs);
+        console.log("tagInputData", tagInputData);
+
         // Create a tagSheet
-        TagService.createTagSheet(tagCalculationOutputs);
+
+        TagService.createTagSheet(tagInputData);
 
 
     // Forward them to the next page
